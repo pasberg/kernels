@@ -239,6 +239,10 @@ select.field { flex: 0 1 12rem; }
 .pips i.on { background: var(--ev); }
 .src { margin: 0; font: 400 .78rem/1.5 var(--f-mono); color: var(--ink-2); }
 .src b { font-weight: 500; color: var(--ink); }
+.bookpill { display: inline-block; margin-left: 8px; padding: 1px 8px; border: 1px solid var(--line, currentColor); border-radius: 99px; font: 500 .68rem/1.5 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); vertical-align: 1px; }
+.bookline { margin: 0 0 6px; font: 400 .78rem/1.5 var(--f-mono); color: var(--ink-2); }
+.bookline b { font-weight: 500; color: var(--ink); }
+.sheet .bookline { margin-top: 20px; max-width: 62ch; }
 
 .card.featured { border-color: var(--ink); padding: 24px; gap: 14px; }
 .card.featured h3 { font-size: clamp(1.5rem, 3.4vw, 1.9rem); }
@@ -727,6 +731,118 @@ select.field { flex: 0 1 12rem; }
       body: "I ett experiment med cirka tusen gymnasieelever i matematik presterade de som fick tillgång till en ren chattbot bättre på övningsuppgifterna men sämre på provet utan hjälp. En variant som gav ledtrådar i stället för svar minskade skadan. Resultatet är tidigt och behöver upprepas.",
       core: "Försök själv först och använd AI för förklaringar och återkoppling, inte för färdiga svar.",
       src: "Bastani m.fl., 2024 · arXiv; senare i PNAS" }
+  );
+  IDEAS.push(
+    { id: "b1", cat: "mental", ev: "mattligt", type: "Bokidé · Experiment och replikationer", book: "Tänka, snabbt och långsamt · Daniel Kahneman, 2011",
+      title: "Vi tänker med två system: det snabba gissar, det långsamma kontrollerar",
+      body: "Kahneman beskriver ett snabbt, intuitivt tänkande som ofta är bra men gör förutsägbara fel, och ett långsammare, ansträngande tänkande som kan kontrollera det. Många av hans exempel bygger på forskning om tumregler och systematiska felbedömningar, men inte alla har klarat upprepade tester.",
+      core: "Känn igen när du bedömer snabbt på magkänsla, och sakta ner när beslutet är viktigt.",
+      src: "Tversky & Kahneman, 1974 · Science; Open Science Collaboration, 2015 · Science" },
+    { id: "b2", cat: "vanor", ev: "mattligt", type: "Bokidé · Fältstudie och översikter", book: "Små vanor ger stora resultat (Atomic Habits) · James Clear, 2018",
+      title: "Gör vanan liten, tydlig och lätt att börja med",
+      body: "Clear bygger på forskning om hur vanor uppstår: de hänger ihop med signaler i miljön och blir automatiska efter upprepning. Hans råd är att göra beteendet enkelt, tydligt och knutet till något du redan gör. Tidsåtgången för en vana varierar mycket mer än myten om 21 dagar.",
+      core: "Gör det önskade beteendet lätt och knyt det till en signal du redan har i vardagen.",
+      src: "Lally m.fl., 2010 · European Journal of Social Psychology; Wood & Neal, 2007 · Psychological Review" },
+    { id: "b3", cat: "fokus", ev: "tidigt", type: "Bokidé · Resonemang från närliggande forskning", book: "Deep Work · Cal Newport, 2016",
+      title: "Långa, ostörda arbetspass ger mer än splittrad uppmärksamhet",
+      body: "Newport hävdar att förmågan att koncentrera sig utan avbrott blir allt mer värdefull. Direkta tester av hans metod är få, men forskning om avbrott och uppmärksamhetsrester tyder på att ständiga växlingar kostar tid och ork.",
+      core: "Skydda ett eller två längre pass per dag, utan notiser, för det som kräver mest tanke.",
+      src: "Mark m.fl., 2008 · CHI; Leroy, 2009 · Organizational Behavior and Human Decision Processes" },
+    { id: "b4", cat: "larande", ev: "blandat", type: "Bokidé · Meta-analyser och stort experiment", book: "Mindset · Carol Dweck, 2006",
+      title: "Tron på att förmågor kan utvecklas kan hjälpa, men effekten är mindre än boken antyder",
+      body: "Dweck menar att den som tror att förmågor växer med träning (växande mindset) klarar motgångar bättre än den som tror att de är givna. Stora sammanställningar visar ett svagt samband med skolresultat och små effekter av kurser, men något större för elever som har det svårt.",
+      core: "Lär dig att se misstag som information, men räkna inte med mirakel av en inställning ensam.",
+      src: "Sisk m.fl., 2018 · Psychological Science; Yeager m.fl., 2019 · Nature" },
+    { id: "b5", cat: "mental", ev: "blandat", type: "Bokidé · Meta-analys", book: "Grit · Angela Duckworth, 2016",
+      title: "Uthållighet spelar roll, men begreppet 'grit' liknar mest pliktkänsla",
+      body: "Duckworth menar att passion och uthållighet förklarar framgång mer än talang. En sammanställning av studier tyder på att grit till stor del överlappar med personlighetsdraget pliktkänsla, och att det förklarar prestation svagt.",
+      core: "Uthållighet och långsiktighet hjälper, men det är inte säkert att det är något annat än gammal god pliktkänsla.",
+      src: "Duckworth m.fl., 2007 · Journal of Personality and Social Psychology; Credé m.fl., 2017 · Journal of Personality and Social Psychology" },
+    { id: "b6", cat: "larande", ev: "mattligt", type: "Bokidé · Studier av experter och meta-analys", book: "Peak · Anders Ericsson & Robert Pool, 2016",
+      title: "Målmedveten träning slår mängd, men tio tusen timmar är en myt",
+      body: "Ericsson visade att toppresultat kräver målmedveten träning: tydliga mål, full koncentration och återkoppling på det som är svårt. Tio tusen timmar-regeln är en populär förenkling. En sammanställning fann att träning förklarar en betydande men varierande del av skillnaderna.",
+      core: "Träna på det som är lite för svårt, med återkoppling, snarare än att bara upprepa det du redan kan.",
+      src: "Ericsson, Krampe & Tesch-Römer, 1993 · Psychological Review; Macnamara m.fl., 2014 · Psychological Science" },
+    { id: "b7", cat: "somn", ev: "blandat", type: "Bokidé · Forskningsöversikt och kritik", book: "Därför sover vi (Why We Sleep) · Matthew Walker, 2017",
+      title: "Sömn är viktig för hälsan, men boken överdriver en del av påståendena",
+      body: "Walker beskriver sömnbrist som en hälsorisk för nästan alla organsystem. Huvudbudskapet stämmer med forskningen, och expertgrupper rekommenderar minst sju timmar för vuxna. Men flera kritiker har visat att vissa siffror och slutsatser i boken är förenklade eller oriktiga.",
+      core: "Prioritera sömn, men läs sömnråd med lite skepsis. Fokusera på de stora, robusta budskapen.",
+      src: "Watson m.fl., 2015 · Sleep; Cappuccio m.fl., 2010 · Sleep" },
+    { id: "b8", cat: "finans", ev: "mattligt", type: "Bokidé · Beteendeekonomi och studier av privatinvesterare", book: "Pengars psykologi · Morgan Housel, 2020",
+      title: "Hur du beter dig med pengar betyder mer än hur mycket du kan",
+      body: "Housel menar att privatekonomi handlar mer om beteende än om kunskap: att spara, vänta och inte låta känslor styra. Det stämmer med forskning om förlustaversion och om hur aktiv handel ofta ger sämre avkastning för privatpersoner. Boken är en essäsamling, inte en studie, och är inte finansiell rådgivning.",
+      core: "Bygg en ekonomi som tål ditt eget beteende: buffert, tålamod och enkla regler.",
+      src: "Kahneman & Tversky, 1979 · Econometrica; Barber & Odean, 2000 · Journal of Finance" },
+    { id: "b9", cat: "historia", ev: "blandat", type: "Bokidé · Populärhistorisk syntes", book: "Sapiens · Yuval Noah Harari, 2011",
+      title: "Gemensamma berättelser gör att miljontals främlingar kan samarbeta",
+      body: "Harari hävdar att människans framgång beror på förmågan att tro på delade berättelser, som nationer, pengar och religioner, vilket gör det möjligt att samarbeta i stora grupper. Idén bygger på forskning om gruppstorlek och språk, men boken är en bred och förenklad syntes som historiker och antropologer har kritiserat.",
+      core: "Se institutioner och pengar som gemensamma överenskommelser, men läs stora historiska teser som hypoteser.",
+      src: "Dunbar, 1992 · Journal of Human Evolution; Harari, 2011 · Sapiens" },
+    { id: "b10", cat: "relationer", ev: "mattligt", type: "Bokidé · Experiment och fältstudier", book: "Påverkan (Influence) · Robert Cialdini, 1984",
+      title: "Vi påverkas av reciprocitet, social bekräftelse och auktoritet",
+      body: "Cialdini beskriver sex principer som styr våra val, till exempel att vi gärna gör gentjänster och följer vad andra gör. I ett fältexperiment på hotell ökade andelen som återanvände handdukar när skylten sa att de flesta gäster gjorde det. Principerna är väl belagda men effekterna varierar.",
+      core: "Lägg märke till när någon använder gentjänst, ’alla andra gör det’ eller auktoritet på dig, och använd det själv hederligt.",
+      src: "Cialdini, 1984 · Influence; Goldstein, Cialdini & Griskevicius, 2008 · Journal of Consumer Research" },
+    { id: "b11", cat: "mental", ev: "mattligt", type: "Bokidé · Meta-analys", book: "Drive · Daniel Pink, 2009",
+      title: "Motivation byggs av självbestämmande, bemästring och mening, inte bara belöningar",
+      body: "Pink bygger på teorin om självbestämmande, som säger att vi mår och presterar bäst när vi får bestämma, utvecklas och ser syfte. En meta-analys fann att konkreta belöningar kan minska den inre motivationen för uppgifter man redan tycker om, men effekten beror på hur belöningen ges.",
+      core: "Ge dig själv och andra frihet, utveckling och mening, och använd belöningar sparsamt för uppgifter som redan är intressanta.",
+      src: "Deci, Koestner & Ryan, 1999 · Psychological Bulletin; Ryan & Deci, 2000 · American Psychologist" },
+    { id: "b12", cat: "mental", ev: "mattligt", type: "Bokidé · Prognostävlingar och långtidsstudie", book: "Superforecasting · Philip Tetlock & Dan Gardner, 2015",
+      title: "Man kan bli bättre på att förutsäga framtiden genom att tänka i sannolikheter",
+      body: "Tetlock fann att vanliga experter ofta förutspår ungefär lika bra som slumpen, men att vissa personer, superprognosmakare, är klart bättre. De bryter ner frågor, söker olika synsätt, uppdaterar sina bedömningar och mäter sina träffar.",
+      core: "Sätt en siffra på dina förutsägelser, följ upp hur det gick och uppdatera när du får nya fakta.",
+      src: "Tetlock, 2005 · Expert Political Judgment; Mellers m.fl., 2015 · Psychological Science" },
+    { id: "b13", cat: "mental", ev: "tidigt", type: "Bokidé · Forskning om mening i livet", book: "Livet måste ha en mening (Man's Search for Meaning) · Viktor Frankl, 1946",
+      title: "Att se mening i det man gör hänger ihop med att må bättre",
+      body: "Frankl, psykiater och överlevare från koncentrationsläger, hävdade att människan drivs av sökandet efter mening. Forskning har sedan funnit samband mellan upplevd mening och bättre välmående, men sambandet är inte detsamma som att meningen orsakar det, och boken är en personlig skildring, inte en studie.",
+      core: "Fråga dig vad som ger det du gör mening, särskilt när det är svårt.",
+      src: "Steger m.fl., 2006 · Journal of Counseling Psychology; Heintzelman & King, 2014 · American Psychologist" },
+    { id: "b14", cat: "finans", ev: "mattligt", type: "Bokidé · Fältexperiment och meta-analyser", book: "Nudge · Richard Thaler & Cass Sunstein, 2008",
+      title: "Små ändringar i hur valen presenteras kan påverka beteendet",
+      body: "Thaler och Sunstein visar att förvalda val och enklare sätt att välja kan styra beteende utan förbud. Ett känt exempel är sparprogram där anställda binder sig att spara mer vid framtida löneökningar. Men sammanställningar tyder på att effekterna är mindre än de första studierna antydde när man tar hänsyn till publiceringsbias.",
+      core: "Gör det önskade valet till standard, och dra ner på friktionen för det du vill göra.",
+      src: "Thaler & Benartzi, 2004 · Journal of Political Economy; Mertens m.fl., 2022 · PNAS; Maier m.fl., 2022 · PNAS" },
+    { id: "b15", cat: "relationer", ev: "blandat", type: "Bokidé · Meta-analyser", book: "Känslomässig intelligens (Emotional Intelligence) · Daniel Goleman, 1995",
+      title: "Att förstå och hantera känslor hjälper, men påståendena i boken är överdrivna",
+      body: "Goleman populariserade idén att känslomässig intelligens är minst lika viktig som vanlig intelligens. Forskning ger visst stöd för att förmågan att uppfatta och hantera känslor hänger ihop med arbetsprestation och relationer, men sambandet är måttligt, och boken överdriver, och måtten är omstridda.",
+      core: "Träna på att uppfatta dina egna och andras känslor, men förvänta dig inte att det är en genväg till framgång.",
+      src: "Mayer & Salovey, 1990 · Imagination, Cognition and Personality; Joseph & Newman, 2010 · Journal of Applied Psychology" },
+    { id: "b16", cat: "forebilder", ev: "tidigt", type: "Bokidé · Filosofi och klinisk forskning", book: "Självbetraktelser (Meditations) · Marcus Aurelius, ca 170 e.Kr.",
+      title: "Skilj det du kan påverka från det du inte kan",
+      body: "Den romerske kejsaren Marcus Aurelius skrev anteckningar till sig själv om stoisk filosofi: lugn inför det du inte styr och fokus på ditt eget handlande. Idéerna har varit en inspirationskälla för modern kognitiv beteendeterapi, men forskningen på stoiskt inspirerade kurser är fortfarande liten.",
+      core: "Fråga dig vad du kan påverka och lägg energin där. Acceptera resten.",
+      src: "Beck, 1976 · Cognitive Therapy and the Emotional Disorders; Robertson, 2010 · The Philosophy of Cognitive-Behavioural Therapy" },
+    { id: "b17", cat: "historia", ev: "mattligt", type: "Bokidé · Enkäter och offentlig statistik", book: "Factfulness · Hans Rosling, Ola Rosling & Anna Rosling Rönnlund, 2018",
+      title: "Världen är bättre än vi tror, men inte bra nog",
+      body: "Rosling visade att de flesta, även experter, har en mer dyster bild av världens utveckling än siffrorna ger: barnadödligheten har sjunkit, fler går i skolan och fattigdomen har minskat. I Gapminders enkäter svarade deltagarna ofta sämre än om de gissat slumpmässigt.",
+      core: "Kolla siffrorna innan du dras med av dramatiska nyheter, och håll två tankar samtidigt: att det blivit bättre, och att mycket återstår.",
+      src: "Rosling, Rosling & Rönnlund, 2018 · Factfulness; Gapminder, 2017 · Ignorance Project" },
+    { id: "b18", cat: "finans", ev: "mattligt", type: "Bokidé · Finansforskning", book: "Den intelligente investeraren · Benjamin Graham, 1949",
+      title: "Köp med säkerhetsmarginal och låt inte marknadens humör styra dig",
+      body: "Graham lärde ut att du ska se aktier som andelar i företag, köpa dem när priset är klart lägre än värdet och bortse från marknadens svängningar. Forskning har funnit att billigt värderade aktier historiskt gett högre avkastning, men effekten har varierat över tid. Inte finansiell rådgivning.",
+      core: "Värdera det du köper, ha marginal för misstag och skilj pris från värde.",
+      src: "Fama & French, 1992 · Journal of Finance; Graham, 1949 · The Intelligent Investor" },
+    { id: "b19", cat: "finans", ev: "starkt", type: "Bokidé · Analys av fondavkastning", book: "Lilla boken om sunt förnuft för investerare · John Bogle, 2007",
+      title: "Låga avgifter är en av få säkra fördelar för sparare",
+      body: "Bogle, grundare av indexfonder, argumenterade att aktivt förvaltade fonder som grupp inte kan slå marknaden efter avgifter, eftersom de tillsammans är marknaden. Studier av fondavkastning har gång på gång funnit att de flesta aktiva fonder går sämre än sitt index över lång tid. Inte finansiell rådgivning.",
+      core: "Titta på avgiften: över lång tid äter den en stor del av avkastningen.",
+      src: "Sharpe, 1991 · Financial Analysts Journal; Carhart, 1997 · Journal of Finance" },
+    { id: "b20", cat: "vanor", ev: "blandat", type: "Bokidé · Storskaliga studier av checklistor", book: "Checklistan (The Checklist Manifesto) · Atul Gawande, 2009",
+      title: "Enkla checklistor kan förhindra misstag, men effekten beror på hur de införs",
+      body: "Gawande, kirurg, beskriver hur checklistor hjälper experter att inte glömma självklara steg. En internationell studie 2009 fann att WHO:s checklista för kirurgi minskade komplikationer och dödsfall, men en senare studie från Ontario fann ingen tydlig förbättring, vilket pekar på att införandet spelar stor roll.",
+      core: "Använd en kort checklista för steg du lätt glömmer, och anpassa den efter hur du faktiskt arbetar.",
+      src: "Haynes m.fl., 2009 · New England Journal of Medicine; Urbach m.fl., 2014 · New England Journal of Medicine" },
+    { id: "b21", cat: "fokus", ev: "starkt", type: "Bokidé · Experiment", book: "Den osynliga gorillan (The Invisible Gorilla) · Christopher Chabris & Daniel Simons, 2010",
+      title: "Vi missar ofta det uppenbara när vi koncentrerar oss på något annat",
+      body: "I ett känt experiment ombads deltagare räkna passningar i en basketfilm, och ungefär hälften märkte inte en person i gorilladräkt som gick genom bilden. Boken använder det för att visa att vi överskattar vår egen uppmärksamhet och minne.",
+      core: "Lita mindre på att du skulle ha märkt det, och bygg in kontroller för det som är viktigt.",
+      src: "Simons & Chabris, 1999 · Perception; Hyman m.fl., 2010 · Applied Cognitive Psychology" },
+    { id: "b22", cat: "larande", ev: "starkt", type: "Bokidé · Experiment och översiktsartiklar", book: "Make It Stick · Peter Brown, Henry Roediger & Mark McDaniel, 2014",
+      title: "Att hämta fram kunskap ur minnet lär bättre än att läsa om",
+      body: "Boken sammanfattar forskning om inlärning och visar att övning med att återkalla, att sprida ut repetitioner och att blanda uppgifter ger bättre långtidsminne än omläsning. Det känns ofta svårare, vilket gör att många undviker det.",
+      core: "Testa dig själv, sprid ut repetitionerna och blanda uppgifterna, även om det känns svårare.",
+      src: "Roediger & Karpicke, 2006 · Psychological Science; Dunlosky m.fl., 2013 · Psychological Science in the Public Interest" }
   );
   IDEAS.push(
     { id: "e1", cat: "finans", ev: "starkt", type: "Centralbanksmål",
@@ -2133,6 +2249,272 @@ select.field { flex: 0 1 12rem; }
       "Välj något du lär dig. Låt AI:n ställa tio frågor, svara utan hjälp och be om rättning. Testa dig själv utan verktyget efter några dagar och se hur mycket som fastnat."
     ]
   });
+  Object.assign(DEEP, {
+    b1: [
+      "# Bakgrund",
+      "Daniel Kahneman fick Nobelpriset i ekonomi 2002 för forskning, tillsammans med Amos Tversky, om hur människor bedömer och beslutar under osäkerhet. Boken från 2011 sammanfattar den i en berättelse om två sätt att tänka, som han kallar system 1 och system 2.",
+      "# Vad forskningen visar",
+      "Tversky och Kahneman visade 1974 att människor använder tumregler, som att bedöma sannolikhet efter hur lätt man kommer på exempel, och att det leder till upprepade, förutsägbara fel. De grundläggande resultaten om ankring, tillgänglighet och inramning har återskapats i många studier.",
+      "# Det som är osäkert",
+      "System 1 och 2 är en bild, inte två verkliga delar av hjärnan. Dessutom har flera studier som boken bygger på om så kallad priming inte kunnat upprepas, och en stor replikationsstudie 2015 fann att bara ungefär en tredjedel av ett urval psykologiska resultat återskapades. Kahneman medgav själv att han satt för stor tilltro till en del av dem.",
+      "# Så kan du använda det",
+      "Använd idén som en varningslampa, inte som en teori att tro blint på. Vid viktiga beslut, som köp, anställningar och investeringar, kan du sakta ner, skriva ner skäl och jämföra med ett alternativ innan du bestämmer dig.",
+      "# Prova i två veckor",
+      "Välj ett beslut den här veckan som du normalt tar snabbt. Skriv först ner din magkänsla, sedan tre skäl för och tre emot. Notera om du ändrade dig, och om du i efterhand var nöjd."
+    ],
+    b2: [
+      "# Bakgrund",
+      "Boken är en av de mest sålda böckerna om vanor och bygger på idén att små förändringar som upprepas växer över tid. Clear använder också begrepp som identitet, miljöns signaler och att göra beteendet attraktivt och lätt.",
+      "# Vad forskningen visar",
+      "Lally och kollegor följde 96 personer som försökte skapa en ny vana och fann att det i genomsnitt tog ungefär två månader innan beteendet blev automatiskt, men spannet var stort, från under tre veckor till över åtta månader. Wood och Neal beskriver hur vanor styrs av signaler i en stabil miljö snarare än av viljestyrka.",
+      "# Det som är osäkert",
+      "Clears modell är en praktisk sammanfattning, men inte en egen vetenskaplig teori, och jämförelsen med sammansatt ränta är en liknelse, inte en uppmätt effekt. Forskningen om hur man bäst bygger vanor är begränsad, och det finns stora skillnader mellan personer och beteenden.",
+      "# Så kan du använda det",
+      "Börja med en version som tar under två minuter, koppla den till något du redan gör varje dag, och placera det du behöver synligt. Räkna inte med att en viss dag ger automatik. Räkna med att det tar veckor.",
+      "# Prova i två veckor",
+      "Välj en liten vana, som tio armhävningar efter att du borstat tänderna. Gör den varje dag i två veckor, och anteckna varje gång du gjorde den och hur lätt det kändes."
+    ],
+    b3: [
+      "# Bakgrund",
+      "Newports tes är att djupt, ostört arbete blir både ovanligare och mer värdefullt, och att man kan träna förmågan. Boken ger strategier som att schemalägga fokuspass, begränsa sociala medier och avsluta arbetsdagen på en bestämd tid.",
+      "# Vad forskningen visar",
+      "Mark och kollegor fann 2008 att personer som avbröts vid sitt arbete jobbade snabbare men upplevde mer stress, frustration och tidspress. Leroy beskrev 2009 hur tankar om en tidigare uppgift kan ligga kvar, uppmärksamhetsrester, och försämra prestationen på nästa.",
+      "# Det som är osäkert",
+      "Själva boken bygger mest på resonemang och exempel, och det finns få studier som direkt jämför djuparbete med andra arbetssätt. Hur mycket fokus ett jobb tillåter varierar, och inte alla uppgifter vinner på att vara ostörda.",
+      "# Så kan du använda det",
+      "Börja med ett pass på 60–90 minuter om dagen, helst när du är som mest alert. Stäng notiser och e-post, bestäm uppgiften i förväg och avsluta med en rad om var du slutade.",
+      "# Prova i två veckor",
+      "Planera ett fokuspass varje arbetsdag i två veckor. Notera efteråt vad du hann med och hur ofta du avbröts, och justera tid och plats."
+    ],
+    b4: [
+      "# Bakgrund",
+      "Mindset blev en världsbok om hur uppfattningen om sina egna förmågor påverkar hur man lär sig. Idén har gått in i skolor och arbetsplatser över hela världen.",
+      "# Vad forskningen visar",
+      "Yeager och kollegor genomförde 2019 ett stort, nationellt experiment med över tolvtusen elever i USA. En kort nätbaserad kurs höjde betygen något för elever med svaga resultat, men effekten var liten.",
+      "# Det som är osäkert",
+      "Sisk och kollegor sammanställde 2018 många studier och fann ett svagt samband mellan mindset och prestation, och mycket små effekter av kurser i allmänhet. Idén har ibland förenklats till att det räcker att tro, och den förenklingen stöds inte.",
+      "# Så kan du använda det",
+      "Beröm gärna strategier och ansträngning snarare än talang, och se misstag som något att analysera. Men kombinera det med bra undervisning, tydliga mål och tid. Kursen är inte tillräcklig ensam.",
+      "# Prova i två veckor",
+      "Nästa gång något misslyckas, skriv ner vad du lärde dig och vilken strategi du ska pröva härnäst. Gör det varje gång under två veckor."
+    ],
+    b5: [
+      "# Bakgrund",
+      "Duckworth definierar grit som en kombination av uthållighet och långsiktigt intresse. Hon har visat att det hänger ihop med bland annat att klara militär grundutbildning, vilket gjort begreppet populärt.",
+      "# Vad forskningen visar",
+      "I originalstudierna 2007 hängde grit ihop med bland annat utbildningsnivå och framgång i tävlingen om stavning. Det är mönster som talar för att uthållighet är viktig.",
+      "# Det som är osäkert",
+      "Credé och kollegor sammanställde 2017 många studier och fann att grit är starkt kopplat till pliktkänsla, och bara svagt kopplat till prestation. Den del som handlar om att hålla ut verkar vara mest användbar. Debatten om begreppets värde fortsätter.",
+      "# Så kan du använda det",
+      "Sätt långsiktiga mål, välj rätt saker att hålla ut med och släpp det som inte leder någonstans. Uthållighet är en dygd när målet är värt det, men inte nödvändigtvis när det inte är det.",
+      "# Prova i två veckor",
+      "Skriv ner ett mål som tar månader. Bestäm ett litet steg per vecka, och efter två veckor, se om du hållit planen och varför."
+    ],
+    b6: [
+      "# Bakgrund",
+      "Ericsson studerade i decennier hur experter, som violinister, schackspelare och idrottare, skiljer sig från andra. Han fann att de ägnat många år åt en särskild sorts träning, som han kallade målmedveten träning.",
+      "# Vad forskningen visar",
+      "Studien av violinister i Berlin 1993 visade att de bästa hade tränat mest ensamma, med klara mål. Den lyfter fram att kvaliteten på träningen spelar roll, med små steg som ligger lite över nuvarande nivå, snabb återkoppling och en lärare.",
+      "# Det som är osäkert",
+      "Tio tusen timmar kommer från en förenkling av studien och är inte en regel. En sammanställning från 2014 fann att målmedveten träning förklarade ungefär en fjärdedel av skillnaderna i tv-spel och musik, men klart mindre inom utbildning och yrken. Gener, början av träningen och andra faktorer spelar också roll.",
+      "# Så kan du använda det",
+      "Dela upp färdigheten, hitta det du inte klarar än, arbeta på det med full uppmärksamhet och be om återkoppling. Korta, fokuserade pass är bättre än långa, halvdåliga.",
+      "# Prova i två veckor",
+      "Välj en färdighet. Identifiera den svåraste delen, träna på den 20 minuter om dagen i två veckor och be någon om återkoppling en gång."
+    ],
+    b7: [
+      "# Bakgrund",
+      "Boken blev en bestseller och har påverkat hur många ser på sömn. Walker är professor i neurovetenskap och psykologi, och boken sammanfattar mycket forskning.",
+      "# Vad forskningen visar",
+      "En expertpanel i USA gick 2015 igenom forskningen och rekommenderade minst sju timmars sömn per natt för vuxna. En sammanställning från 2010 fann att både mycket kort och mycket lång sömn hänger ihop med högre dödlighet, men sambandet är inte detsamma som orsak.",
+      "# Det som är osäkert",
+      "Flera granskningar, bland annat en omfattande kritik 2019, har visat att boken ibland återger siffror felaktigt, till exempel att sambandet mellan sömn och dödlighet framställs starkare än studierna visar, och att vissa studier tolkas för hårt. Det betyder inte att sömn är oviktig, bara att detaljerna ska läsas med försiktighet.",
+      "# Så kan du använda det",
+      "Håll fast vid de enkla sakerna: regelbundna tider, mörkt och svalt sovrum, ljus på morgonen, och minst sju timmar. Låt dig inte stressa av enskilda siffror om vad som sker vid en natt med lite sömn.",
+      "# Prova i två veckor",
+      "Gå och lägg dig och stig upp inom en timme av samma tid i två veckor. Notera hur du känner dig på dagen, och om något förändras."
+    ],
+    b8: [
+      "# Bakgrund",
+      "Housel skriver korta berättelser om hur människors erfarenheter formar deras syn på pengar. Budskapet är att ingen är rationell, och att den som kan hantera sig själv ofta klarar sig bättre än den som kan mest.",
+      "# Vad forskningen visar",
+      "Kahneman och Tversky visade 1979 att förluster väger tyngre än lika stora vinster. Barber och Odean fann 2000, i data från ett stort antal hushåll, att de som handlade mest fick klart lägre avkastning efter kostnader än de som handlade lite.",
+      "# Det som är osäkert",
+      "Boken ger inga siffror eller tester, och berättelserna kan vara urvalet av exempel som passar. Vad som är rätt för en person beror på inkomst, mål och risktolerans, och inget här är rådgivning. Rådgör med en oberoende rådgivare vid större beslut.",
+      "# Så kan du använda det",
+      "Skapa en buffert, automatisera sparande och ha enkla regler som du kan hålla i dåliga tider. Fundera över hur du själv reagerar på börsfall innan det händer.",
+      "# Prova i två veckor",
+      "Skriv ner hur du skulle agera om dina placeringar föll tjugo procent. Läs det igen om tre månader och se om du fortfarande står för det."
+    ],
+    b9: [
+      "# Bakgrund",
+      "Sapiens berättar människans historia på knappt 500 sidor, från jägare och samlare till nutid. Den har sålt i miljontals exemplar och väckt stor debatt.",
+      "# Vad forskningen visar",
+      "Hararis resonemang om små grupper bygger delvis på Dunbars forskning, som kopplar storleken på hjärnans nybark till gruppstorlek, och föreslår att människor kan hålla reda på ett begränsat antal relationer, ofta uppgivet till omkring 150. Idén att pengar, bolag och nationer fungerar för att vi tror på dem finns i flera samhällsvetenskaper.",
+      "# Det som är osäkert",
+      "Många specialister anser att boken förenklar och ibland sticker ut i sina slutsatser, till exempel om jordbrukets inverkan och om tidigare kulturer. Dunbars tal är också en förenkling av ett spann. Läs boken som en inledning och en provokation, inte som slutgiltigt facit.",
+      "# Så kan du använda det",
+      "Använd idén som ett sätt att se, till exempel att många saker vi tar för givna, som pengar, är gemensamma överenskommelser. Kontrollera sedan enskilda påståenden mot mer specialiserade källor.",
+      "# Prova i två veckor",
+      "Välj ett påstående från boken som överraskade dig och leta upp en källa från en specialist på området. Jämför, och skriv ner vad som skiljer."
+    ],
+    b10: [
+      "# Bakgrund",
+      "Cialdini studerade försäljare, reklamare och andra som lyckas få människor att säga ja. Han sammanfattade sex principer: reciprocitet, åtagande och konsekvens, social bekräftelse, sympati, auktoritet och knapphet.",
+      "# Vad forskningen visar",
+      "I en studie 2008 på hotell var meddelandet att de flesta gäster i rummet återanvänder sina handdukar mer effektivt än ett allmänt miljömeddelande, med ungefär 44 procent som återanvände mot ungefär 35. Det visar hur social bekräftelse kan påverka beteende.",
+      "# Det som är osäkert",
+      "Effekternas storlek varierar mycket mellan situationer och kulturer, och en del klassiska studier om social påverkan i psykologi har varit svåra att upprepa. Kunskapen kan användas både för att hjälpa och för att manipulera.",
+      "# Så kan du använda det",
+      "Använd principerna öppet, till exempel genom att berätta vad andra faktiskt gör. Bli uppmärksam när du känner brådska, skuld eller ’alla andra’ i en köpsituation, och vänta en dag.",
+      "# Prova i två veckor",
+      "Skriv ner nästa gång du ser en av principerna i en reklam eller ett erbjudande. Fundera på vad som egentligen skiljer erbjudandet från ett utan tricket."
+    ],
+    b11: [
+      "# Bakgrund",
+      "Pink argumenterar för att den gamla modellen med piska och morot fungerar dåligt för kreativt och kunskapsintensivt arbete. I stället föreslår han autonomi, bemästring och syfte som drivkrafter.",
+      "# Vad forskningen visar",
+      "Deci, Koestner och Ryan sammanställde 1999 128 experiment och fann att konkreta belöningar för uppgifter som folk redan tyckte om i genomsnitt minskade den inre motivationen. Teorin om självbestämmande, som Ryan och Deci beskrev, har stöd i många studier i skola, arbete och hälsa.",
+      "# Det som är osäkert",
+      "Effekterna beror på hur belöningen presenteras, och belöningar kan fungera bra för enkla, tråkiga uppgifter. Pinks sammanfattning är förenklad, och inte alla hans exempel är lika väl belagda.",
+      "# Så kan du använda det",
+      "Låt människor, dig själv inkluderad, bestämma mer om hur, när och med vem de arbetar. Ge tydlig återkoppling och förklara varför uppgiften spelar roll.",
+      "# Prova i två veckor",
+      "Välj en uppgift du skjuter upp. Ändra en sak så att du bestämmer mer, som när, var eller hur, och notera om det gör skillnad."
+    ],
+    b12: [
+      "# Bakgrund",
+      "Tetlock följde under tjugo år tusentals förutsägelser från experter om politik och ekonomi. Resultatet var att många låg inte mycket bättre än slumpen, särskilt de med mest säkerhet.",
+      "# Vad forskningen visar",
+      "I en stor prognostävling, Good Judgment Project, fann forskare att en grupp deltagare konsekvent förutsade bättre än andra, och att träning i att tänka i sannolikheter och att undvika vanliga fel hjälpte. Mellers och kollegor beskrev resultaten 2015.",
+      "# Det som är osäkert",
+      "Förutsägelser om kortare tidsperioder och väldefinierade frågor går bättre än långsiktiga eller vaga frågor. Det är oklart hur mycket av framgången som kan läras ut, och resultaten gäller främst vissa typer av frågor.",
+      "# Så kan du använda det",
+      "Skriv ner förutsägelser med en sannolikhet, till exempel 70 procent, och en tidpunkt. Följ upp, och tänk efter varför du hade rätt eller fel.",
+      "# Prova i två veckor",
+      "Gör fem förutsägelser om saker som kommer att avgöras inom en månad. Skriv sannolikheter, och räkna efteråt hur väl de stämde."
+    ],
+    b13: [
+      "# Bakgrund",
+      "Boken kombinerar Frankls berättelse om åren i nazisternas läger med hans teori, logoterapin, som utgår från att människan söker mening. Den har sålt över tio miljoner exemplar.",
+      "# Vad forskningen visar",
+      "Steger och kollegor utvecklade 2006 ett frågeformulär om mening i livet, och senare forskning, sammanfattad av Heintzelman och King 2014, finner att upplevd mening hänger ihop med bättre psykiskt och fysiskt välmående, och längre liv i vissa studier.",
+      "# Det som är osäkert",
+      "Sambanden kan gå åt båda hållen, och mening är svår att mäta. Frankls egna berättelser är personliga och kan inte generaliseras. Studier av interventioner som vill öka mening är fortfarande få.",
+      "# Så kan du använda det",
+      "Fundera på vad du bryr dig om, vem du hjälper och vad du vill bidra med. Små saker, som en uppgift för någon annan, räknas.",
+      "# Prova i två veckor",
+      "Skriv varje kväll en rad om något du gjorde som kändes meningsfullt, i två veckor. Se vad som återkommer."
+    ],
+    b14: [
+      "# Bakgrund",
+      "Boken populariserade beteendeekonomi och idén om libertariansk paternalism: att man kan styra människor mot bättre val utan att ta ifrån dem friheten att välja. Thaler fick Nobelpriset i ekonomi 2017.",
+      "# Vad forskningen visar",
+      "I programmet Save More Tomorrow, som Thaler och Benartzi beskrev 2004, höjdes deltagarnas sparandegrad under tre år från omkring 3,5 till nästan 14 procent, eftersom höjningarna kopplades till löneökningar. Förval, som automatisk anslutning till pension, ökar deltagandet stort.",
+      "# Det som är osäkert",
+      "En stor sammanställning 2022 fann en måttlig genomsnittlig effekt av nudging, men en uppföljande analys som justerade för att positiva resultat publiceras oftare fann inga säkra belägg. Effekterna varierar mycket mellan områden, och vissa metoder fungerar klart bättre än andra.",
+      "# Så kan du använda det",
+      "Ändra standardvärden åt dig själv: automatiskt sparande, påminnelser i kalendern och ta bort friktion från bra vanor. Var uppmärksam på att samma teknik används på dig.",
+      "# Prova i två veckor",
+      "Automatisera en sak, till exempel ett månatligt sparande eller en påminnelse, och lägg märke till om du håller fast vid det efter två veckor."
+    ],
+    b15: [
+      "# Bakgrund",
+      "Begreppet formulerades av forskarna Peter Salovey och John Mayer 1990 och spreds av Goleman, som skrev om hur det kan avgöra framgång i arbete och liv. Boken sålde i miljontals exemplar.",
+      "# Vad forskningen visar",
+      "En sammanställning 2010 av Joseph och Newman fann att känslomässig intelligens hänger ihop med arbetsprestation, särskilt i arbeten som kräver mycket känslohantering, men att sambandet beror på hur man mäter.",
+      "# Det som är osäkert",
+      "Påståendet att känslomässig intelligens skulle betyda dubbelt så mycket som IQ saknar stöd. Mätmetoderna skiljer sig, och det är omstritt hur mycket begreppet tillför utöver personlighet och intelligens.",
+      "# Så kan du använda det",
+      "Öva på att sätta ord på vad du känner, lyssna efter vad andra känner, och pausa innan du reagerar. Det är användbart även om begreppet är omstritt.",
+      "# Prova i två veckor",
+      "Skriv varje dag ner en känsla du hade och vad som utlöste den. Efter två veckor, se vilka mönster som finns."
+    ],
+    b16: [
+      "# Bakgrund",
+      "Boken är inte skriven för att publiceras. Marcus Aurelius skrev under krig och farsoter på 170-talet, och påminde sig själv om stoiska idéer som dygd, plikt och dödlighet.",
+      "# Vad forskningen visar",
+      "Grundarna av kognitiv beteendeterapi, som Aaron Beck, har pekat på stoikerna som inspiration: det är inte händelserna i sig utan våra tolkningar av dem som påverkar hur vi mår. KBT har starkt stöd för flera psykiska besvär.",
+      "# Det som är osäkert",
+      "Att stoicismen inspirerat KBT är inte detsamma som att stoisk filosofi i sig har prövats. Enstaka studier av stoiska kurser har gett lovande men små resultat. Texten är dessutom en översättning av antik filosofi och tolkas olika.",
+      "# Så kan du använda det",
+      "Använd tanken som en fråga i stunden: vad av detta kan jag påverka? Ta sedan nästa steg där, och försök släppa resten.",
+      "# Prova i två veckor",
+      "Skriv varje kväll två listor: det som låg i din makt idag, och det som inte gjorde det. Notera hur du agerade på den första."
+    ],
+    b17: [
+      "# Bakgrund",
+      "Hans Rosling var svensk läkare och professor i global hälsa. Boken, som han skrev tillsammans med sin son och svärdotter, summerar hans arbete med att rätta till vanliga missförstånd om världen.",
+      "# Vad forskningen visar",
+      "Gapminders undersökningar ställde enkla frågor, till exempel om hur stor andel av världens barn som är vaccinerade. Stora delar av publiken, i många länder, svarade oftare fel än slumpen skulle ge, och bilden var dystrare än den officiella statistiken.",
+      "# Det som är osäkert",
+      "Siffror om genomsnitt kan dölja stora skillnader och stora problem. Rosling betonade själv att det är möjligt att det blivit bättre, och samtidigt är mycket fortfarande dåligt. Dessutom bygger bilden på statistik från många källor av varierande kvalitet.",
+      "# Så kan du använda det",
+      "När en nyhet verkar dramatisk, fråga: jämfört med vad? Leta efter siffran över tid, inte bara ett enskilt år.",
+      "# Prova i två veckor",
+      "Välj en nyhet den här veckan som oroar dig. Leta upp utvecklingen över tio år från en statistikmyndighet och jämför med din första bild."
+    ],
+    b18: [
+      "# Bakgrund",
+      "Boken kom första gången 1949 och har kallats av Warren Buffett den bästa bok om investering som skrivits. Graham introducerade begrepp som säkerhetsmarginal och Mr Market, en bild av marknaden som en känslosam affärspartner.",
+      "# Vad forskningen visar",
+      "Fama och French fann 1992 att aktier med lågt pris i förhållande till bokfört värde över längre tid gett högre avkastning än dyra aktier, vilket stämmer med Grahams idéer. Samtidigt är det omdiskuterat om det beror på högre risk eller på felprissättning.",
+      "# Det som är osäkert",
+      "Värdeaktier har under långa perioder på 2010-talet klarat sig sämre än tillväxtaktier, och det är inte självklart att det som fungerade förr gör det framöver. Det är dessutom svårt att avgöra vad en tillgång är värd.",
+      "# Så kan du använda det",
+      "Lär dig skillnaden mellan pris och värde, och köp bara det du förstår. Tänk igenom vad som kan gå fel. Läs gärna boken, men rådgör med en oberoende rådgivare vid större beslut.",
+      "# Prova i två veckor",
+      "Välj ett företag du känner till. Skriv ner vad du tror det är värt och varför, och jämför med börskursen. Följ upp om ett halvår."
+    ],
+    b19: [
+      "# Bakgrund",
+      "Bogle startade 1976 den första indexfonden för privatpersoner. Boken förklarar varför enkla, billiga fonder som följer hela marknaden passar de flesta sparare.",
+      "# Vad forskningen visar",
+      "Sharpe visade 1991 att aktiva förvaltare som grupp måste få samma avkastning som marknaden före avgifter, och därmed sämre efter avgifter. Carhart fann 1997 att fondernas avkastning över tid främst hänger ihop med kostnaderna, och att tidigare framgång sällan håller i sig. Regelbundna jämförelser av aktiva fonder mot index visar liknande mönster.",
+      "# Det som är osäkert",
+      "Några förvaltare lyckas under långa perioder, men det är svårt att veta i förväg vilka. Valet av index, risknivå, skatter och sparhorisont spelar också stor roll, och avkastning i det förflutna garanterar inget.",
+      "# Så kan du använda det",
+      "Jämför avgifter för fonder du äger, och fråga dig vad du får för den högre kostnaden. Se till att spara regelbundet. Rådgör med en oberoende rådgivare vid större beslut.",
+      "# Prova i två veckor",
+      "Räkna ut den totala årsavgiften för ditt sparande. Räkna sedan vad skillnaden mellan 0,2 och 1,5 procent blir över tjugo år."
+    ],
+    b20: [
+      "# Bakgrund",
+      "Gawande hämtar inspiration från flygindustrin, där checklistor blivit standard efter olyckor. Boken argumenterar att moderna uppgifter blivit för komplexa för att klaras enbart med minne och expertis.",
+      "# Vad forskningen visar",
+      "Haynes och kollegor rapporterade 2009 från åtta sjukhus att komplikationer efter operation sjönk från omkring 11 till 7 procent och dödligheten från ungefär 1,5 till 0,8 procent efter att checklistan införts.",
+      "# Det som är osäkert",
+      "I Ontario, där checklistan blev ett krav, fann Urbach och kollegor 2014 ingen tydlig minskning av komplikationer eller dödsfall. Det kan bero på hur väl den användes. Resultaten visar att en checklista inte hjälper om den bara bockas av.",
+      "# Så kan du använda det",
+      "Gör korta listor med de steg som är lätta att glömma eller dyra att missa. Testa dem, ta bort onödigt och uppdatera när något går fel.",
+      "# Prova i två veckor",
+      "Skriv en checklista med fem punkter för något du gör ofta, som en resa eller en veckorutin. Använd den två veckor och justera."
+    ],
+    b21: [
+      "# Bakgrund",
+      "Chabris och Simons beskriver sex vardagliga illusioner, som att vi tror att vi ser och minns mer än vi gör. Den mest kända är gorillan, som ofta visas på föreläsningar om uppmärksamhet.",
+      "# Vad forskningen visar",
+      "I originalstudien 1999 såg ungefär hälften av deltagarna inte gorillan när de räknade passningar. Resultatet har upprepats i många varianter, bland annat med en clown på enhjuling som människor på en campusstig inte såg när de pratade i mobil, enligt en studie 2010.",
+      "# Det som är osäkert",
+      "Hur ofta man missar saker beror på uppgiften, på hur ovanligt det man ska märka är och på hur svår uppgiften är. Resultaten visar inte att uppmärksamhet är dålig i allmänhet, utan att den är selektiv.",
+      "# Så kan du använda det",
+      "Vid uppgifter där ett misstag är dyrt, som körning och granskning, bygg in dubbelkontroll och ta bort störningar. Räkna inte med att du märker det oväntade.",
+      "# Prova i två veckor",
+      "Läs igenom en text du själv skrivit, först snabbt och sedan med en liniol eller högt. Räkna hur många fel du hittar i den andra omgången."
+    ],
+    b22: [
+      "# Bakgrund",
+      "Författarna är två forskare och en författare, och boken vänder sig till studenter, lärare och alla som vill lära sig effektivt. Den bygger på decennier av kognitionsforskning.",
+      "# Vad forskningen visar",
+      "Roediger och Karpicke visade 2006 att deltagare som övade genom att återkalla en text mindes klart mer efter en vecka än de som läste den flera gånger. Dunlosky och kollegor jämförde 2013 tio vanliga studiemetoder och fann att övningstest och utspridd repetition har starkast stöd, medan markering och omläsning har svagt.",
+      "# Det som är osäkert",
+      "Forskningen är stark men gäller ofta faktakunskap i laboratorier och i skolor. Hur bra metoderna fungerar för komplexa färdigheter och hur mycket man ska sprida ut beror på uppgiften och på hur länge man vill minnas.",
+      "# Så kan du använda det",
+      "Efter att ha läst, stäng boken och skriv ner vad du minns. Repetera efter en dag, en vecka och en månad, och blanda olika uppgifter i stället för att köra en typ i taget.",
+      "# Prova i två veckor",
+      "Läs ett kapitel eller en artikel. Stäng den, skriv vad du minns i fem punkter, och gör om det efter tre dagar."
+    ]
+  });
   var EXTRA = {
     s1: [
       "# Prova i två veckor",
@@ -3217,7 +3599,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
     var e = EV[i.ev];
     var pips = [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("");
     return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + (i.big ? " big" : "") + '">' +
-      '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + "</span>" +
+      '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + (i.book ? '<span class="bookpill">Bok</span>' : "") + "</span>" +
       '<div class="card-actions">' +
       '<button type="button" class="done" data-read="' + i.id + '" aria-pressed="' + (read[i.id] ? "true" : "false") + '" aria-label="' + (read[i.id] ? "Markerad som läst, tryck för att ångra: " : "Markera som läst: ") + esc(i.title) + '" title="' + (read[i.id] ? "Läst" : "Markera som läst") + '">' + CHECKICON + "</button>" +
       '<button type="button" class="save" data-save="' + i.id + '" aria-pressed="' + (saved[i.id] ? "true" : "false") + '" aria-label="Spara kortet: ' + esc(i.title) + '">' + BOOKMARK + "</button></div></div>" +
@@ -3227,6 +3609,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       '<button type="button" class="more" data-open="' + i.id + '"><span>' + (i.big ? "Läs hela artikeln" : "Läs mer") + '</span>' + (readMin(i.id) ? '<span class="min">ca ' + readMin(i.id) + " min</span>" : "") + "</button>" +
       '<div class="card-foot">' +
       '<span class="evidence ' + e.cls + '"><span class="pips">' + pips + "</span>" + e.label + "</span>" +
+      (i.book ? '<p class="bookline"><b>Idé från boken</b> ' + esc(i.book) + "</p>" : "") +
       '<p class="src"><b>' + esc(i.type) + "</b> · " + esc(i.src) + "</p>" +
       "</div></article>";
   }
@@ -3238,7 +3621,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       if (state.cat !== "alla" && i.cat !== state.cat) return false;
       if (state.ev !== "alla" && i.ev !== state.ev) return false;
       if (!q) return true;
-      return (i.title + " " + i.body + " " + i.core + " " + i.src + " " + catName(i.cat)).toLowerCase().indexOf(q) !== -1;
+      return (i.title + " " + i.body + " " + i.core + " " + i.src + " " + (i.book || "") + " " + catName(i.cat)).toLowerCase().indexOf(q) !== -1;
     });
     return out.filter(function (i) { return !read[i.id]; }).concat(out.filter(function (i) { return read[i.id]; }));
   }
@@ -3356,7 +3739,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
     $("#m-lead").textContent = i.body;
     $("#m-body").innerHTML = deepHTML(id);
     $("#m-core").textContent = i.core;
-    $("#m-src").innerHTML = "<b>" + esc(i.type) + "</b> · " + esc(i.src);
+    $("#m-src").innerHTML = (i.book ? '<span class="bookline" style="display:block;margin:0 0 6px"><b>Idé från boken</b> ' + esc(i.book) + "</span>" : "") + "<b>" + esc(i.type) + "</b> · " + esc(i.src);
     var sb = $("#m-save");
     sb.setAttribute("data-save", id);
     sb.setAttribute("aria-pressed", saved[id] ? "true" : "false");

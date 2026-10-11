@@ -234,6 +234,10 @@ select.field { flex: 0 1 12rem; }
 .pips i.on { background: var(--ev); }
 .src { margin: 0; font: 400 .78rem/1.5 var(--f-mono); color: var(--ink-2); }
 .src b { font-weight: 500; color: var(--ink); }
+.bookpill { display: inline-block; margin-left: 8px; padding: 1px 8px; border: 1px solid var(--line, currentColor); border-radius: 99px; font: 500 .68rem/1.5 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); vertical-align: 1px; }
+.bookline { margin: 0 0 6px; font: 400 .78rem/1.5 var(--f-mono); color: var(--ink-2); }
+.bookline b { font-weight: 500; color: var(--ink); }
+.sheet .bookline { margin-top: 20px; max-width: 62ch; }
 
 .card.featured { border-color: var(--ink); padding: 24px; gap: 14px; }
 .card.featured h3 { font-size: clamp(1.5rem, 3.4vw, 1.9rem); }
@@ -763,7 +767,7 @@ select.field { flex: 0 1 12rem; }
     var e = EV[i.ev];
     var pips = [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("");
     return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + (i.big ? " big" : "") + '">' +
-      '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + "</span>" +
+      '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + (i.book ? '<span class="bookpill">Bok</span>' : "") + "</span>" +
       '<div class="card-actions">' +
       '<button type="button" class="done" data-read="' + i.id + '" aria-pressed="' + (read[i.id] ? "true" : "false") + '" aria-label="' + (read[i.id] ? "Markerad som läst, tryck för att ångra: " : "Markera som läst: ") + esc(i.title) + '" title="' + (read[i.id] ? "Läst" : "Markera som läst") + '">' + CHECKICON + "</button>" +
       '<button type="button" class="save" data-save="' + i.id + '" aria-pressed="' + (saved[i.id] ? "true" : "false") + '" aria-label="Spara kortet: ' + esc(i.title) + '">' + BOOKMARK + "</button></div></div>" +
@@ -773,6 +777,7 @@ select.field { flex: 0 1 12rem; }
       '<button type="button" class="more" data-open="' + i.id + '"><span>' + (i.big ? "Läs hela artikeln" : "Läs mer") + '</span>' + (readMin(i.id) ? '<span class="min">ca ' + readMin(i.id) + " min</span>" : "") + "</button>" +
       '<div class="card-foot">' +
       '<span class="evidence ' + e.cls + '"><span class="pips">' + pips + "</span>" + e.label + "</span>" +
+      (i.book ? '<p class="bookline"><b>Idé från boken</b> ' + esc(i.book) + "</p>" : "") +
       '<p class="src"><b>' + esc(i.type) + "</b> · " + esc(i.src) + "</p>" +
       "</div></article>";
   }
@@ -784,7 +789,7 @@ select.field { flex: 0 1 12rem; }
       if (state.cat !== "alla" && i.cat !== state.cat) return false;
       if (state.ev !== "alla" && i.ev !== state.ev) return false;
       if (!q) return true;
-      return (i.title + " " + i.body + " " + i.core + " " + i.src + " " + catName(i.cat)).toLowerCase().indexOf(q) !== -1;
+      return (i.title + " " + i.body + " " + i.core + " " + i.src + " " + (i.book || "") + " " + catName(i.cat)).toLowerCase().indexOf(q) !== -1;
     });
     return out.filter(function (i) { return !read[i.id]; }).concat(out.filter(function (i) { return read[i.id]; }));
   }
@@ -902,7 +907,7 @@ select.field { flex: 0 1 12rem; }
     $("#m-lead").textContent = i.body;
     $("#m-body").innerHTML = deepHTML(id);
     $("#m-core").textContent = i.core;
-    $("#m-src").innerHTML = "<b>" + esc(i.type) + "</b> · " + esc(i.src);
+    $("#m-src").innerHTML = (i.book ? '<span class="bookline" style="display:block;margin:0 0 6px"><b>Idé från boken</b> ' + esc(i.book) + "</span>" : "") + "<b>" + esc(i.type) + "</b> · " + esc(i.src);
     var sb = $("#m-save");
     sb.setAttribute("data-save", id);
     sb.setAttribute("aria-pressed", saved[id] ? "true" : "false");

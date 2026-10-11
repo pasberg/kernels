@@ -48,3 +48,7 @@ Studier, siffror och källor är skrivna utan att varje uppgift är kontrollerad
 1. Skapa `src/big_N_namn.js` med `BIG.push({ id: "B4", cat, ev, type, title, body, core, src })` och `BIGDEEP.B4 = [...]`.
 2. Innehållet är en lista med block: `"# Rubrik"`, vanliga stycken, `{ fig: "nyckel", cap: "bildtext" }`, `{ list: [...] }` och `{ box: "Titel", text: "..." }`.
 3. Lägg diagram som `FIGS.nyckel = \`<svg ...>\`` i `big_0_figs.js`. Använd klasserna `ln`, `thin`, `acc`, `fillc`, `fillt`, `mut`, `sm`, `b` så att färgerna följer ljust och mörkt läge.
+
+## Bokidéer
+
+Kort som bygger på en känd bok har fältet `book` (till exempel `book: "Sapiens · Yuval Noah Harari, 2011"`). Kortet får då en liten markering "Bok" och raden "Idé från boken …". Evidensmärkningen (`ev`) och källraden (`src`) gäller forskningen bakom idén, inte boken, så en populär bok kan få "blandat" eller "tidigt". Korten finns i `src/ideas_books.js` och de längre texterna i `src/deep_5g.js`. Texterna är egna sammanfattningar utan citat.
