@@ -244,6 +244,20 @@ select.field { flex: 0 1 12rem; }
 .src { margin: 0; font: 400 .78rem/1.5 var(--f-mono); color: var(--ink-2); }
 .src b { font-weight: 500; color: var(--ink); }
 .bookpill { display: inline-block; margin-left: 8px; padding: 1px 8px; border: 1px solid var(--line, currentColor); border-radius: 99px; font: 500 .68rem/1.5 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); vertical-align: 1px; }
+.rate { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; margin: 12px 0 0; }
+.rate-l { font: 400 .76rem var(--f-mono); color: var(--ink-2); margin-right: 6px; }
+.rate button { appearance: none; border: 1px solid transparent; background: none; border-radius: 99px; padding: 2px 6px; font-size: 1.15rem; line-height: 1.25; cursor: pointer; filter: grayscale(1); opacity: .6; transition: opacity .12s, filter .12s; }
+.rate button:hover, .rate button:focus-visible { filter: none; opacity: 1; }
+.rate button[aria-pressed="true"] { filter: none; opacity: 1; border-color: var(--ink); background: var(--surface); }
+.rate.has button[aria-pressed="false"] { opacity: .35; }
+.rate-r { margin-left: auto; font: 500 .78rem var(--f-mono); color: var(--ink-2); display: inline-flex; align-items: center; gap: 5px; }
+.rate-r .res { font-size: 1.3rem; line-height: 1; }
+.rate-r.none { font-weight: 400; opacity: .7; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.rate-l { flex-basis: 100%; margin-bottom: 2px; }
+.rate-r { order: 3; }
+.sheet .rate { margin: 22px 0 0; }
+.sheet .rate button { font-size: 1.6rem; padding: 3px 8px; }
 .bookline { margin: 0 0 6px; font: 400 .78rem/1.5 var(--f-mono); color: var(--ink-2); }
 .bookline b { font-weight: 500; color: var(--ink); }
 .sheet .bookline { margin-top: 20px; max-width: 62ch; }
@@ -489,6 +503,7 @@ select.field { flex: 0 1 12rem; }
       <p class="lead" id="m-lead"></p>
       <div class="prose" id="m-body"></div>
       <p class="core m-core"><span class="core-label">Kärnan</span><span id="m-core"></span></p>
+      <div class="rate" id="m-rate"></div>
       <p class="src" id="m-src"></p>
     </div>
     <div class="sheet-foot">
@@ -748,16 +763,18 @@ select.field { flex: 0 1 12rem; }
     var rawOld = localStorage.getItem("karnor-saved");
     if (rawOld) legacy = JSON.parse(rawOld) || [];
   } catch (e) {}
-  var saved = {}, read = {};
+  var saved = {}, read = {}, votes = {};
   function loadUser() {
-    saved = {}; read = {};
+    saved = {}; read = {}; votes = {};
     var u = db.user && db.users[db.user];
     if (!u) return;
+    var vv = u.votes || {};
+    Object.keys(vv).forEach(function (id) { if (vv[id] >= 1 && vv[id] <= 5) votes[id] = vv[id]; });
     (u.saved || []).forEach(function (id) { saved[id] = true; });
     (u.read || []).forEach(function (id) { read[id] = true; });
   }
   function persist() {
-    if (db.user) db.users[db.user] = { saved: Object.keys(saved), read: Object.keys(read) };
+    if (db.user) db.users[db.user] = { saved: Object.keys(saved), read: Object.keys(read), votes: votes };
     try { localStorage.setItem(STORE, JSON.stringify(db)); } catch (e) {}
   }
   loadUser();
@@ -774,6 +791,33 @@ select.field { flex: 0 1 12rem; }
   var CHECKICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="9"/><path d="M7.8 12.4l3 3 5.4-6"/></svg>';
   var BOOKMARK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>';
 
+  var RATES = [["☹️", "Dåligt"], ["🙁", "Inte så bra"], ["🙂", "Okej"], ["😃", "Bra"], ["🤩", "Fantastiskt"]];
+  function score(id) {
+    var sum = 0, n = 0;
+    Object.keys(db.users).forEach(function (k) {
+      var vv = (k === db.user ? votes : db.users[k].votes) || {};
+      if (vv[id] >= 1 && vv[id] <= 5) { sum += vv[id]; n++; }
+    });
+    return { n: n, avg: n ? sum / n : 0 };
+  }
+  function resultHTML(id) {
+    var sc = score(id);
+    if (!sc.n) return '<span class="rate-r none">Inga betyg än</span>';
+    var r = RATES[Math.min(5, Math.max(1, Math.round(sc.avg))) - 1];
+    return '<span class="rate-r" title="Snittbetyg ' + sc.avg.toFixed(1).replace(".", ",") + " av 5 från " + sc.n + (sc.n === 1 ? " röst" : " röster") + '"><span class="res" aria-hidden="true">' + r[0] + '</span><span class="sr">Snittbetyg: ' + r[1] + ", </span>" + sc.n + (sc.n === 1 ? " röst" : " röster") + "</span>";
+  }
+  function rateInner(id) {
+    var cur = votes[id] || 0;
+    return '<span class="rate-l">Var kortet bra och upplysande?</span>' + resultHTML(id) + RATES.map(function (r, n) {
+      var v = n + 1;
+      return '<button type="button" data-rate-id="' + id + '" data-rate-v="' + v + '" aria-pressed="' + (cur === v ? "true" : "false") + '" aria-label="' + r[1] + " (" + v + " av 5)" + '" title="' + r[1] + '">' + r[0] + "</button>";
+    }).join("");
+  }
+  function rateHTML(id) { return '<div class="rate' + (votes[id] ? " has" : "") + '" data-rate-for="' + id + '" role="group" aria-label="Betygsätt kortet">' + rateInner(id) + "</div>"; }
+  function refreshRate(id) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-rate-for="' + id + '"]'), function (el) { el.className = "rate" + (votes[id] ? " has" : ""); el.innerHTML = rateInner(id); });
+    if (openId === id) { var m = $("#m-rate"); m.className = "rate" + (votes[id] ? " has" : ""); m.innerHTML = rateInner(id); }
+  }
   function cardHTML(i, featured) {
     var e = EV[i.ev];
     var pips = [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("");
@@ -785,7 +829,7 @@ select.field { flex: 0 1 12rem; }
       "<h3>" + esc(i.title) + "</h3>" +
       '<p class="summary">' + esc(i.body) + "</p>" +
       '<p class="core"><span class="core-label">Kärnan</span>' + esc(i.core) + "</p>" +
-      '<button type="button" class="more" data-open="' + i.id + '"><span>' + (i.big ? "Läs hela artikeln" : "Läs mer") + '</span>' + (readMin(i.id) ? '<span class="min">ca ' + readMin(i.id) + " min</span>" : "") + "</button>" +
+      '<button type="button" class="more" data-open="' + i.id + '"><span>' + (i.big ? "Läs hela artikeln" : "Läs mer") + '</span>' + (readMin(i.id) ? '<span class="min">ca ' + readMin(i.id) + " min</span>" : "") + "</button>" + rateHTML(i.id) +
       '<div class="card-foot">' +
       '<span class="evidence ' + e.cls + '"><span class="pips">' + pips + "</span>" + e.label + "</span>" +
       (i.book ? '<p class="bookline"><b>Idé från boken</b> ' + esc(i.book) + "</p>" : "") +
@@ -802,7 +846,12 @@ select.field { flex: 0 1 12rem; }
       if (!q) return true;
       return (i.title + " " + i.body + " " + i.core + " " + i.src + " " + (i.book || "") + " " + catName(i.cat)).toLowerCase().indexOf(q) !== -1;
     });
-    return out.filter(function (i) { return !read[i.id]; }).concat(out.filter(function (i) { return read[i.id]; }));
+    function byScore(list) {
+      var withIdx = list.map(function (i, k) { var sc = score(i.id); return { i: i, k: k, avg: sc.avg, n: sc.n }; });
+      withIdx.sort(function (a, b) { return (b.avg - a.avg) || (b.n - a.n) || (a.k - b.k); });
+      return withIdx.map(function (x) { return x.i; });
+    }
+    return byScore(out.filter(function (i) { return !read[i.id]; })).concat(byScore(out.filter(function (i) { return read[i.id]; })));
   }
 
   function renderGrid() {
@@ -902,7 +951,7 @@ select.field { flex: 0 1 12rem; }
       return p.indexOf("# ") === 0 ? "<h3>" + esc(p.slice(2)) + "</h3>" : "<p>" + esc(p) + "</p>";
     }).join("");
   }
-  var openId = null, lastFocus = null;
+  var openId = null, lastFocus = null, ratingDirty = false;
   function openModal(id) {
     var i = byId(id);
     if (!i) return;
@@ -919,6 +968,7 @@ select.field { flex: 0 1 12rem; }
     $("#m-body").innerHTML = deepHTML(id);
     $("#m-core").textContent = i.core;
     $("#m-src").innerHTML = (i.book ? '<span class="bookline" style="display:block;margin:0 0 6px"><b>Idé från boken</b> ' + esc(i.book) + "</span>" : "") + "<b>" + esc(i.type) + "</b> · " + esc(i.src);
+    var mr = $("#m-rate"); mr.setAttribute("data-rate-for", id); mr.className = "rate" + (votes[id] ? " has" : ""); mr.innerHTML = rateInner(id);
     var sb = $("#m-save");
     sb.setAttribute("data-save", id);
     sb.setAttribute("aria-pressed", saved[id] ? "true" : "false");
@@ -932,6 +982,7 @@ select.field { flex: 0 1 12rem; }
   }
   function closeModal() {
     $("#modal").hidden = true;
+    if (ratingDirty) { ratingDirty = false; setTimeout(renderGrid, 0); }
     document.body.style.overflow = "";
     openId = null;
     if (lastFocus && lastFocus.focus) lastFocus.focus();
@@ -958,6 +1009,21 @@ select.field { flex: 0 1 12rem; }
         Array.prototype.forEach.call(btns, function (b) { b.setAttribute("aria-pressed", saved[id] ? "true" : "false"); });
         renderTabs();
         if (state.view === "sparade") renderGrid();
+      });
+      return;
+    }
+    var rt = ev.target.closest("[data-rate-id]");
+    if (rt) {
+      var rid2 = rt.getAttribute("data-rate-id"), rv = +rt.getAttribute("data-rate-v");
+      requireUser(function () {
+        if (votes[rid2] === rv) delete votes[rid2]; else votes[rid2] = rv;
+        persist();
+        refreshRate(rid2);
+        if ($("#modal").hidden) {
+          renderGrid();
+          var again2 = document.querySelector('#grid [data-rate-id="' + rid2 + '"][data-rate-v="' + rv + '"]');
+          if (again2) again2.focus();
+        } else { ratingDirty = true; }
       });
       return;
     }
@@ -1027,13 +1093,13 @@ select.field { flex: 0 1 12rem; }
     $("#n-stora").textContent = BIG.length;
     var g = $("#grid"); g.className = "grid" + (state.mode === "stora" ? " grid-big" : "");
   }
-  function renderAll() { renderModes(); renderUser(); renderFeatured(); renderChips(); renderTabs(); renderGrid(); if (openId) { var b = $("#m-save"), r = $("#m-read-btn"); b.setAttribute("aria-pressed", saved[openId] ? "true" : "false"); r.setAttribute("aria-pressed", read[openId] ? "true" : "false"); } }
+  function renderAll() { if (openId) refreshRate(openId); renderModes(); renderUser(); renderFeatured(); renderChips(); renderTabs(); renderGrid(); if (openId) { var b = $("#m-save"), r = $("#m-read-btn"); b.setAttribute("aria-pressed", saved[openId] ? "true" : "false"); r.setAttribute("aria-pressed", read[openId] ? "true" : "false"); } }
   function renderUser() { $("#user-btn").textContent = db.user ? db.user : "Ange namn"; $("#user-btn").setAttribute("aria-label", db.user ? "Inloggad som " + db.user + ". Byt namn" : "Ange ditt namn för att spara kort"); }
   function setUser(name) {
     var found = Object.keys(db.users).filter(function (k) { return k.toLowerCase() === name.toLowerCase(); })[0];
     var n = found || name;
     if (!db.users[n]) {
-      db.users[n] = { saved: [], read: [] };
+      db.users[n] = { saved: [], read: [], votes: {} };
       if (legacy.length) { db.users[n].saved = legacy.slice(); legacy = []; try { localStorage.removeItem("karnor-saved"); } catch (e) {} }
     }
     db.user = n;
