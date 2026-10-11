@@ -4,6 +4,12 @@ Korta, källhänvisade kunskapskort på svenska, i stil med Deepstash. Kategorie
 
 Sajten är en enda sida (`index.html`) utan beroenden, förutom typsnittet Mona Sans från Google Fonts.
 
+## Funktioner
+
+- Filter per kategori och stödnivå, sökning och en längre text per kort.
+- Spara och markera som läst. Första gången frågar sidan efter ett namn, och sparade och lästa kort lagras per namn i webbläsarens localStorage. Lästa kort hamnar sist och blir utgråade, och går att avmarkera.
+- Datan finns bara i den webbläsare där den skapades. För synk mellan enheter krävs en databas.
+
 ## Struktur
 
 | Fil | Innehåll |

@@ -331,6 +331,31 @@ select.field { flex: 0 1 12rem; }
 .btn[aria-pressed="true"] { color: var(--c, var(--ink)); border-color: var(--c, var(--ink)); }
 .btn.primary:hover { filter: none; opacity: .88; }
 
+
+/* Läst, sparat och namn */
+.head-r { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.user { appearance: none; border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 6px; padding: 9px 14px; font: 500 .95rem var(--f-display); cursor: pointer; max-width: 12rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.user:hover { background: var(--surface-2); }
+.card-actions { display: flex; align-items: center; gap: 2px; }
+.done { appearance: none; border: 0; background: transparent; color: var(--ink-2); width: 40px; height: 40px; margin: -8px 0; display: grid; place-items: center; border-radius: 6px; cursor: pointer; }
+.done:hover { background: var(--t2, var(--surface-2)); color: var(--ink); }
+.done svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.done .ring { fill: none; stroke: currentColor; stroke-width: 1.8; }
+.done[aria-pressed="true"] { color: var(--ink); }
+.done[aria-pressed="true"] .ring { fill: var(--pip-off); }
+.card.is-read { opacity: .62; filter: grayscale(1); transition: opacity .15s; }
+.card.is-read:hover, .card.is-read:focus-within { opacity: .92; }
+.btn[data-read][aria-pressed="true"] svg { fill: none; stroke: currentColor; }
+.nmodal { z-index: 60; }
+.sheet.small { max-width: 28rem; }
+.n-help { margin: 0 0 18px; color: var(--ink-2); }
+.n-existing { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+.n-existing:empty { display: none; }
+.n-label { display: block; margin: 0 0 6px; font: 600 .8rem var(--f-display); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.n-input { width: 100%; padding: 12px 14px; font: 500 1.05rem var(--f-body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+.n-input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+.n-err { margin: 8px 0 0; color: var(--ev-mixed); font-size: .92rem; }
+
 @media (prefers-reduced-motion: no-preference) {
   .chip, .tab, .save { transition: background-color .15s, color .15s; }
 }
@@ -342,10 +367,13 @@ select.field { flex: 0 1 12rem; }
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12.00" cy="3.70" r="2" fill="var(--c-somn)"/><circle cx="16.49" cy="5.02" r="2" fill="var(--c-vanor)"/><circle cx="19.55" cy="8.55" r="2" fill="var(--c-fokus)"/><circle cx="20.22" cy="13.18" r="2" fill="var(--c-relationer)"/><circle cx="18.27" cy="17.44" r="2" fill="var(--c-mental)"/><circle cx="14.34" cy="19.96" r="2" fill="var(--c-kropp)"/><circle cx="9.66" cy="19.96" r="2" fill="var(--c-larande)"/><circle cx="5.73" cy="17.44" r="2" fill="var(--c-historia)"/><circle cx="3.78" cy="13.18" r="2" fill="var(--c-forebilder)"/><circle cx="4.45" cy="8.55" r="2" fill="var(--c-natur)"/><circle cx="7.51" cy="5.02" r="2" fill="var(--c-finans)"/></svg>
       <span>Kärnor</span>
     </div>
-    <nav class="tabs" aria-label="Vy">
-      <button type="button" class="tab" id="tab-alla" data-view="alla" aria-pressed="true">Utforska</button>
-      <button type="button" class="tab" id="tab-sparade" data-view="sparade" aria-pressed="false">Sparade <span class="n" id="saved-n">0</span></button>
-    </nav>
+    <div class="head-r">
+      <button type="button" class="user" id="user-btn" aria-haspopup="dialog"></button>
+      <nav class="tabs" aria-label="Vy">
+        <button type="button" class="tab" id="tab-alla" data-view="alla" aria-pressed="true">Utforska</button>
+        <button type="button" class="tab" id="tab-sparade" data-view="sparade" aria-pressed="false">Sparade <span class="n" id="saved-n">0</span></button>
+      </nav>
+    </div>
   </header>
 
   <section class="hero">
@@ -399,9 +427,31 @@ select.field { flex: 0 1 12rem; }
     </div>
     <div class="sheet-foot">
       <button type="button" class="btn" id="m-save" data-save="" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg><span class="off">Spara</span><span class="on">Sparat</span></button>
+      <button type="button" class="btn" id="m-read-btn" data-read="" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="off">Markera som läst</span><span class="on">Läst</span></button>
       <button type="button" class="btn primary" id="m-next">Nästa kort</button>
     </div>
   </div>
+</div>
+
+<div class="modal nmodal" id="namemodal" hidden>
+  <div class="modal-backdrop" data-nclose></div>
+  <form class="sheet small" id="nameform" role="dialog" aria-modal="true" aria-labelledby="n-title" autocomplete="off">
+    <div class="sheet-bar">
+      <span class="cat" id="n-kicker">Dina kort</span>
+      <button type="button" class="close" data-nclose aria-label="Stäng"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="sheet-scroll">
+      <h2 id="n-title">Vad heter du?</h2>
+      <p class="n-help" id="n-help">Namnet håller isär dina sparade och lästa kort. Det sparas bara i den här webbläsaren och skickas inte någonstans.</p>
+      <div class="n-existing" id="n-existing"></div>
+      <label class="n-label" for="n-input" id="n-label">Namn</label>
+      <input class="n-input" id="n-input" type="text" maxlength="30" required>
+    </div>
+    <div class="sheet-foot">
+      <button type="button" class="btn" id="n-logout" hidden>Logga ut</button>
+      <button type="submit" class="btn primary" id="n-ok">Fortsätt</button>
+    </div>
+  </form>
 </div>
 
 <script>
@@ -2148,30 +2198,49 @@ select.field { flex: 0 1 12rem; }
   })();
 
   var state = { cat: "alla", ev: "alla", q: "", view: "alla" };
-  var saved = {};
+  var STORE = "karnor-v2";
+  var db = { user: null, users: {} };
   try {
-    var raw = localStorage.getItem("karnor-saved");
-    if (raw) JSON.parse(raw).forEach(function (id) { saved[id] = true; });
+    var rawDb = localStorage.getItem(STORE);
+    if (rawDb) { var pd = JSON.parse(rawDb); if (pd && pd.users) db = pd; }
   } catch (e) {}
-
-  function persist() {
-    try { localStorage.setItem("karnor-saved", JSON.stringify(Object.keys(saved))); } catch (e) {}
+  var legacy = [];
+  try {
+    var rawOld = localStorage.getItem("karnor-saved");
+    if (rawOld) legacy = JSON.parse(rawOld) || [];
+  } catch (e) {}
+  var saved = {}, read = {};
+  function loadUser() {
+    saved = {}; read = {};
+    var u = db.user && db.users[db.user];
+    if (!u) return;
+    (u.saved || []).forEach(function (id) { saved[id] = true; });
+    (u.read || []).forEach(function (id) { read[id] = true; });
   }
+  function persist() {
+    if (db.user) db.users[db.user] = { saved: Object.keys(saved), read: Object.keys(read) };
+    try { localStorage.setItem(STORE, JSON.stringify(db)); } catch (e) {}
+  }
+  loadUser();
   function $(s) { return document.querySelector(s); }
   function esc(s) {
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
   function catName(id) { return CATS.filter(function (c) { return c.id === id; })[0].name; }
+  function readCount() { return IDEAS.filter(function (i) { return read[i.id]; }).length; }
   function savedCount() { return IDEAS.filter(function (i) { return saved[i.id]; }).length; }
 
+  var CHECKICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="9"/><path d="M7.8 12.4l3 3 5.4-6"/></svg>';
   var BOOKMARK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>';
 
   function cardHTML(i, featured) {
     var e = EV[i.ev];
     var pips = [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("");
-    return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + '">' +
+    return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + '">' +
       '<div class="card-top"><span class="cat">' + (featured ? "Dagens kärna · " : "") + esc(catName(i.cat)) + "</span>" +
-      '<button type="button" class="save" data-save="' + i.id + '" aria-pressed="' + (saved[i.id] ? "true" : "false") + '" aria-label="Spara kortet: ' + esc(i.title) + '">' + BOOKMARK + "</button></div>" +
+      '<div class="card-actions">' +
+      '<button type="button" class="done" data-read="' + i.id + '" aria-pressed="' + (read[i.id] ? "true" : "false") + '" aria-label="' + (read[i.id] ? "Markerad som läst, tryck för att ångra: " : "Markera som läst: ") + esc(i.title) + '" title="' + (read[i.id] ? "Läst" : "Markera som läst") + '">' + CHECKICON + "</button>" +
+      '<button type="button" class="save" data-save="' + i.id + '" aria-pressed="' + (saved[i.id] ? "true" : "false") + '" aria-label="Spara kortet: ' + esc(i.title) + '">' + BOOKMARK + "</button></div></div>" +
       "<h3>" + esc(i.title) + "</h3>" +
       '<p class="summary">' + esc(i.body) + "</p>" +
       '<p class="core"><span class="core-label">Kärnan</span>' + esc(i.core) + "</p>" +
@@ -2184,13 +2253,14 @@ select.field { flex: 0 1 12rem; }
 
   function visible() {
     var q = state.q.trim().toLowerCase();
-    return IDEAS.filter(function (i) {
+    var out = IDEAS.filter(function (i) {
       if (state.view === "sparade" && !saved[i.id]) return false;
       if (state.cat !== "alla" && i.cat !== state.cat) return false;
       if (state.ev !== "alla" && i.ev !== state.ev) return false;
       if (!q) return true;
       return (i.title + " " + i.body + " " + i.core + " " + i.src + " " + catName(i.cat)).toLowerCase().indexOf(q) !== -1;
     });
+    return out.filter(function (i) { return !read[i.id]; }).concat(out.filter(function (i) { return read[i.id]; }));
   }
 
   function renderGrid() {
@@ -2207,7 +2277,7 @@ select.field { flex: 0 1 12rem; }
     }
     $("#grid").innerHTML = html;
     var base = state.view === "sparade" ? savedCount() : IDEAS.length;
-    $("#meta").textContent = "Visar " + list.length + " av " + base + (state.view === "sparade" ? " sparade" : " idéer");
+    $("#meta").textContent = "Visar " + list.length + " av " + base + (state.view === "sparade" ? " sparade" : " idéer") + (readCount() ? " · " + readCount() + " lästa" : "");
   }
 
   function renderChips() {
@@ -2232,7 +2302,9 @@ select.field { flex: 0 1 12rem; }
   }
 
   function renderFeatured() {
-    $("#featured").innerHTML = cardHTML(IDEAS[dayIndex()], true);
+    var pool = IDEAS.filter(function (i) { return !read[i.id]; });
+    if (!pool.length) pool = IDEAS;
+    $("#featured").innerHTML = cardHTML(pool[dayIndex() % pool.length], true);
   }
 
   function renderLegend() {
@@ -2279,6 +2351,9 @@ select.field { flex: 0 1 12rem; }
     var sb = $("#m-save");
     sb.setAttribute("data-save", id);
     sb.setAttribute("aria-pressed", saved[id] ? "true" : "false");
+    var rb = $("#m-read-btn");
+    rb.setAttribute("data-read", id);
+    rb.setAttribute("aria-pressed", read[id] ? "true" : "false");
     m.hidden = false;
     document.body.style.overflow = "hidden";
     $("#m-scroll").scrollTop = 0;
@@ -2305,14 +2380,32 @@ select.field { flex: 0 1 12rem; }
     var sv = ev.target.closest("[data-save]");
     if (sv) {
       var id = sv.getAttribute("data-save");
-      if (saved[id]) delete saved[id]; else saved[id] = true;
-      persist();
-      var btns = document.querySelectorAll('[data-save="' + id + '"]');
-      Array.prototype.forEach.call(btns, function (b) { b.setAttribute("aria-pressed", saved[id] ? "true" : "false"); });
-      renderTabs();
-      if (state.view === "sparade") renderGrid();
+      requireUser(function () {
+        if (saved[id]) delete saved[id]; else saved[id] = true;
+        persist();
+        var btns = document.querySelectorAll('[data-save="' + id + '"]');
+        Array.prototype.forEach.call(btns, function (b) { b.setAttribute("aria-pressed", saved[id] ? "true" : "false"); });
+        renderTabs();
+        if (state.view === "sparade") renderGrid();
+      });
       return;
     }
+    var rd = ev.target.closest("[data-read]");
+    if (rd && rd.getAttribute("data-read")) {
+      var rid = rd.getAttribute("data-read");
+      requireUser(function () {
+        if (read[rid]) delete read[rid]; else read[rid] = true;
+        persist();
+        var rbtns = document.querySelectorAll('[data-read="' + rid + '"]');
+        Array.prototype.forEach.call(rbtns, function (b) { b.setAttribute("aria-pressed", read[rid] ? "true" : "false"); });
+        var keep = document.activeElement && document.activeElement.getAttribute && document.activeElement.getAttribute("data-read");
+        renderFeatured();
+        renderGrid();
+        if (keep) { var again = document.querySelector('#grid [data-read="' + keep + '"]'); if (again && $("#modal").hidden) again.focus(); }
+      });
+      return;
+    }
+    if (ev.target.closest("#user-btn")) { openName(null); return; }
     var chip = ev.target.closest("[data-cat]");
     if (chip) {
       state.cat = chip.getAttribute("data-cat");
@@ -2329,6 +2422,7 @@ select.field { flex: 0 1 12rem; }
   });
   $("#m-next").addEventListener("click", function () { openModal(nextId()); });
   document.addEventListener("keydown", function (ev) {
+    if (!$("#namemodal").hidden) return;
     if ($("#modal").hidden) return;
     if (ev.key === "Escape") { closeModal(); return; }
     if (ev.key === "Tab") {
@@ -2341,12 +2435,87 @@ select.field { flex: 0 1 12rem; }
   $("#q").addEventListener("input", function (e) { state.q = e.target.value; renderGrid(); });
   $("#ev").addEventListener("change", function (e) { state.ev = e.target.value; renderGrid(); });
 
-  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp och lärande. Varje kort visar källan och hur starkt stödet är. Just nu " + IDEAS.length + " kort.";
+
+  function renderAll() { renderUser(); renderFeatured(); renderChips(); renderTabs(); renderGrid(); if (openId) { var b = $("#m-save"), r = $("#m-read-btn"); b.setAttribute("aria-pressed", saved[openId] ? "true" : "false"); r.setAttribute("aria-pressed", read[openId] ? "true" : "false"); } }
+  function renderUser() { $("#user-btn").textContent = db.user ? db.user : "Ange namn"; $("#user-btn").setAttribute("aria-label", db.user ? "Inloggad som " + db.user + ". Byt namn" : "Ange ditt namn för att spara kort"); }
+  function setUser(name) {
+    var found = Object.keys(db.users).filter(function (k) { return k.toLowerCase() === name.toLowerCase(); })[0];
+    var n = found || name;
+    if (!db.users[n]) {
+      db.users[n] = { saved: [], read: [] };
+      if (legacy.length) { db.users[n].saved = legacy.slice(); legacy = []; try { localStorage.removeItem("karnor-saved"); } catch (e) {} }
+    }
+    db.user = n;
+    loadUser();
+    persist();
+    renderAll();
+  }
+  var pendingAction = null, nameFocus = null;
+  function requireUser(fn) { if (db.user) { fn(); } else { openName(fn); } }
+  function openName(fn) {
+    pendingAction = fn || null;
+    nameFocus = document.activeElement;
+    var has = !!db.user, names = Object.keys(db.users);
+    $("#n-title").textContent = fn ? "Vad heter du?" : (has ? "Byt eller logga ut" : "Vad heter du?");
+    $("#n-kicker").textContent = fn ? "Spara kortet" : "Dina kort";
+    $("#n-existing").innerHTML = names.map(function (k) {
+      return '<button type="button" class="chip" data-pick="' + esc(k) + '" aria-pressed="' + (k === db.user) + '">' + esc(k) + "</button>";
+    }).join("");
+    $("#n-label").textContent = names.length ? "Eller ett nytt namn" : "Namn";
+    $("#n-input").required = !names.length || !!fn && !has;
+    $("#n-input").value = "";
+    $("#n-logout").hidden = !has;
+    $("#namemodal").hidden = false;
+    $("#n-input").focus();
+  }
+  function closeName() {
+    $("#namemodal").hidden = true;
+    pendingAction = null;
+    if (nameFocus && nameFocus.focus && !nameFocus.closest("#grid")) nameFocus.focus();
+  }
+  $("#nameform").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var v = $("#n-input").value.replace(/\s+/g, " ").trim();
+    if (!v) { if (db.user) { var fn0 = pendingAction; closeName(); if (fn0) fn0(); } return; }
+    var fn = pendingAction;
+    setUser(v);
+    $("#namemodal").hidden = true;
+    pendingAction = null;
+    if (fn) fn();
+  });
+  $("#namemodal").addEventListener("click", function (e) {
+    if (e.target.closest("[data-nclose]")) { closeName(); return; }
+    var pk = e.target.closest("[data-pick]");
+    if (pk) {
+      var fn = pendingAction;
+      setUser(pk.getAttribute("data-pick"));
+      $("#namemodal").hidden = true;
+      pendingAction = null;
+      if (fn) fn();
+      return;
+    }
+    if (e.target.closest("#n-logout")) {
+      db.user = null; loadUser(); persist(); renderAll(); closeName();
+    }
+  });
+  document.addEventListener("keydown", function (ev) {
+    if ($("#namemodal").hidden) return;
+    if (ev.key === "Escape") { ev.stopPropagation(); closeName(); return; }
+    if (ev.key === "Tab") {
+      var f = Array.prototype.filter.call($("#namemodal").querySelectorAll("button, input"), function (x) { return !x.hidden && !x.disabled; });
+      var first = f[0], last = f[f.length - 1];
+      if (ev.shiftKey && document.activeElement === first) { ev.preventDefault(); last.focus(); }
+      else if (!ev.shiftKey && document.activeElement === last) { ev.preventDefault(); first.focus(); }
+    }
+  });
+
+  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap och finans. Varje kort visar källan och hur starkt stödet är. Just nu " + IDEAS.length + " kort.";
   renderFeatured();
   renderChips();
   renderTabs();
   renderLegend();
   renderGrid();
+  renderUser();
 })();
 </script>
 
