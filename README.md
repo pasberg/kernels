@@ -7,7 +7,7 @@ Sajten är en enda sida (`index.html`) utan beroenden, förutom typsnittet Mona 
 ## Funktioner
 
 - Filter per kategori och stödnivå, sökning och en längre text per kort.
-- Spara och markera som läst. Första gången frågar sidan efter ett namn, och sparade och lästa kort lagras per namn i webbläsarens localStorage. Lästa kort hamnar sist och blir utgråade, och går att avmarkera.
+- Spara och markera som läst. Första gången frågar sidan efter ett namn, som sparas i en cookie (ett år). Sparade och lästa kort lagras per namn i webbläsarens localStorage och laddas när namnet finns i cookien. Blockeras cookies används localStorage som reserv. Lästa kort hamnar sist och blir utgråade, och går att avmarkera.
 - Datan finns bara i den webbläsare där den skapades. För synk mellan enheter krävs en databas.
 
 ## Struktur

@@ -442,7 +442,7 @@ select.field { flex: 0 1 12rem; }
     </div>
     <div class="sheet-scroll">
       <h2 id="n-title">Vad heter du?</h2>
-      <p class="n-help" id="n-help">Namnet håller isär dina sparade och lästa kort. Det sparas bara i den här webbläsaren och skickas inte någonstans.</p>
+      <p class="n-help" id="n-help">Namnet håller isär dina sparade och lästa kort. Det sparas som en cookie i den här webbläsaren och skickas inte någonstans.</p>
       <div class="n-existing" id="n-existing"></div>
       <label class="n-label" for="n-input" id="n-label">Namn</label>
       <input class="n-input" id="n-input" type="text" maxlength="30" required>
@@ -2204,6 +2204,31 @@ select.field { flex: 0 1 12rem; }
     var rawDb = localStorage.getItem(STORE);
     if (rawDb) { var pd = JSON.parse(rawDb); if (pd && pd.users) db = pd; }
   } catch (e) {}
+  // Namnet ligger i en cookie. Är cookies avstängda eller blockerade används localStorage som reserv.
+  var COOKIE = "karnor_user";
+  var cookiesOk = false;
+  function getCookie() {
+    var m = document.cookie.match(new RegExp("(?:^|; )" + COOKIE + "=([^;]*)"));
+    if (!m) return null;
+    try { return decodeURIComponent(m[1]) || null; } catch (e) { return null; }
+  }
+  function setCookie(name) {
+    try {
+      var flags = "; path=/; SameSite=Lax" + (location.protocol === "https:" ? "; Secure" : "");
+      document.cookie = COOKIE + "=" + (name ? encodeURIComponent(name) + "; max-age=31536000" : "; max-age=0") + flags;
+      cookiesOk = name ? getCookie() === name : true;
+    } catch (e) { cookiesOk = false; }
+  }
+  try {
+    document.cookie = "karnor_test=1; path=/; SameSite=Lax";
+    cookiesOk = document.cookie.indexOf("karnor_test=1") !== -1;
+    document.cookie = "karnor_test=; path=/; max-age=0";
+  } catch (e) { cookiesOk = false; }
+  if (cookiesOk) {
+    var cu = getCookie();
+    db.user = cu;
+    if (cu && !db.users[cu]) db.users[cu] = { saved: [], read: [] };
+  }
   var legacy = [];
   try {
     var rawOld = localStorage.getItem("karnor-saved");
@@ -2446,6 +2471,7 @@ select.field { flex: 0 1 12rem; }
       if (legacy.length) { db.users[n].saved = legacy.slice(); legacy = []; try { localStorage.removeItem("karnor-saved"); } catch (e) {} }
     }
     db.user = n;
+    setCookie(n);
     loadUser();
     persist();
     renderAll();
@@ -2495,7 +2521,7 @@ select.field { flex: 0 1 12rem; }
       return;
     }
     if (e.target.closest("#n-logout")) {
-      db.user = null; loadUser(); persist(); renderAll(); closeName();
+      db.user = null; setCookie(null); loadUser(); persist(); renderAll(); closeName();
     }
   });
   document.addEventListener("keydown", function (ev) {
