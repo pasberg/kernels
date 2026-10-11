@@ -202,6 +202,8 @@ button, input, select { font: inherit; color: inherit; }
 
 /* Masthead */
 .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.hello { margin: 14px 0 0; font: 500 1.05rem/1.4 var(--f-body); color: var(--ink-2); }
+.hello b { color: var(--ink); font-weight: 700; }
 .brand { display: flex; align-items: center; gap: 10px; font: 700 1.4rem/1 var(--f-display); letter-spacing: -0.02em; }
 .brand svg { width: 28px; height: 28px; display: block; }
 .tabs { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); overflow: hidden; }
@@ -396,7 +398,7 @@ select.field { flex: 0 1 12rem; }
 
 
 /* Små och stora kärnor */
-.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 28px; max-width: 40rem; }
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 14px 0 28px; max-width: 40rem; }
 .mode { appearance: none; text-align: left; display: flex; flex-direction: column; gap: 2px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font: 700 1.15rem var(--f-display); letter-spacing: -0.01em; cursor: pointer; }
 .mode .n { font: 500 .8rem var(--f-mono); opacity: .7; margin-left: 6px; }
 .mode small { font: 400 .82rem var(--f-body); color: var(--ink-2); letter-spacing: 0; }
@@ -456,6 +458,7 @@ select.field { flex: 0 1 12rem; }
       </nav>
     </div>
   </header>
+  <p class="hello" id="hello" hidden></p>
     <nav class="modes" aria-label="Typ av kärna">
       <button type="button" class="mode" id="mode-sma" data-mode="sma" aria-pressed="true"><span>Små kärnor <span class="n" id="n-sma"></span></span><small>Läs på en minut</small></button>
       <button type="button" class="mode" id="mode-stora" data-mode="stora" aria-pressed="false"><span>Stora kärnor <span class="n" id="n-stora"></span></span><small>Fördjupning, 10–15 min</small></button>
@@ -3767,6 +3770,9 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
   })();
 
   var state = { cat: "alla", ev: "alla", q: "", view: "alla", mode: "sma" };
+  // Gemensam röstdatabas. I Artifact-versionen används plattformens databas automatiskt.
+  // På en egen sajt (t.ex. GitHub Pages): sätt adressen till din röst-API, se backend/README.md.
+  var KARNOR_API = "";
   var STORE = "karnor-v2";
   var db = { user: null, users: {} };
   try {
@@ -3832,13 +3838,92 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
   var BOOKMARK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>';
 
   var RATES = [["☹️", "Dåligt"], ["🙁", "Inte så bra"], ["🙂", "Okej"], ["😃", "Bra"], ["🤩", "Fantastiskt"]];
+  var remote = { mode: "none", uid: null, dbh: null, docs: {}, agg: null, ready: false, synced: false, writable: true, cid: null, pushing: false, again: false };
+  function localNames() {
+    return Object.keys(db.users).map(function (k) { return { name: k, v: (k === db.user ? votes : db.users[k].votes) || {} }; });
+  }
   function score(id) {
     var sum = 0, n = 0;
-    Object.keys(db.users).forEach(function (k) {
-      var vv = (k === db.user ? votes : db.users[k].votes) || {};
-      if (vv[id] >= 1 && vv[id] <= 5) { sum += vv[id]; n++; }
-    });
+    function add(v) { if (v >= 1 && v <= 5) { sum += v; n++; } }
+    if (remote.mode === "http" && remote.agg) {
+      var a = remote.agg[id];
+      return a && a.n ? { n: a.n, avg: a.sum / a.n } : { n: 0, avg: 0 };
+    }
+    if (remote.mode === "db" && remote.ready) {
+      Object.keys(remote.docs).forEach(function (uid) {
+        if (uid === remote.uid) return;
+        var names = (remote.docs[uid] && remote.docs[uid].names) || {};
+        Object.keys(names).forEach(function (nm) { add((names[nm] || {})[id]); });
+      });
+      var mine = ((remote.docs[remote.uid] && remote.docs[remote.uid].names) || {});
+      var seen = {};
+      localNames().forEach(function (x) { seen[x.name] = 1; add(x.v[id]); });
+      Object.keys(mine).forEach(function (nm) { if (!seen[nm]) add((mine[nm] || {})[id]); });
+    } else {
+      localNames().forEach(function (x) { add(x.v[id]); });
+    }
     return { n: n, avg: n ? sum / n : 0 };
+  }
+  function namesPayload() {
+    var out = {};
+    var base = (remote.mode === "db" && remote.docs[remote.uid] && remote.docs[remote.uid].names) || {};
+    Object.keys(base).forEach(function (k) { out[k] = base[k]; });
+    localNames().forEach(function (x) { if (Object.keys(x.v).length) out[x.name] = x.v; else delete out[x.name]; });
+    return out;
+  }
+  function pushVotes() {
+    if (remote.mode === "none" || !remote.writable) return;
+    if (remote.mode === "db" && !remote.ready) return;
+    if (remote.pushing) { remote.again = true; return; }
+    var names = namesPayload();
+    remote.pushing = true;
+    var p;
+    if (remote.mode === "db") {
+      p = remote.dbh.doc("votes/" + remote.uid).set({ names: names, updated: Date.now() });
+    } else {
+      p = fetch(KARNOR_API.replace(/\/$/, "") + "/votes/" + remote.cid, { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify({ names: names }) })
+        .then(function (r) { if (!r.ok) throw new Error("http " + r.status); return fetchAgg(); });
+    }
+    p.then(function () {}, function (e) { if (remote.mode === "db") remote.writable = false; }).then(function () {
+      remote.pushing = false;
+      if (remote.again) { remote.again = false; pushVotes(); }
+    });
+  }
+  function fetchAgg() {
+    return fetch(KARNOR_API.replace(/\/$/, "") + "/votes").then(function (r) { return r.json(); }).then(function (o) { remote.agg = o || {}; rerenderRatings(); }).catch(function () {});
+  }
+  var rrTimer = null;
+  function rerenderRatings() {
+    clearTimeout(rrTimer);
+    rrTimer = setTimeout(function () {
+      if ($("#modal").hidden) { renderFeatured(); renderGrid(); } else { ratingDirty = true; if (openId) refreshRate(openId); }
+    }, 150);
+  }
+  function initRemote() {
+    if (KARNOR_API) {
+      remote.mode = "http";
+      try { remote.cid = localStorage.getItem("karnor-cid"); if (!remote.cid) { remote.cid = "c-" + Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem("karnor-cid", remote.cid); } } catch (e) { remote.cid = "c-" + Math.random().toString(36).slice(2); }
+      fetchAgg().then(function () { pushVotes(); });
+      setInterval(fetchAgg, 60000);
+      return;
+    }
+    var c = window.claude;
+    if (!c || !c.use) return;
+    Promise.all([c.use("db"), c.use("user")]).then(function (r) {
+      var dbh = r[0], u = r[1];
+      if (!dbh || !u) return;
+      return u.id().then(function (uid) {
+        if (!uid) return;
+        remote.mode = "db"; remote.uid = uid; remote.dbh = dbh;
+        dbh.collection("votes").onSnapshot(function (snap) {
+          remote.docs = {};
+          snap.docs.forEach(function (d) { remote.docs[d.id] = d.data() || {}; });
+          remote.ready = true;
+          rerenderRatings();
+          if (!remote.synced) { remote.synced = true; pushVotes(); }
+        }, function () {});
+      });
+    }).catch(function () {});
   }
   function resultHTML(id) {
     var sc = score(id);
@@ -4058,6 +4143,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       requireUser(function () {
         if (votes[rid2] === rv) delete votes[rid2]; else votes[rid2] = rv;
         persist();
+        pushVotes();
         refreshRate(rid2);
         if ($("#modal").hidden) {
           renderGrid();
@@ -4073,6 +4159,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       requireUser(function () {
         if (read[rid]) delete read[rid]; else read[rid] = true;
         persist();
+        renderHello();
         var rbtns = document.querySelectorAll('[data-read="' + rid + '"]');
         Array.prototype.forEach.call(rbtns, function (b) { b.setAttribute("aria-pressed", read[rid] ? "true" : "false"); });
         var keep = document.activeElement && document.activeElement.getAttribute && document.activeElement.getAttribute("data-read");
@@ -4134,7 +4221,15 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
     var g = $("#grid"); g.className = "grid" + (state.mode === "stora" ? " grid-big" : "");
   }
   function renderAll() { if (openId) refreshRate(openId); renderModes(); renderUser(); renderFeatured(); renderChips(); renderTabs(); renderGrid(); if (openId) { var b = $("#m-save"), r = $("#m-read-btn"); b.setAttribute("aria-pressed", saved[openId] ? "true" : "false"); r.setAttribute("aria-pressed", read[openId] ? "true" : "false"); } }
-  function renderUser() { $("#user-btn").textContent = db.user ? db.user : "Ange namn"; $("#user-btn").setAttribute("aria-label", db.user ? "Inloggad som " + db.user + ". Byt namn" : "Ange ditt namn för att spara kort"); }
+  function renderHello() {
+    var el = $("#hello");
+    if (!db.user) { el.hidden = true; el.textContent = ""; return; }
+    var all = IDEAS.concat(BIG), nr = all.filter(function (i) { return read[i.id]; }).length;
+    var h = new Date().getHours(), hi = h < 5 ? "God natt" : h < 10 ? "God morgon" : h < 18 ? "Hej" : "God kväll";
+    el.innerHTML = hi + ", <b>" + esc(db.user) + "</b>! " + (nr ? "Du har läst " + nr + " av " + all.length + " kärnor." : "Välkommen tillbaka. Det finns " + all.length + " kärnor att läsa.");
+    el.hidden = false;
+  }
+  function renderUser() { renderHello(); $("#user-btn").textContent = db.user ? db.user : "Ange namn"; $("#user-btn").setAttribute("aria-label", db.user ? "Inloggad som " + db.user + ". Byt namn" : "Ange ditt namn för att spara kort"); }
   function setUser(name) {
     var found = Object.keys(db.users).filter(function (k) { return k.toLowerCase() === name.toLowerCase(); })[0];
     var n = found || name;
@@ -4215,6 +4310,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
   renderLegend();
   renderGrid();
   renderUser();
+  initRemote();
 })();
 </script>
 

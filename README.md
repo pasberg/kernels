@@ -59,4 +59,8 @@ Kategorin `beteende` handlar om hur människor beter sig i olika situationer (gr
 
 ## Betyg
 
-Varje kort kan betygsättas med fem ansikten (☹️ 🙁 🙂 😃 🤩) under frågan "Var kortet bra och upplysande?". Betyget sparas per namn (`votes` i `karnor-v2`). På kortet visas snittbetyget, avrundat till närmaste ansikte, och antal röster. Olästa kort sorteras efter snittbetyg (högst först), därefter lästa kort. Snittet räknas över alla namn som finns i den här webbläsaren. För betyg som delas mellan besökare krävs en gemensam databas.
+Varje kort kan betygsättas med fem ansikten (☹️ 🙁 🙂 😃 🤩) under frågan "Var kortet bra och upplysande?". Betyget sparas per namn (`votes` i `karnor-v2`). På kortet visas snittbetyget, avrundat till närmaste ansikte, och antal röster. Olästa kort sorteras efter snittbetyg (högst först), därefter lästa kort. Snittet räknas över alla namn som finns i den här webbläsaren. I Artifact-versionen delas betygen mellan besökare via plattformens databas. På en egen sajt görs det med den lilla databasen i `backend/` (se `backend/README.md`) och inställningen `KARNOR_API` i `karnor.html`. Utan den räknas betygen lokalt.
+
+## Hälsning
+
+När ett namn är satt visas under titeln en hälsning (God morgon/Hej/God kväll) med namnet och hur många kärnor man läst.
