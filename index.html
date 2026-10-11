@@ -356,6 +356,49 @@ select.field { flex: 0 1 12rem; }
 .n-input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
 .n-err { margin: 8px 0 0; color: var(--ev-mixed); font-size: .92rem; }
 
+
+/* Små och stora kärnor */
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 20px; max-width: 40rem; }
+.mode { appearance: none; text-align: left; display: flex; flex-direction: column; gap: 2px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font: 700 1.15rem var(--f-display); letter-spacing: -0.01em; cursor: pointer; }
+.mode .n { font: 500 .8rem var(--f-mono); opacity: .7; margin-left: 6px; }
+.mode small { font: 400 .82rem var(--f-body); color: var(--ink-2); letter-spacing: 0; }
+.mode:hover { border-color: var(--ink); }
+.mode[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.mode[aria-pressed="true"] small { color: var(--bg); opacity: .8; }
+.card.big { border-top: 5px solid var(--c, var(--ink)); }
+.card.big h3 { font-size: 1.45rem; }
+.grid-big { grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); }
+.sheet.wide { max-width: 54rem; }
+.sheet.wide .lead, .sheet.wide .prose, .sheet.wide .m-core { max-width: 66ch; }
+.prose ul { margin: 0 0 16px; padding-left: 1.25rem; }
+.prose li { margin: 0 0 6px; }
+.toc { margin: 0 0 26px; padding: 16px 18px; border: 1px solid var(--t2, var(--line)); border-radius: 6px; background: var(--t, var(--surface-2)); }
+.toc summary { cursor: pointer; font: 600 .78rem var(--f-mono); letter-spacing: .09em; text-transform: uppercase; color: var(--c, var(--ink-2)); }
+.toc[open] summary { margin-bottom: 10px; }
+.toc ol { column-gap: 28px; }
+@media (min-width: 760px) { .toc[open] ol { columns: 2; } .toc li { break-inside: avoid; margin-bottom: 4px; } }
+.toc ol { margin: 0; padding-left: 1.25rem; }
+.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.toc a:hover { border-bottom-color: var(--c, var(--ink)); }
+.prose .fig { margin: 26px 0; padding: 14px 14px 12px; border: 1px solid var(--t2, var(--line)); border-radius: 6px; background: var(--surface); }
+.fig svg { display: block; width: 100%; height: auto; }
+.fig svg text { font-family: var(--f-body); font-size: 15px; fill: var(--ink); }
+.fig svg .mut { fill: var(--ink-2); }
+.fig svg .sm { font-size: 13px; }
+.fig svg .b { font-weight: 700; }
+.fig svg .ln { stroke: var(--ink); fill: none; stroke-width: 2; }
+.fig svg .thin { stroke: var(--ink-2); fill: none; stroke-width: 1; }
+.fig svg .acc { stroke: var(--c, var(--ink)); fill: none; stroke-width: 3; }
+.fig svg .fillc { fill: var(--c, var(--ink)); }
+.fig svg .fillt { fill: var(--t2, var(--surface-2)); }
+.fig svg .up { fill: var(--ev-strong); stroke: var(--ev-strong); }
+.fig svg .dn { fill: var(--ev-mixed); stroke: var(--ev-mixed); }
+.fig figcaption { margin-top: 10px; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+.prose .box { margin: 22px 0; padding: 14px 18px; border-left: 4px solid var(--c, var(--ink)); background: var(--t, var(--surface-2)); border-radius: 0 6px 6px 0; }
+.prose .box b { display: block; margin-bottom: 4px; font: 600 .95rem var(--f-display); }
+.prose .box p { margin: 0; font-size: 1rem; }
+@media (max-width: 520px) { .modes { grid-template-columns: 1fr; } .sheet-foot { gap: 8px; } .sheet-foot .btn { padding: 9px 11px; font-size: .86rem; } }
+
 @media (prefers-reduced-motion: no-preference) {
   .chip, .tab, .save { transition: background-color .15s, color .15s; }
 }
@@ -385,6 +428,10 @@ select.field { flex: 0 1 12rem; }
   </section>
 
   <section class="tools" aria-label="Filter">
+    <nav class="modes" aria-label="Typ av kärna">
+      <button type="button" class="mode" id="mode-sma" data-mode="sma" aria-pressed="true"><span>Små kärnor <span class="n" id="n-sma"></span></span><small>Läs på en minut</small></button>
+      <button type="button" class="mode" id="mode-stora" data-mode="stora" aria-pressed="false"><span>Stora kärnor <span class="n" id="n-stora"></span></span><small>Fördjupning, 10–15 min</small></button>
+    </nav>
     <div class="row">
       <label class="vh" for="q">Sök bland idéerna</label>
       <input class="field" id="q" type="search" placeholder="Sök, till exempel sömn eller koffein" autocomplete="off">
@@ -427,7 +474,7 @@ select.field { flex: 0 1 12rem; }
     </div>
     <div class="sheet-foot">
       <button type="button" class="btn" id="m-save" data-save="" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg><span class="off">Spara</span><span class="on">Sparat</span></button>
-      <button type="button" class="btn" id="m-read-btn" data-read="" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="off">Markera som läst</span><span class="on">Läst</span></button>
+      <button type="button" class="btn" id="m-read-btn" data-read="" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="off">Markera läst</span><span class="on">Läst</span></button>
       <button type="button" class="btn primary" id="m-next">Nästa kort</button>
     </div>
   </div>
@@ -2188,6 +2235,283 @@ select.field { flex: 0 1 12rem; }
     if (DEEP[k]) DEEP[k] = DEEP[k].concat(EXTRA[k]);
   });
 
+  var BIG = [], BIGDEEP = {}, FIGS = {};
+  FIGS.fusion_dt = `<svg viewBox="0 0 480 225" role="img" aria-label="Deuterium och tritium slås ihop till helium-4 och en neutron och frigör 17,6 MeV"><circle cx="55" cy="80" r="26" class="fillt" stroke="var(--ink)" stroke-width="2"/><text x="55" y="85" class="b" text-anchor="middle">D</text><text x="55" y="130" class="mut sm" text-anchor="middle">deuterium</text><text x="55" y="146" class="mut sm" text-anchor="middle">1 p + 1 n</text><text x="105" y="86" class="b" text-anchor="middle">+</text><circle cx="155" cy="80" r="30" class="fillt" stroke="var(--ink)" stroke-width="2"/><text x="155" y="85" class="b" text-anchor="middle">T</text><text x="155" y="134" class="mut sm" text-anchor="middle">tritium</text><text x="155" y="150" class="mut sm" text-anchor="middle">1 p + 2 n</text><path d="M205 80 H255" class="ln"/><path d="M247 72 L257 80 L247 88" class="ln"/><circle cx="320" cy="80" r="32" class="fillt" stroke="var(--ink)" stroke-width="2"/><text x="320" y="85" class="b" text-anchor="middle">He-4</text><text x="320" y="138" class="mut sm" text-anchor="middle">helium-4</text><text x="320" y="154" class="b sm" text-anchor="middle">3,5 MeV</text><text x="320" y="170" class="mut sm" text-anchor="middle">värmer plasmat</text><text x="378" y="86" class="b" text-anchor="middle">+</text><circle cx="425" cy="80" r="16" class="fillt" stroke="var(--ink)" stroke-width="2"/><text x="425" y="85" class="b" text-anchor="middle">n</text><text x="425" y="112" class="mut sm" text-anchor="middle">neutron</text><text x="425" y="128" class="b sm" text-anchor="middle">14,1 MeV</text><text x="425" y="144" class="mut sm" text-anchor="middle">lämnar plasmat</text><text x="240" y="210" class="mut sm" text-anchor="middle">Totalt 17,6 MeV per reaktion, ungefär 80 procent hos neutronen</text></svg>`;
+FIGS.fusion_be = `<svg viewBox="0 0 480 240" role="img" aria-label="Bindningsenergi per partikel som funktion av masstal, med topp vid järn-56"><path d="M55 22 V190 H465" class="thin"/><path d="M55 190.0 h-5" class="thin"/><text x="47" y="195.0" class="mut sm" text-anchor="end">0</text><path d="M55 136.7 h-5" class="thin"/><text x="47" y="141.66666666666669" class="mut sm" text-anchor="end">3</text><path d="M55 83.3 h-5" class="thin"/><text x="47" y="88.33333333333334" class="mut sm" text-anchor="end">6</text><path d="M55 30.0 h-5" class="thin"/><text x="47" y="35.0" class="mut sm" text-anchor="end">9</text><path d="M55.0 190 v5" class="thin"/><text x="55.0" y="210" class="mut sm" text-anchor="middle">0</text><path d="M139.4 190 v5" class="thin"/><text x="139.375" y="210" class="mut sm" text-anchor="middle">50</text><path d="M223.8 190 v5" class="thin"/><text x="223.75" y="210" class="mut sm" text-anchor="middle">100</text><path d="M308.1 190 v5" class="thin"/><text x="308.125" y="210" class="mut sm" text-anchor="middle">150</text><path d="M392.5 190 v5" class="thin"/><text x="392.5" y="210" class="mut sm" text-anchor="middle">200</text><path d="M56.7 190.0 L58.4 170.3 L61.8 64.3 L75.2 53.5 L82.0 48.1 L102.2 39.8 L149.5 33.7 L190.0 35.5 L223.8 38.0 L274.4 40.7 L325.0 44.2 L392.5 49.9 L456.6 55.4" class="acc"/><circle cx="61.8" cy="64.3" r="4" class="fillc"/><text x="73.75" y="86.3111111111111" class="b sm" text-anchor="start">He-4</text><circle cx="149.5" cy="33.7" r="4" class="fillc"/><text x="149.5" y="21.73333333333335" class="b sm" text-anchor="middle">Fe-56</text><circle cx="456.6" cy="55.4" r="4" class="fillc"/><text x="452.625" y="41.42222222222222" class="b sm" text-anchor="end">U-238</text><circle cx="58.4" cy="170.3" r="4" class="fillc"/><text x="68.375" y="186.26666666666665" class="b sm" text-anchor="start">D</text><text x="82.0" y="136.66666666666669" class="sm" text-anchor="start">← Fusion: lätta kärnor slås ihop</text><text x="345.25" y="86.8888888888889" class="sm" text-anchor="middle">Fission: tunga kärnor delas →</text><text x="257.5" y="232" class="mut sm" text-anchor="middle">Masstal (antal protoner och neutroner)</text><text transform="translate(14 110) rotate(-90)" class="mut sm" text-anchor="middle">Bindningsenergi per partikel (MeV)</text></svg>`;
+FIGS.fusion_tokamak = `<svg viewBox="0 0 480 300" role="img" aria-label="Schematiskt tvärsnitt av en tokamak med spolar, mantel, vakuumkärl och plasma"><path d="M20 8 V292" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="5 4" fill="none"/><rect x="34" y="70" width="18" height="160" class="fillt" stroke="var(--ink)" stroke-width="2"/><rect x="64" y="15" width="225" height="270" rx="36" class="acc"/><rect x="86" y="40" width="181" height="220" rx="30" class="fillt" stroke="var(--ink-2)" stroke-width="1.5"/><rect x="102" y="58" width="149" height="184" rx="26" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/><ellipse cx="180" cy="150" rx="48" ry="72" class="fillc" fill-opacity=".38" stroke="var(--c, var(--ink))" stroke-width="2"/><circle cx="43" cy="58" r="9" fill="var(--ink)"/><text x="43" y="62" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">1</text><circle cx="289" cy="150" r="9" fill="var(--ink)"/><text x="289" y="154" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">2</text><circle cx="267" cy="100" r="9" fill="var(--ink)"/><text x="267" y="104" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">3</text><circle cx="251" cy="200" r="9" fill="var(--ink)"/><text x="251" y="204" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">4</text><circle cx="180" cy="150" r="9" fill="var(--ink)"/><text x="180" y="154" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">5</text><circle cx="325" cy="70" r="9" fill="var(--ink)"/><text x="325" y="74" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">1</text><text x="342" y="75" class="sm" text-anchor="start">Centralsolenoid</text><circle cx="325" cy="108" r="9" fill="var(--ink)"/><text x="325" y="112" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">2</text><text x="342" y="113" class="sm" text-anchor="start">Toroidal fältspole</text><circle cx="325" cy="146" r="9" fill="var(--ink)"/><text x="325" y="150" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">3</text><text x="342" y="151" class="sm" text-anchor="start">Mantel (blanket)</text><circle cx="325" cy="184" r="9" fill="var(--ink)"/><text x="325" y="188" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">4</text><text x="342" y="189" class="sm" text-anchor="start">Vakuumkärl</text><circle cx="325" cy="222" r="9" fill="var(--ink)"/><text x="325" y="226" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">5</text><text x="342" y="227" class="sm" text-anchor="start">Plasma</text><text x="325" y="270" class="mut sm" text-anchor="start">Snitt genom ena sidan</text><text x="325" y="286" class="mut sm" text-anchor="start">av en ringformad tokamak</text><text x="20" y="22" class="mut sm" text-anchor="middle">axel</text></svg>`;
+FIGS.fusion_q = `<svg viewBox="0 0 480 262" role="img" aria-label="Skala över Q-värden från JET 1997 till ITER och kraftverk"><path d="M30 110 H450" class="ln"/><path d="M30.0 104 v12" class="ln"/><text x="30.0" y="134" class="mut sm" text-anchor="middle">0,1</text><path d="M170.0 104 v12" class="ln"/><path d="M310.0 104 v12" class="ln"/><text x="310.0" y="134" class="mut sm" text-anchor="middle">10</text><path d="M450.0 104 v12" class="ln"/><text x="450.0" y="134" class="mut sm" text-anchor="middle">100</text><text x="240" y="250" class="mut sm" text-anchor="middle">Q = fusionseffekt ÷ tillförd värmeeffekt (logaritmisk skala)</text><circle cx="145.7" cy="110" r="6" class="fillc"/><path d="M145.7 104 V70" class="thin"/><text x="145.6504723781157" y="52" class="b sm" text-anchor="middle">JET 1997</text><text x="145.6504723781157" y="67" class="mut sm" text-anchor="middle">Q ≈ 0,67</text><circle cx="170.0" cy="110" r="6" class="fillc"/><circle cx="310.0" cy="110" r="6" class="fillc"/><path d="M310.0 104 V70" class="thin"/><text x="310.0" y="52" class="b sm" text-anchor="middle">ITER-målet</text><text x="310.0" y="67" class="mut sm" text-anchor="middle">Q ≥ 10</text><circle cx="418.9" cy="110" r="6" class="fillc"/><path d="M170.0 142 V190" class="thin"/><text x="170.0" y="206" class="b sm" text-anchor="middle">Break-even</text><text x="170.0" y="221" class="mut sm" text-anchor="middle">Q = 1</text><path d="M418.9 142 V190" class="thin"/><text x="418.94117505371014" y="206" class="b sm" text-anchor="middle">Kraftverk</text><text x="418.94117505371014" y="221" class="mut sm" text-anchor="middle">Q långt över 10</text><text x="170.0" y="134" class="mut sm" text-anchor="middle">1</text></svg>`;
+FIGS.ta_candle = `<svg viewBox="0 0 480 240" role="img" aria-label="Anatomi hos ett ljusstakediagram med stigande och fallande ljus"><path d="M90 30 V195" class="ln"/><rect x="68" y="70" width="44" height="80" class="up" fill-opacity=".85" stroke-width="2"/><path d="M300 38 V205" class="ln"/><rect x="278" y="80" width="44" height="70" class="dn" fill-opacity=".85" stroke-width="2"/><text x="90" y="228" class="b sm" text-anchor="middle">Stiger under perioden</text><text x="300" y="228" class="b sm" text-anchor="middle">Faller under perioden</text><path d="M116 30 h14" class="thin"/><text x="136" y="35" class="sm" text-anchor="start">högsta kurs</text><path d="M116 70 h14" class="thin"/><text x="136" y="75" class="sm" text-anchor="start">stängningskurs</text><path d="M116 150 h14" class="thin"/><text x="136" y="155" class="sm" text-anchor="start">öppningskurs</text><path d="M116 195 h14" class="thin"/><text x="136" y="200" class="sm" text-anchor="start">lägsta kurs</text><path d="M326 38 h14" class="thin"/><text x="346" y="43" class="sm" text-anchor="start">högsta kurs</text><path d="M326 80 h14" class="thin"/><text x="346" y="85" class="sm" text-anchor="start">öppningskurs</text><path d="M326 150 h14" class="thin"/><text x="346" y="155" class="sm" text-anchor="start">stängningskurs</text><path d="M326 205 h14" class="thin"/><text x="346" y="210" class="sm" text-anchor="start">lägsta kurs</text><text x="240" y="16" class="mut sm" text-anchor="middle">Kropp = öppning till stängning. Veke = högsta och lägsta kurs.</text></svg>`;
+FIGS.ta_sr = `<svg viewBox="0 0 480 225" role="img" aria-label="Illustration av stöd, motstånd, utbrott och återtest på en påhittad kurva"><path d="M30 66 H460" stroke="var(--ev-mixed)" stroke-width="2" stroke-dasharray="6 4" fill="none"/><path d="M30 150 H460" stroke="var(--ev-strong)" stroke-width="2" stroke-dasharray="6 4" fill="none"/><path d="M30 128 L60 72 L95 148 L130 66 L165 150 L200 102 L232 66 L262 46 L290 64 L318 66 L350 34 L385 22 L420 12" class="acc"/><text x="462" y="62" class="sm" text-anchor="end">Motstånd</text><text x="462" y="172" class="sm" text-anchor="end">Stöd</text><circle cx="262" cy="46" r="7" fill="none" stroke="var(--ink)" stroke-width="2"/><text x="262" y="28" class="b sm" text-anchor="middle">Utbrott</text><circle cx="318" cy="66" r="7" fill="none" stroke="var(--ink)" stroke-width="2"/><text x="318" y="90" class="b sm" text-anchor="middle">Återtest</text><text x="95" y="184" class="mut sm" text-anchor="middle">Kursen vänder upp</text><text x="130" y="50" class="mut sm" text-anchor="middle">vänder ner</text><text x="240" y="214" class="mut sm" text-anchor="middle">Tid →</text></svg>`;
+FIGS.ta_ma = `<svg viewBox="0 0 480 235" role="img" aria-label="Påhittad kurva med två glidande medelvärden och markerade korsningar"><path d="M30.0 135.0 L33.9 128.9 L37.9 130.2 L41.8 132.2 L45.8 140.3 L49.7 140.8 L53.7 127.4 L57.6 120.9 L61.6 108.0 L65.5 102.9 L69.4 96.1 L73.4 91.4 L77.3 105.4 L81.3 93.5 L85.2 85.0 L89.2 76.4 L93.1 90.3 L97.1 104.6 L101.0 110.0 L105.0 111.0 L108.9 104.1 L112.8 100.8 L116.8 91.6 L120.7 94.4 L124.7 87.4 L128.6 79.6 L132.6 82.7 L136.5 61.5 L140.5 52.2 L144.4 36.5 L148.3 39.6 L152.3 44.0 L156.2 44.5 L160.2 42.7 L164.1 33.5 L168.1 28.5 L172.0 30.7 L176.0 38.4 L179.9 41.9 L183.9 27.6 L187.8 34.4 L191.7 30.7 L195.7 25.3 L199.6 39.8 L203.6 38.7 L207.5 25.0 L211.5 45.6 L215.4 49.0 L219.4 50.5 L223.3 59.5 L227.2 55.2 L231.2 56.8 L235.1 73.0 L239.1 65.9 L243.0 60.7 L247.0 52.7 L250.9 39.8 L254.9 38.2 L258.8 39.1 L262.8 54.8 L266.7 50.9 L270.6 59.7 L274.6 66.9 L278.5 82.5 L282.5 95.1 L286.4 103.3 L290.4 92.7 L294.3 116.3 L298.3 133.9 L302.2 134.1 L306.1 121.9 L310.1 118.4 L314.0 140.3 L318.0 168.5 L321.9 167.0 L325.9 176.6 L329.8 190.0 L333.8 181.7 L337.7 172.0 L341.7 171.8 L345.6 170.4 L349.5 167.0 L353.5 151.4 L357.4 145.6 L361.4 140.6 L365.3 135.1 L369.3 151.1 L373.2 137.7 L377.2 127.3 L381.1 121.0 L385.0 140.3 L389.0 145.5 L392.9 135.4 L396.9 152.3 L400.8 152.2 L404.8 139.6 L408.7 150.8 L412.7 131.7 L416.6 123.3 L420.6 122.0 L424.5 115.6 L428.4 105.8 L432.4 101.2 L436.3 86.0 L440.3 89.3 L444.2 89.9 L448.2 75.5 L452.1 71.5 L456.1 76.7 L460.0 63.2" stroke="var(--ink-2)" stroke-width="1.2" fill="none" opacity=".75"/><path d="M57.6 132.0 L61.6 128.6 L65.5 125.3 L69.4 121.1 L73.4 116.0 L77.3 111.6 L81.3 105.7 L85.2 100.4 L89.2 94.8 L93.1 92.6 L97.1 92.8 L101.0 94.6 L105.0 97.0 L108.9 96.9 L112.8 97.8 L116.8 98.6 L120.7 100.8 L124.7 100.5 L128.6 97.4 L132.6 94.0 L136.5 87.8 L140.5 81.3 L144.4 73.2 L148.3 66.7 L152.3 60.4 L156.2 55.1 L160.2 50.4 L164.1 44.3 L168.1 40.2 L172.0 37.5 L176.0 37.7 L179.9 38.0 L183.9 36.0 L187.8 34.7 L191.7 33.2 L195.7 32.2 L199.6 33.6 L203.6 34.6 L207.5 32.9 L211.5 33.4 L215.4 36.1 L219.4 38.1 L223.3 41.7 L227.2 45.4 L231.2 47.5 L235.1 51.8 L239.1 56.9 L243.0 58.8 L247.0 59.3 L250.9 58.0 L254.9 55.3 L258.8 53.3 L262.8 53.0 L266.7 50.3 L270.6 49.5 L274.6 50.3 L278.5 54.0 L282.5 60.9 L286.4 69.0 L290.4 75.7 L294.3 83.4 L298.3 93.8 L302.2 103.1 L306.1 110.0 L310.1 114.5 L314.0 120.1 L318.0 128.3 L321.9 137.5 L325.9 145.1 L329.8 152.1 L333.8 158.0 L337.7 164.3 L341.7 171.0 L345.6 174.7 L349.5 174.6 L353.5 172.6 L357.4 168.7 L361.4 162.6 L365.3 156.7 L369.3 154.1 L373.2 149.9 L377.2 144.5 L381.1 138.7 L385.0 137.3 L389.0 137.3 L392.9 136.7 L396.9 138.8 L400.8 139.0 L404.8 139.2 L408.7 142.1 L412.7 143.5 L416.6 141.3 L420.6 138.4 L424.5 135.9 L428.4 130.1 L432.4 123.8 L436.3 117.1 L440.3 109.4 L444.2 104.1 L448.2 98.2 L452.1 91.9 L456.1 87.0 L460.0 81.7" class="acc"/><path d="M124.7 108.3 L128.6 106.1 L132.6 104.3 L136.5 101.5 L140.5 98.3 L144.4 94.2 L148.3 90.1 L152.3 86.8 L156.2 83.7 L160.2 81.1 L164.1 78.3 L168.1 75.6 L172.0 73.2 L176.0 70.5 L179.9 68.5 L183.9 66.2 L187.8 64.5 L191.7 62.1 L195.7 58.9 L199.6 56.1 L203.6 53.2 L207.5 50.1 L211.5 47.9 L215.4 46.2 L219.4 44.4 L223.3 43.3 L227.2 42.3 L231.2 41.3 L235.1 41.7 L239.1 42.3 L243.0 43.3 L247.0 43.8 L250.9 43.6 L254.9 43.4 L258.8 43.2 L262.8 44.1 L266.7 45.0 L270.6 46.1 L274.6 47.3 L278.5 48.9 L282.5 51.6 L286.4 54.3 L290.4 56.8 L294.3 60.5 L298.3 64.2 L302.2 68.0 L306.1 71.9 L310.1 74.8 L314.0 78.5 L318.0 83.2 L321.9 87.5 L325.9 92.4 L329.8 97.7 L333.8 102.0 L337.7 106.3 L341.7 110.7 L345.6 115.4 L349.5 120.5 L353.5 125.0 L357.4 129.3 L361.4 132.7 L365.3 136.1 L369.3 139.8 L373.2 142.6 L377.2 144.4 L381.1 145.4 L385.0 146.9 L389.0 149.0 L392.9 149.8 L396.9 150.5 L400.8 151.2 L404.8 152.0 L408.7 153.2 L412.7 152.9 L416.6 151.1 L420.6 149.3 L424.5 146.9 L428.4 143.5 L432.4 140.3 L436.3 136.8 L440.3 133.5 L444.2 130.3 L448.2 126.7 L452.1 123.5 L456.1 120.7 L460.0 117.6" class="ln" stroke-dasharray="7 4"/><circle cx="227.2" cy="45.4" r="9" fill="var(--ink)"/><text x="227.2" y="49.4" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">1</text><circle cx="381.1" cy="138.7" r="9" fill="var(--ink)"/><text x="381.1" y="142.7" text-anchor="middle" style="fill:var(--bg);font-size:12px;font-weight:700">2</text><path d="M30 218 h26" stroke="var(--ink-2)" stroke-width="1.2"/><text x="62" y="222" class="sm" text-anchor="start">kurs</text><path d="M110 218 h26" class="acc"/><text x="142" y="222" class="sm" text-anchor="start">medelvärde 8 perioder</text><path d="M290 218 h26" class="ln" stroke-dasharray="7 4"/><text x="322" y="222" class="sm" text-anchor="start">medelvärde 25 perioder</text></svg>`;
+FIGS.ta_risk = `<svg viewBox="0 0 480 235" role="img" aria-label="Riskmodell med inköpskurs, stop på minus ett R och mål på två och tre R"><path d="M130 40 H340" stroke="var(--ev-strong)" stroke-width="2.5" fill="none"/><text x="120" y="45" class="b sm" text-anchor="end">Mål 3R</text><path d="M130 80 H340" stroke="var(--ev-strong)" stroke-width="2.5" fill="none"/><text x="120" y="85" class="b sm" text-anchor="end">Mål 2R</text><path d="M130 130 H340" stroke="var(--ink)" stroke-width="2.5" fill="none"/><text x="120" y="135" class="b sm" text-anchor="end">Inköp</text><path d="M130 180 H340" stroke="var(--ev-mixed)" stroke-width="2.5" fill="none"/><text x="120" y="185" class="b sm" text-anchor="end">Stop −1R</text><path d="M360 130 V180" class="ln"/><path d="M355 175 L360 182 L365 175" class="ln"/><text x="372" y="160" class="sm" text-anchor="start">förlust om stop</text><text x="372" y="176" class="sm" text-anchor="start">utlöses: 1R</text><path d="M360 130 V40" class="ln"/><path d="M355 47 L360 40 L365 47" class="ln"/><text x="372" y="90" class="sm" text-anchor="start">vinst om målet</text><text x="372" y="106" class="sm" text-anchor="start">nås: 2R–3R</text><text x="240" y="222" class="mut sm" text-anchor="middle">R = det belopp du riskerar per affär</text></svg>`;
+FIGS.vo2_fick = `<svg viewBox="0 0 480 190" role="img" aria-label="Syrets väg från lungor via hjärta och blod till musklerna"><rect x="6" y="30" width="98" height="78" rx="8" class="fillt" stroke="var(--ink)" stroke-width="2"/><text x="55" y="62" class="b" text-anchor="middle">Lungor</text><text x="55" y="84" class="mut sm" text-anchor="middle">tar in syre</text><path d="M106 69 h14" class="ln"/><path d="M114 63 L120 69 L114 75" class="ln"/><rect x="124" y="30" width="98" height="78" rx="8" class="fillt" stroke="var(--ink)" stroke-width="2"/><text x="173" y="62" class="b" text-anchor="middle">Hjärta</text><text x="173" y="84" class="mut sm" text-anchor="middle">pumpar blodet</text><path d="M224 69 h14" class="ln"/><path d="M232 63 L238 69 L232 75" class="ln"/><rect x="242" y="30" width="98" height="78" rx="8" class="fillt" stroke="var(--ink)" stroke-width="2"/><text x="291" y="62" class="b" text-anchor="middle">Blod</text><text x="291" y="84" class="mut sm" text-anchor="middle">bär syret</text><path d="M342 69 h14" class="ln"/><path d="M350 63 L356 69 L350 75" class="ln"/><rect x="360" y="30" width="98" height="78" rx="8" class="fillt" stroke="var(--ink)" stroke-width="2"/><text x="409" y="62" class="b" text-anchor="middle">Muskler</text><text x="409" y="84" class="mut sm" text-anchor="middle">förbrukar syret</text><text x="240" y="148" class="sm" text-anchor="middle">VO₂max = högsta minutvolym × hur mycket syre musklerna kan ta ur blodet</text><text x="240" y="170" class="mut sm" text-anchor="middle">Minutvolym = slagvolym × puls. Hos de flesta sätter hjärtat och blodet taket.</text></svg>`;
+FIGS.vo2_dist = `<svg viewBox="0 0 480 225" role="img" aria-label="Två upplägg för fördelning av träningsintensitet, polariserat och mittenträning"><text x="30" y="32" class="b sm" text-anchor="start">Polariserad: mest lugnt, lite hårt</text><rect x="30" y="40" width="320.0" height="34" class="fillt" fill-opacity="1" stroke="var(--ink)" stroke-width="1.5"/><text x="190.0" y="62" class="sm b" text-anchor="middle">80 %</text><rect x="350.0" y="40" width="0.0" height="34" class="fillc" fill-opacity="0.45" stroke="var(--ink)" stroke-width="1.5"/><rect x="350.0" y="40" width="80.0" height="34" class="fillc" fill-opacity="1" stroke="var(--ink)" stroke-width="1.5"/><text x="390.0" y="62" class="sm b" text-anchor="middle">20 %</text><text x="30" y="102" class="b sm" text-anchor="start">Mittenträning: ofta jobbigt men aldrig riktigt hårt</text><rect x="30" y="110" width="160.0" height="34" class="fillt" fill-opacity="1" stroke="var(--ink)" stroke-width="1.5"/><text x="110.0" y="132" class="sm b" text-anchor="middle">40 %</text><rect x="190.0" y="110" width="200.0" height="34" class="fillc" fill-opacity="0.45" stroke="var(--ink)" stroke-width="1.5"/><text x="290.0" y="132" class="sm b" text-anchor="middle">50 %</text><rect x="390.0" y="110" width="40.0" height="34" class="fillc" fill-opacity="1" stroke="var(--ink)" stroke-width="1.5"/><text x="410.0" y="132" class="sm b" text-anchor="middle">10 %</text><rect x="30" y="170" width="16" height="12" class="fillt" stroke="var(--ink)"/><text x="52" y="181" class="sm" text-anchor="start">lågt (kan prata)</text><rect x="160" y="170" width="16" height="12" class="fillc" fill-opacity=".45" stroke="var(--ink)"/><text x="182" y="181" class="sm" text-anchor="start">måttligt</text><rect x="260" y="170" width="16" height="12" class="fillc" stroke="var(--ink)"/><text x="282" y="181" class="sm" text-anchor="start">högt (intervaller)</text><text x="240" y="214" class="mut sm" text-anchor="middle">Schematiskt exempel på fördelning av träningstid</text></svg>`;
+FIGS.vo2_44 = `<svg viewBox="0 0 480 240" role="img" aria-label="Pulskurva för ett 4 gånger 4 minuters intervallpass"><path d="M50 25 V190 H460" class="thin"/><path d="M50 190.0 h-5" class="thin"/><text x="42" y="195.0" class="mut sm" text-anchor="end">50</text><path d="M50 126.0 h-5" class="thin"/><text x="42" y="131.0" class="mut sm" text-anchor="end">70</text><path d="M50 62.0 h-5" class="thin"/><text x="42" y="67.0" class="mut sm" text-anchor="end">90</text><path d="M50 62.0 H460" stroke="var(--ink-2)" stroke-width="1" stroke-dasharray="3 4" fill="none"/><path d="M50.0 190 v5" class="thin"/><text x="50.0" y="210" class="mut sm" text-anchor="middle">0</text><path d="M152.5 190 v5" class="thin"/><text x="152.5" y="210" class="mut sm" text-anchor="middle">10</text><path d="M255.0 190 v5" class="thin"/><text x="255.0" y="210" class="mut sm" text-anchor="middle">20</text><path d="M357.5 190 v5" class="thin"/><text x="357.5" y="210" class="mut sm" text-anchor="middle">30</text><path d="M460.0 190 v5" class="thin"/><text x="460.0" y="210" class="mut sm" text-anchor="middle">40</text><path d="M50.0 183.6 L101.2 151.6 L152.5 126.0 L154.6 119.6 L167.9 62.0 L193.5 52.4 L208.9 100.4 L224.2 119.6 L226.3 119.6 L239.6 62.0 L265.2 52.4 L280.6 100.4 L296.0 119.6 L298.0 119.6 L311.4 62.0 L337.0 52.4 L352.4 100.4 L367.8 119.6 L369.8 119.6 L383.1 62.0 L408.8 52.4 L424.1 142.0 L460.0 174.0" class="acc"/><text x="181.2" y="22" class="b sm" text-anchor="middle">1</text><text x="252.95" y="22" class="b sm" text-anchor="middle">2</text><text x="324.7" y="22" class="b sm" text-anchor="middle">3</text><text x="396.45" y="22" class="b sm" text-anchor="middle">4</text><text x="101.25" y="120" class="mut sm" text-anchor="middle">Uppvärmning</text><text x="460" y="176" class="mut sm" text-anchor="end">Nedvarvning</text><text x="255.0" y="232" class="mut sm" text-anchor="middle">Tid (minuter)</text><text transform="translate(14 110) rotate(-90)" class="mut sm" text-anchor="middle">% av maxpuls</text></svg>`;
+  BIG.push({
+    id: "B1", cat: "natur", ev: "starkt", type: "Fördjupning",
+    title: "Fusion: att tända en stjärna på jorden",
+    body: "Fusion är processen som driver solen, och forskare har försökt tämja den i över sjuttio år. Principen är väl förstådd och energin är enorm, men det är mycket svårt att hålla en gas på över hundra miljoner grader instängd tillräckligt länge. Här går vi igenom hur det fungerar, var forskningen står och vad som återstår.",
+    core: "Fusion är fysiskt möjlig och har gett rekordresultat, men ett fungerande kraftverk kräver fortfarande lösningar på material, bränsle och kostnad.",
+    src: "ITER Organization; Lawson, 1957 · Proc. Phys. Soc. B; Abu-Shawareb m.fl., 2024 · Physical Review Letters; Wesson, 2011 · Tokamaks"
+  });
+  BIGDEEP.B1 = [
+    "# Varför fusion är intressant",
+    "När två lätta atomkärnor slås ihop till en tyngre frigörs energi. Det är den process som får solen och andra stjärnor att lysa. Fusion gör det ingen annan energikälla gör: den ger mycket energi ur lite bränsle, släpper inte ut koldioxid under driften, kan styras av och på, och kan inte skena iväg som en kedjereaktion.",
+    "Siffrorna är svindlande. Ett gram av en blandning av deuterium och tritium, de två väteisotoper som är lättast att få att fusionera, ger omkring 340 gigajoule vid fullständig fusion. Det motsvarar energin i ungefär åtta ton olja. Ett kraftverk på en gigawatt elektrisk effekt skulle i teorin behöva några hundra kilo bränsle per år, där ett kolkraftverk av samma storlek eldar miljontals ton.",
+    "Så varför har vi inte fusionskraft redan? Svaret är att det är extremt svårt att få förutsättningarna att uppstå och hålla sig stabila på jorden. Resten av den här artikeln handlar om varför, och om hur långt forskningen faktiskt har kommit.",
+    "# Hur energin uppstår",
+    "Atomkärnor består av protoner och neutroner, som hålls ihop av den starka kraften. Det går åt energi att slita isär en kärna, och samma mängd frigörs när den bildas. Fysiker mäter detta som bindningsenergi per partikel. Den är inte lika stor för alla kärnor, och det är hela hemligheten.",
+    { fig: "fusion_be", cap: "Bindningsenergi per partikel för olika kärnor, ungefärliga värden. Kurvan stiger kraftigt för de lättaste grundämnena och når sitt maximum kring järn och nickel. Därför frigör fusion av lätta kärnor energi, medan fission av mycket tunga kärnor också gör det." },
+    "Kurvan stiger brant för de lättaste grundämnena och når sin topp kring järn och nickel, där kärnorna är hårdast sammanbundna. Flyttar du dig från de lätta kärnorna uppåt längs kurvan, mot järn, hamnar du i ett mer bundet tillstånd, och mellanskillnaden frigörs som energi. Det är fusion. Går du från de mycket tunga kärnorna, som uran, nedåt mot järn, frigörs också energi. Det är fission, den teknik som används i dagens kärnkraftverk.",
+    "Energin kommer från att den nya kärnans massa är något mindre än summan av de ursprungliga kärnornas. Skillnaden omvandlas till energi enligt Einsteins samband E = mc². I fusionen av deuterium och tritium försvinner knappt fyra tusendelar av massan, vilket räcker för 17,6 megaelektronvolt per reaktion.",
+    { fig: "fusion_dt", cap: "Den reaktion som är lättast att få igång: deuterium och tritium bildar helium-4 och en neutron. Heliumkärnan behåller en femtedel av energin och värmer plasmat, neutronen tar resten och lämnar plasmat." },
+    "# Varför det är så svårt",
+    "Atomkärnor är positivt laddade, och lika laddningar stöter bort varandra. För att två kärnor ska komma tillräckligt nära för att den starka kraften ska ta över måste de kastas mot varandra med enorm fart. Det betyder en mycket hög temperatur.",
+    "I solens centrum är det ungefär 15 miljoner grader. Det räcker ändå eftersom solen har tre saker som vi inte har: ofattbar mängd bränsle, ett enormt tryck från sin egen tyngd och miljarder år på sig. Reaktionerna är i själva verket mycket sällsynta för varje enskild proton. Per kubikmeter producerar solens kärna ungefär lika lite effekt som en komposthög.",
+    "På jorden vill vi ha en effekt som ger oss en kraftverksmängd i en liten volym. Det kräver att man väljer en reaktion som går mycket lättare, deuterium och tritium, och att man höjer temperaturen till omkring 100 till 150 miljoner grader. Vid sådana temperaturer är gasen ett plasma, där atomerna har slitits sönder i fria kärnor och elektroner.",
+    { box: "Bränslet: var kommer det ifrån?", text: "Deuterium finns i vanligt vatten, ungefär en deuteriumatom per 6 500 väteatomer, och kan utvinnas billigt. Tritium är radioaktivt med en halveringstid på drygt tolv år och finns knappt i naturen. Tanken är att framställa det i själva reaktorn genom att låta neutronerna från fusionen träffa litium i en mantel runt plasmat. Därför kallas litium också för ett av fusionens bränslen." },
+    "# Stjärnornas och människans fusion",
+    "Fusion i solen går i flera steg. Fyra väteatomkärnor, alltså protoner, slås ihop till en heliumkärna via en kedja där två protoner först måste omvandlas till neutroner. Det steget styrs av den svaga kraften och är så osannolikt att en enskild proton i solens centrum i genomsnitt väntar i miljarder år på att reagera. Solen lyser ändå eftersom den innehåller en nästan ofattbar mängd protoner. Tyngre stjärnor kan använda andra cykler där kol, kväve och syre hjälper till, men principen är samma.",
+    "Eftersom solens kedja är för långsam att utnyttja på jorden handlar all jordisk fusionsforskning om andra reaktioner. Deuterium och tritium är det mest realistiska valet, eftersom reaktionen går mycket snabbare än alternativen vid samma temperatur. Andra bränslen är i princip möjliga: deuterium med deuterium, eller helium-3, eller protoner med bor-11, som skulle ge nästan inga neutroner. De kräver ännu högre temperaturer och är därför längre bort från praktisk användning.",
+    "# Sjuttio år av försök",
+    "Att stjärnorna drivs av fusion förstod fysikerna på 1920- och 30-talen, bland annat genom arbeten av Arthur Eddington och Hans Bethe. Under 1950-talet började flera länder i hemlighet försöka efterlikna processen. Brittiska och amerikanska forskare byggde olika apparater, bland dem Lyman Spitzers stellarator i Princeton. Sovjetiska forskare, med Igor Tamm och Andrej Sacharov i spetsen, föreslog tokamaken.",
+    "Genombrottet kom 1968, när den sovjetiska T-3-tokamaken rapporterade temperaturer som var högre än något annat försök hade nått. Många västerländska forskare var skeptiska, så Storbritannien skickade över sin egen mätutrustning, och 1969 bekräftades resultaten. Därefter byggde nästan hela världen tokamaker. Europas JET startade 1983, och därefter följde en lång rad försök i USA, Japan, Frankrike och Kina. Under tiden utvecklades laserfusionen vid amerikanska laboratorier, och NIF stod klart 2009.",
+    "Utvecklingen har gått stadigt framåt. Trippelprodukten, det mått som visar hur nära man är brinnande plasma, har ökat flera tiopotenser sedan 1960-talet, i en takt som liknat datorernas utveckling. Det är en av anledningarna till att forskare är optimistiska, men det är också en påminnelse om att den svåraste delen av kurvan är kvar: övergången från en lyckad fysikanläggning till en lönsam kraftanläggning.",
+    "# Att hålla ihop plasmat",
+    "Ingen behållare tål 150 miljoner grader. Lösningen är att inte låta plasmat röra väggen alls. Det finns två huvudvägar.",
+    "Den första är magnetisk inneslutning. Plasmat består av laddade partiklar, som tvingas följa magnetfältens linjer. Genom att böja fältet till en ring kan man få partiklarna att cirkulera runt utan att nå väggen. Den vanligaste konstruktionen heter tokamak, ett ryskt ord, och ger ett magnetfält som är en kombination av fält från yttre spolar och en elektrisk ström i själva plasmat. En närbesläktad konstruktion, stellaratorn, använder bara yttre spolar med mycket komplicerad form. Den slipper därmed den ström som i tokamaken kan ge instabiliteter, men är svårare att bygga.",
+    { fig: "fusion_tokamak", cap: "Förenklat tvärsnitt av en tokamak. Spolarna (1 och 2) skapar fälten som håller plasmat (5) på plats i vakuumkärlet (4). Manteln (3) fångar neutronernas värme och skapar nytt tritium av litium. Verkliga reaktorer har fler delar, till exempel en värmeavledare längst ned." },
+    "Den andra vägen är tröghetsinneslutning. Där trycker man ihop en liten kapsel med bränsle så snabbt, med laserstrålar eller andra energikällor, att den fusionerar innan den hinner flyga isär. Det görs i korta pulser på en miljarddels sekund. Det största sådana försöket finns vid National Ignition Facility i USA.",
+    "# Hur man mäter framsteg",
+    "Det finns några centrala mått. Fysikern John Lawson visade 1957 att det krävs en kombination av tre saker: hög temperatur, hög täthet och att värmen stannar kvar tillräckligt länge i plasmat. Produkten av de tre kallas trippelprodukten, och för deuterium och tritium finns ett lägsta värde som måste överskridas för att reaktionen ska kunna bära sig själv.",
+    "I vardagen pratar man oftare om förstärkningsfaktorn Q, alltså den fusionseffekt som produceras delat med den värmeeffekt som tillförs plasmat. När Q är 1 har man nått break-even i fysikalisk mening. Över 1 ger plasmat mer energi än man matar in. Om Q blir tillräckligt högt värms plasmat i huvudsak av heliumkärnorna från fusionen själva, och man talar om ett brinnande plasma.",
+    { fig: "fusion_q", cap: "Q är skalad logaritmiskt. Det gäller fusionsenergi i förhållande till uppvärmning av plasmat, inte till hela anläggningens elförbrukning. Ett kraftverk måste därför ligga långt över 1 för att räkna hem sin egen energibalans." },
+    "Det har hänt mycket. Den europeiska forskningsreaktorn JET i England nådde 1997 cirka 16 megawatt fusionseffekt med ett Q på ungefär 0,67, vilket var rekord i decennier. I sina sista försök 2023 producerade JET 69 megajoule under fem sekunder, ett nytt rekord för energi, men fortfarande med Q under 1. Under 2025 rapporterade Kina och Frankrike plasmapulser på nästan arton minuter i EAST och drygt tjugo minuter i WEST. Det är viktigt för att visa att anläggningar kan köras länge, men pulserna gjordes utan tritium och på låg effekt.",
+    "Vid National Ignition Facility fick man i december 2022 ut ungefär 3,15 megajoule fusionsenergi ur en kapsel som träffats av 2,05 megajoule laserljus. Det var första gången någon fick ut mer energi än laserljuset som träffade kapseln. Senare försök har gett flera gånger högre utbyte. Men lasrarna själva drog under omkring 300 megajoule el för att leverera den ljusenergin, och försöket kan göras ungefär en gång per dag. Det är ett genombrott i fysik, men en lång väg från kraftverk.",
+    "# ITER och vägen mot kraftverk",
+    "ITER är världens största fusionsprojekt. Det byggs i södra Frankrike av ett samarbete mellan Europa, Kina, Indien, Japan, Sydkorea, Ryssland och USA. Målet är en tokamak som ska ge 500 megawatt fusionseffekt från 50 megawatt uppvärmning (Q lika med 10) i pulser på flera hundra sekunder. ITER ska inte producera el, utan visa att tekniken fungerar i den skalan. Projektet har blivit kraftigt försenat och dyrare än planerat. Enligt den senaste tidsplanen ska forskningsdriften starta i mitten av 2030-talet, med fusion med deuterium och tritium i slutet av årtiondet. Kostnaden uppskattas till flera tiotal miljarder euro.",
+    "Parallellt har en ny våg av företag dykt upp. Flera satsar på kraftiga supraledande magneter av en ny typ, som kan ge ett starkare fält och därmed en mindre reaktor. Commonwealth Fusion Systems i USA testade 2021 en sådan magnet på omkring 20 tesla och bygger sin demonstrationsreaktor SPARC, som enligt företagets plan ska nå Q över 1 i slutet av 2020-talet. Tyska Wendelstein 7-X är en stellarator som visat lovande resultat för långa pulser. Många av företagens tidsplaner är ambitiösa och ännu inte prövade, så det är klokt att läsa dem som mål och inte som löften.",
+    "# Starkare magneter ger mindre reaktorer",
+    "Ett skäl till att fusionen länge verkade kräva gigantiska anläggningar är att plasmats fusionseffekt per volym växer mycket snabbt med magnetfältets styrka. Vid i övrigt samma förhållanden växer den ungefär med fältet upphöjt till fyra. Fördubblar du fältet kan du, grovt räknat, få sexton gånger mer effekt ur samma volym, eller bygga en betydligt mindre reaktor med samma effekt.",
+    "Därför har supraledande magneter av en ny typ, så kallade högtemperatursupraledare, väckt så mycket intresse. De klarar högre magnetfält och kan kylas med mindre extrema metoder än äldre typer. Flera företag och forskargrupper har byggt prototyper. Det är en teknik som ännu inte har prövats i en fungerande fusionsreaktor, men den förändrar kalkylen om hur stor en reaktor måste vara.",
+    "# Från värme till el",
+    "Även när plasmat producerar mer energi än det tar emot återstår en lång kedja av förluster. Fusionsenergin kommer ut som värme i manteln. Värmen ska driva en ånga som sedan snurrar en turbin, och ett vanligt ångkraftverk omvandlar i bästa fall omkring en tredjedel till 40 procent av värmen till el. Samtidigt förbrukar magneter, pumpar, kylning och uppvärmningssystem en stor del av elen. Ett kraftverk måste därför ha ett mycket högre Q än 1 för att leverera mer el än det själv förbrukar.",
+    "Det är också en annan fråga hur fusionen skulle passa i elsystemet. Tanken är att den ska leverera pålitlig effekt dygnet runt, som komplement till sol och vind. Men sol och vind har blivit så billiga att fusionen måste kunna konkurrera med dem plus lagring. Kostnaden är därför en avgörande fråga, vid sidan av tekniken.",
+    "# Hindren som återstår",
+    "Att nå Q över 1 är bara ett första steg. Ett kraftverk har flera ytterligare problem att lösa.",
+    { list: [
+      "Material. Neutronerna från deuterium–tritium-fusionen bär 14 MeV och slår sönder kristallstrukturen i väggmaterialet. Material som tål det i många år finns ännu inte testade i full skala.",
+      "Tritium. Reaktorn måste skapa mer tritium än den förbrukar, och det kräver en mantel som fungerar nära perfekt. Idag finns uppskattningsvis bara några tiotal kilo tritium i världen, så startbränslet är också en begränsning.",
+      "Värmeavledning. Värmen som lämnar plasmat koncentreras till ett litet område i reaktorns botten, där belastningen kan likna den på ett rymdfarkostens värmesköld.",
+      "Stabilitet. Plasmat kan plötsligt förlora inneslutningen i en så kallad disruption, som skadar kärlet. Det måste kunna förutsägas och undvikas.",
+      "Ekonomi. Komponenterna är avancerade och dyra. För att fusionskraft ska konkurrera med sol, vind, batterier och kärnkraft måste kostnaden bli låg, vilket ingen ännu har visat."
+    ] },
+    "# Säkerhet och avfall",
+    "Fusion kan inte få en skenande kedjereaktion eller härdsmälta. Om något går fel kyls plasmat ned och reaktionen avstannar, eftersom förhållandena är så svåra att upprätthålla. Bränslemängden i reaktorn vid ett givet tillfälle är bara några gram i plasmat.",
+    "Fusion är däremot inte helt utan radioaktivt avfall. Neutronerna gör kärlets material radioaktivt, och tritium är radioaktivt. Men avfallet innehåller inte de långlivade ämnen som kärnkraftens använda bränsle gör, och det mesta uppskattas bli ofarligt inom ett par hundra år, om rätt material väljs. Det är fortfarande avfall som måste hanteras och en kostnad som måste räknas in.",
+    "# Så läser du rubrikerna",
+    "Fusionsnyheter är ofta spännande men kan vara vilseledande. Några frågor hjälper dig bedöma dem.",
+    { list: [
+      "Vad är Q? Ett Q över 1 i plasmat betyder inte att anläggningen producerar nettoel. Det är olika mått.",
+      "Hur länge varade det? Rekord för energi och rekord för varaktighet är olika rekord, och de har sällan nåtts samtidigt.",
+      "Användes tritium? Många långa pulser görs med vanligt väte eller deuterium, som är lättare att hantera men ger mycket lägre energi.",
+      "Vem säger det? Företagens egna tidsplaner är inte oberoende bedömningar. Titta efter oberoende granskade publikationer.",
+      "Vad är nästa steg? Seriösa projekt har ett tydligt nästa steg och redovisar vad som är olöst."
+    ] },
+    "# Sammanfattning",
+    { list: [
+      "Fusion frigör energi eftersom lätta kärnor blir hårdare bundna när de slås ihop.",
+      "På jorden används deuterium och tritium vid omkring 100 till 150 miljoner grader, och plasmat måste hållas borta från väggarna med magnetfält eller extremt snabba pulser.",
+      "Q mäter förhållandet mellan fusionseffekt och uppvärmningseffekt. Rekorden hittills ligger runt eller strax under 1 för magnetisk inneslutning, och över 1 vid laserförsök, men utan att anläggningen nettoproducerar energi.",
+      "Hindren är material, tritiumförsörjning, värmeavledning, stabilitet och kostnad.",
+      "Fusion kan bli en viktig energikälla, men tidpunkten är osäker. Läs rubrikerna kritiskt."
+    ] }
+  ];
+  BIG.push({
+    id: "B2", cat: "finans", ev: "blandat", type: "Fördjupning",
+    title: "Teknisk analys: att läsa prisgrafer, och hur mycket du kan lita på dem",
+    body: "Teknisk analys försöker förutsäga prisrörelser genom att studera kursdiagram och handelsvolym, utan att bry sig om bolagets bokslut. Metoden är populär bland traders och omdebatterad bland forskare. Här går vi igenom grunderna, vad forskningen säger och hur du kan använda verktygen utan att lura dig själv.",
+    core: "Teknisk analys kan hjälpa dig strukturera beslut och risk, men bevisen för att den ger lönsamma förutsägelser efter kostnader är blandade.",
+    src: "Brock, Lakonishok & LeBaron, 1992 · Journal of Finance; Park & Irwin, 2007 · Journal of Economic Surveys; Lo, Mamaysky & Wang, 2000 · Journal of Finance; Neely m.fl., 2014 · Management Science"
+  });
+  BIGDEEP.B2 = [
+    "# Vad teknisk analys är",
+    "Det finns två traditionella sätt att analysera en aktie. Fundamental analys värderar bolaget utifrån vinst, tillväxt, skulder och framtidsutsikter. Teknisk analys bortser från bolaget och läser i stället själva kursutvecklingen och handeln. Utgångspunkten är att allt som är känt redan finns i priset, att priser tenderar att röra sig i trender, och att historien i viss mån upprepar sig eftersom människor beter sig på liknande sätt.",
+    "Idéerna har gamla rötter. Journalisten Charles Dow, som var med och grundade Wall Street Journal och Dow Jones-indexet, skrev kring år 1900 om hur marknader rör sig i vågor, och hans tankar kallas idag Dow-teorin. Japanska risgrossister använde enligt traditionen ljusstakediagram redan på 1700-talet. Många av dagens vanligaste indikatorer, som RSI och MACD, kom på 1970-talet.",
+    "Det här är information om hur metoden fungerar och vad forskningen visar, inte finansiell rådgivning. Handel med värdepapper kan ge förluster.",
+    "# Att läsa ett diagram: ljusstakar",
+    "Det vanligaste diagrammet visar kursen som ljusstakar. Varje stake visar en tidsperiod, till exempel en dag, och fyra kurser: öppning, stängning, högsta och lägsta. Kroppen sträcker sig mellan öppnings- och stängningskurs, och de tunna vekarna visar hur högt och lågt kursen var under perioden. Ofta färgas stigande perioder grönt och fallande rött, men färgerna är en konvention och kan vara omvända.",
+    { fig: "ta_candle", cap: "Anatomin hos en ljusstake. En lång veke åt ena hållet säger att kursen försökte åt det hållet men vände tillbaka. Kroppens längd visar hur mycket kursen rörde sig mellan öppning och stängning." },
+    "På en ljusstake går det att utläsa mer än på en enkel linje. Små kroppar och långa vekar visar tvekan, långa kroppar visar att köparna eller säljarna hade kontrollen under perioden. Handlare har gett många mönster egna namn, som hammare, dojis och slukande ljus. Hur mycket sådana mönster faktiskt säger om framtiden är en av de saker vi återkommer till.",
+    "# Trend, stöd och motstånd",
+    "Det mest grundläggande begreppet är trend. En uppåtgående trend innebär att varje topp och dal ligger högre än den förra, en nedåtgående att de ligger lägre. Tumregeln är att trenden håller tills den bryts. Man brukar rita en trendlinje genom dalarna i en uppgång eller topparna i en nedgång.",
+    "Två andra begrepp är stöd och motstånd. Ett stöd är en prisnivå där kursen tidigare har vänt uppåt, eftersom köpare stått redo. Ett motstånd är en nivå där den vänt nedåt, eftersom säljare har dykt upp. Förklaringen är psykologisk: den som köpte på toppen och sedan fick sitta med förlust vill gärna sälja när kursen kommer tillbaka dit. När kursen passerar en sådan nivå talar man om ett utbrott, och nivån brukar då byta roll. Det gamla motståndet blir ett nytt stöd.",
+    { fig: "ta_sr", cap: "Illustration med en påhittad kurva. Kursen studsar mellan stöd och motstånd, bryter igenom och återvänder för att testa den gamla nivån, som nu fungerar som stöd." },
+    "Utbrott är dock opålitliga. Många ser ut som utbrott men visar sig vara falska och vänder tillbaka. Därför väntar många på bekräftelse, till exempel att kursen stänger över nivån och att handelsvolymen är hög.",
+    "# Volym och glidande medelvärden",
+    "Volymen, alltså hur många aktier som handlas, används för att bedöma hur mycket styrka som ligger bakom en rörelse. Ett utbrott med hög volym anses mer trovärdigt än ett med låg. Volymen visar också när ett intresse växer eller dör ut.",
+    "Det vanligaste verktyget är glidande medelvärden. Ett enkelt glidande medelvärde är genomsnittet av de senaste, säg, 50 stängningskurserna, och det beräknas om för varje ny dag. Det jämnar ut bruset och visar trendens riktning. Ett kortare medelvärde reagerar snabbare, ett längre är lugnare.",
+    "Många använder två medelvärden tillsammans. När det korta korsar det långa uppifrån räknas det som en säljsignal, och när det korsar nedifrån som en köpsignal. Kombinationen 50 och 200 dagar har fått egna namn: guldkorset, när det korta går över det långa, och dödskorset åt andra hållet.",
+    { fig: "ta_ma", cap: "Påhittad kurva med ett kort och ett långt glidande medelvärde. Siffrorna markerar där de korsar varandra. Notera att korsningarna kommer efter att rörelsen redan har börjat: medelvärden släpar efter." },
+    "Det är viktigt att se vad figuren visar. Medelvärdena följer kursen med fördröjning, så signalen kommer först när en stor del av rörelsen redan skett. I trendande marknader fungerar det bra. När kursen går i sidled ger korsningarna många falska signaler, som kostar avgifter och småförluster.",
+    "# Ljusstakemönster: vad är värt att veta?",
+    "Handlare har gett många ljusstakemönster namn. En hammare har en liten kropp och en lång nedre veke och anses kunna signalera att säljarna tappat greppet efter en nedgång. En doji, där öppning och stängning ligger nästan lika, visar att köpare och säljare höll balans. Ett slukande ljus är ett ljus vars kropp helt täcker föregående ljus och sägs visa att tryck byter sida.",
+    "Tanken bakom dem är begriplig, men de är svåra att pröva vetenskapligt. Studier av ljusstakemönster har gett blandade resultat. Några fann att vissa mönster kunde ge liten förutsägelsekraft på vissa marknader och perioder, andra fann ingen effekt efter kostnader. Eftersom mönstren är många, definitionerna vaga och man kan hitta exempel på nästan allt i efterhand, är risken stor att man ser det man letar efter.",
+    "# Tidsramar och flera tittar",
+    "Ett diagram med minutstaplar ser helt annorlunda ut än ett med veckostaplar, och en nedgång på en timme kan vara ett litet hack i en lång uppgång. Många analytiker börjar därför med den längre tidsramen för att se den övergripande trenden, och går sedan ner till kortare för att välja tidpunkt. Det är inget magiskt, men det minskar risken att man går emot en större rörelse.",
+    "Kortare tidsramar har dessutom mer brus och högre kostnader, eftersom varje affär kostar spread och courtage. Det är en av anledningarna till att forskningen om kortsiktig handel ser sämre ut än den om långsiktiga trender.",
+    "# Momentum: det mest stödda resultatet",
+    "Det finns en tydlig beröringspunkt mellan teknisk analys och akademisk forskning. Narasimhan Jegadeesh och Sheridan Titman visade 1993 att aktier som gått bra de senaste tre till tolv månaderna tenderar att fortsätta gå bättre än aktier som gått dåligt under de följande månaderna. Fenomenet kallas momentum och har hittats på många marknader och i många tillgångsslag. Tobias Moskowitz, Yao Hua Ooi och Lasse Pedersen visade 2012 att även enskilda tillgångar tenderar att fortsätta i sin egen riktning över månader, så kallat tidsseriemomentum.",
+    "Det betyder inte att trendföljande metoder alltid fungerar. Momentum kan drabbas av kraftiga och plötsliga förluster när marknaden vänder, till exempel efter en kris. Och en del av vinsten kan försvinna när man räknar in kostnader och skatt. Men det är ett av få mönster som överlevt många decenniers granskning, och det gör att trendföljande tekniska metoder har bättre stöd än mönsterläsning och exotiska indikatorer.",
+    "# Fibonacci, Elliott och andra läror",
+    "Det finns tekniska skolor som går längre. Fibonacci-nivåer använder förhållanden som 38,2 och 61,8 procent för att peka ut var en rörelse kan vända. Elliottvågor hävdar att marknader rör sig i återkommande vågmönster med fem uppåtgående och tre nedåtgående vågor. Sådana läror är populära, men de bygger oftast på subjektiva tolkningar, där en analytiker kan räkna vågorna på flera olika sätt, och det finns knappt några solida bevis för att de fungerar. Mycket talar för att de fungerar främst genom att de ger en berättelse som passar efteråt.",
+    "# Indikatorer: RSI och MACD",
+    "Indikatorer är formler som räknas ut från kursen och ritas under diagrammet. Två av de mest kända är RSI och MACD.",
+    "RSI, relative strength index, utvecklades av J. Welles Wilder och presenterades 1978. Den jämför hur mycket kursen stigit på dagar med uppgång med hur mycket den fallit på dagar med nedgång, vanligtvis över 14 perioder, och skalar resultatet från 0 till 100. Tumregeln är att värden över 70 betyder att aktien kan vara överköpt och värden under 30 att den kan vara översåld. Men i en stark trend kan RSI ligga högt länge, så det är ingen automatisk säljsignal.",
+    "MACD, moving average convergence divergence, utvecklades av Gerald Appel under samma period. Den jämför två glidande medelvärden och visar hur avståndet mellan dem förändras, vilket ger en bild av trendens styrka. Liksom medelvärden följer den kursen med fördröjning.",
+    "Alla indikatorer bygger på samma underlag, kursen och volymen. Att lägga till fler indikatorer ger därför sällan mycket ny information, bara intrycket av fler bekräftelser. En vanlig fälla är att samla så många att man alltid kan hitta någon som stöder det man redan bestämt sig för.",
+    "# Vad säger forskningen?",
+    "Frågan om teknisk analys fungerar har studerats länge, och svaret är inte entydigt. Den effektiva marknadshypotesen, som ekonomen Eugene Fama formulerade 1970, säger i sin starka form att kurser redan innehåller all tillgänglig information, och att man därför inte systematiskt kan tjäna på att läsa gamla kurser.",
+    "Redan på 1960- och 70-talen fann många studier att enkla regler inte slog en strategi att bara köpa och behålla. Men 1992 publicerade William Brock, Josef Lakonishok och Blake LeBaron en uppmärksammad studie där de testade enkla regler med glidande medelvärden och prisintervall på Dow Jones-indexet under nittio år, och fann att signalerna hade förutsägande kraft. Senare studier har dock fört fram invändningar: kostnader för handel kan äta upp vinsten, och metoderna fungerar ofta sämre på nyare data. En genomgång av Cheol-Ho Park och Scott Irwin 2007 av studier från perioden efter 1960-talet fann att omkring sextio procent visade lönsamma resultat, men att många hade metodproblem, som att man valt regler i efterhand.",
+    "Andrew Lo, Harry Mamaysky och Jiang Wang använde 2000 en datorbaserad metod för att identifiera klassiska mönster som huvud och axlar och fann att vissa mönster innehöll viss information om framtida kurser. Effekten var liten. Neely med kollegor visade 2014 att tekniska indikatorer hade lika bra eller bättre förmåga än ekonomiska nyckeltal att förutsäga avkastningen på amerikanska aktier över en månad, och att de var starkast under lågkonjunkturer. Samtidigt har andra studier visat att tekniska regler som tidigare fungerat har försvunnit efter att de blev kända.",
+    { box: "Sammantaget", text: "Det finns studier som stöder tekniska signaler, särskilt trendföljande, och studier som inte gör det. Metodproblemen är många, och effekterna är oftast små jämfört med handelskostnader. Det är rimligt att se teknisk analys som ett verktyg med blandat vetenskapligt stöd snarare än som en säker metod." },
+    "# Fallgropar",
+    "Även om en teknisk regel skulle fungera finns flera sätt att lura sig själv.",
+    { list: [
+      "Mönster i slumpen. Människor ser mönster i brus. Slumpmässiga kurvor ser ofta ut som verkliga kurvor med trender och formationer. Det är lätt att peka ut mönstret i efterhand.",
+      "Överanpassning. Om du testar hundra regler på gammal data kommer några att se bra ut av ren slump. Det kallas datautvinning, och en regel som fungerat historiskt behöver inte fungera framåt.",
+      "Efterklokhet. I ett färdigt diagram ser allt självklart ut. Den svåra delen är att fatta beslutet innan du vet hur det slutar.",
+      "Självuppfyllande profetior. Om många tittar på samma nivå kan det påverka priset, men effekten är svår att förlita sig på och kan försvinna.",
+      "Kostnader. Courtage, spreadar och skatt påverkar mer ju oftare du handlar. Studier av privatpersoner visar att de som handlar mest ofta får sämst resultat."
+    ] },
+    "# Riskhantering är den användbara delen",
+    "Även forskare som är skeptiska till signalerna brukar peka på att tekniska verktyg kan användas för att strukturera risk. Det mest praktiska är att bestämma i förväg hur mycket man kan förlora på en affär.",
+    "En vanlig metod är att räkna i R. Ett R är det belopp du är beredd att förlora på en affär, till exempel en procent av ditt handelskapital. Du bestämmer vid vilken kurs du ger upp, ett stop, och räknar baklänges hur många aktier du kan köpa så att förlusten vid stoppet blir ett R. Sedan ställer du upp ett mål som är minst två gånger så långt bort som stoppet.",
+    { fig: "ta_risk", cap: "Risk och belöning i R. Om stoppet ligger ett R under inköpet och målet två R över behöver du ha rätt i minst en av tre affärer för att gå jämnt upp, före kostnader. Tänk på att stopp kan hoppas över vid kraftiga kursgap." },
+    "Räknestycket är enkelt. Om du riskerar ett R och siktar på två R behöver du, utan kostnader, vinna en affär på tre för att gå jämnt upp. Men det beror på att du faktiskt följer planen, och att dina stopp utlöses på den kurs du tänkt. Så fungerar det sällan perfekt, särskilt för aktier som rör sig snabbt över natten.",
+    "# Hur man testar en regel på riktigt",
+    "Om du vill veta om en regel har något värde behöver du en ordentlig test, som kallas backtest. Det går ut på att ta historiska data och se hur regeln hade klarat sig. Men det är lätt att göra fel, och därför är det värt att veta hur man gör rätt.",
+    { list: [
+      "Bestäm regeln i förväg. Skriv ner exakt när du köper och säljer innan du tittar på resultatet.",
+      "Dela upp data. Utveckla regeln på en del av data och pröva den på en del du inte har sett.",
+      "Räkna med kostnader. Dra av courtage, spread och skatt för varje affär.",
+      "Titta på många marknader och perioder. En regel som bara fungerar på en aktie under ett par år är troligen tur.",
+      "Räkna antalet försök. Om du provat femtio varianter bör du vara skeptisk till den bästa, eftersom den med stor sannolikhet bara råkade passa historien.",
+      "Räkna med att resultaten blir sämre i verkligheten än i testet."
+    ] },
+    "Forskare har visat att det är mycket vanligt att regler som ser lovande ut i ett backtest inte fungerar framåt, just för att man hittat dem genom att leta bland många alternativ. Det kallas överanpassning, och det är den viktigaste anledningen till att man ska vara försiktig med att tro på lysande historiska resultat, även sina egna.",
+    "# Om du vill pröva själv",
+    { list: [
+      "Börja på papper. Skriv ner varje affär du skulle ha gjort, med skäl, stop och mål, och följ upp utan att riskera pengar.",
+      "För en loggbok. Notera varför du gjorde varje affär och hur du kände dig. Läs den efter några månader.",
+      "Testa på data du inte använde för att hitta regeln. En regel som bara fungerar på de data den formades på har ingen känd förutsägelseförmåga.",
+      "Räkna med alla kostnader. Courtage, spread och skatt, och jämför resultatet med att äga en bred indexfond under samma tid.",
+      "Håll insatserna små tills du har bevis. De flesta privatpersoner som handlar aktivt tjänar inte mer än index efter kostnader."
+    ] },
+    "# Sammanfattning",
+    { list: [
+      "Teknisk analys läser kurs och volym för att hitta trender, nivåer och signaler.",
+      "Verktyg som ljusstakar, stöd och motstånd, glidande medelvärden, RSI och MACD bygger alla på samma kursdata.",
+      "Forskningen är blandad. Vissa studier visar svag förutsägelseförmåga, men många effekter försvinner efter handelskostnader eller på ny data.",
+      "Största riskerna är att se mönster i slumpen, att överanpassa och att handla för ofta.",
+      "Det mest hållbara värdet är ofta riskhanteringen: bestäm i förväg vad du kan förlora och följ planen.",
+      "Detta är allmän information och inte finansiell rådgivning."
+    ] }
+  ];
+  BIG.push({
+    id: "B3", cat: "kropp", ev: "starkt", type: "Fördjupning",
+    title: "Så ökar du din VO₂max: vad som fungerar och hur du lägger upp träningen",
+    body: "VO₂max, kroppens högsta syreupptagning, är ett av de bästa måtten på konditionen och hänger starkt ihop med hälsa och livslängd. Den går att förbättra i nästan alla åldrar. Här går vi igenom vad den är, varför den spelar roll, vilka träningsformer forskningen stödjer och hur du kan lägga upp tolv veckor.",
+    core: "Kombinera mycket lugn träning med ett eller två riktigt hårda intervallpass i veckan, ge dig tid och räkna med att resultaten varierar mellan personer.",
+    src: "Kodama m.fl., 2009 · JAMA; Mandsager m.fl., 2018 · JAMA Network Open; Helgerud m.fl., 2007 · Medicine & Science in Sports & Exercise; Seiler & Kjerland, 2006 · Scandinavian Journal of Medicine & Science in Sports; Montero & Lundby, 2017 · Journal of Physiology"
+  });
+  BIGDEEP.B3 = [
+    "# Vad VO₂max är",
+    "VO₂max är den största mängd syre som din kropp kan ta upp och använda per minut under hård ansträngning. Den anges oftast i milliliter syre per kilo kroppsvikt och minut (ml/kg/min). Siffran säger hur stor motor kroppen har för uthållig arbetsförmåga.",
+    "Som riktmärke ligger otränade unga vuxna ofta någonstans runt 35 till 45 ml/kg/min för män och något lägre för kvinnor. Vältränade motionärer kan ligga på 50 till 60, och de bästa uthållighetsidrottarna på 70 till 85 eller mer. De högsta uppmätta värdena ligger över 90. Siffrorna sjunker normalt med åldern, och de skiljer sig mellan metoder och laboratorier, så ta dem som ungefärliga.",
+    "# Varför den spelar roll för hälsan",
+    "Konditionen är en av de starkaste faktorer som forskare har kunnat koppla till hur länge människor lever. En sammanställning från 2009 i tidskriften JAMA, av 33 studier med omkring 100 000 deltagare, fann att varje steg på ett MET högre kondition, ungefär 3,5 ml/kg/min, hängde ihop med 13 procent lägre risk att dö i förtid och 15 procent lägre risk för hjärt-kärlsjukdom.",
+    "En stor studie vid Cleveland Clinic med drygt 120 000 patienter, publicerad 2018, visade att den som hade bäst kondition hade betydligt lägre risk att dö än den som hade sämst, och att det inte fanns någon tydlig övre gräns där nyttan upphörde. Låg kondition var en lika stor eller större riskfaktor för förtida död än rökning, diabetes och kranskärlssjukdom.",
+    "Det är viktigt att komma ihåg att det rör sig om observationsstudier. Den som är sjuk kan ha svårare att träna, vilket ger en omvänd orsakskedja, och den som tränar har ofta även andra hälsosamma vanor. Men effekten är stor, förekommer i många grupper, och träningsstudier visar att konditionen går att förbättra och att det ger mätbara hälsovinster.",
+    "# Vad som bestämmer VO₂max",
+    "Syret måste ta sig från luften till musklernas mitokondrier, cellernas kraftverk. Kedjan går via lungor, hjärta, blod och muskler. Hos friska personer är det oftast hjärtats förmåga att pumpa ut syrerikt blod som sätter taket, medan musklernas förmåga att ta upp och använda syre är den andra stora delen.",
+    { fig: "vo2_fick", cap: "Syrets väg. Maximal minutvolym, alltså hur mycket blod hjärtat kan pumpa per minut, är den faktor som oftast begränsar hos friska. Uthållighetsträning ökar både hjärtats slagvolym och musklernas förmåga att använda syret." },
+    "En stor del av skillnaderna mellan människor är ärftlig. Studier av släktingar och tvillingar tyder på att kanske hälften av variationen i VO₂max kan förklaras av gener. Hur mycket man förbättras av träning varierar också mycket. I den amerikanska HERITAGE-studien, där hundratals personer tränade i tjugo veckor, ökade VO₂max i genomsnitt med omkring en femtedel, men spridningen var stor: några ökade nästan ingenting och andra mycket mer.",
+    "Det betyder inte att vissa personer är hopplösa. Forskarna Montero och Lundby visade 2017 att personer som inte svarade på en lågdosträning ändå svarade när mängden träning ökade, och när de lade till intensivare pass. Om förbättringen uteblir är det alltså rimligt att pröva mer träning eller en annan blandning, snarare än att ge upp.",
+    "# Vad som händer i kroppen",
+    "När du tränar uthållighet över veckor och månader anpassas flera delar av kroppen. Hjärtat blir större och kan fylla sig med mer blod mellan slagen, så att varje slag pumpar ut mer, vilket är den viktigaste förändringen för VO₂max. Blodvolymen ökar, vilket ger hjärtat mer att pumpa med. I musklerna bildas fler små blodkärl, kapillärer, och fler och större mitokondrier, vilket gör att syret kan nå fram och användas effektivare.",
+    "Anpassningarna tar olika lång tid. De första veckorna förbättras ofta blodvolymen snabbt. Musklernas anpassning, med fler mitokondrier och kapillärer, tar längre tid. En ny motionär kan förvänta sig märkbar förbättring av kondition och hur tungt ett visst tempo känns efter några veckor, och större förändringar i VO₂max efter flera månader. De första månaderna går det snabbast, och sedan planar förbättringen ut.",
+    "# Börja där du är",
+    "Det finns ingen särskild aktivitet som måste göras. Det som gäller är att det aktiverar stora muskelgrupper och höjer pulsen under längre stunder: löpning, cykling, simning, rodd, längdskidor, raska promenader i backe eller styrka i cirkelform kan alla fungera. Välj det du kommer att fortsätta med och som din kropp tål.",
+    "För den som är helt otränad är en tydlig förbättring möjlig redan med raska promenader. Ett vanligt mål är att nå det som hälsomyndigheter rekommenderar, minst 150 minuter måttlig aktivitet i veckan eller 75 minuter hård, och sedan bygga vidare därifrån. Rekommendationerna är en lägsta nivå, och studier tyder på att fler minuter ger ytterligare hälsovinster, även om nyttan växer allt långsammare.",
+    "# Åldern spelar roll, men inte så mycket som man tror",
+    "VO₂max sjunker med åldern. Hos stillasittande personer sjunker den typiskt med någonstans kring tio procent per decennium efter 30 till 40 års ålder. Hos dem som fortsätter träna hårt brukar nedgången vara ungefär hälften så snabb. Studier av äldre som börjat träna visar att de kan förbättra VO₂max rejält, även om kroppens maximum är lägre än hos de unga.",
+    "# Metod 1: mycket lugn träning",
+    "De flesta uthållighetsidrottare lägger största delen av sin träningstid på låg intensitet, där man kan föra ett samtal. Pass på 30 till 90 minuter ger en stor träningsmängd utan att kroppen blir överbelastad, och bygger en bas av kapillärer, mitokondrier och ett hjärta med större slagvolym. Dessutom tål kroppen mycket mer lugn träning än hård.",
+    "För den som är otränad och vill förbättra sin kondition räcker ofta lugna pass tre till fyra dagar i veckan, och det är en bra utgångspunkt. Det du vinner i VO₂max den vägen kommer långsamt, men utan stor skaderisk.",
+    "# Metod 2: intervaller",
+    "Det som tydligast höjer VO₂max på kort tid är träning med hög intensitet, där hjärtat belastas nära max. Principen är att arbeta några minuter i taget i det tempo man bara klarar några minuter, med vila däremellan.",
+    "Den mest studerade formen är 4 × 4. Man värmer upp, kör fyra intervaller på fyra minuter med en puls på ungefär 85 till 95 procent av maxpulsen, och vilar tre minuter med lugn rörelse emellan. I en norsk studie av Helgerud och kollegor från 2007 förbättrades konditionen med omkring sju procent efter åtta veckor med tre pass i veckan, mer än hos grupperna som tränade lugnt eller i jämn tröskelfart. Andra upplägg, som 30 sekunder hårt följt av 15 sekunder vila, eller korta intervaller på en minut, har också visats fungera.",
+    { fig: "vo2_44", cap: "Pulsen under ett 4 × 4-pass. Efter uppvärmning ligger pulsen kring 90 procent av maxpulsen under de fyra intervallerna och faller under vilan, och efter sista intervallen varvar man ned." },
+    "Flera sammanställningar av studier har jämfört intervallträning med jämn medelintensiv träning. Intervallerna ger i regel en lite större förbättring av VO₂max, och ofta på kortare träningstid, men skillnaderna är måttliga, och båda formerna fungerar. Intervallpass är också jobbigare, ger mer muskel- och ledbelastning och passar sämre för den som är otränad eller har sjukdomar. Det finns också studier där deltagare haft svårare att hålla fast vid mycket hård träning över tid.",
+    "# Metod 3: polariserad träning",
+    "Idrottsforskaren Stephen Seiler beskrev 2006 hur många av de bästa uthållighetsutövarna fördelar sin träning. Ungefär 75 till 80 procent av passen görs lugnt, ungefär 15 till 20 procent hårt, och mycket lite mellanintensivt. Man kallar det polariserad träning. Det finns ingen tydlig fördelning som är bäst för alla, men en studie 2014 av Stöggl och Sperlich på vältränade uthållighetsidrottare fann att en polariserad grupp förbättrade sin VO₂max mest efter nio veckor, jämfört med grupper som tränade mer på tröskelnivå eller med högre mängd hård träning.",
+    { fig: "vo2_dist", cap: "Schematisk jämförelse. I det polariserade upplägget är det mesta lugnt och en mindre del riktigt hårt. Mittenträning, där man ofta ligger på en måttlig men ansträngande nivå, blir ofta jobbig utan att vara vare sig lugn eller hård nog." },
+    "Det är värt att lägga märke till hur lätt det är att hamna i mitten. Vardagsträning som är lite för hård för att vara lugn och lite för lugn för att vara riktigt hård gör att man blir trött och inte får full effekt av intervallerna. Därför är det vanligaste rådet att skilja tydligt: lugnt ska vara lugnt, och hårt ska vara hårt.",
+    "# Det som hjälper på sidan",
+    { list: [
+      "Styrketräning. Den höjer inte VO₂max direkt, men förbättrar löp- och cykelekonomi, skyddar mot skador och bevarar muskelmassa med åldern.",
+      "Sömn och återhämtning. Anpassningen sker under vilan. Brist på sömn och för många hårda pass i rad ger sämre resultat och ökar risken för överträning.",
+      "Kroppsvikt. VO₂max anges per kilo, så minskad fettmassa höjer värdet, men svält gör inte det. Fokusera på ork och matintag som stödjer träningen.",
+      "Höjd. Träning på hög höjd kan ge en liten förbättring hos eliten men effekten är omdiskuterad, och den är inte något att räkna med för de flesta motionärer.",
+      "Regelbundenhet. Det som betyder mest är att fortsätta träna i månader och år."
+    ] },
+    "# Ett upplägg på tolv veckor",
+    "Här är ett förslag för en frisk person som redan kan röra sig i 30 minuter utan problem. Anpassa efter din nivå och bryt om något gör ont.",
+    { list: [
+      "Vecka 1 till 4, bygg basen. Tre lugna pass på 30 till 45 minuter. Ett av dem avslutas med sex gånger en minut lite hårdare, med två minuters lugn emellan.",
+      "Vecka 5 till 8, lägg till intervaller. Två lugna pass, ett längre lugnt pass på 60 minuter och ett intervallpass med tre till fyra gånger fyra minuter hårt med tre minuters vila.",
+      "Vecka 9 till 12, finslipa. Samma struktur, men med fyra gånger fyra minuter. En gång i veckan en andra, kortare intervalldag om du känner dig pigg, annars inte. Vecka 12 kan vara en lugnare vecka med halverad mängd."
+    ] },
+    "Hur hårt är hårt? Ett enkelt test är att man i intervallerna ska andas så tungt att det är omöjligt att prata mer än enstaka ord, och att sista intervallen ska vara lika jobbig som den första, men inte omöjlig. Pulsen är ett hjälpmedel, men formeln 220 minus ålder för maxpuls kan ha ett fel på tio slag eller mer. Det bästa är att uppskatta maxpulsen från ett verkligt hårt test eller från tidigare erfarenhet.",
+    { box: "Säkerhet", text: "Är du över 40, har du hjärt-, lung- eller andra kroniska sjukdomar, eller har du varit stillasittande länge, bör du prata med läkare innan du börjar med hård träning. Avbryt vid bröstsmärta, yrsel eller ovanlig andnöd och sök vård." },
+    "# Hur ser en vecka ut?",
+    "Så här kan en vecka se ut för en motionär med mål att förbättra sin VO₂max. Anpassa efter din tid och dina förutsättningar.",
+    { list: [
+      "Måndag: vila eller lätt rörlighet.",
+      "Tisdag: intervallpass, till exempel 4 × 4 minuter. Värm upp ordentligt först.",
+      "Onsdag: lugnt pass i 40 till 60 minuter, så lugnt att du kan föra ett samtal.",
+      "Torsdag: styrketräning för ben, bål och överkropp, eller vila.",
+      "Fredag: lugnt pass i 30 till 45 minuter.",
+      "Lördag: ett längre lugnt pass, 60 till 90 minuter.",
+      "Söndag: vila, eller en promenad."
+    ] },
+    "Planen är bara ett exempel. Kroppen har sitt eget sätt att reagera, och vissa behöver mer vila, särskilt vid en ny träningsperiod. Om du är trött dagen före ett hårt pass, flytta det hellre än att tvinga igenom det. Ett bra pass när man är utvilad är värt mer än ett halvdant pass när man är trött.",
+    "# Puls och känsla",
+    "Det finns flera sätt att styra intensiteten. Pulsmätare är det vanligaste, men individer skiljer sig åt, och pulsen påverkas av värme, sömn, kaffe och stress. Därför kompletterar många med känsla. På en skala från ett till tio, där ett är vila och tio är maximal ansträngning, ska lugna pass ligga på ungefär två till fyra, och intervallerna på åtta till nio.",
+    "Pratprovet är ett enkelt hjälpmedel. Kan du prata hela meningar utan att tappa andan är du i lugna zonen. Kan du säga några ord i taget är du på tröskelnivå. Kan du knappt prata är du på hög nivå. Att kunna skilja på nivåerna är nästan viktigare än att få pulsen exakt rätt.",
+    "# Hur du mäter framsteg",
+    "Det mest exakta sättet är ett test på laboratorium med mask som mäter syreupptagningen medan du ökar belastningen. Det är dyrt men bra. Ett enklare alternativ är ett fälttest. Cooper-testet från 1968 går ut på att springa så långt som möjligt på tolv minuter. En grov formel är att VO₂max är ungefär (sträckan i meter minus 505) delat med 44,7. Det passar bäst för vana löpare.",
+    "Klockor och appar ger också uppskattningar. De kan avvika flera enheter från mätt värde, men trenden över tid är ofta användbar. Titta därför på riktningen snarare än på det exakta talet, och jämför med dina egna tidigare resultat, inte med andras.",
+    "# Vanliga misstag",
+    { list: [
+      "Alla pass blir halvhårda. Resultatet är trötthet utan full träningseffekt.",
+      "För mycket intervaller. Mer än två hårda pass i veckan är för mycket för de flesta.",
+      "För snabb ökning. Öka mängden långsamt för att undvika skador.",
+      "Att jämföra sig med andra. Gener och ålder gör stor skillnad. Din egen utveckling är det som räknas.",
+      "Att hoppa över vilan. Förbättringen sker när du återhämtar dig."
+    ] },
+    "# Sammanfattning",
+    { list: [
+      "VO₂max är ett starkt mått på kondition som hänger ihop med lägre risk att dö i förtid, men studierna är observationella.",
+      "Den bestäms av hjärta, blod och muskler, påverkas av gener och sjunker med åldern, men kan förbättras i alla åldrar.",
+      "Det som har bäst stöd är en kombination av mycket lugn träning och ett till två riktigt hårda intervallpass i veckan, till exempel 4 × 4 minuter.",
+      "Svaret på träning varierar mellan personer, och mer träning eller annan blandning kan hjälpa om förbättringen uteblir.",
+      "Börja försiktigt, låt kroppen återhämta sig, och prata med läkare om du har en sjukdom eller är osäker."
+    ] }
+  ];
+
+  BIG.forEach(function (i) { i.big = true; });
 
   // Blanda kategorierna: ordna efter plats inom kategorin, sedan kategori.
   (function () {
@@ -2197,7 +2521,7 @@ select.field { flex: 0 1 12rem; }
     IDEAS.sort(function (a, b) { return a.r - b.r || order[a.cat] - order[b.cat]; });
   })();
 
-  var state = { cat: "alla", ev: "alla", q: "", view: "alla" };
+  var state = { cat: "alla", ev: "alla", q: "", view: "alla", mode: "sma" };
   var STORE = "karnor-v2";
   var db = { user: null, users: {} };
   try {
@@ -2252,8 +2576,10 @@ select.field { flex: 0 1 12rem; }
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
   function catName(id) { return CATS.filter(function (c) { return c.id === id; })[0].name; }
-  function readCount() { return IDEAS.filter(function (i) { return read[i.id]; }).length; }
-  function savedCount() { return IDEAS.filter(function (i) { return saved[i.id]; }).length; }
+  function readCount() { return pool().filter(function (i) { return read[i.id]; }).length; }
+  function pool() { return state.mode === "stora" ? BIG : IDEAS; }
+  function savedCount() { return IDEAS.concat(BIG).filter(function (i) { return saved[i.id]; }).length; }
+  function poolSaved() { return pool().filter(function (i) { return saved[i.id]; }).length; }
 
   var CHECKICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="9"/><path d="M7.8 12.4l3 3 5.4-6"/></svg>';
   var BOOKMARK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>';
@@ -2261,15 +2587,15 @@ select.field { flex: 0 1 12rem; }
   function cardHTML(i, featured) {
     var e = EV[i.ev];
     var pips = [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("");
-    return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + '">' +
-      '<div class="card-top"><span class="cat">' + (featured ? "Dagens kärna · " : "") + esc(catName(i.cat)) + "</span>" +
+    return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + (i.big ? " big" : "") + '">' +
+      '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + "</span>" +
       '<div class="card-actions">' +
       '<button type="button" class="done" data-read="' + i.id + '" aria-pressed="' + (read[i.id] ? "true" : "false") + '" aria-label="' + (read[i.id] ? "Markerad som läst, tryck för att ångra: " : "Markera som läst: ") + esc(i.title) + '" title="' + (read[i.id] ? "Läst" : "Markera som läst") + '">' + CHECKICON + "</button>" +
       '<button type="button" class="save" data-save="' + i.id + '" aria-pressed="' + (saved[i.id] ? "true" : "false") + '" aria-label="Spara kortet: ' + esc(i.title) + '">' + BOOKMARK + "</button></div></div>" +
       "<h3>" + esc(i.title) + "</h3>" +
       '<p class="summary">' + esc(i.body) + "</p>" +
       '<p class="core"><span class="core-label">Kärnan</span>' + esc(i.core) + "</p>" +
-      '<button type="button" class="more" data-open="' + i.id + '"><span>Läs mer</span>' + (readMin(i.id) ? '<span class="min">ca ' + readMin(i.id) + " min</span>" : "") + "</button>" +
+      '<button type="button" class="more" data-open="' + i.id + '"><span>' + (i.big ? "Läs hela artikeln" : "Läs mer") + '</span>' + (readMin(i.id) ? '<span class="min">ca ' + readMin(i.id) + " min</span>" : "") + "</button>" +
       '<div class="card-foot">' +
       '<span class="evidence ' + e.cls + '"><span class="pips">' + pips + "</span>" + e.label + "</span>" +
       '<p class="src"><b>' + esc(i.type) + "</b> · " + esc(i.src) + "</p>" +
@@ -2278,7 +2604,7 @@ select.field { flex: 0 1 12rem; }
 
   function visible() {
     var q = state.q.trim().toLowerCase();
-    var out = IDEAS.filter(function (i) {
+    var out = pool().filter(function (i) {
       if (state.view === "sparade" && !saved[i.id]) return false;
       if (state.cat !== "alla" && i.cat !== state.cat) return false;
       if (state.ev !== "alla" && i.ev !== state.ev) return false;
@@ -2292,7 +2618,7 @@ select.field { flex: 0 1 12rem; }
     var list = visible();
     var html;
     if (!list.length) {
-      if (state.view === "sparade" && savedCount() === 0) {
+      if (state.view === "sparade" && poolSaved() === 0) {
         html = '<div class="empty"><strong>Du har inga sparade kort än.</strong>Tryck på bokmärket på ett kort för att spara det här.</div>';
       } else {
         html = '<div class="empty"><strong>Inga idéer matchar.</strong>Prova ett annat sökord eller ta bort något filter.</div>';
@@ -2301,14 +2627,14 @@ select.field { flex: 0 1 12rem; }
       html = list.map(function (i) { return cardHTML(i, false); }).join("");
     }
     $("#grid").innerHTML = html;
-    var base = state.view === "sparade" ? savedCount() : IDEAS.length;
-    $("#meta").textContent = "Visar " + list.length + " av " + base + (state.view === "sparade" ? " sparade" : " idéer") + (readCount() ? " · " + readCount() + " lästa" : "");
+    var base = state.view === "sparade" ? poolSaved() : pool().length;
+    $("#meta").textContent = "Visar " + list.length + " av " + base + (state.view === "sparade" ? " sparade" : (state.mode === "stora" ? " stora kärnor" : " idéer")) + (readCount() ? " · " + readCount() + " lästa" : "");
   }
 
   function renderChips() {
-    var all = '<button type="button" class="chip" data-cat="alla" aria-pressed="' + (state.cat === "alla") + '">Alla <span class="n">' + IDEAS.length + "</span></button>";
+    var all = '<button type="button" class="chip" data-cat="alla" aria-pressed="' + (state.cat === "alla") + '">Alla <span class="n">' + pool().length + "</span></button>";
     var rest = CATS.map(function (c) {
-      var n = IDEAS.filter(function (i) { return i.cat === c.id; }).length;
+      var n = pool().filter(function (i) { return i.cat === c.id; }).length;
       return '<button type="button" class="chip cat-' + c.id + '" data-cat="' + c.id + '" aria-pressed="' + (state.cat === c.id) + '">' + esc(c.name) + ' <span class="n">' + n + "</span></button>";
     }).join("");
     $("#chips").innerHTML = all + rest;
@@ -2323,13 +2649,13 @@ select.field { flex: 0 1 12rem; }
   function dayIndex() {
     var d = new Date();
     var local = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
-    return Math.floor(local / 86400000) % IDEAS.length;
+    return Math.floor(local / 86400000);
   }
 
   function renderFeatured() {
-    var pool = IDEAS.filter(function (i) { return !read[i.id]; });
-    if (!pool.length) pool = IDEAS;
-    $("#featured").innerHTML = cardHTML(pool[dayIndex() % pool.length], true);
+    var pl = pool().filter(function (i) { return !read[i.id]; });
+    if (!pl.length) pl = pool();
+    $("#featured").innerHTML = cardHTML(pl[dayIndex() % pl.length], true);
   }
 
   function renderLegend() {
@@ -2340,8 +2666,17 @@ select.field { flex: 0 1 12rem; }
     }).join("");
   }
 
-  function byId(id) { return IDEAS.filter(function (i) { return i.id === id; })[0]; }
+  function byId(id) { return IDEAS.concat(BIG).filter(function (i) { return i.id === id; })[0]; }
+  function bigWords(d) {
+    return d.map(function (b) {
+      if (typeof b === "string") return b;
+      if (b.list) return b.list.join(" ");
+      if (b.box) return b.box + " " + b.text;
+      return "";
+    }).join(" ").split(/\s+/).length;
+  }
   function readMin(id) {
+    if (BIGDEEP[id]) return Math.max(1, Math.round(bigWords(BIGDEEP[id]) / 200));
     var d = DEEP[id];
     if (!d) return 0;
     return Math.max(1, Math.round(d.join(" ").split(/\s+/).length / 200));
@@ -2349,7 +2684,27 @@ select.field { flex: 0 1 12rem; }
   function pipsHTML(e) {
     return '<span class="pips">' + [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("") + "</span>";
   }
+  function bigHTML(id) {
+    var d = BIGDEEP[id], h = 0, toc = [], body = "";
+    d.forEach(function (b) {
+      if (typeof b === "string") {
+        if (b.indexOf("# ") === 0) { h++; toc.push(b.slice(2)); body += '<h3 id="bh-' + h + '">' + esc(b.slice(2)) + "</h3>"; }
+        else body += "<p>" + esc(b) + "</p>";
+      } else if (b.fig) {
+        body += '<figure class="fig">' + (FIGS[b.fig] || "") + "<figcaption>" + esc(b.cap || "") + "</figcaption></figure>";
+      } else if (b.list) {
+        body += "<ul>" + b.list.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+      } else if (b.box) {
+        body += '<aside class="box"><b>' + esc(b.box) + "</b><p>" + esc(b.text) + "</p></aside>";
+      }
+    });
+    var nav = '<details class="toc"><summary>I artikeln · ' + toc.length + ' avsnitt</summary><ol>' + toc.map(function (t, k) {
+      return '<li><a href="#bh-' + (k + 1) + '" data-jump="bh-' + (k + 1) + '">' + esc(t) + "</a></li>";
+    }).join("") + "</ol></details>";
+    return nav + body;
+  }
   function deepHTML(id) {
+    if (BIGDEEP[id]) return bigHTML(id);
     var d = DEEP[id];
     if (!d) return "";
     return d.map(function (p) {
@@ -2363,7 +2718,7 @@ select.field { flex: 0 1 12rem; }
     var e = EV[i.ev], rm = readMin(id), m = $("#modal");
     if (m.hidden) lastFocus = document.activeElement;
     openId = id;
-    $("#sheet").className = "sheet cat-" + i.cat;
+    $("#sheet").className = "sheet cat-" + i.cat + (i.big ? " wide" : "");
     $("#m-cat").textContent = catName(i.cat);
     $("#m-title").textContent = i.title;
     $("#m-ev").className = "evidence " + e.cls;
@@ -2392,7 +2747,7 @@ select.field { flex: 0 1 12rem; }
   }
   function nextId() {
     var list = visible();
-    if (!list.length) list = IDEAS;
+    if (!list.length) list = pool();
     var ids = list.map(function (i) { return i.id; });
     var k = ids.indexOf(openId);
     return ids[(k + 1) % ids.length];
@@ -2438,6 +2793,19 @@ select.field { flex: 0 1 12rem; }
       renderGrid();
       return;
     }
+    var jmp = ev.target.closest("[data-jump]");
+    if (jmp) {
+      ev.preventDefault();
+      var target = document.getElementById(jmp.getAttribute("data-jump"));
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    var md = ev.target.closest("[data-mode]");
+    if (md) {
+      state.mode = md.getAttribute("data-mode");
+      renderModes(); renderFeatured(); renderChips(); renderGrid();
+      return;
+    }
     var tab = ev.target.closest("[data-view]");
     if (tab) {
       state.view = tab.getAttribute("data-view");
@@ -2461,7 +2829,14 @@ select.field { flex: 0 1 12rem; }
   $("#ev").addEventListener("change", function (e) { state.ev = e.target.value; renderGrid(); });
 
 
-  function renderAll() { renderUser(); renderFeatured(); renderChips(); renderTabs(); renderGrid(); if (openId) { var b = $("#m-save"), r = $("#m-read-btn"); b.setAttribute("aria-pressed", saved[openId] ? "true" : "false"); r.setAttribute("aria-pressed", read[openId] ? "true" : "false"); } }
+  function renderModes() {
+    $("#mode-sma").setAttribute("aria-pressed", String(state.mode === "sma"));
+    $("#mode-stora").setAttribute("aria-pressed", String(state.mode === "stora"));
+    $("#n-sma").textContent = IDEAS.length;
+    $("#n-stora").textContent = BIG.length;
+    var g = $("#grid"); g.className = "grid" + (state.mode === "stora" ? " grid-big" : "");
+  }
+  function renderAll() { renderModes(); renderUser(); renderFeatured(); renderChips(); renderTabs(); renderGrid(); if (openId) { var b = $("#m-save"), r = $("#m-read-btn"); b.setAttribute("aria-pressed", saved[openId] ? "true" : "false"); r.setAttribute("aria-pressed", read[openId] ? "true" : "false"); } }
   function renderUser() { $("#user-btn").textContent = db.user ? db.user : "Ange namn"; $("#user-btn").setAttribute("aria-label", db.user ? "Inloggad som " + db.user + ". Byt namn" : "Ange ditt namn för att spara kort"); }
   function setUser(name) {
     var found = Object.keys(db.users).filter(function (k) { return k.toLowerCase() === name.toLowerCase(); })[0];
@@ -2535,7 +2910,8 @@ select.field { flex: 0 1 12rem; }
     }
   });
 
-  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap och finans. Varje kort visar källan och hur starkt stödet är. Just nu " + IDEAS.length + " kort.";
+  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap och finans. Varje kort visar källan och hur starkt stödet är. Små kärnor tar en minut att läsa. Stora kärnor är fördjupningar på 10 till 15 minuter, med bilder. Just nu " + IDEAS.length + " små och " + BIG.length + " stora kärnor.";
+  renderModes();
   renderFeatured();
   renderChips();
   renderTabs();

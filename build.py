@@ -15,9 +15,10 @@ def read(path):
 
 tpl = read(os.path.join(base, "karnor.html"))
 ideas = "".join(read(f) for f in sorted(glob.glob(os.path.join(base, "src", "ideas_*.js"))))
+big = "".join(read(f) for f in sorted(glob.glob(os.path.join(base, "src", "big_*.js"))))
 deep = "".join(read(f) for f in sorted(glob.glob(os.path.join(base, "src", "deep_*.js"))))
 
-out = tpl.replace("//@@NEWIDEAS@@", ideas).replace("//@@DEEP@@", deep)
+out = tpl.replace("//@@NEWIDEAS@@", ideas).replace("//@@DEEP@@", deep).replace("//@@BIG@@", big)
 assert "@@" not in out, "Platshållare kvar i mallen"
 
 page = (

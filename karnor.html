@@ -351,6 +351,49 @@ select.field { flex: 0 1 12rem; }
 .n-input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
 .n-err { margin: 8px 0 0; color: var(--ev-mixed); font-size: .92rem; }
 
+
+/* Små och stora kärnor */
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 20px; max-width: 40rem; }
+.mode { appearance: none; text-align: left; display: flex; flex-direction: column; gap: 2px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font: 700 1.15rem var(--f-display); letter-spacing: -0.01em; cursor: pointer; }
+.mode .n { font: 500 .8rem var(--f-mono); opacity: .7; margin-left: 6px; }
+.mode small { font: 400 .82rem var(--f-body); color: var(--ink-2); letter-spacing: 0; }
+.mode:hover { border-color: var(--ink); }
+.mode[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.mode[aria-pressed="true"] small { color: var(--bg); opacity: .8; }
+.card.big { border-top: 5px solid var(--c, var(--ink)); }
+.card.big h3 { font-size: 1.45rem; }
+.grid-big { grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); }
+.sheet.wide { max-width: 54rem; }
+.sheet.wide .lead, .sheet.wide .prose, .sheet.wide .m-core { max-width: 66ch; }
+.prose ul { margin: 0 0 16px; padding-left: 1.25rem; }
+.prose li { margin: 0 0 6px; }
+.toc { margin: 0 0 26px; padding: 16px 18px; border: 1px solid var(--t2, var(--line)); border-radius: 6px; background: var(--t, var(--surface-2)); }
+.toc summary { cursor: pointer; font: 600 .78rem var(--f-mono); letter-spacing: .09em; text-transform: uppercase; color: var(--c, var(--ink-2)); }
+.toc[open] summary { margin-bottom: 10px; }
+.toc ol { column-gap: 28px; }
+@media (min-width: 760px) { .toc[open] ol { columns: 2; } .toc li { break-inside: avoid; margin-bottom: 4px; } }
+.toc ol { margin: 0; padding-left: 1.25rem; }
+.toc a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.toc a:hover { border-bottom-color: var(--c, var(--ink)); }
+.prose .fig { margin: 26px 0; padding: 14px 14px 12px; border: 1px solid var(--t2, var(--line)); border-radius: 6px; background: var(--surface); }
+.fig svg { display: block; width: 100%; height: auto; }
+.fig svg text { font-family: var(--f-body); font-size: 15px; fill: var(--ink); }
+.fig svg .mut { fill: var(--ink-2); }
+.fig svg .sm { font-size: 13px; }
+.fig svg .b { font-weight: 700; }
+.fig svg .ln { stroke: var(--ink); fill: none; stroke-width: 2; }
+.fig svg .thin { stroke: var(--ink-2); fill: none; stroke-width: 1; }
+.fig svg .acc { stroke: var(--c, var(--ink)); fill: none; stroke-width: 3; }
+.fig svg .fillc { fill: var(--c, var(--ink)); }
+.fig svg .fillt { fill: var(--t2, var(--surface-2)); }
+.fig svg .up { fill: var(--ev-strong); stroke: var(--ev-strong); }
+.fig svg .dn { fill: var(--ev-mixed); stroke: var(--ev-mixed); }
+.fig figcaption { margin-top: 10px; font-size: .88rem; line-height: 1.5; color: var(--ink-2); }
+.prose .box { margin: 22px 0; padding: 14px 18px; border-left: 4px solid var(--c, var(--ink)); background: var(--t, var(--surface-2)); border-radius: 0 6px 6px 0; }
+.prose .box b { display: block; margin-bottom: 4px; font: 600 .95rem var(--f-display); }
+.prose .box p { margin: 0; font-size: 1rem; }
+@media (max-width: 520px) { .modes { grid-template-columns: 1fr; } .sheet-foot { gap: 8px; } .sheet-foot .btn { padding: 9px 11px; font-size: .86rem; } }
+
 @media (prefers-reduced-motion: no-preference) {
   .chip, .tab, .save { transition: background-color .15s, color .15s; }
 }
@@ -380,6 +423,10 @@ select.field { flex: 0 1 12rem; }
   </section>
 
   <section class="tools" aria-label="Filter">
+    <nav class="modes" aria-label="Typ av kärna">
+      <button type="button" class="mode" id="mode-sma" data-mode="sma" aria-pressed="true"><span>Små kärnor <span class="n" id="n-sma"></span></span><small>Läs på en minut</small></button>
+      <button type="button" class="mode" id="mode-stora" data-mode="stora" aria-pressed="false"><span>Stora kärnor <span class="n" id="n-stora"></span></span><small>Fördjupning, 10–15 min</small></button>
+    </nav>
     <div class="row">
       <label class="vh" for="q">Sök bland idéerna</label>
       <input class="field" id="q" type="search" placeholder="Sök, till exempel sömn eller koffein" autocomplete="off">
@@ -422,7 +469,7 @@ select.field { flex: 0 1 12rem; }
     </div>
     <div class="sheet-foot">
       <button type="button" class="btn" id="m-save" data-save="" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg><span class="off">Spara</span><span class="on">Sparat</span></button>
-      <button type="button" class="btn" id="m-read-btn" data-read="" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="off">Markera som läst</span><span class="on">Läst</span></button>
+      <button type="button" class="btn" id="m-read-btn" data-read="" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="off">Markera läst</span><span class="on">Läst</span></button>
       <button type="button" class="btn primary" id="m-next">Nästa kort</button>
     </div>
   </div>
@@ -626,6 +673,9 @@ select.field { flex: 0 1 12rem; }
   //@@NEWIDEAS@@
   var DEEP = {};
   //@@DEEP@@
+  var BIG = [], BIGDEEP = {}, FIGS = {};
+  //@@BIG@@
+  BIG.forEach(function (i) { i.big = true; });
 
   // Blanda kategorierna: ordna efter plats inom kategorin, sedan kategori.
   (function () {
@@ -635,7 +685,7 @@ select.field { flex: 0 1 12rem; }
     IDEAS.sort(function (a, b) { return a.r - b.r || order[a.cat] - order[b.cat]; });
   })();
 
-  var state = { cat: "alla", ev: "alla", q: "", view: "alla" };
+  var state = { cat: "alla", ev: "alla", q: "", view: "alla", mode: "sma" };
   var STORE = "karnor-v2";
   var db = { user: null, users: {} };
   try {
@@ -690,8 +740,10 @@ select.field { flex: 0 1 12rem; }
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
   function catName(id) { return CATS.filter(function (c) { return c.id === id; })[0].name; }
-  function readCount() { return IDEAS.filter(function (i) { return read[i.id]; }).length; }
-  function savedCount() { return IDEAS.filter(function (i) { return saved[i.id]; }).length; }
+  function readCount() { return pool().filter(function (i) { return read[i.id]; }).length; }
+  function pool() { return state.mode === "stora" ? BIG : IDEAS; }
+  function savedCount() { return IDEAS.concat(BIG).filter(function (i) { return saved[i.id]; }).length; }
+  function poolSaved() { return pool().filter(function (i) { return saved[i.id]; }).length; }
 
   var CHECKICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle class="ring" cx="12" cy="12" r="9"/><path d="M7.8 12.4l3 3 5.4-6"/></svg>';
   var BOOKMARK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg>';
@@ -699,15 +751,15 @@ select.field { flex: 0 1 12rem; }
   function cardHTML(i, featured) {
     var e = EV[i.ev];
     var pips = [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("");
-    return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + '">' +
-      '<div class="card-top"><span class="cat">' + (featured ? "Dagens kärna · " : "") + esc(catName(i.cat)) + "</span>" +
+    return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + (i.big ? " big" : "") + '">' +
+      '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + "</span>" +
       '<div class="card-actions">' +
       '<button type="button" class="done" data-read="' + i.id + '" aria-pressed="' + (read[i.id] ? "true" : "false") + '" aria-label="' + (read[i.id] ? "Markerad som läst, tryck för att ångra: " : "Markera som läst: ") + esc(i.title) + '" title="' + (read[i.id] ? "Läst" : "Markera som läst") + '">' + CHECKICON + "</button>" +
       '<button type="button" class="save" data-save="' + i.id + '" aria-pressed="' + (saved[i.id] ? "true" : "false") + '" aria-label="Spara kortet: ' + esc(i.title) + '">' + BOOKMARK + "</button></div></div>" +
       "<h3>" + esc(i.title) + "</h3>" +
       '<p class="summary">' + esc(i.body) + "</p>" +
       '<p class="core"><span class="core-label">Kärnan</span>' + esc(i.core) + "</p>" +
-      '<button type="button" class="more" data-open="' + i.id + '"><span>Läs mer</span>' + (readMin(i.id) ? '<span class="min">ca ' + readMin(i.id) + " min</span>" : "") + "</button>" +
+      '<button type="button" class="more" data-open="' + i.id + '"><span>' + (i.big ? "Läs hela artikeln" : "Läs mer") + '</span>' + (readMin(i.id) ? '<span class="min">ca ' + readMin(i.id) + " min</span>" : "") + "</button>" +
       '<div class="card-foot">' +
       '<span class="evidence ' + e.cls + '"><span class="pips">' + pips + "</span>" + e.label + "</span>" +
       '<p class="src"><b>' + esc(i.type) + "</b> · " + esc(i.src) + "</p>" +
@@ -716,7 +768,7 @@ select.field { flex: 0 1 12rem; }
 
   function visible() {
     var q = state.q.trim().toLowerCase();
-    var out = IDEAS.filter(function (i) {
+    var out = pool().filter(function (i) {
       if (state.view === "sparade" && !saved[i.id]) return false;
       if (state.cat !== "alla" && i.cat !== state.cat) return false;
       if (state.ev !== "alla" && i.ev !== state.ev) return false;
@@ -730,7 +782,7 @@ select.field { flex: 0 1 12rem; }
     var list = visible();
     var html;
     if (!list.length) {
-      if (state.view === "sparade" && savedCount() === 0) {
+      if (state.view === "sparade" && poolSaved() === 0) {
         html = '<div class="empty"><strong>Du har inga sparade kort än.</strong>Tryck på bokmärket på ett kort för att spara det här.</div>';
       } else {
         html = '<div class="empty"><strong>Inga idéer matchar.</strong>Prova ett annat sökord eller ta bort något filter.</div>';
@@ -739,14 +791,14 @@ select.field { flex: 0 1 12rem; }
       html = list.map(function (i) { return cardHTML(i, false); }).join("");
     }
     $("#grid").innerHTML = html;
-    var base = state.view === "sparade" ? savedCount() : IDEAS.length;
-    $("#meta").textContent = "Visar " + list.length + " av " + base + (state.view === "sparade" ? " sparade" : " idéer") + (readCount() ? " · " + readCount() + " lästa" : "");
+    var base = state.view === "sparade" ? poolSaved() : pool().length;
+    $("#meta").textContent = "Visar " + list.length + " av " + base + (state.view === "sparade" ? " sparade" : (state.mode === "stora" ? " stora kärnor" : " idéer")) + (readCount() ? " · " + readCount() + " lästa" : "");
   }
 
   function renderChips() {
-    var all = '<button type="button" class="chip" data-cat="alla" aria-pressed="' + (state.cat === "alla") + '">Alla <span class="n">' + IDEAS.length + "</span></button>";
+    var all = '<button type="button" class="chip" data-cat="alla" aria-pressed="' + (state.cat === "alla") + '">Alla <span class="n">' + pool().length + "</span></button>";
     var rest = CATS.map(function (c) {
-      var n = IDEAS.filter(function (i) { return i.cat === c.id; }).length;
+      var n = pool().filter(function (i) { return i.cat === c.id; }).length;
       return '<button type="button" class="chip cat-' + c.id + '" data-cat="' + c.id + '" aria-pressed="' + (state.cat === c.id) + '">' + esc(c.name) + ' <span class="n">' + n + "</span></button>";
     }).join("");
     $("#chips").innerHTML = all + rest;
@@ -761,13 +813,13 @@ select.field { flex: 0 1 12rem; }
   function dayIndex() {
     var d = new Date();
     var local = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
-    return Math.floor(local / 86400000) % IDEAS.length;
+    return Math.floor(local / 86400000);
   }
 
   function renderFeatured() {
-    var pool = IDEAS.filter(function (i) { return !read[i.id]; });
-    if (!pool.length) pool = IDEAS;
-    $("#featured").innerHTML = cardHTML(pool[dayIndex() % pool.length], true);
+    var pl = pool().filter(function (i) { return !read[i.id]; });
+    if (!pl.length) pl = pool();
+    $("#featured").innerHTML = cardHTML(pl[dayIndex() % pl.length], true);
   }
 
   function renderLegend() {
@@ -778,8 +830,17 @@ select.field { flex: 0 1 12rem; }
     }).join("");
   }
 
-  function byId(id) { return IDEAS.filter(function (i) { return i.id === id; })[0]; }
+  function byId(id) { return IDEAS.concat(BIG).filter(function (i) { return i.id === id; })[0]; }
+  function bigWords(d) {
+    return d.map(function (b) {
+      if (typeof b === "string") return b;
+      if (b.list) return b.list.join(" ");
+      if (b.box) return b.box + " " + b.text;
+      return "";
+    }).join(" ").split(/\s+/).length;
+  }
   function readMin(id) {
+    if (BIGDEEP[id]) return Math.max(1, Math.round(bigWords(BIGDEEP[id]) / 200));
     var d = DEEP[id];
     if (!d) return 0;
     return Math.max(1, Math.round(d.join(" ").split(/\s+/).length / 200));
@@ -787,7 +848,27 @@ select.field { flex: 0 1 12rem; }
   function pipsHTML(e) {
     return '<span class="pips">' + [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("") + "</span>";
   }
+  function bigHTML(id) {
+    var d = BIGDEEP[id], h = 0, toc = [], body = "";
+    d.forEach(function (b) {
+      if (typeof b === "string") {
+        if (b.indexOf("# ") === 0) { h++; toc.push(b.slice(2)); body += '<h3 id="bh-' + h + '">' + esc(b.slice(2)) + "</h3>"; }
+        else body += "<p>" + esc(b) + "</p>";
+      } else if (b.fig) {
+        body += '<figure class="fig">' + (FIGS[b.fig] || "") + "<figcaption>" + esc(b.cap || "") + "</figcaption></figure>";
+      } else if (b.list) {
+        body += "<ul>" + b.list.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>";
+      } else if (b.box) {
+        body += '<aside class="box"><b>' + esc(b.box) + "</b><p>" + esc(b.text) + "</p></aside>";
+      }
+    });
+    var nav = '<details class="toc"><summary>I artikeln · ' + toc.length + ' avsnitt</summary><ol>' + toc.map(function (t, k) {
+      return '<li><a href="#bh-' + (k + 1) + '" data-jump="bh-' + (k + 1) + '">' + esc(t) + "</a></li>";
+    }).join("") + "</ol></details>";
+    return nav + body;
+  }
   function deepHTML(id) {
+    if (BIGDEEP[id]) return bigHTML(id);
     var d = DEEP[id];
     if (!d) return "";
     return d.map(function (p) {
@@ -801,7 +882,7 @@ select.field { flex: 0 1 12rem; }
     var e = EV[i.ev], rm = readMin(id), m = $("#modal");
     if (m.hidden) lastFocus = document.activeElement;
     openId = id;
-    $("#sheet").className = "sheet cat-" + i.cat;
+    $("#sheet").className = "sheet cat-" + i.cat + (i.big ? " wide" : "");
     $("#m-cat").textContent = catName(i.cat);
     $("#m-title").textContent = i.title;
     $("#m-ev").className = "evidence " + e.cls;
@@ -830,7 +911,7 @@ select.field { flex: 0 1 12rem; }
   }
   function nextId() {
     var list = visible();
-    if (!list.length) list = IDEAS;
+    if (!list.length) list = pool();
     var ids = list.map(function (i) { return i.id; });
     var k = ids.indexOf(openId);
     return ids[(k + 1) % ids.length];
@@ -876,6 +957,19 @@ select.field { flex: 0 1 12rem; }
       renderGrid();
       return;
     }
+    var jmp = ev.target.closest("[data-jump]");
+    if (jmp) {
+      ev.preventDefault();
+      var target = document.getElementById(jmp.getAttribute("data-jump"));
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    var md = ev.target.closest("[data-mode]");
+    if (md) {
+      state.mode = md.getAttribute("data-mode");
+      renderModes(); renderFeatured(); renderChips(); renderGrid();
+      return;
+    }
     var tab = ev.target.closest("[data-view]");
     if (tab) {
       state.view = tab.getAttribute("data-view");
@@ -899,7 +993,14 @@ select.field { flex: 0 1 12rem; }
   $("#ev").addEventListener("change", function (e) { state.ev = e.target.value; renderGrid(); });
 
 
-  function renderAll() { renderUser(); renderFeatured(); renderChips(); renderTabs(); renderGrid(); if (openId) { var b = $("#m-save"), r = $("#m-read-btn"); b.setAttribute("aria-pressed", saved[openId] ? "true" : "false"); r.setAttribute("aria-pressed", read[openId] ? "true" : "false"); } }
+  function renderModes() {
+    $("#mode-sma").setAttribute("aria-pressed", String(state.mode === "sma"));
+    $("#mode-stora").setAttribute("aria-pressed", String(state.mode === "stora"));
+    $("#n-sma").textContent = IDEAS.length;
+    $("#n-stora").textContent = BIG.length;
+    var g = $("#grid"); g.className = "grid" + (state.mode === "stora" ? " grid-big" : "");
+  }
+  function renderAll() { renderModes(); renderUser(); renderFeatured(); renderChips(); renderTabs(); renderGrid(); if (openId) { var b = $("#m-save"), r = $("#m-read-btn"); b.setAttribute("aria-pressed", saved[openId] ? "true" : "false"); r.setAttribute("aria-pressed", read[openId] ? "true" : "false"); } }
   function renderUser() { $("#user-btn").textContent = db.user ? db.user : "Ange namn"; $("#user-btn").setAttribute("aria-label", db.user ? "Inloggad som " + db.user + ". Byt namn" : "Ange ditt namn för att spara kort"); }
   function setUser(name) {
     var found = Object.keys(db.users).filter(function (k) { return k.toLowerCase() === name.toLowerCase(); })[0];
@@ -973,7 +1074,8 @@ select.field { flex: 0 1 12rem; }
     }
   });
 
-  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap och finans. Varje kort visar källan och hur starkt stödet är. Just nu " + IDEAS.length + " kort.";
+  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap och finans. Varje kort visar källan och hur starkt stödet är. Små kärnor tar en minut att läsa. Stora kärnor är fördjupningar på 10 till 15 minuter, med bilder. Just nu " + IDEAS.length + " små och " + BIG.length + " stora kärnor.";
+  renderModes();
   renderFeatured();
   renderChips();
   renderTabs();
