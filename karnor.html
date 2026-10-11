@@ -377,7 +377,7 @@ select.field { flex: 0 1 12rem; }
 
 
 /* Små och stora kärnor */
-.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 20px; max-width: 40rem; }
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 28px; max-width: 40rem; }
 .mode { appearance: none; text-align: left; display: flex; flex-direction: column; gap: 2px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font: 700 1.15rem var(--f-display); letter-spacing: -0.01em; cursor: pointer; }
 .mode .n { font: 500 .8rem var(--f-mono); opacity: .7; margin-left: 6px; }
 .mode small { font: 400 .82rem var(--f-body); color: var(--ink-2); letter-spacing: 0; }
@@ -416,7 +416,7 @@ select.field { flex: 0 1 12rem; }
 .prose .box { margin: 22px 0; padding: 14px 18px; border-left: 4px solid var(--c, var(--ink)); background: var(--t, var(--surface-2)); border-radius: 0 6px 6px 0; }
 .prose .box b { display: block; margin-bottom: 4px; font: 600 .95rem var(--f-display); }
 .prose .box p { margin: 0; font-size: 1rem; }
-@media (max-width: 520px) { .modes { grid-template-columns: 1fr; } .sheet-foot { gap: 8px; } .sheet-foot .btn { padding: 9px 11px; font-size: .86rem; } }
+@media (max-width: 520px) { .modes { gap: 8px; margin-bottom: 20px; } .mode { padding: 10px 12px; font-size: 1.02rem; } .mode small { font-size: .76rem; } .sheet-foot { gap: 8px; } .sheet-foot .btn { padding: 9px 11px; font-size: .86rem; } }
 
 @media (prefers-reduced-motion: no-preference) {
   .chip, .tab, .save { transition: background-color .15s, color .15s; }
@@ -437,6 +437,10 @@ select.field { flex: 0 1 12rem; }
       </nav>
     </div>
   </header>
+    <nav class="modes" aria-label="Typ av kärna">
+      <button type="button" class="mode" id="mode-sma" data-mode="sma" aria-pressed="true"><span>Små kärnor <span class="n" id="n-sma"></span></span><small>Läs på en minut</small></button>
+      <button type="button" class="mode" id="mode-stora" data-mode="stora" aria-pressed="false"><span>Stora kärnor <span class="n" id="n-stora"></span></span><small>Fördjupning, 10–15 min</small></button>
+    </nav>
 
   <section class="hero">
     <div>
@@ -447,10 +451,6 @@ select.field { flex: 0 1 12rem; }
   </section>
 
   <section class="tools" aria-label="Filter">
-    <nav class="modes" aria-label="Typ av kärna">
-      <button type="button" class="mode" id="mode-sma" data-mode="sma" aria-pressed="true"><span>Små kärnor <span class="n" id="n-sma"></span></span><small>Läs på en minut</small></button>
-      <button type="button" class="mode" id="mode-stora" data-mode="stora" aria-pressed="false"><span>Stora kärnor <span class="n" id="n-stora"></span></span><small>Fördjupning, 10–15 min</small></button>
-    </nav>
     <div class="row">
       <label class="vh" for="q">Sök bland idéerna</label>
       <input class="field" id="q" type="search" placeholder="Sök, till exempel sömn eller koffein" autocomplete="off">
