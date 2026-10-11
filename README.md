@@ -6,7 +6,7 @@ Sajten är en enda sida (`index.html`) utan beroenden, förutom typsnittet Mona 
 
 ## Funktioner
 
-- Två lägen: Små kärnor (ett kort på en minut, med längre text) och Stora kärnor (fördjupande artiklar på 10–15 minuter med innehållsförteckning och diagram).
+- Två lägen: Små kärnor (ett kort på en minut, med längre text) och Stora kärnor (fördjupande artiklar på 10–15 minuter med innehållsförteckning och diagram). Nio stora kärnor: Fusion, Teknisk analys, VO₂max, Generativ AI, AI och språkmodeller samt porträtten Turing, Lovelace, Shannon och Hinton.
 - Filter per kategori och stödnivå, sökning och en längre text per kort.
 - Spara och markera som läst. Första gången frågar sidan efter ett namn, som sparas i en cookie (ett år). Sparade och lästa kort lagras per namn i webbläsarens localStorage och laddas när namnet finns i cookien. Blockeras cookies används localStorage som reserv. Lästa kort hamnar sist och blir utgråade, och går att avmarkera.
 - Datan finns bara i den webbläsare där den skapades. För synk mellan enheter krävs en databas.
@@ -17,7 +17,7 @@ Sajten är en enda sida (`index.html`) utan beroenden, förutom typsnittet Mona 
 | --- | --- |
 | `karnor.html` | Mallen: design, layout och programkod. Innehåller de första 29 korten. |
 | `src/ideas_*.js` | Övriga kort (rubrik, sammanfattning, kärna, källa, kategori). |
-| `src/big_*.js` | Stora kärnor. `big_0_figs.js` har diagrammen (SVG), övriga filer en artikel var (`BIG.push` och `BIGDEEP`). |
+| `src/big_*.js` | Stora kärnor. `big_0_figs.js` och `big_0b_figs.js` har diagrammen (SVG), övriga filer en artikel var (`BIG.push` och `BIGDEEP`). |
 | `src/deep_*.js` | Den längre texten per kort ("Läs mer"). Varje kort har fem avsnitt. |
 | `build.py` | Sätter ihop allt till `index.html`. |
 

@@ -1,0 +1,78 @@
+  BIG.push({
+    id: "B9", cat: "forebilder", ev: "mattligt", type: "Porträtt",
+    title: "Geoffrey Hinton: forskaren som höll fast vid neurala nätverk och blev varnare",
+    body: "Geoffrey Hinton (f. 1947) arbetade i decennier med neurala nätverk, en idé som länge var ur modet. När den slog igenom i början av 2010-talet förändrade den AI. Han fick Turingpriset 2018 och Nobelpriset i fysik 2024, och har sedan 2023 varnat för riskerna med den teknik han hjälpt skapa.",
+    core: "Hinton visar värdet av uthållighet i en idé som andra avfärdar, och av att ta ansvar för konsekvenserna av sitt eget arbete.",
+    src: "Rumelhart, Hinton & Williams, 1986 · Nature; Krizhevsky, Sutskever & Hinton, 2012 · NeurIPS; LeCun, Bengio & Hinton, 2015 · Nature; Metz, 2021 · Genius Makers; Kungl. Vetenskapsakademien, 2024 · Nobelprisets motivering"
+  });
+  BIGDEEP.B9 = [
+    "# Vem är Geoffrey Hinton?",
+    "Geoffrey Everest Hinton föddes i London 1947. Han är en brittisk-kanadensisk datavetare och kognitionsforskare, och brukar kallas en av djupinlärningens fäder, tillsammans med Yoshua Bengio och Yann LeCun. De tre delade Turingpriset 2018. År 2024 delade Hinton Nobelpriset i fysik med John Hopfield, för grundläggande upptäckter som möjliggjort maskininlärning med artificiella neurala nätverk.",
+    { fig: "hinton_timeline", cap: "Några milstolpar i Hintons karriär. Mycket av det som hände mellan dem var långsamt och osäkert arbete." },
+    "# Bakgrund och frågan",
+    "Hinton kommer från en familj med akademiska traditioner, och det uppges att han är släkt med logikern George Boole, vars algebra Claude Shannon använde. Han studerade experimentell psykologi i Cambridge och tog 1978 doktorsexamen i artificiell intelligens vid universitetet i Edinburgh.",
+    "Det som drev honom var en grundfråga: hur lär sig hjärnan? Han ville förstå det genom att bygga modeller. Det var en bakomliggande idé i hela hans karriär: om man kan få ett nätverk av enkla artificiella neuroner att lära sig, kan det ge ledtrådar om hur hjärnan gör det, och samtidigt bli en användbar teknik.",
+    "# Neurala nätverk: en idé i motvind",
+    "Neurala nätverk är system av enkla enheter, neuroner, som tar emot tal, väger ihop dem och skickar vidare ett resultat. Enheterna är ordnade i lager. Nätverket lär sig genom att justera styrkan på kopplingarna, vikterna, så att utdata blir bättre.",
+    { fig: "hinton_net", cap: "Ett litet neuralt nätverk med ett dolt lager. Moderna nätverk har många lager och miljarder vikter." },
+    "Idén var inte ny. Redan på 1950- och 60-talet fanns tidiga varianter, men en kritisk bok från 1969, Perceptrons av Marvin Minsky och Seymour Papert, påpekade begränsningar hos de enklaste nätverken, och intresset svalnade. Under decennier prioriterade stora delar av fältet i stället symbolisk AI, där man programmerar regler för hand. Neurala nätverk fortsatte utforskas av en liten grupp.",
+    "# Baklängesinlärning: hur nätverk kan lära sig",
+    "Problemet med nätverk med flera lager är att man behöver veta hur varje vikt påverkar felet, även i de dolda lagren. Lösningen kallas backpropagation, eller baklängesinlärning. Man räknar först ut felet i utdata och beräknar sedan, lager för lager bakåt, hur mycket varje vikt bidrog, med hjälp av derivator. Därefter justeras vikterna lite grann i riktning mot lägre fel.",
+    "Metoden hade föregångare, och flera forskare hade hittat liknande idéer tidigare. Men artikeln som Rumelhart, Hinton och Williams publicerade i Nature 1986 visade tydligt att den kunde få nätverk att lära sig användbara interna representationer, och väckte stort intresse. Det är ett typiskt exempel på att vetenskapliga genombrott sällan har en enda upphovsperson.",
+    "Hinton arbetade också med andra modeller, som Boltzmannmaskiner, som han utvecklade tillsammans med Terrence Sejnowski på 1980-talet och som har rötter i statistisk fysik. De är en del av skälet till att han belönades med ett fysikpris.",
+    "# De långa åren",
+    "Efter 1986 var det inte självklart att tekniken skulle lyckas. Nätverken var svåra att träna, datorerna för långsamma och datamängderna för små. Andra metoder, som stödvektormaskiner, presterade ofta bättre under 1990- och början av 2000-talet. Hinton flyttade 1987 till University of Toronto i Kanada, delvis för att kunna fortsätta sin forskning, och fortsatte arbeta med sina idéer, med stöd bland annat från kanadensiska forskningsinstitut.",
+    "Runt 2006 presenterade han med kollegor metoder för att förträna djupa nätverk lager för lager, och ordet djupinlärning började användas. Det var ett steg, men det som avgjorde var att två saker förändrades samtidigt: mängden data och datorernas kraft, särskilt grafikkort, som visade sig vara mycket bra på de beräkningar nätverken kräver.",
+    "# 2012: AlexNet",
+    "Genombrottet kom i september 2012 i en tävling, ImageNet, där datorer ska känna igen objekt i en miljon bilder. Hintons doktorander Alex Krizhevsky och Ilya Sutskever tränade ett stort faltningsnätverk, senare kallat AlexNet, på två grafikkort. Det fick ett betydligt lägre felvärde än tävlingens tvåa, med skillnad på ungefär tio procentenheter i topp-5-felet enligt de siffror som brukar anges, och resultatet var så tydligt att forskargrupper över hela världen bytte inriktning.",
+    "Efter det gick det snabbt. Taligenkänning, översättning och bildanalys förbättrades kraftigt med djupa nätverk. Hinton och hans doktorander bildade företaget DNNresearch, som Google köpte 2013, och han arbetade därefter delvis på Google. År 2017 kom transformern, och därefter de stora språkmodellerna, som bygger på samma grundprinciper: stora nätverk som tränas med baklängesinlärning på enorma datamängder.",
+    "# Erkännande",
+    "Hinton, Bengio och LeCun fick 2018 Turingpriset, datavetenskapens motsvarighet till Nobelpriset, för sitt arbete med djupa neurala nätverk. År 2024 tilldelades Hinton och Hopfield Nobelpriset i fysik. Valet väckte diskussion, eftersom arbetet ligger närmare datavetenskap än traditionell fysik, men kommittén motiverade det med att de byggt på verktyg och begrepp från fysiken för att skapa grunden för modern maskininlärning.",
+    "Hinton har ofta lyft fram sina elever. Flera av dem, som Sutskever, har blivit framträdande i AI-världen. Han har sagt att ett av hans största bidrag är att ha hjälpt unga forskare att växa.",
+    "# Varningen",
+    "I maj 2023 lämnade Hinton Google. Han har sagt att ett skäl var att han ville kunna tala fritt om riskerna med AI utan att behöva tänka på hur det påverkar företaget. Sedan dess har han offentligt framfört flera farhågor.",
+    { list: [
+      "Missbruk. Att AI används för desinformation, övervakning, cyberattacker och militära ändamål.",
+      "Arbetsmarknaden. Att många jobb som kräver kognitivt arbete förändras eller försvinner, vilket kan öka ojämlikhet.",
+      "Förlust av kontroll. Att system som blir mer kapabla än människor i många avseenden kan få mål som avviker från våra, och att det är svårt att garantera att vi kan stänga av dem. Hinton har sagt att han tror det finns en reell risk, och har ibland uppskattat sannolikheten för katastrof till en betydande nivå, men han har samtidigt betonat att osäkerheten är stor."
+    ] },
+    "Det finns forskare som delar hans oro, som Bengio, och andra som tycker att riskerna överdrivs eller att fokus bör ligga på nuvarande skador, som skevheter och koncentration av makt. Yann LeCun är en av dem som ofta tonar ner scenarierna om förlorad kontroll. Debatten är levande och ingen kan i dag säkert säga vem som har rätt. Det som är värt att notera är att varningen kommer från någon som hjälpt skapa tekniken och som inte har något uppenbart intresse av att överdriva.",
+    "Hinton har också ändrat uppfattning om hur lik hjärnan AI-modellerna är. Han har sagt att han länge trodde att hjärnan lärde sig bättre än datorerna, men att han nu ser att digitala system har fördelar, som att de kan kopiera sin kunskap exakt mellan många kopior. Det är ett exempel på hans vilja att ompröva sina uppfattningar när bevisen talar för det.",
+    "# Hur ett nätverk tränas, steg för steg",
+    "För att förstå Hintons bidrag hjälper det att se själva träningen som en enkel loop.",
+    { list: [
+      "Börja med slumpmässiga vikter. Nätverket gissar i början helt fel.",
+      "Visa ett exempel, till exempel en bild på en katt, och låt nätverket ge ett svar.",
+      "Jämför svaret med facit och räkna ut felet.",
+      "Använd baklängesinlärning för att räkna ut hur varje vikt bidrog till felet.",
+      "Justera varje vikt en liten bit i den riktning som minskar felet.",
+      "Upprepa med miljontals exempel, tills felet slutat minska."
+    ] },
+    "Det låter enkelt, och i princip är det det. Svårigheten ligger i skalan och i detaljerna: hur stora steg man tar, hur man hindrar nätverket från att bara lära sig träningsdata utantill, och hur man får djupa nätverk att träna stabilt. Hinton och hans kollegor bidrog med många av de knep som gjorde det möjligt, till exempel dropout, där slumpmässiga neuroner stängs av under träningen för att minska överanpassning.",
+    "# Vad hände mellan 1986 och 2012?",
+    "Den perioden brukar beskrivas som en tid av motgång, men mycket arbete pågick. Yann LeCun utvecklade faltningsnätverk för att läsa handskrivna siffror, och de användes i verkliga system för att läsa checkar redan på 1990-talet. Yoshua Bengio och andra arbetade med språk. Men fältet i stort var skeptiskt, och det var svårt att få artiklar om neurala nätverk publicerade vid vissa konferenser. Kanadensiska stöd, bland annat från forskningsinstitutet CIFAR, har i efterhand pekats ut som viktiga för att hålla gruppen samman.",
+    "Det är en viktig lärdom för den som bedömer forskning: att en idé ger svaga resultat vid en viss tidpunkt betyder inte att den är fel. Ibland saknas data, beräkningskraft eller en detalj. Samtidigt är det lätt att i efterhand glorifiera envishet. För varje idé som visade sig rätt efter lång tid finns många som aldrig gjorde det, och det går inte att veta i förväg vilken sort man håller på med.",
+    "# Hinton som lärare och kollega",
+    "Flera av Hintons tidigare studenter och postdoktorer har blivit ledande namn i AI. Ilya Sutskever blev en av grundarna av OpenAI, och Alex Krizhevsky var med och byggde AlexNet. Hinton har beskrivits som en person som ger frihet att pröva egna idéer, kombinerat med skarpa frågor. Han har ofta sagt att han lärt sig mycket av sina studenter, och han har lyft fram att hans studenter ibland haft rätt när han själv tvivlade.",
+    "Han är känd för ett torrt, brittiskt skämtsamt språk, och för att förklara komplicerade saker med bilder och liknelser. Det har gjort honom till en uppskattad föreläsare, och en av de få forskarna som kan nå ut både till specialister och allmänhet.",
+    "# Vad vi inte vet",
+    "Hintons berättelse är ofta framställd som en framgångssaga, men det finns frågor som fortfarande är öppna. Förstår stora nätverk något, eller är de avancerade mönsterigenkännare? Hur fungerar de inuti? Kommer skalning att räcka för mer generella förmågor, eller behövs nya idéer? Och hur allvarliga är riskerna? På alla dessa frågor går åsikterna isär, även bland dem som delat priser och utmärkelser. Det är en anledning att läsa flera källor, och att vara försiktig med dem som säger sig veta säkert.",
+    "# Lärdomar att ta med sig",
+    { list: [
+      "Håll fast vid en idé du tror på, men testa den. Hinton arbetade i decennier med något som många avfärdade, men han tränade och mätte hela tiden.",
+      "Bygg för att förstå. Hans mål var att förstå hjärnan, och tekniken blev en biprodukt.",
+      "Vänta på rätt förutsättningar. Idén behövde data och datorkraft som inte fanns på 1980-talet. Ibland är idén rätt men tiden fel.",
+      "Skapa en miljö. Hans stora gärning är delvis hans studenter och kollegor. Forskning är ett lagarbete.",
+      "Ändra dig när fakta ändras. Han har öppet sagt att han ändrat syn på viktiga frågor.",
+      "Ta ansvar för konsekvenserna. Den som hjälpt skapa en teknik har ett särskilt skäl att tänka på hur den används.",
+      "Var försiktig med enskilda gestalter. Fältet är resultatet av många människors arbete, och Hinton är en av dem."
+    ] },
+    "# Sammanfattning",
+    { list: [
+      "Hinton arbetade i decennier med neurala nätverk, trots att idén länge var ur modet.",
+      "Artikeln från 1986 om baklängesinlärning visade hur nätverk med flera lager kan lära sig.",
+      "AlexNet 2012 visade nätverkens kraft och fick fältet att byta riktning.",
+      "Han fick Turingpriset 2018 och Nobelpriset i fysik 2024.",
+      "Sedan 2023 varnar han för missbruk, arbetsmarknadseffekter och förlust av kontroll, medan andra forskare är mer försiktiga i sina bedömningar."
+    ] }
+  ];

@@ -54,6 +54,9 @@
   --c-finans: #A9BCD6;
   --t-finans: #1A212B;
   --t2-finans: #263244;
+  --c-ai: #5C6400;
+  --t-ai: #F2F4DC;
+  --t2-ai: #E4E9BC;
   --c-historia: #7B4A2D;
   --t-historia: #F6EEE8;
   --t2-historia: #EADBCF;
@@ -66,6 +69,9 @@
   --c-finans: #44566F;
   --t-finans: #E8EDF3;
   --t2-finans: #D4DDE8;
+  --c-ai: #C9D860;
+  --t-ai: #1F2211;
+  --t2-ai: #2F3418;
   --f-display: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
   --f-body: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
@@ -121,6 +127,9 @@
     --c-finans: #A9BCD6;
     --t-finans: #1A212B;
     --t2-finans: #263244;
+    --c-ai: #C9D860;
+    --t-ai: #1F2211;
+    --t2-ai: #2F3418;
     color-scheme: dark;
   }
 }
@@ -299,6 +308,7 @@ select.field { flex: 0 1 12rem; }
 .cat-forebilder { --c: var(--c-forebilder); --t: var(--t-forebilder); --t2: var(--t2-forebilder); }
 .cat-natur { --c: var(--c-natur); --t: var(--t-natur); --t2: var(--t2-natur); }
 .cat-finans { --c: var(--c-finans); --t: var(--t-finans); --t2: var(--t2-finans); }
+.cat-ai { --c: var(--c-ai); --t: var(--t-ai); --t2: var(--t2-ai); }
 .brand span { font-stretch: 112%; }
 .card { background: var(--t, var(--surface)); border-color: var(--t2, var(--line)); }
 .card.featured { border-color: var(--c, var(--ink)); }
@@ -402,7 +412,7 @@ select.field { flex: 0 1 12rem; }
 <div class="wrap">
   <header class="top">
     <div class="brand">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12.00" cy="3.70" r="2" fill="var(--c-somn)"/><circle cx="16.49" cy="5.02" r="2" fill="var(--c-vanor)"/><circle cx="19.55" cy="8.55" r="2" fill="var(--c-fokus)"/><circle cx="20.22" cy="13.18" r="2" fill="var(--c-relationer)"/><circle cx="18.27" cy="17.44" r="2" fill="var(--c-mental)"/><circle cx="14.34" cy="19.96" r="2" fill="var(--c-kropp)"/><circle cx="9.66" cy="19.96" r="2" fill="var(--c-larande)"/><circle cx="5.73" cy="17.44" r="2" fill="var(--c-historia)"/><circle cx="3.78" cy="13.18" r="2" fill="var(--c-forebilder)"/><circle cx="4.45" cy="8.55" r="2" fill="var(--c-natur)"/><circle cx="7.51" cy="5.02" r="2" fill="var(--c-finans)"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12.00" cy="3.70" r="1.9" fill="var(--c-somn)"/><circle cx="16.15" cy="4.81" r="1.9" fill="var(--c-vanor)"/><circle cx="19.19" cy="7.85" r="1.9" fill="var(--c-fokus)"/><circle cx="20.30" cy="12.00" r="1.9" fill="var(--c-relationer)"/><circle cx="19.19" cy="16.15" r="1.9" fill="var(--c-mental)"/><circle cx="16.15" cy="19.19" r="1.9" fill="var(--c-kropp)"/><circle cx="12.00" cy="20.30" r="1.9" fill="var(--c-larande)"/><circle cx="7.85" cy="19.19" r="1.9" fill="var(--c-historia)"/><circle cx="4.81" cy="16.15" r="1.9" fill="var(--c-forebilder)"/><circle cx="3.70" cy="12.00" r="1.9" fill="var(--c-natur)"/><circle cx="4.81" cy="7.85" r="1.9" fill="var(--c-finans)"/><circle cx="7.85" cy="4.81" r="1.9" fill="var(--c-ai)"/></svg>
       <span>Kärnor</span>
     </div>
     <div class="head-r">
@@ -509,7 +519,8 @@ select.field { flex: 0 1 12rem; }
     { id: "historia", name: "Historia" },
     { id: "forebilder", name: "Förebilder" },
     { id: "natur", name: "Naturvetenskap" },
-    { id: "finans", name: "Finans" }
+    { id: "finans", name: "Finans" },
+    { id: "ai", name: "AI och teknik" }
   ];
   var EV = {
     starkt:   { label: "Starkt stöd",   pips: 3, cls: "ev-strong", desc: "Samstämmiga resultat från flera välgjorda studier, meta-analyser, officiella riktlinjer eller väldokumenterade historiska källor." },
@@ -1074,7 +1085,7 @@ select.field { flex: 0 1 12rem; }
     }
   });
 
-  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap och finans. Varje kort visar källan och hur starkt stödet är. Små kärnor tar en minut att läsa. Stora kärnor är fördjupningar på 10 till 15 minuter, med bilder. Just nu " + IDEAS.length + " små och " + BIG.length + " stora kärnor.";
+  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap, finans och AI. Varje kort visar källan och hur starkt stödet är. Små kärnor tar en minut att läsa. Stora kärnor är fördjupningar på 10 till 15 minuter, med bilder. Just nu " + IDEAS.length + " små och " + BIG.length + " stora kärnor.";
   renderModes();
   renderFeatured();
   renderChips();
