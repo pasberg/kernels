@@ -55,7 +55,7 @@ Kort som bygger på en känd bok har fältet `book` (till exempel `book: "Sapien
 
 ## Beteendevetenskap
 
-Kategorin `beteende` handlar om hur människor beter sig i olika situationer (grupper, förhandling, konflikt, bedömning av andra) och hur man kan agera. Korten finns i `src/ideas_beh.js` och de längre texterna i `src/deep_5h.js`.
+Kategorin `beteende` handlar om hur människor beter sig i olika situationer (grupper, förhandling, konflikt, bedömning av andra) och hur man kan agera. Korten finns i `src/ideas_beh.js` (id `be1`–`be12`) och de längre texterna i `src/deep_5h.js`.
 
 ## Betyg
 

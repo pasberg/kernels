@@ -1,5 +1,5 @@
   Object.assign(DEEP, {
-    e1: [
+    be1: [
       "# Bakgrund",
       "Åskådareffekten började studeras efter mordet på Kitty Genovese 1964, där tidningar påstod att många åskådare inte ingrep. Den bilden har sedan visat sig vara överdriven, men frågan om varför vi ibland inte hjälper blev en stor forskningsgren.",
       "# Vad forskningen visar",
@@ -11,7 +11,7 @@
       "# Prova i två veckor",
       "Öva meningen 'Du, ring 112' högt några gånger. Om du hamnar i en situation där flera står och tittar, använd den."
     ],
-    e2: [
+    be2: [
       "# Bakgrund",
       "Solomon Asch lät deltagare bedöma längden på linjer. I gruppen satt medhjälpare som medvetet gav fel svar, och frågan var om den verkliga deltagaren skulle följa efter.",
       "# Vad forskningen visar",
@@ -23,7 +23,7 @@
       "# Prova i två veckor",
       "Vid nästa möte, skriv ner din egen bedömning innan du hör andras. Notera om du ändrar dig efteråt och varför."
     ],
-    e3: [
+    be3: [
       "# Bakgrund",
       "Gruppbeslut hoppas man ska vara klokare än enskilda beslut, eftersom flera kunskaper kombineras. I praktiken fungerar det inte alltid så.",
       "# Vad forskningen visar",
@@ -35,7 +35,7 @@
       "# Prova i två veckor",
       "Inför nästa beslut i en grupp, be alla skicka in tre fakta var, i förväg. Se om något av det var nytt för de andra."
     ],
-    e4: [
+    be4: [
       "# Bakgrund",
       "Brainstorming introducerades på 1950-talet av reklamchefen Alex Osborn, som menade att grupper som får kasta fram idéer utan kritik blir mer kreativa.",
       "# Vad forskningen visar",
@@ -47,7 +47,7 @@
       "# Prova i två veckor",
       "Prova metoden vid ett möte eller i en familjefråga. Räkna antalet idéer och jämför med hur det brukar gå."
     ],
-    e5: [
+    be5: [
       "# Bakgrund",
       "Det är lätt att tro att den som kommer sent är slarvig eller att den som är otrevlig är ett dåligt tycke. Men vi vet sällan vad som ligger bakom.",
       "# Vad forskningen visar",
@@ -59,7 +59,7 @@
       "# Prova i två veckor",
       "Nästa gång någon gör dig besviken, skriv ner tre möjliga förklaringar i situationen innan du reagerar."
     ],
-    e6: [
+    be6: [
       "# Bakgrund",
       "Vi bedömer människor snabbt: trovärdighet, kompetens, vänlighet. Det händer nästan automatiskt, och intrycken är svåra att ändra.",
       "# Vad forskningen visar",
@@ -71,7 +71,7 @@
       "# Prova i två veckor",
       "Anteckna ditt första intryck av en ny person. Efter några veckor, jämför med hur det blev."
     ],
-    e7: [
+    be7: [
       "# Bakgrund",
       "Ankring betyder att en siffra vi ser påverkar vår bedömning, även om den är irrelevant. Det visades av Tversky och Kahneman 1974 i flera experiment.",
       "# Vad forskningen visar",
@@ -83,7 +83,7 @@
       "# Prova i två veckor",
       "Inför nästa större köp eller löneprat: skriv ner tre siffror (mål, gräns, motpartens troliga gräns) och använd dem."
     ],
-    e8: [
+    be8: [
       "# Bakgrund",
       "Alla gör fel, och sättet vi ber om ursäkt på avgör ofta om relationen repareras. Ändå är vi ofta dåliga på det, och skyddar oss med förklaringar.",
       "# Vad forskningen visar",
@@ -95,7 +95,7 @@
       "# Prova i två veckor",
       "Tänk på en ursäkt du är skyldig någon. Skriv den enligt de tre delarna och skicka eller säg den."
     ],
-    e9: [
+    be9: [
       "# Bakgrund",
       "Gordon Allport föreslog 1954 att kontakt kan minska fördomar under vissa villkor: lika status, gemensamma mål, samarbete och stöd från auktoriteter.",
       "# Vad forskningen visar",
@@ -107,7 +107,7 @@
       "# Prova i två veckor",
       "Välj ett sammanhang där du kan arbeta med någon du normalt inte träffar, som en frivilliguppgift eller ett projekt. Notera vad du lär dig."
     ],
-    e10: [
+    be10: [
       "# Bakgrund",
       "Stanley Milgram genomförde sina experiment i början av 1960-talet för att förstå varför vanliga människor kunde delta i övergrepp. De blev bland de mest kända studierna i psykologin.",
       "# Vad forskningen visar",
@@ -119,7 +119,7 @@
       "# Prova i två veckor",
       "Öva en mening du kan använda: 'Jag är inte bekväm med det här, kan vi stämma av det?'. Använd den vid ett litet tillfälle den här veckan."
     ],
-    e11: [
+    be11: [
       "# Bakgrund",
       "När vi möter någon undrar vi snabbt två saker: vill hen mig väl, och kan hen göra något åt det? Det gäller både enskilda och grupper.",
       "# Vad forskningen visar",
@@ -131,7 +131,7 @@
       "# Prova i två veckor",
       "Inför ett första möte: bestäm en sak du vill visa i värme, till exempel att minnas ett namn eller fråga om något personligt. Gör det och se vad som händer."
     ],
-    e12: [
+    be12: [
       "# Bakgrund",
       "Begreppet planeringsfel myntades av Kahneman och Tversky, och beskriver att vi är för optimistiska om hur lång tid och hur mycket pengar något tar, även när vi vet att det ofta går över.",
       "# Vad forskningen visar",
