@@ -42,18 +42,6 @@
   --c-larande: #6B3FB0;
   --t-larande: #EFE9FA;
   --t2-larande: #E0D4F4;
-  --c-historia: #D6A383;
-  --t-historia: #251C16;
-  --t2-historia: #38281E;
-  --c-forebilder: #F0A46A;
-  --t-forebilder: #2A1B10;
-  --t2-forebilder: #402A17;
-  --c-natur: #70CBE6;
-  --t-natur: #10222A;
-  --t2-natur: #163541;
-  --c-finans: #A9BCD6;
-  --t-finans: #1A212B;
-  --t2-finans: #263244;
   --c-ai: #5C6400;
   --t-ai: #F2F4DC;
   --t2-ai: #E4E9BC;
@@ -72,12 +60,6 @@
   --c-finans: #44566F;
   --t-finans: #E8EDF3;
   --t2-finans: #D4DDE8;
-  --c-ai: #C9D860;
-  --t-ai: #1F2211;
-  --t2-ai: #2F3418;
-  --c-beteende: #A3A8F5;
-  --t-beteende: #12142E;
-  --t2-beteende: #1E2147;
   --f-display: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
   --f-body: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
@@ -180,6 +162,24 @@
   --c-larande: #B9A0F0;
   --t-larande: #211B32;
   --t2-larande: #31264C;
+  --c-historia: #D6A383;
+  --t-historia: #251C16;
+  --t2-historia: #38281E;
+  --c-forebilder: #F0A46A;
+  --t-forebilder: #2A1B10;
+  --t2-forebilder: #402A17;
+  --c-natur: #70CBE6;
+  --t-natur: #10222A;
+  --t2-natur: #163541;
+  --c-finans: #A9BCD6;
+  --t-finans: #1A212B;
+  --t2-finans: #263244;
+  --c-ai: #C9D860;
+  --t-ai: #1F2211;
+  --t2-ai: #2F3418;
+  --c-beteende: #A3A8F5;
+  --t-beteende: #12142E;
+  --t2-beteende: #1E2147;
   color-scheme: dark;
 }
 
@@ -264,6 +264,18 @@ select.field { flex: 0 1 12rem; }
 .bookline b { font-weight: 500; color: var(--ink); }
 .sheet .bookline { margin-top: 20px; max-width: 62ch; }
 
+.art { position: relative; margin: -18px -18px 2px; aspect-ratio: 400 / 150; background: var(--t2); overflow: hidden; border-radius: 5px 5px 0 0; }
+.card.featured .art { margin: -24px -24px 2px; }
+.art svg { display: block; width: 100%; height: 100%; }
+.art .l { fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.art .l.thin { stroke-width: 2; }
+.art .f { fill: var(--c); stroke: none; }
+.art .p { fill: var(--t); stroke: var(--c); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.art .p.noline { stroke: none; }
+.art .w { fill: var(--c); opacity: .14; }
+.art .t { fill: var(--c); font-weight: 700; font-family: inherit; }
+.art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.art .credit { position: absolute; right: 6px; bottom: 4px; max-width: 90%; font-size: .62rem; line-height: 1.2; color: #fff; background: rgba(0,0,0,.55); padding: 2px 5px; border-radius: 3px; }
 .card.featured { border-color: var(--ink); padding: 24px; gap: 14px; }
 .card.featured h3 { font-size: clamp(1.5rem, 3.4vw, 1.9rem); }
 .card.featured .summary { font-size: 1.05rem; }
@@ -717,7 +729,10 @@ select.field { flex: 0 1 12rem; }
   //@@NEWIDEAS@@
   var DEEP = {};
   //@@DEEP@@
-  var BIG = [], BIGDEEP = {}, FIGS = {};
+  var BIG = [], BIGDEEP = {}, FIGS = {}, ART = {}, PHOTO = {
+    p3: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c1920.jpg?width=800", credit: "Henri Manuel, Marie Curie, ca 1920 (public domain, Wikimedia Commons)" }
+  };
+  //@@ART@@
   //@@BIG@@
   BIG.forEach(function (i) { i.big = true; });
 
@@ -906,7 +921,9 @@ select.field { flex: 0 1 12rem; }
   function cardHTML(i, featured) {
     var e = EV[i.ev];
     var pips = [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("");
-    return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + (i.big ? " big" : "") + '">' +
+    var ph = !i.big && PHOTO[i.id];
+    var art = !i.big && ART[i.id] ? '<div class="art" aria-hidden="true">' + ART[i.id] + (ph ? '<img src="' + ph.url + '" alt="" loading="lazy" referrerpolicy="no-referrer" onload="this.parentNode.insertAdjacentHTML(\'beforeend\',\'<span class=credit>\'+this.getAttribute(\'data-c\')+\'</span>\')" data-c="' + esc(ph.credit) + '" onerror="this.remove()">' : "") + "</div>" : "";
+    return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + (i.big ? " big" : "") + '">' + art +
       '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + (i.book ? '<span class="bookpill">Bok</span>' : "") + "</span>" +
       '<div class="card-actions">' +
       '<button type="button" class="done" data-read="' + i.id + '" aria-pressed="' + (read[i.id] ? "true" : "false") + '" aria-label="' + (read[i.id] ? "Markerad som läst, tryck för att ångra: " : "Markera som läst: ") + esc(i.title) + '" title="' + (read[i.id] ? "Läst" : "Markera som läst") + '">' + CHECKICON + "</button>" +
