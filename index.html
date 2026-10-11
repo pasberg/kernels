@@ -62,6 +62,9 @@
   --c-ai: #5C6400;
   --t-ai: #F2F4DC;
   --t2-ai: #E4E9BC;
+  --c-beteende: #3A3FA0;
+  --t-beteende: #ECEDFA;
+  --t2-beteende: #D6D8F3;
   --c-historia: #7B4A2D;
   --t-historia: #F6EEE8;
   --t2-historia: #EADBCF;
@@ -77,6 +80,9 @@
   --c-ai: #C9D860;
   --t-ai: #1F2211;
   --t2-ai: #2F3418;
+  --c-beteende: #A3A8F5;
+  --t-beteende: #12142E;
+  --t2-beteende: #1E2147;
   --f-display: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
   --f-body: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
   --f-mono: "Mona Sans", "Helvetica Neue", Arial, sans-serif;
@@ -135,6 +141,9 @@
     --c-ai: #C9D860;
     --t-ai: #1F2211;
     --t2-ai: #2F3418;
+    --c-beteende: #A3A8F5;
+    --t-beteende: #12142E;
+    --t2-beteende: #1E2147;
     color-scheme: dark;
   }
 }
@@ -318,6 +327,7 @@ select.field { flex: 0 1 12rem; }
 .cat-natur { --c: var(--c-natur); --t: var(--t-natur); --t2: var(--t2-natur); }
 .cat-finans { --c: var(--c-finans); --t: var(--t-finans); --t2: var(--t2-finans); }
 .cat-ai { --c: var(--c-ai); --t: var(--t-ai); --t2: var(--t2-ai); }
+.cat-beteende { --c: var(--c-beteende); --t: var(--t-beteende); --t2: var(--t2-beteende); }
 .brand span { font-stretch: 112%; }
 .card { background: var(--t, var(--surface)); border-color: var(--t2, var(--line)); }
 .card.featured { border-color: var(--c, var(--ink)); }
@@ -421,7 +431,7 @@ select.field { flex: 0 1 12rem; }
 <div class="wrap">
   <header class="top">
     <div class="brand">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12.00" cy="3.70" r="1.9" fill="var(--c-somn)"/><circle cx="16.15" cy="4.81" r="1.9" fill="var(--c-vanor)"/><circle cx="19.19" cy="7.85" r="1.9" fill="var(--c-fokus)"/><circle cx="20.30" cy="12.00" r="1.9" fill="var(--c-relationer)"/><circle cx="19.19" cy="16.15" r="1.9" fill="var(--c-mental)"/><circle cx="16.15" cy="19.19" r="1.9" fill="var(--c-kropp)"/><circle cx="12.00" cy="20.30" r="1.9" fill="var(--c-larande)"/><circle cx="7.85" cy="19.19" r="1.9" fill="var(--c-historia)"/><circle cx="4.81" cy="16.15" r="1.9" fill="var(--c-forebilder)"/><circle cx="3.70" cy="12.00" r="1.9" fill="var(--c-natur)"/><circle cx="4.81" cy="7.85" r="1.9" fill="var(--c-finans)"/><circle cx="7.85" cy="4.81" r="1.9" fill="var(--c-ai)"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12.00" cy="3.70" r="1.9" fill="var(--c-somn)"/><circle cx="15.86" cy="4.65" r="1.9" fill="var(--c-vanor)"/><circle cx="18.83" cy="7.29" r="1.9" fill="var(--c-fokus)"/><circle cx="20.24" cy="11.00" r="1.9" fill="var(--c-relationer)"/><circle cx="19.76" cy="14.94" r="1.9" fill="var(--c-mental)"/><circle cx="17.50" cy="18.21" r="1.9" fill="var(--c-kropp)"/><circle cx="13.99" cy="20.06" r="1.9" fill="var(--c-larande)"/><circle cx="10.01" cy="20.06" r="1.9" fill="var(--c-historia)"/><circle cx="6.50" cy="18.21" r="1.9" fill="var(--c-forebilder)"/><circle cx="4.24" cy="14.94" r="1.9" fill="var(--c-natur)"/><circle cx="3.76" cy="11.00" r="1.9" fill="var(--c-finans)"/><circle cx="5.17" cy="7.29" r="1.9" fill="var(--c-ai)"/><circle cx="8.14" cy="4.65" r="1.9" fill="var(--c-beteende)"/></svg>
       <span>Kärnor</span>
     </div>
     <div class="head-r">
@@ -529,7 +539,8 @@ select.field { flex: 0 1 12rem; }
     { id: "forebilder", name: "Förebilder" },
     { id: "natur", name: "Naturvetenskap" },
     { id: "finans", name: "Finans" },
-    { id: "ai", name: "AI och teknik" }
+    { id: "ai", name: "AI och teknik" },
+    { id: "beteende", name: "Beteendevetenskap" }
   ];
   var EV = {
     starkt:   { label: "Starkt stöd",   pips: 3, cls: "ev-strong", desc: "Samstämmiga resultat från flera välgjorda studier, meta-analyser, officiella riktlinjer eller väldokumenterade historiska källor." },
@@ -731,6 +742,68 @@ select.field { flex: 0 1 12rem; }
       body: "I ett experiment med cirka tusen gymnasieelever i matematik presterade de som fick tillgång till en ren chattbot bättre på övningsuppgifterna men sämre på provet utan hjälp. En variant som gav ledtrådar i stället för svar minskade skadan. Resultatet är tidigt och behöver upprepas.",
       core: "Försök själv först och använd AI för förklaringar och återkoppling, inte för färdiga svar.",
       src: "Bastani m.fl., 2024 · arXiv; senare i PNAS" }
+  );
+  IDEAS.push(
+    { id: "e1", cat: "beteende", ev: "mattligt", type: "Experiment och meta-analys",
+      title: "Åskådareffekten: ju fler som ser, desto mindre sannolikt att någon hjälper",
+      body: "I ett klassiskt experiment hjälpte de flesta när de trodde att de var ensamma om att höra ett nödrop, men klart färre när de trodde att andra hörde det också. Ansvaret späds ut. En stor sammanställning visar att effekten finns, men försvinner ofta när situationen är farlig och tydlig.",
+      core: "Vid en nödsituation: ta ansvar och peka ut en person, till exempel 'Du i blå jacka, ring 112'.",
+      src: "Darley & Latané, 1968 · Journal of Personality and Social Psychology; Fischer m.fl., 2011 · Psychological Bulletin" },
+    { id: "e2", cat: "beteende", ev: "mattligt", type: "Experiment och meta-analys",
+      title: "Konformitet: vi följer gruppen även när vi tror att den har fel",
+      body: "I Aschs klassiska experiment gav deltagare ett uppenbart felaktigt svar om grupperna enhälligt gjorde det, vid många av testtillfällena. Så fort en annan person höll med den enskilde sjönk konformiteten. Det visar hur starkt gruppens tryck är, och hur mycket en bundsförvant betyder.",
+      core: "Be om åsikter var för sig innan gruppen diskuterar, och sök en bundsförvant om du vill säga emot.",
+      src: "Asch, 1951 · Groups, Leadership and Men; Bond & Smith, 1996 · Psychological Bulletin" },
+    { id: "e3", cat: "beteende", ev: "mattligt", type: "Experiment",
+      title: "Grupper pratar om det alla redan vet",
+      body: "I grupparbeten tenderar man att diskutera information som flera redan har, och glömmer det som bara en person vet. Då kan gruppen fatta ett sämre beslut än om den hade samlat all kunskap. Studier av dolda profiler visar mönstret.",
+      core: "Be varje person lägga fram vad bara hen vet innan gruppen drar slutsatser.",
+      src: "Stasser & Titus, 1985 · Journal of Personality and Social Psychology" },
+    { id: "e4", cat: "beteende", ev: "starkt", type: "Meta-analys",
+      title: "Brainstorming i grupp ger färre idéer än att tänka först var för sig",
+      body: "Många tror att grupper är bättre på att komma på idéer, men sammanställningar av studier visar att samma antal personer som arbetar var för sig ger fler idéer än en grupp som brainstormar tillsammans. Det beror bland annat på att man måste vänta på sin tur och på rädsla för att bli bedömd.",
+      core: "Låt alla skriva idéer själva först, samla dem och diskutera sedan.",
+      src: "Mullen, Johnson & Salas, 1991 · Basic and Applied Social Psychology; Diehl & Stroebe, 1987 · Journal of Personality and Social Psychology" },
+    { id: "e5", cat: "beteende", ev: "mattligt", type: "Experiment och översikt",
+      title: "Vi förklarar andras beteende med personlighet och sitt eget med omständigheter",
+      body: "När någon annan gör fel tolkar vi det ofta som ett karaktärsdrag, men när vi själva gör fel skyller vi på situationen. Felet kallas det fundamentala attributionsfelet. Det finns i många kulturer, men i olika grad.",
+      core: "Innan du bedömer någon, fråga dig vilka omständigheter hen kan ha haft, och fråga hen.",
+      src: "Jones & Harris, 1967 · Journal of Experimental Social Psychology; Gilbert & Malone, 1995 · Psychological Bulletin" },
+    { id: "e6", cat: "beteende", ev: "mattligt", type: "Meta-analys",
+      title: "Första intryck formas på sekunder och är ofta förvånansvärt träffsäkra, och ibland fel",
+      body: "Forskare har visat att bedömningar av bara några sekunder av någons beteende kan förutsäga omdömen från längre observation, till exempel av en lärare. Men intryck bygger också på fördomar. De är en bra gissning, inte en dom.",
+      core: "Använd första intrycket som en hypotes och sök bekräftelse innan du litar på det.",
+      src: "Ambady & Rosenthal, 1992 · Psychological Bulletin" },
+    { id: "e7", cat: "beteende", ev: "mattligt", type: "Experiment",
+      title: "Det första erbjudandet i en förhandling fungerar som ett ankare",
+      body: "I förhandlingsexperiment blev slutpriset högre när säljaren började högt och lägre när köparen började lågt. Siffran som sägs först sätter ramen. Effekten minskar om du förbereder dig och tänker på motpartens gräns.",
+      core: "Förbered dig noga, och ta gärna det första erbjudandet. Låt dig inte ankras av andras siffra.",
+      src: "Galinsky & Mussweiler, 2001 · Journal of Personality and Social Psychology; Tversky & Kahneman, 1974 · Science" },
+    { id: "e8", cat: "beteende", ev: "mattligt", type: "Meta-analys",
+      title: "En bra ursäkt har tre delar: erkännande, ånger och gottgörelse",
+      body: "En sammanställning av studier om ursäkter fann att de leder till mer förlåtelse, särskilt när de innehåller ett tydligt erkännande av felet, uttryck för ånger och ett erbjudande om att rätta till. 'Förlåt om du blev sårad' fungerar sämre.",
+      core: "Säg vad du gjorde, att du ångrar det och vad du gör för att rätta till det.",
+      src: "Fehr, Gelfand & Nag, 2010 · Psychological Bulletin" },
+    { id: "e9", cat: "beteende", ev: "starkt", type: "Meta-analys",
+      title: "Kontakt mellan grupper minskar fördomar",
+      body: "En sammanställning av över femhundra studier fann att kontakt mellan grupper i genomsnitt minskar fördomar, särskilt när grupperna är jämlika, har gemensamma mål och stöds av omgivningen. Effekten gäller även bortom den man möter.",
+      core: "Skapa sammanhang där människor med olika bakgrund samarbetar mot ett gemensamt mål.",
+      src: "Allport, 1954 · The Nature of Prejudice; Pettigrew & Tropp, 2006 · Journal of Personality and Social Psychology" },
+    { id: "e10", cat: "beteende", ev: "blandat", type: "Experiment och omdebatterad tolkning",
+      title: "Auktoritet: många gör det de blir tillsagda, även när det känns fel",
+      body: "I Milgrams experiment fortsatte en stor del av deltagarna att ge vad de trodde var elchocker när en forskare i labbrock sa åt dem. Senare forskning visar att det finns flera förklaringar, och att kritiker ifrågasatt hur experimentet genomfördes. Slutsatsen att vi lyder blint är för enkel.",
+      core: "Fråga dig själv: skulle jag göra detta om ingen sa åt mig? Våga ifrågasätta.",
+      src: "Milgram, 1963 · Journal of Abnormal and Social Psychology; Burger, 2009 · American Psychologist" },
+    { id: "e11", cat: "beteende", ev: "mattligt", type: "Översikt och experiment",
+      title: "Vi bedömer andra först på värme och sedan på kompetens",
+      body: "Forskning om hur vi uppfattar människor och grupper visar att värme (är hen välvillig?) och kompetens (kan hen?) är de två dimensionerna vi bedömer, och att värmen oftast kommer först. Det gör förtroende viktigt i början av en relation.",
+      core: "Visa att du är på den andras sida innan du visar vad du kan.",
+      src: "Fiske, Cuddy & Glick, 2007 · Trends in Cognitive Sciences" },
+    { id: "e12", cat: "beteende", ev: "starkt", type: "Studier och granskningar",
+      title: "Planeringsfelet: vi underskattar hur lång tid det tar",
+      body: "I en känd studie räknade studenter med att bli klara med sin uppsats på ungefär 34 dagar, men det tog i genomsnitt omkring 56. Fenomenet är utbrett, även bland experter och i stora projekt. Att jämföra med liknande tidigare projekt hjälper bättre än att planera uppifrån.",
+      core: "Räkna med hur lång tid liknande uppgifter faktiskt har tagit, och lägg på marginal.",
+      src: "Buehler, Griffin & Ross, 1994 · Journal of Personality and Social Psychology; Flyvbjerg, 2006 · Transport Reviews" }
   );
   IDEAS.push(
     { id: "b1", cat: "mental", ev: "mattligt", type: "Bokidé · Experiment och replikationer", book: "Tänka, snabbt och långsamt · Daniel Kahneman, 2011",
@@ -2515,6 +2588,152 @@ select.field { flex: 0 1 12rem; }
       "Läs ett kapitel eller en artikel. Stäng den, skriv vad du minns i fem punkter, och gör om det efter tre dagar."
     ]
   });
+  Object.assign(DEEP, {
+    e1: [
+      "# Bakgrund",
+      "Åskådareffekten började studeras efter mordet på Kitty Genovese 1964, där tidningar påstod att många åskådare inte ingrep. Den bilden har sedan visat sig vara överdriven, men frågan om varför vi ibland inte hjälper blev en stor forskningsgren.",
+      "# Vad forskningen visar",
+      "Darley och Latané lät 1968 deltagare via en intercom höra en annan person få ett anfall. När deltagaren trodde sig vara ensam att höra det larmade ungefär 85 procent snabbt, medan ungefär 31 procent gjorde det när de trodde att fyra andra också hörde. Ansvaret delas upp i huvudet, och man tolkar andras passivitet som att det inte är allvarligt.",
+      "# Det som är osäkert",
+      "Fischer och kollegor sammanställde 2011 över hundra studier och fann att åskådareffekten är tydlig i tvetydiga lägen men svag eller omvänd när faran är uppenbar, och när åskådarna kan se och kommunicera med varandra. Laboratorier är heller inte verkligheten.",
+      "# Så kan du använda det",
+      "Om du ser något allvarligt: anta att du kan vara den som måste agera. Tala direkt till en enskild person och ge en tydlig uppgift. Om du själv behöver hjälp: peka ut en person och säg vad du behöver.",
+      "# Prova i två veckor",
+      "Öva meningen 'Du, ring 112' högt några gånger. Om du hamnar i en situation där flera står och tittar, använd den."
+    ],
+    e2: [
+      "# Bakgrund",
+      "Solomon Asch lät deltagare bedöma längden på linjer. I gruppen satt medhjälpare som medvetet gav fel svar, och frågan var om den verkliga deltagaren skulle följa efter.",
+      "# Vad forskningen visar",
+      "Ungefär en tredjedel av deltagarnas svar på de kritiska frågorna följde gruppens felaktiga svar, och omkring tre fjärdedelar höll med gruppen minst en gång. När en medhjälpare gav rätt svar sjönk konformiteten kraftigt. Bond och Smith sammanställde 1996 många liknande studier från olika länder.",
+      "# Det som är osäkert",
+      "Studien gjordes med amerikanska studenter på 1950-talet, och en sammanställning visade att konformiteten är lägre i mer individualistiska kulturer och sjunkit över tid i USA. Det är en enkel uppgift, och i verkligheten är insatserna andra.",
+      "# Så kan du använda det",
+      "I möten: samla in skriftliga åsikter innan diskussionen, låt den med minst makt tala först, och be någon spela djävulens advokat. Om du vill säga emot: gör det tidigt och försök få en bundsförvant.",
+      "# Prova i två veckor",
+      "Vid nästa möte, skriv ner din egen bedömning innan du hör andras. Notera om du ändrar dig efteråt och varför."
+    ],
+    e3: [
+      "# Bakgrund",
+      "Gruppbeslut hoppas man ska vara klokare än enskilda beslut, eftersom flera kunskaper kombineras. I praktiken fungerar det inte alltid så.",
+      "# Vad forskningen visar",
+      "Stasser och Titus lät grupper välja mellan kandidater där den bästa bara kunde identifieras om medlemmarna delade unik information. Grupperna diskuterade i stället mest information som alla redan hade, och valde ofta fel. Mönstret har setts i många senare studier, även med professionella team.",
+      "# Det som är osäkert",
+      "Hur starkt effekten är beror på gruppens storlek, på om det finns en uppgift med rätt svar och på hur ledaren agerar. Vissa tekniker, som att ge varje person sin egen del av informationen, minskar problemet, men löser det inte alltid.",
+      "# Så kan du använda det",
+      "Börja möten med att var och en skriver ner vad hen vet som andra kanske inte vet. Gå igenom det först, och ta sedan diskussionen. Lyft fram oenighet i stället för att släta över den.",
+      "# Prova i två veckor",
+      "Inför nästa beslut i en grupp, be alla skicka in tre fakta var, i förväg. Se om något av det var nytt för de andra."
+    ],
+    e4: [
+      "# Bakgrund",
+      "Brainstorming introducerades på 1950-talet av reklamchefen Alex Osborn, som menade att grupper som får kasta fram idéer utan kritik blir mer kreativa.",
+      "# Vad forskningen visar",
+      "Mullen och kollegor sammanställde 1991 flera studier och fann att individer som arbetade var för sig, i genomsnitt, kom på fler och ofta bättre idéer än grupper om lika många. Diehl och Stroebe visade att en förklaring är att man blockeras av att vänta på sin tur att tala.",
+      "# Det som är osäkert",
+      "Grupper kan ha andra fördelar: de bygger gemensam förståelse och vilja att genomföra. Studierna gäller mest antalet idéer, inte hur bra de är i längden, och en del nyare metoder, som elektroniska system, minskar nackdelarna.",
+      "# Så kan du använda det",
+      "Använd skriftlig brainstorming: alla skriver i tio minuter, idéerna samlas in anonymt och sedan diskuteras de och förbättras tillsammans. Det ger fler idéer och fler röster.",
+      "# Prova i två veckor",
+      "Prova metoden vid ett möte eller i en familjefråga. Räkna antalet idéer och jämför med hur det brukar gå."
+    ],
+    e5: [
+      "# Bakgrund",
+      "Det är lätt att tro att den som kommer sent är slarvig eller att den som är otrevlig är ett dåligt tycke. Men vi vet sällan vad som ligger bakom.",
+      "# Vad forskningen visar",
+      "I ett experiment från 1967 läste deltagare en essä för eller emot Fidel Castro. Även när de visste att författaren fått i uppgift att skriva det, antog de att författaren hade den åsikten. Gilbert och Malone beskrev 1995 hur vi snabbt drar en slutsats om personen och bara långsamt, med ansträngning, korrigerar för situationen.",
+      "# Det som är osäkert",
+      "Effekten är starkare i västerländska än i vissa andra kulturer, och forskare diskuterar hur stor den är i vardagen. Ibland är det också rätt att dra slutsatser om karaktär.",
+      "# Så kan du använda det",
+      "När du blir irriterad på någon, tänk: vad skulle kunna förklara det här som inte handlar om personen? Ställ en nyfiken fråga i stället för att anklaga.",
+      "# Prova i två veckor",
+      "Nästa gång någon gör dig besviken, skriv ner tre möjliga förklaringar i situationen innan du reagerar."
+    ],
+    e6: [
+      "# Bakgrund",
+      "Vi bedömer människor snabbt: trovärdighet, kompetens, vänlighet. Det händer nästan automatiskt, och intrycken är svåra att ändra.",
+      "# Vad forskningen visar",
+      "Ambady och Rosenthal sammanställde 1992 studier där bedömare såg korta klipp, ofta mindre än en halv minut, av till exempel lärare och kliniker. Bedömningarna hängde ihop på ett måttligt sätt med hur de senare bedömdes i längre sammanhang eller av andra. De kallade det tunna skivor av beteende.",
+      "# Det som är osäkert",
+      "Korrelationen är måttlig, inte perfekt, och intrycken påverkas av utseende, kön, ålder och bakgrund. För viktiga beslut, som anställningar, är strukturerade intervjuer bättre än magkänsla.",
+      "# Så kan du använda det",
+      "Tänk på första intrycket som en gissning. Ge dig själv och andra en andra chans, och använd gemensamma kriterier när du bedömer andra. Och tänk på att du själv också bedöms snabbt: var tydlig och vänlig i början.",
+      "# Prova i två veckor",
+      "Anteckna ditt första intryck av en ny person. Efter några veckor, jämför med hur det blev."
+    ],
+    e7: [
+      "# Bakgrund",
+      "Ankring betyder att en siffra vi ser påverkar vår bedömning, även om den är irrelevant. Det visades av Tversky och Kahneman 1974 i flera experiment.",
+      "# Vad forskningen visar",
+      "Galinsky och Mussweiler visade 2001 att förhandlare som gav det första erbjudandet fick ett bättre slutresultat, och att ankaret hade störst verkan på dem som inte tänkte på motpartens bästa alternativ. De som fokuserade på vad motparten kunde tänkas acceptera blev mindre påverkade.",
+      "# Det som är osäkert",
+      "Resultaten gäller främst situationer där det finns stor osäkerhet om värdet. Extrema erbjudanden kan också få motparten att avbryta, och kulturer skiljer sig åt. Ibland är det klokare att låta andra gå först.",
+      "# Så kan du använda det",
+      "Räkna ut ditt bästa alternativ och ditt lägsta acceptabla pris innan du förhandlar. Ta första erbjudandet om du har gjort din hemläxa. Om motparten ankrar: motivera din egen siffra och förklara varför.",
+      "# Prova i två veckor",
+      "Inför nästa större köp eller löneprat: skriv ner tre siffror (mål, gräns, motpartens troliga gräns) och använd dem."
+    ],
+    e8: [
+      "# Bakgrund",
+      "Alla gör fel, och sättet vi ber om ursäkt på avgör ofta om relationen repareras. Ändå är vi ofta dåliga på det, och skyddar oss med förklaringar.",
+      "# Vad forskningen visar",
+      "Fehr och kollegor sammanställde 2010 många studier om ursäkter och förlåtelse. Ursäkter hängde ihop med mer förlåtelse, och de komponenter som mest verkade betyda något var att man erkänner ansvar, uttrycker ånger och erbjuder gottgörelse. Att bara ge en förklaring hjälpte mindre.",
+      "# Det som är osäkert",
+      "Studierna gäller ofta påhittade situationer eller minnen, och sambandet är måttligt. Vad som fungerar beror på felets allvar och relationen, och en ursäkt kan inte alltid reparera allvarlig skada.",
+      "# Så kan du använda det",
+      "Säg konkret vad du gjorde ('Jag kom inte till mötet'), att du ångrar det, vad du förstår att det orsakade och vad du kommer att göra för att rätta till det. Undvik 'men'.",
+      "# Prova i två veckor",
+      "Tänk på en ursäkt du är skyldig någon. Skriv den enligt de tre delarna och skicka eller säg den."
+    ],
+    e9: [
+      "# Bakgrund",
+      "Gordon Allport föreslog 1954 att kontakt kan minska fördomar under vissa villkor: lika status, gemensamma mål, samarbete och stöd från auktoriteter.",
+      "# Vad forskningen visar",
+      "Pettigrew och Tropp sammanställde 2006 över 500 studier och fann att mer kontakt i genomsnitt hänger ihop med mindre fördomar. Villkoren förstärkte effekten men var inte nödvändiga.",
+      "# Det som är osäkert",
+      "Många studier är korrelationer: personer med mindre fördomar söker kanske också mer kontakt. Fältstudier visar mindre effekter än laboratorier, och dålig kontakt kan förstärka fördomar. Effekterna är också svåra att hålla över tid.",
+      "# Så kan du använda det",
+      "Skapa samarbete, inte bara möten: gemensamma projekt, lag och uppgifter där alla behövs. Var uppmärksam på att alla blir hörda.",
+      "# Prova i två veckor",
+      "Välj ett sammanhang där du kan arbeta med någon du normalt inte träffar, som en frivilliguppgift eller ett projekt. Notera vad du lär dig."
+    ],
+    e10: [
+      "# Bakgrund",
+      "Stanley Milgram genomförde sina experiment i början av 1960-talet för att förstå varför vanliga människor kunde delta i övergrepp. De blev bland de mest kända studierna i psykologin.",
+      "# Vad forskningen visar",
+      "I originalet gick omkring två tredjedelar av deltagarna ända till den högsta nivån. Burger gjorde 2009 en mildare variant som stannade vid ett tidigare steg, och fann att andelen som fortsatte förbi det steget var ungefär lika stor som hos Milgram.",
+      "# Det som är osäkert",
+      "Kritiker, bland dem forskare som granskat arkivmaterialet, pekar på att deltagarna kanske inte alltid trodde på chockerna, och att instruktionerna varierade. Haslam och Reicher menar att människor inte lyder blint utan identifierar sig med ett mål. Så det handlar om mer än blind lydnad.",
+      "# Så kan du använda det",
+      "Ställ frågor när någon ger dig en order som känns fel: varför, vem bär ansvaret, finns det en annan väg? Skapa rutiner där det är tillåtet att säga ifrån.",
+      "# Prova i två veckor",
+      "Öva en mening du kan använda: 'Jag är inte bekväm med det här, kan vi stämma av det?'. Använd den vid ett litet tillfälle den här veckan."
+    ],
+    e11: [
+      "# Bakgrund",
+      "När vi möter någon undrar vi snabbt två saker: vill hen mig väl, och kan hen göra något åt det? Det gäller både enskilda och grupper.",
+      "# Vad forskningen visar",
+      "Fiske, Cuddy och Glick sammanfattade 2007 forskning som visade att värme och kompetens förklarar mycket av våra omdömen och känslor, till exempel beundran, medlidande, avund och förakt. Värme verkar ofta bedömas först, eftersom det handlar om avsikter.",
+      "# Det som är osäkert",
+      "Modellen förenklar, och dimensionerna varierar mellan kulturer. Det är också svårt att veta hur mycket det styr beteendet i verkliga situationer. Forskarna själva har diskuterat vilka ytterligare dimensioner som behövs.",
+      "# Så kan du använda det",
+      "I ett första möte: le, lyssna, ställ frågor och visa intresse innan du börjar bevisa vad du kan. Var tydlig med att du vill något gott, och visa kompetens genom att leverera.",
+      "# Prova i två veckor",
+      "Inför ett första möte: bestäm en sak du vill visa i värme, till exempel att minnas ett namn eller fråga om något personligt. Gör det och se vad som händer."
+    ],
+    e12: [
+      "# Bakgrund",
+      "Begreppet planeringsfel myntades av Kahneman och Tversky, och beskriver att vi är för optimistiska om hur lång tid och hur mycket pengar något tar, även när vi vet att det ofta går över.",
+      "# Vad forskningen visar",
+      "Buehler och kollegor fann 1994 att studenter systematiskt underskattade tiden för sin uppsats, och att de gjorde det även när de ombads tänka på tidigare erfarenheter. Flyvbjerg har visat att stora infrastrukturprojekt ofta överskrider tid och budget, och förespråkar referensklassmetoden: att utgå från utfallet i liknande projekt.",
+      "# Det som är osäkert",
+      "Det är oklart hur mycket som beror på optimism och hur mycket på att nya problem dyker upp. Metoder som att dela upp uppgiften i delar fungerar ibland men inte alltid, och referensklassen måste väljas med omsorg.",
+      "# Så kan du använda det",
+      "Fråga: hur lång tid tog det förra gången? Dubbla gärna din första gissning. Dela upp uppgiften, lägg in marginal för det oväntade och bestäm i förväg vad som ska skäras bort om tiden tar slut.",
+      "# Prova i två veckor",
+      "Skriv ner dina tidsuppskattningar för fem uppgifter den här veckan och mät hur lång tid de tog. Se vilken faktor du bör multiplicera med."
+    ]
+  });
   var EXTRA = {
     s1: [
       "# Prova i två veckor",
@@ -3922,7 +4141,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
     }
   });
 
-  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap, finans och AI. Varje kort visar källan och hur starkt stödet är. Små kärnor tar en minut att läsa. Stora kärnor är fördjupningar på 10 till 15 minuter, med bilder. Just nu " + IDEAS.length + " små och " + BIG.length + " stora kärnor.";
+  $("#lede").textContent = "Korta idéer om sömn, vanor, fokus, relationer, mående, kropp, lärande, historia, förebilder, naturvetenskap, finans, AI och beteendevetenskap. Varje kort visar källan och hur starkt stödet är. Små kärnor tar en minut att läsa. Stora kärnor är fördjupningar på 10 till 15 minuter, med bilder. Just nu " + IDEAS.length + " små och " + BIG.length + " stora kärnor.";
   renderModes();
   renderFeatured();
   renderChips();

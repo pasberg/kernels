@@ -52,3 +52,7 @@ Studier, siffror och källor är skrivna utan att varje uppgift är kontrollerad
 ## Bokidéer
 
 Kort som bygger på en känd bok har fältet `book` (till exempel `book: "Sapiens · Yuval Noah Harari, 2011"`). Kortet får då en liten markering "Bok" och raden "Idé från boken …". Evidensmärkningen (`ev`) och källraden (`src`) gäller forskningen bakom idén, inte boken, så en populär bok kan få "blandat" eller "tidigt". Korten finns i `src/ideas_books.js` och de längre texterna i `src/deep_5g.js`. Texterna är egna sammanfattningar utan citat.
+
+## Beteendevetenskap
+
+Kategorin `beteende` handlar om hur människor beter sig i olika situationer (grupper, förhandling, konflikt, bedömning av andra) och hur man kan agera. Korten finns i `src/ideas_beh.js` och de längre texterna i `src/deep_5h.js`.
