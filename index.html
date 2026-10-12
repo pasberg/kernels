@@ -3915,7 +3915,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
   var state = { cat: "alla", ev: "alla", q: "", view: "alla", mode: "sma" };
   // Gemensam röstdatabas. I Artifact-versionen används plattformens databas automatiskt.
   // På en egen sajt (t.ex. GitHub Pages): sätt adressen till din röst-API, se backend/README.md.
-  var KARNOR_API = "";
+  var KARNOR_API = "https://karnor-votes.kernels.workers.dev";
   var STORE = "karnor-v2";
   var db = { user: null, users: {} };
   try {
@@ -4043,7 +4043,7 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
     }, 150);
   }
   function initRemote() {
-    if (KARNOR_API) {
+    if (KARNOR_API && typeof fetch === "function" && !(window.claude && window.claude.use)) {
       remote.mode = "http";
       try { remote.cid = localStorage.getItem("karnor-cid"); if (!remote.cid) { remote.cid = "c-" + Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem("karnor-cid", remote.cid); } } catch (e) { remote.cid = "c-" + Math.random().toString(36).slice(2); }
       fetchAgg().then(function () { pushVotes(); });
