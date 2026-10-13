@@ -260,6 +260,10 @@ select.field { flex: 0 1 12rem; }
 .rate-r { order: 3; }
 .sheet .rate { margin: 22px 0 0; }
 .sheet .rate button { font-size: 1.6rem; padding: 3px 8px; }
+.newspill { display: inline-block; margin-left: 8px; padding: 1px 8px; border: 1px solid var(--c, currentColor); background: var(--c, currentColor); color: var(--on-c, #fff); border-radius: 99px; font: 500 .68rem/1.5 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; }
+.newsline { margin: 0 0 6px; font: 400 .78rem/1.5 var(--f-mono); color: var(--ink-2); }
+.newsline b { font-weight: 500; color: var(--ink); }
+.sheet .newsline { margin-top: 20px; max-width: 62ch; }
 .bookline { margin: 0 0 6px; font: 400 .78rem/1.5 var(--f-mono); color: var(--ink-2); }
 .bookline b { font-weight: 500; color: var(--ink); }
 .sheet .bookline { margin-top: 20px; max-width: 62ch; }
@@ -735,6 +739,10 @@ select.field { flex: 0 1 12rem; }
   };
   //@@ART@@
   var MON = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"];
+  function newsDate(s) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || "");
+    return m ? (+m[3]) + " " + MON[+m[2] - 1] + " " + m[1] : String(s || "");
+  }
   function addedText(id) {
     var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ADDED[id] || "");
     return m ? "Tillagd " + (+m[3]) + " " + MON[+m[2] - 1] + " " + m[1] : "";
@@ -930,7 +938,7 @@ select.field { flex: 0 1 12rem; }
     var ph = !i.big && PHOTO[i.id];
     var art = !i.big && ART[i.id] ? '<div class="art" aria-hidden="true">' + ART[i.id] + (ph ? '<img src="' + ph.url + '" alt="" loading="lazy" referrerpolicy="no-referrer" onload="this.parentNode.insertAdjacentHTML(\'beforeend\',\'<span class=credit>\'+this.getAttribute(\'data-c\')+\'</span>\')" data-c="' + esc(ph.credit) + '" onerror="this.remove()">' : "") + "</div>" : "";
     return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + (i.big ? " big" : "") + '">' + art +
-      '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + (i.book ? '<span class="bookpill">Bok</span>' : "") + "</span>" +
+      '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + (i.book ? '<span class="bookpill">Bok</span>' : "") + (i.news ? '<span class="newspill">Nytt</span>' : "") + "</span>" +
       '<div class="card-actions">' +
       '<button type="button" class="done" data-read="' + i.id + '" aria-pressed="' + (read[i.id] ? "true" : "false") + '" aria-label="' + (read[i.id] ? "Markerad som läst, tryck för att ångra: " : "Markera som läst: ") + esc(i.title) + '" title="' + (read[i.id] ? "Läst" : "Markera som läst") + '">' + CHECKICON + "</button>" +
       '<button type="button" class="save" data-save="' + i.id + '" aria-pressed="' + (saved[i.id] ? "true" : "false") + '" aria-label="Spara kortet: ' + esc(i.title) + '">' + BOOKMARK + "</button></div></div>" +
@@ -941,6 +949,7 @@ select.field { flex: 0 1 12rem; }
       '<div class="card-foot">' +
       '<span class="evidence ' + e.cls + '"><span class="pips">' + pips + "</span>" + e.label + "</span>" +
       (i.book ? '<p class="bookline"><b>Idé från boken</b> ' + esc(i.book) + "</p>" : "") +
+      (i.news ? '<p class="newsline"><b>Nytt ' + esc(newsDate(i.news)) + '</b> Färsk information som inte hunnit prövas över tid.</p>' : "") +
       '<p class="src"><b>' + esc(i.type) + "</b> · " + esc(i.src) + "</p>" +
       (addedText(i.id) ? '<p class="added">' + addedText(i.id) + "</p>" : "") +
       "</div></article>";
@@ -953,7 +962,7 @@ select.field { flex: 0 1 12rem; }
       if (state.cat !== "alla" && i.cat !== state.cat) return false;
       if (state.ev !== "alla" && i.ev !== state.ev) return false;
       if (!q) return true;
-      return (i.title + " " + i.body + " " + i.core + " " + i.src + " " + (i.book || "") + " " + catName(i.cat)).toLowerCase().indexOf(q) !== -1;
+      return (i.title + " " + i.body + " " + i.core + " " + i.src + " " + (i.book || "") + (i.news ? " nytt nyhet senaste" : "") + " " + catName(i.cat)).toLowerCase().indexOf(q) !== -1;
     });
     function byScore(list) {
       var withIdx = list.map(function (i, k) { var sc = score(i.id); return { i: i, k: k, avg: sc.avg, n: sc.n }; });
@@ -1076,7 +1085,7 @@ select.field { flex: 0 1 12rem; }
     $("#m-lead").textContent = i.body;
     $("#m-body").innerHTML = deepHTML(id);
     $("#m-core").textContent = i.core;
-    $("#m-src").innerHTML = (i.book ? '<span class="bookline" style="display:block;margin:0 0 6px"><b>Idé från boken</b> ' + esc(i.book) + "</span>" : "") + "<b>" + esc(i.type) + "</b> · " + esc(i.src);
+    $("#m-src").innerHTML = (i.news ? '<span class="newsline" style="display:block;margin:0 0 6px"><b>Nytt ' + esc(newsDate(i.news)) + '</b> Färsk information som inte hunnit prövas över tid.</span>' : "") + (i.book ? '<span class="bookline" style="display:block;margin:0 0 6px"><b>Idé från boken</b> ' + esc(i.book) + "</span>" : "") + "<b>" + esc(i.type) + "</b> · " + esc(i.src);
     var mr = $("#m-rate"); mr.setAttribute("data-rate-for", id); mr.className = "rate" + (votes[id] ? " has" : ""); mr.innerHTML = rateInner(id);
     var sb = $("#m-save");
     sb.setAttribute("data-save", id);

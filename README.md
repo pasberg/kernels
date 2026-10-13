@@ -72,3 +72,7 @@ Varje småkärna har en banner överst med en egen SVG-illustration (`src/art_0.
 ## Tillagd-datum
 
 Varje småkärna visar "Tillagd <datum>" längst ner. Datumen ligger i `src/added_0.js`. När du lagt till nya kort kör du `python3 tools/stamp_added.py` före commit, så får nya kort dagens datum (befintliga rörs inte), och sedan `python3 build.py`.
+
+## Nytt-kort
+
+Ett kort kan markeras som nyhet med `news: "ÅÅÅÅ-MM-DD"` (datum för nyheten). Det får en "Nytt"-etikett och raden "Nytt <datum>. Färsk information som inte hunnit prövas över tid." Sätt `ev` lågt (oftast "svagt") eftersom nyheten inte är etablerad. Sökning på "nytt" eller "nyhet" hittar dem.
