@@ -499,6 +499,7 @@ select.field { flex: 0 1 12rem; }
         <option value="starkt">Starkt stöd</option>
         <option value="mattligt">Måttligt stöd</option>
         <option value="tidigt">Tidigt stöd</option>
+        <option value="svagt">Svagt stöd</option>
         <option value="blandat">Blandat stöd</option>
       </select>
     </div>
@@ -581,6 +582,7 @@ select.field { flex: 0 1 12rem; }
     starkt:   { label: "Starkt stöd",   pips: 3, cls: "ev-strong", desc: "Samstämmiga resultat från flera välgjorda studier, meta-analyser, officiella riktlinjer eller väldokumenterade historiska källor." },
     mattligt: { label: "Måttligt stöd", pips: 2, cls: "ev-mid",    desc: "Rimligt konsekventa resultat, men ofta observationsstudier, små studier eller små effekter." },
     tidigt:   { label: "Tidigt stöd",   pips: 1, cls: "ev-early",  desc: "Lovande, men bygger på enstaka eller små studier som behöver upprepas." },
+    svagt:    { label: "Svagt stöd",    pips: 1, cls: "ev-early",  desc: "Färsk eller oprövad information, till exempel en ny studie som inte hunnit granskas eller upprepas. Se källan och vänta på mer." },
     blandat:  { label: "Blandat stöd",  pips: 1, cls: "ev-mixed",  desc: "Resultaten har varit motstridiga eller har inte kunnat upprepas." }
   };
   var IDEAS = [
@@ -963,6 +965,18 @@ select.field { flex: 0 1 12rem; }
       body: "I en brittisk studie som följde läkare i 50 år förlorade de som rökte cigaretter i genomsnitt minst tio år av sitt liv jämfört med icke-rökare. De som slutade vid 60, 50, 40 eller 30 års ålder vann tillbaka ungefär 3, 6, 9 respektive 10 år. Senare stora studier i andra länder pekar åt samma håll: ju tidigare man slutar, desto större vinst, men även sena stopp hjälper.",
       core: "Det är aldrig för sent att sluta röka, men ju tidigare, desto mer vinner du.",
       src: "Doll m.fl., 2004 · BMJ; Jha m.fl., 2013 · New England Journal of Medicine" }
+  );
+  IDEAS.push(
+    { id: "d3", cat: "ai", ev: "svagt", type: "Ny studie (förtryck)", news: "2026-10-09",
+      title: "Ny studie: tio minuters AI-hjälp kan minska uthålligheten när hjälpen tas bort",
+      body: "Enligt ett förtryck från Carnegie Mellon, Oxford, MIT och UCLA, och Berkeley News 9 oktober 2026, löste deltagare som fått AI-hjälp färre uppgifter och gav oftare upp när assistenten plötsligt togs bort, jämfört med en kontrollgrupp. I tre slumpade försök med amerikanska deltagare från en onlineplattform handlade uppgifterna om bråkräkning och läsförståelse, och skillnaden syntes efter ungefär tio minuters användning. Det är korta uppgifter i ett experiment, och studien visar inte hur AI påverkar lärande över månader eller år.",
+      core: "Läs gärna originalstudien och vänta på fler replikeringar innan du drar stora slutsatser, men det kan löna sig att försöka först och fråga AI sedan.",
+      src: "Liu, Christian, Dumbalska, Bakker & Dubey, 2026 · arXiv:2604.04721 (förtryck, 6 april 2026) · https://arxiv.org/abs/2604.04721; Berkeley News, 2026-10-09 · https://news.berkeley.edu/2026/10/09/using-ai-for-just-10-minutes-erodes-your-ability-to-persist-at-hard-things/" },
+    { id: "d4", cat: "fokus", ev: "mattligt", type: "Experiment",
+      title: "Avbrott kostar mer än tiden de tar",
+      body: "I en studie av Gloria Mark och kollegor fick försökspersoner skriva texter, ibland med avbrott i form av inkommande meddelanden. De avbrutna blev inte långsammare, de klarade uppgiften på lika kort eller kortare tid, men de rapporterade mer stress, frustration, tidspress och ansträngning. Det tyder på att vi kompenserar genom att jobba snabbare och betalar med högre påfrestning. Forskning om minne för mål visar också att det tar en stund att hitta tillbaka till det man höll på med.",
+      core: "Stäng av notiser under de pass då du behöver tänka, och samla meddelanden till bestämda tider.",
+      src: "Mark, Gudith & Klocke, 2008 · CHI (The cost of interrupted work); Altmann & Trafton, 2002 · Cognitive Science" }
   );
   IDEAS.push(
     { id: "e1", cat: "finans", ev: "starkt", type: "Centralbanksmål",
@@ -3067,6 +3081,32 @@ select.field { flex: 0 1 12rem; }
       "Om du röker: ta kontakt med vårdcentralen eller en stödlinje för rökavvänjning och fråga vilket stöd som finns. Om du inte röker: fråga någon som slutat vad som hjälpte dem mest."
     ]
   });
+  Object.assign(DEEP, {
+    d3: [
+      "# Bakgrund",
+      "Efter att chattassistenter blev vardagsverktyg har många undrat vad det gör med oss att låta dem lösa uppgifter åt oss. Frågan är gammal i ny skepnad: på samma sätt som miniräknare och sökmotorer har diskuterats, diskuteras nu om AI-hjälp kan urholka förmågan att härda ut när något är svårt. Det här kortet handlar om en färsk studie som försöker mäta just det, och bygger bara på vad studiens författare och Berkeley News säger.",
+      "# Vad forskningen visar",
+      "Enligt förtrycket med titeln \"AI Assistance Reduces Persistence and Hurts Independent Performance\" (Liu, Christian, Dumbalska, Bakker och Dubey, inskickat till arXiv den 6 april 2026) gjordes tre slumpade försök med sammanlagt 1 222 rekryterade deltagare, alla i USA och rekryterade via plattformen Prolific. I de två första försöken löste deltagarna bråkuppgifter, i det tredje läsförståelseuppgifter i SAT-stil. Under en inlärningsfas hade AI-gruppen en AI-assistent i en sidopanel, medan kontrollgruppen inte hade det. Därefter togs assistenten bort utan förvarning och deltagarna löste ett fåtal testuppgifter på egen hand. Enligt förtrycket löste AI-gruppen en lägre andel av testuppgifterna (till exempel 0,57 mot 0,73 i första försöket) och hoppade oftare över uppgifter i två av tre försök. Författarna skriver att effekterna syntes efter ungefär tio minuters interaktion. I en delanalys sa omkring 61 procent av AI-deltagarna i andra försöket att de mest använde AI för att få direkta svar, och just den gruppen hade lägst andel lösta uppgifter. Författarna beskriver den analysen som tvärsnitt och inte nödvändigtvis orsakssamband. Berkeley News skrev den 9 oktober 2026 om studien och uppger att en uppdaterad, granskad version presenterades vid konferensen COLM.",
+      "# Det som är osäkert",
+      "Mycket är osäkert, och därför är kortet markerat som svagt underbyggt. För det första har vi bara kunnat läsa den första versionen av förtrycket (v1), inte den uppdaterade version som enligt Berkeley News har granskats, så siffror och slutsatser kan ha ändrats. Att den skulle vara granskad har vi bara från nyhetsartikeln. För det andra är uppgifterna mycket korta och konstgjorda: bråk och läsförståelse under cirka 10–15 minuter, utförda online av betalda deltagare. Studien visar inte vad som händer med motivation eller lärande över veckor, månader och år, och författarna framhåller sådana långtidseffekter som en möjlighet, inte ett resultat. För det tredje bortföll en del deltagare från analyserna (till exempel 307 av 354 i första försöket), och författarna nämner själva en möjlig snedvridning i första försöket, som andra försöket var tänkt att åtgärda. I andra försöket var skillnaden i andelen överhoppade uppgifter inte statistiskt säkerställd. För det fjärde skilde sig effekten åt mellan hur AI användes: den som använde AI mer som hjälp med ledtrådar verkar ha påverkats mindre, men det är inte ett experimentellt resultat. Slutligen finns ett intresse hos alla parter: forskarna vill ha uppmärksamhet, universitetens pressavdelningar vill ha rubriker (\"tio minuter\" är en bra rubrik), och AI-bolagen har motsatta intressen. Resultatet har inte replikerats av oberoende grupper, så vitt vi har kunnat se.",
+      "# Så kan du använda det",
+      "Använd nyheten som en anledning att kolla primärkällan i stället för rubriken: läs sammanfattningen och metodavsnittet i förtrycket, och se om du litar på upplägget. Håll en öppen fråga i stället för en slutsats: kanske minskar uthålligheten när man ber om färdiga svar, och kanske inte när man använder AI som förklarare. Vänta gärna på att andra forskargrupper upprepar försöket innan du ändrar hur du undervisar, studerar eller arbetar. Vill du ändå vara försiktig kostar det lite att försöka själv först och be om hjälp när du kört fast.",
+      "# Prova i två veckor",
+      "Gör ett litet eget test, inte ett experiment i vetenskaplig mening. Välj en typ av uppgift du brukar ta hjälp av AI med. Under första veckan försöker du i 10 minuter på egen hand innan du frågar. Under andra veckan frågar du som vanligt. Skriv varje dag ned hur frustrerad du kände dig och hur väl du klarade liknande uppgifter utan hjälp. Använd det som underlag för din egen reflektion, inte som bevis, och kolla under tiden om det kommit nya studier som bekräftar eller motsäger resultatet."
+    ],
+    d4: [
+      "# Bakgrund",
+      "Många känner igen känslan av att ha jobbat hela dagen utan att få något gjort, fast man hela tiden varit upptagen. Informatikforskaren Gloria Mark har i flera år studerat hur avbrott och uppgiftsbyten påverkar kontorsarbete, både i laboratorium och på arbetsplatser.",
+      "# Vad forskningen visar",
+      "I en studie från 2008 (Mark, Gudith och Klocke) skrev försökspersoner texter under tidspress. Vissa avbröts av inkommande meddelanden som de skulle hantera. De avbrutna gruppen blev klar lika snabbt eller snabbare än de ostörda, men rapporterade betydligt mer stress, frustration, tidspress och mental ansträngning. Tolkningen är att människor kompenserar för avbrottet genom att arbeta fortare, vilket har ett pris i form av påfrestning. Psykologerna Altmann och Trafton (2002) har dessutom visat i experiment att det tar tid att återta ett pågående mål efter ett avbrott och att det går sämre ju längre avbrottet är och ju mer krävande det är. Arbetsminnet behöver bygga om vad man höll på med.",
+      "# Det som är osäkert",
+      "Laboratorieuppgifterna var korta och konstgjorda, och i verkligheten varierar avbrotten: ett avbrott kan vara en störning, men det kan också vara en nödvändig fråga från en kollega. Studien mäter påfrestning med självskattning. Det finns också stora skillnader mellan människor och yrken, och vissa jobb består av att svara på människor. Siffror som \"det tar tjugo minuter att komma tillbaka\" som ofta citeras ska läsas försiktigt, eftersom de beror på uppgift och mätmetod.",
+      "# Så kan du använda det",
+      "Skydda de pass då du ska tänka på något svårt: stäng av notiser, lägg telefonen utom synhåll och samla mejl och meddelanden till bestämda tider. Om du måste avbryta dig, skriv en rad om var du var och vad som är nästa steg, så blir det lättare att komma tillbaka. Det hjälper också att berätta för kollegor när du är nåbar.",
+      "# Prova i två veckor",
+      "Välj ett pass om dagen på 45–60 minuter där du stänger av alla notiser och samlar meddelanden till efteråt. Notera efteråt hur långt du kom och hur stressad du kände dig, och jämför med dagar utan skyddat pass."
+    ]
+  });
 
   var BIG = [], BIGDEEP = {}, FIGS = {}, ART = {}, ADDED = {}, PHOTO = {
     p3: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c1920.jpg?width=800", credit: "Henri Manuel, Marie Curie, ca 1920 (public domain, Wikimedia Commons)" }
@@ -3201,6 +3241,9 @@ ART["v7"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" a
 /* Bannerillustrationer (SVG) för småkärnor 2026-10-14. */
 ART["d1"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"300\" cy=\"40\" r=\"36\" class=\"w\"/><circle cx=\"70\" cy=\"128\" r=\"50\" class=\"w\"/><circle cx=\"150\" cy=\"10\" r=\"30\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><path d=\"M-60 -44h50l-6 40a19 19 0 0 1 -38 0z\" class=\"p\"/><path d=\"M-35 15v34M-52 49h34\" class=\"l\"/><path d=\"M30 -44a34 34 0 1 0 6.8 66.3a25.5 25.5 0 0 1 -6.8 -66.3z\" class=\"p\"/><path d=\"M-92 60L-60 60L-48 40L-34 66L-18 36L0 62L20 44L40 60L96 60\" class=\"l thin\"/></g></svg>";
 ART["d2"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"320\" cy=\"120\" r=\"44\" class=\"w\"/><circle cx=\"80\" cy=\"20\" r=\"40\" class=\"w\"/><circle cx=\"180\" cy=\"140\" r=\"28\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><rect x=\"-96\" y=\"6\" width=\"70\" height=\"14\" rx=\"4\" class=\"p\"/><rect x=\"-26\" y=\"6\" width=\"14\" height=\"14\" rx=\"2\" class=\"f\"/><path d=\"M-14 -2l26 -14M2 28l24 12\" class=\"l\"/><path d=\"M58 40C20 14 24 -22 52 -22C62 -22 58 -12 58 -8C58 -12 54 -22 64 -22C92 -22 96 14 58 40z\" class=\"p\"/><path d=\"M-84 -30Q-70 -44 -78 -56M-64 -30Q-50 -44 -58 -56\" class=\"l thin\"/></g></svg>";
+/* Bannerillustrationer (SVG) för småkärnor 2026-10-15. */
+ART["d3"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"310\" cy=\"30\" r=\"40\" class=\"w\"/><circle cx=\"80\" cy=\"125\" r=\"48\" class=\"w\"/><circle cx=\"170\" cy=\"140\" r=\"26\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><path d=\"M-90 -48h100a10 10 0 0 1 10 10v44a10 10 0 0 1 -10 10h-60l-22 18v-18h-18a10 10 0 0 1 -10 -10v-44a10 10 0 0 1 10 -10z\" class=\"p\"/><circle cx=\"-58\" cy=\"-16\" r=\"5\" class=\"f\"/><circle cx=\"-36\" cy=\"-16\" r=\"5\" class=\"f\"/><circle cx=\"-14\" cy=\"-16\" r=\"5\" class=\"f\"/><path d=\"M30 56L48 40L62 48L80 24L98 30\" class=\"l\"/><path d=\"M30 56h72\" class=\"l thin\"/></g></svg>";
+ART["d4"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"-20\" cy=\"0\" r=\"50\" class=\"p\"/><path d=\"M-20 -30v30l20 14\" class=\"l\"/><circle cx=\"-20\" cy=\"0\" r=\"4\" class=\"f\"/><path d=\"M52 -44a16 16 0 0 1 32 0v14l8 12h-48l8 -12z\" class=\"p\"/><path d=\"M62 -12a6 6 0 0 0 12 0\" class=\"l thin\"/><path d=\"M92 -50l10 -8M94 -34l12 0\" class=\"l thin\"/></g></svg>";
 /* Datum då varje småkärna lades till. Fylls av tools/stamp_added.py. */
 ADDED["a1"]="2026-10-11";
 ADDED["a2"]="2026-10-11";
@@ -3330,6 +3373,8 @@ ADDED["v6"]="2026-10-11";
 ADDED["v7"]="2026-10-11";
 ADDED["d1"]="2026-10-14";
 ADDED["d2"]="2026-10-14";
+ADDED["d3"]="2026-10-15";
+ADDED["d4"]="2026-10-15";
 
   var MON = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"];
   function newsDate(s) {
@@ -4148,6 +4193,72 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       "Klimatkänsligheten bedöms till ungefär 3 grader per fördubbling av koldioxid, med ett osäkerhetsintervall.",
       "Moln, aerosoler och möjliga tippunkter är de tydligaste osäkerheterna.",
       "Politiska val ligger utanför vad vetenskapen ensam kan avgöra."
+    ] }
+  ];
+  BIG.push({
+    id: "B11", cat: "relationer", ev: "mattligt", type: "Kunskapsöversikt",
+    title: "Anknytningsteorin: hur tidiga band formar oss, och hur mycket de egentligen bestämmer",
+    body: "Anknytningsteorin säger att små barn föds med ett behov av att knyta an till en trygg vuxen, och att erfarenheterna av hur den vuxna svarar färgar hur vi senare förhåller oss till närhet. Teorin har bra stöd när det gäller barns behov av trygga, lyhörda vuxna. Mer omstritt är hur stabilt mönstret är genom livet, hur mycket det förklarar om vuxna kärleksrelationer och hur väl kategorierna fungerar mellan kulturer.",
+    core: "Trygga och lyhörda vuxna är bra för barn. Men anknytningsstil är ingen ödesdom, och mönster hos vuxna är mer föränderliga än populärversionerna antyder.",
+    src: "Bowlby, 1969 · Attachment and Loss, vol. 1; Ainsworth m.fl., 1978 · Patterns of Attachment; Hazan & Shaver, 1987 · Journal of Personality and Social Psychology; van IJzendoorn & Kroonenberg, 1988 · Child Development; Fraley, 2002 · Personality and Social Psychology Review"
+  });
+  BIGDEEP.B11 = [
+    "# Vad frågan handlar om",
+    "Få psykologiska teorier har fått ett så stort genomslag i vardagsspråket som anknytningsteorin. Man hör människor säga att de är \"undvikande\" eller \"oroligt anknutna\" i sina relationer, och på nätet finns otaliga tester som lovar att visa din anknytningsstil. Bakom detta finns en forskningstradition med rötter i 1940- och 1950-talen, som fortfarande är aktiv. Den här artikeln beskriver vad teorin säger, vad som är väl belagt, och var forskningen är mer försiktig än populärversionerna.",
+    "Syftet är inte att ge råd om hur just du ska leva, utan att ge en karta över kunskapsläget. Artikeln ersätter inte professionell hjälp, och ingenting här kan användas för att ställa diagnos på sig själv eller andra.",
+    "# Bakgrund: från barnhem till teori",
+    "Den brittiske psykiatern och psykoanalytikern John Bowlby (1907–1990) arbetade efter andra världskriget med barn som vuxit upp på institutioner eller separerats från sina familjer. På uppdrag av Världshälsoorganisationen skrev han 1951 en rapport om omsorg och psykisk hälsa hos hemlösa barn, som lade stor vikt vid att barn behöver en varm, stadig relation till en omsorgsgivare. Samtidigt dokumenterade Joyce och James Robertson hur små barn reagerade på separation från sina föräldrar, bland annat på sjukhus. De filmade protest, förtvivlan och till sist en slags avstängdhet. Filmerna fick betydelse för hur sjukhus och barnomsorg senare organiserades, till exempel genom att föräldrar fick vara med sina barn.",
+    "Bowlby ville förklara varför barn knyter an så starkt, och han gick bort från den tidigare förklaringen att barnet älskar den som ger mat. Han hämtade stöd i etologin och evolutionsteorin: för en art vars ungar är hjälplösa länge ökar chansen att överleva om ungen söker närhet till en vuxen när något är hotfullt. Anknytning blev därmed ett inbyggt behovssystem, jämförbart med hunger, och inte bara en inlärd vana. Resultatet publicerades i trilogin Attachment and Loss från slutet av 1960-talet och framåt.",
+    "Ett välkänt stöd för tanken att mat inte är hela förklaringen kom från Harry Harlows djurförsök på 1950-talet. Unga rhesusapor som hade valet mellan en trådmodell med mjölk och en klädd modell utan mjölk tillbringade mest tid hos den mjuka. Försöken är etiskt problematiska, och de säger främst något om apor, men de bidrog till att flytta fokus från mat till närhet och trygghet.",
+    { box: "Några nyckelbegrepp", text: "Trygg bas: barnet utforskar världen utifrån en vuxen som det vet finns kvar. Fristad: den vuxna är också någon att vända sig till när något skrämmer. Lyhördhet: hur väl den vuxna uppfattar och svarar på barnets signaler. Inre arbetsmodell: Bowlbys tanke att barnet bygger upp förväntningar på hur andra kommer att svara, som sedan påverkar nya relationer." },
+    "# Den märkliga situationen: Ainsworths metod",
+    "Teorin hade länge svårt att prövas. Det som förändrade det var den amerikanska forskaren Mary Ainsworth, som studerade mödrar och spädbarn både i Uganda och i Baltimore. Hon utvecklade en laboratoriemetod som kallas \"den märkliga situationen\" (Strange Situation). Barnet, ungefär ett år gammalt, är i ett rum med leksaker. En förälder lämnar rummet en kort stund, en främling kommer in, och föräldern kommer tillbaka. Det som studeras är inte hur barnet reagerar när föräldern går, utan hur barnet beter sig vid återföreningen.",
+    "Ainsworth och kollegor beskrev tre huvudmönster. Hos trygga barn, det vanligaste mönstret, blev barnet ledset av separationen, sökte kontakt när föräldern kom tillbaka, lät sig tröstas och återgick snart till att leka. Hos osäkert undvikande barn visade barnet liten synlig oro och undvek eller ignorerade föräldern vid återföreningen. Hos osäkert ambivalenta barn var barnet mycket upprört, sökte kontakt men var samtidigt arg eller svårtröstat. Senare lade Mary Main och Judith Solomon till en fjärde grupp, desorganiserad anknytning, där barnets beteende saknar ett sammanhängande mönster, till exempel genom att barnet fryser till eller närmar sig och samtidigt drar sig undan. Den gruppen har kopplats till bland annat skrämmande eller misshandlande omsorg, men inte alla barn med desorganiserad anknytning har sådana erfarenheter.",
+    "I västerländska mellanklasstudier brukar ungefär sex av tio barn klassas som trygga. Siffrorna varierar mellan studier och grupper, och högre andelar osäker anknytning ses i grupper med större social belastning.",
+    "# Det som är känt: lyhördhet, barnhem och interventioner",
+    "Det mest gedigna stödet gäller en grundtanke: barn som får omsorg från en stadig, känslomässigt tillgänglig vuxen klarar sig bättre än barn som växer upp utan sådana relationer. Det starkaste exemplet är forskningen om barn som vuxit upp på mycket understimulerande institutioner. Efter diktaturens fall i Rumänien 1989 adopterades många barn till Storbritannien. Den brittiska uppföljningsstudien (English and Romanian Adoptees), under ledning av Michael Rutter, fann att barn som hade tillbringat lång tid på institution hade högre risk för bland annat anknytningssvårigheter, uppmärksamhetsproblem och kognitiva svårigheter, och att de som adopterades tidigare i allmänhet återhämtade sig mer. I Bucharest Early Intervention Project jämförde forskare, med bland andra Charles Zeanah, Charles Nelson och Nathan Fox i ledningen, barn som slumpats till att placeras i fosterfamiljer eller att stanna kvar på institution. Barnen i fosterfamilj klarade sig i flera avseenden bättre, och tidigare placering gav generellt bättre resultat.",
+    "Det finns också forskning om vad som gör att barn blir trygga. Det vanliga svaret är lyhördhet: att föräldern uppfattar barnets signaler och svarar på dem på ett lämpligt sätt, i stället för att alltid ge efter eller att ignorera. Här är resultaten mer måttliga än populära framställningar antyder. En metaanalys från 1990-talet fann ett samband mellan föräldrars lyhördhet och barnets anknytningstrygghet, men sambandet var inte stort, vilket betyder att lyhördhet förklarar bara en del av skillnaderna. Metaanalyser av interventioner, där man tränat föräldrar i att bli mer lyhörda, har däremot funnit att det går att öka lyhördheten och i viss mån barnets trygghet. Det är ett exempel på att forskningen kan peka på vad som hjälper, utan att helt förklara hur det går till.",
+    "Det betyder något för praktiken. Många förskolor, bland annat i Sverige, utformar sin inskolning med tanke på att barnet behöver tid att bygga upp trygghet hos en ny vuxen. Hur väl de modellerna är utvärderade mot alternativ är en separat fråga, men tanken bygger på anknytningsforskning.",
+    "# Från barndom till vuxenliv: vad håller i sig?",
+    "Det mest spännande och mest omstridda steget är påståendet att anknytningsmönstret i barndomen följer med in i vuxenlivet. Teorin säger att den inre arbetsmodellen fungerar som en mall för senare relationer. Två forskningslinjer har prövat det.",
+    "Den första handlar om att följa samma personer över tid. Den mest omtalade är Minnesotastudien, som följde barn från födseln till vuxen ålder. Den fann samband mellan tidig anknytning och senare sociala förmågor, men också att livshändelser som skilsmässor, sjukdom och trauman kunde förändra mönstret. En metaanalys av Chris Fraley (2002) av studier av anknytning över tid fann att det finns en viss stabilitet från spädbarnsår till vuxen ålder, men att den är måttlig. Ju längre tid mellan mätningarna, desto lägre stabilitet. Det passar en bild där tidiga erfarenheter spelar roll men inte bestämmer.",
+    "Den andra linjen handlar om vuxnas relationer. Cindy Hazan och Phillip Shaver föreslog 1987 att samma tre stilar kunde beskriva hur vuxna beter sig i kärleksrelationer, och deras studie lade grunden till ett stort forskningsfält. Forskare i det fältet använder i dag oftast frågeformulär där man skattar sig själv längs två dimensioner: anknytningsrelaterad ångest (rädsla för att bli övergiven) och undvikande (obehag med närhet). Flera studier tyder på att dessa dimensioner hänger samman med nöjdhet i parrelationer och med hur människor hanterar konflikter. Sambanden är i allmänhet små till måttliga.",
+    "Det är viktigt att se skillnaden mellan de två traditionerna. Mätningarna av spädbarn bygger på observation av beteende, medan mätningarna av vuxna ofta bygger på självskattning eller intervjuer. Studier som jämför dem finner bara svaga till måttliga samband mellan hur man klassas som barn och hur man beskriver sina vuxna relationer. De mäter delvis olika saker.",
+    { box: "Dimensioner i stället för fack", text: "Flera forskare har kommit fram till att anknytning hos vuxna mer liknar glidande skalor än tydliga typer. De flesta ligger någonstans mellan ytterligheterna, och samma person kan uppleva sig själv olika i relation till olika personer, till exempel förälder, vän och partner. Det talar emot de enkla kategorierna i populära tester." },
+    "# Det som är omstritt eller osäkert",
+    "För det första är orsakerna oklara. Teorin lägger tonvikten på omsorgen, men barn föds också med olika temperament. En lättretlig eller mycket blyg baby kan påverka hur föräldern svarar, och hur barnet beter sig i den märkliga situationen. Debatten om hur mycket som beror på temperament och hur mycket på omsorg har pågått i decennier, och forskare som Jerome Kagan har framfört att temperament förklarar mer än teorin antar. Dagens bild är ofta att båda spelar in, men andelen är omstridd.",
+    "För det andra är kulturfrågan olöst. Ainsworths kategorier togs fram i USA. Jämförande studier har funnit att fördelningen mellan grupperna skiljer sig åt mellan länder, men att skillnaderna inom ett land ofta är större än mellan länder. Kritiker menar ändå att vad som räknas som \"trygg\" beror på kulturella ideal, till exempel hur mycket självständighet som förväntas av ettåringar, och att metoden därför kan tolka vanliga beteenden i andra kulturer som problem. Forskare som arbetat med sådana jämförelser har svarat att grundprocessen, behovet av trygghet, verkar finnas överallt, medan uttrycken varierar.",
+    "För det tredje betonade teorin länge modern, vilket idag ses som en begränsning. Bowlbys tidiga formuleringar pekade ut en huvudsaklig anknytningsperson, oftast modern. Senare forskning har visat att barn knyter an till flera personer, inklusive fäder, mor- och farföräldrar och personal på förskola, och att den bilden är rimligare. Det gör också att tidiga formuleringar om att moderns frånvaro skulle skada barnet inte håller som generell regel.",
+    "För det fjärde är populärversionen ofta överdriven. Tester på nätet som delar in människor i fyra typer saknar vanligtvis den kvalitet som krävs för att ställa en sådan diagnos, och de kan leda till att man ser sig själv, eller sin partner, som en etikett. Forskningen säger att anknytningsmönster kan förändras genom nya erfarenheter, till exempel en stabil och stödjande relation eller psykoterapi, även om hur snabbt och hur mycket varierar och är mindre väl belagt än för barn.",
+    "# Hur man kan läsa nyheter om anknytning",
+    { list: [
+      "Fråga vad som har mätts: barnets beteende i en observation, en intervju eller ett frågeformulär. De mäter inte samma sak.",
+      "Var försiktig med påståenden om att en barndomsupplevelse \"orsakar\" ett vuxenmönster. De flesta studier visar samband, och sambanden är ofta måttliga.",
+      "Se upp med ord som \"stil\" och \"typ\" som antyder fasta kategorier. Dimensioner passar data bättre.",
+      "Skilj mellan allvarlig försummelse, där forskningen är tydlig, och vanliga skillnader i föräldrastil, där effekterna är små och osäkra.",
+      "Kom ihåg att forskningen mest bygger på västerländska, ofta högutbildade familjer, och att resultat inte automatiskt gäller överallt."
+    ] },
+    "# Så kan kunskapen användas",
+    "För föräldrar och andra vuxna runt barn är det praktiska budskapet förhållandevis enkelt, och det stöds av flera forskningslinjer: var tillgänglig, svara på barnets signaler utan att vara perfekt, och reparera när det gått snett. Anknytningsforskare har framhållit att det inte krävs att man svarar rätt hela tiden. Det som verkar spela roll är att det i stort sett finns en förutsägbar, omtänksam vuxen och att man tar sig tillbaka efter misstag. En förälder behöver inte vara fläckfri.",
+    "För vuxna som funderar på sina egna relationer kan begreppen vara ett användbart språk för att beskriva behov av närhet och av utrymme. Det blir mindre användbart om det används som ursäkt eller som en dom över någon annan. Den som lider av upprepade relationsproblem kan ha nytta av samtal med en psykolog eller terapeut, som kan bedöma helheten på ett sätt som ett test inte kan.",
+    { box: "Om författarens förbehåll", text: "Den här artikeln är skriven som en kunskapsöversikt utan att varje uppgift är kontrollerad mot originalkällorna. Namn, årtal och huvudfynd är sådant som är väl dokumenterat, men detaljer som exakta siffror och metodval bör kontrolleras innan de används i andra sammanhang." },
+    "# Lärdomar att ta med sig",
+    { list: [
+      "Små barn behöver stadiga, lyhörda vuxna. Det är den mest välgrundade delen av teorin, och den stöds av både observationsstudier och naturliga experiment.",
+      "Du behöver inte vara perfekt. Det som räknas är att svara på signaler i stort sett och att reparera när det blir fel.",
+      "Tidiga erfarenheter spelar roll men bestämmer inte. Stabiliteten från barndom till vuxenliv är måttlig, och nya relationer och erfarenheter kan förändra mönster.",
+      "Anknytning hos vuxna är mer en glidande skala än en typ. Var skeptisk till tester som delar in dig i fack.",
+      "Temperament, kultur och sammanhang förklarar också en del. Orsakerna är inte bara föräldrarnas.",
+      "Använd begreppen för att förstå och beskriva behov, inte för att döma sig själv eller andra.",
+      "Sök professionell hjälp vid återkommande svårigheter i relationer eller efter svåra upplevelser. Artiklar och tester kan inte ersätta det."
+    ] },
+    "# Sammanfattning",
+    { list: [
+      "John Bowlby och Mary Ainsworth lade grunden för teorin om att barn har ett inbyggt behov av att knyta an till trygga vuxna.",
+      "Den märkliga situationen gav ett sätt att mäta anknytning hos ettåringar och gav bland annat grupperna trygg, undvikande, ambivalent och desorganiserad.",
+      "Forskning om barn på institutioner, som de rumänska adoptivbarnen, visar att brist på stadig omsorg kan ge långvariga svårigheter, och att tidigare förbättring ger bättre utfall.",
+      "Stabiliteten över livet är måttlig, och sambanden mellan barndom och vuxna relationer är svagare än i populära framställningar.",
+      "Kritiken gäller bland annat temperament, kulturella skillnader och den tidiga fokuseringen på modern."
     ] }
   ];
 
