@@ -1003,6 +1003,18 @@ select.field { flex: 0 1 12rem; }
       src: "Green m.fl., 1999 · The Lancet (Nambour-studien); Green m.fl., 2011 · Journal of Clinical Oncology; IARC/WHO om UV-strålning som cancerframkallande" }
   );
   IDEAS.push(
+    { id: "d9", cat: "relationer", ev: "svagt", type: "Observationsstudie",
+      title: "Hur ett svårt samtal börjar avgör ofta hur det slutar",
+      body: "Den amerikanske parforskaren John Gottman har i observationsstudier av par sett att tonen i de första minuterna av ett konfliktsamtal ofta följer med hela samtalet. Om samtalet börjar med kritik, sarkasm eller anklagelser (en 'hård start') är det svårt att vända det senare; börjar det med att man beskriver vad man själv känner och behöver brukar det gå lugnare. Studierna är relativt små, gjorda på par i USA och visar samband, inte att en mjuk inledning i sig räddar relationer. Men rådet är billigt att pröva.",
+      core: "Börja svåra samtal med vad du själv känner och vill ('jag blir ledsen när…, jag skulle vilja…') i stället för vad den andre gör fel.",
+      src: "Gottman & Levenson, 1992 · Journal of Personality and Social Psychology; Carrère & Gottman, 1999 · Family Process; Gottman, 1994 · What Predicts Divorce?" },
+    { id: "d10", cat: "natur", ev: "starkt", type: "Etablerad vetenskap",
+      title: "Radiometrisk datering: så vet vi hur gammal jorden är",
+      body: "Vissa atomkärnor sönderfaller i en jämn takt som inte påverkas av temperatur, tryck eller kemi. Det gör dem till klockor. Mäter man hur mycket av ett radioaktivt grundämne, till exempel uran, som finns kvar i en bergart jämfört med sönderfallsprodukten bly, kan man räkna ut hur länge sedan bergarten stelnade. Den amerikanske geokemisten Clair Patterson använde bly i meteoriter och kom i mitten av 1950-talet fram till ungefär 4,55 miljarder år, och siffran ligger fortfarande nära dagens bästa uppskattning. Flera oberoende metoder och prover ger samma svar.",
+      core: "Jordens ålder, omkring 4,5 miljarder år, är inte en gissning utan ett mätresultat som många oberoende metoder bekräftar.",
+      src: "Patterson, 1956 · Geochimica et Cosmochimica Acta; Dalrymple, 1991 · The Age of the Earth" }
+  );
+  IDEAS.push(
     { id: "e1", cat: "finans", ev: "starkt", type: "Centralbanksmål",
       title: "Inflation: varför dina pengar tappar värde långsamt",
       body: "Inflation betyder att priserna i genomsnitt stiger, så att samma summa köper mindre över tid. Riksbanken har ett mål om att inflationen, mätt som KPIF, ska vara två procent per år. Ett litet, stabilt prisökningstempo ska göra det lättare att planera, medan hög och svängig inflation gör det svårt att veta vad pengar är värda.",
@@ -3183,6 +3195,32 @@ select.field { flex: 0 1 12rem; }
       "Gör solskydd till en rutin under två veckor: lägg solkräm och hatt vid ytterdörren, ta en bild på något som påminner dig varje morgon och notera varje dag om du var ute mer än en timme mitt på dagen och vad du använde. Efter två veckor ser du om rutinen håller och vilka situationer du glömmer."
     ]
   });
+  Object.assign(DEEP, {
+    d9: [
+      "# Bakgrund",
+      "Alla som bråkat med någon nära känner igen det: samtalet spårar ur redan i första meningen. John Gottman, psykolog vid University of Washington, har sedan 1970-talet filmat par som diskuterar något de är oense om och sedan följt upp hur det gått för dem. Ur det materialet kommer idén om att sättet ett samtal börjar på säger mycket om hur det kommer att fortsätta.",
+      "# Vad forskningen visar",
+      "Enligt Gottman och medarbetare går ett konfliktsamtal som inleds med kritik, förakt eller anklagelser sällan åt ett konstruktivt håll; inledningen kallas 'hård start'. En 'mjuk start' beskriver i stället situationen, den egna känslan och en önskan, utan att lägga skulden på den andre. I en studie från 1999 av nygifta par visade tonen i de första tre minuterna av ett konfliktsamtal samband med hur äktenskapet såg ut vid uppföljning efter några år. Gottmans forskargrupp har också beskrivit att samtal ofta slutar i den ton de började.",
+      "# Det som är osäkert",
+      "Studierna bygger på ganska få par, mest i USA, och på observation: vi vet inte att en mjukare inledning orsakar bättre utfall, det kan lika gärna vara så att par med ett gott grundförhållande helt enkelt inleder mjukare. Siffror om hur träffsäkert man kan förutsäga skilsmässa har dessutom kritiserats för att räknas på samma material som modellen byggdes på. Resultaten bör därför läsas som en rimlig tumregel, inte som en prognos för just din relation.",
+      "# Så kan du använda det",
+      "Innan du tar upp något svårt: välj en tidpunkt när ingen av er är stressad eller hungrig, och formulera första meningen i förväg. Börja med jag-budskap ('Jag blev ledsen när vi inte hörde av oss i går, och jag skulle vilja att vi hittar ett sätt…') i stället för 'du alltid' eller 'du aldrig'. Det gäller lika mycket vänner, kollegor och barn som partner.",
+      "# Prova i två veckor",
+      "Varje gång du ska ta upp något som kan bli laddat, skriv först ner en mening som beskriver situationen, hur du känner och vad du önskar. Använd den som inledning. Notera efter varje samtal hur det började och hur det kändes, och titta på mönstret efter två veckor."
+    ],
+    d10: [
+      "# Bakgrund",
+      "Frågan om jordens ålder har sysselsatt många. På 1600-talet räknade biskop James Ussher ut ett datum utifrån bibeltexter, och under 1800-talet gav fysikern Lord Kelvin betydligt kortare tider än geologerna väntade sig eftersom han utgick från att jorden kylts av. Tidsskalan blev tillgänglig för mätning först när radioaktiviteten upptäcktes omkring 1900.",
+      "# Vad forskningen visar",
+      "Vissa grundämnen, till exempel uran-238, sönderfaller med en konstant halveringstid som inte går att påverka med värme, tryck eller kemiska reaktioner. Uran-238 blir efter flera steg till bly, med en halveringstid på drygt fyra miljarder år. Ernest Rutherford föreslog tidigt att detta kunde användas som klocka. Clair Patterson mätte i mitten av 1950-talet blyisotoper i meteoriter och kunde räkna ut en ålder på ungefär 4,55 miljarder år för solsystemets bildning. Senare arbeten med fler metoder och prover har bekräftat ungefär samma värde. Äldsta kända jordbergarter och mineralkorn är yngre, eftersom jordskorpan hela tiden omformas, men meteoriter och månprover pekar mot samma tidpunkt.",
+      "# Det som är osäkert",
+      "Metoden kräver att bergarten förblivit ett slutet system, utan att något av grundämnena tillförts eller försvunnit, och att man vet hur mycket av sönderfallsprodukten som fanns från början. Forskare kontrollerar det genom att jämföra flera sönderfallsserier och flera prover. Den exakta siffran har justerats med tiden och anges med en liten felmarginal, men alla seriösa uppskattningar ligger runt 4,5 miljarder år. Det som är svårare att datera är jordens allra tidigaste tid.",
+      "# Så kan du använda det",
+      "Exemplet visar hur vetenskap kan skapa säkerhet: flera oberoende metoder som pekar mot samma svar är starkare än en enskild mätning. Använd det som måttstock när du bedömer andra påståenden, och fråga om det finns mer än en oberoende källa.",
+      "# Prova i två veckor",
+      "Välj ett påstående du ofta hör och försök hitta två metoder eller källor som oberoende av varandra kan kontrollera det. Skriv ner vad de visar och om de stämmer överens."
+    ]
+  });
 
   var BIG = [], BIGDEEP = {}, FIGS = {}, ART = {}, ADDED = {}, PHOTO = {
     p3: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c1920.jpg?width=800", credit: "Henri Manuel, Marie Curie, ca 1920 (public domain, Wikimedia Commons)" }
@@ -3326,6 +3364,9 @@ ART["d6"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" a
 /* Bannerillustrationer (SVG) för småkärnor 2026-10-17. */
 ART["d7"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><rect x=\"-60\" y=\"-55\" width=\"120\" height=\"110\" rx=\"8\" class=\"p\"/><path d=\"M-40 -30h60M-40 -12h80M-40 6h50\" class=\"l thin\"/><circle cx=\"35\" cy=\"30\" r=\"16\" class=\"f\"/><path d=\"M27 30l6 7l12 -14\" class=\"l\"/></g></svg>";
 ART["d8"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"-40\" cy=\"-20\" r=\"26\" class=\"f\"/><path d=\"M-40 -62v-14M-82 -20h-14M-68 -50l-10 -10M-12 -50l10 -10\" class=\"l thin\"/><path d=\"M20 -10h60v34c0 24 -30 36 -30 36s-30 -12 -30 -36z\" class=\"p\"/><path d=\"M50 8v36M32 26h36\" class=\"l\"/></g></svg>";
+/* Bannerillustrationer (SVG) för småkärnor 2026-10-18. */
+ART["d9"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><path d=\"M-80 -40h70a10 10 0 0 1 10 10v30a10 10 0 0 1 -10 10h-40l-20 18v-18h-10a10 10 0 0 1 -10 -10v-30a10 10 0 0 1 10 -10z\" class=\"p\"/><path d=\"M10 -10h60a10 10 0 0 1 10 10v26a10 10 0 0 1 -10 10h-8v16l-18 -16h-34a10 10 0 0 1 -10 -10v-26a10 10 0 0 1 10 -10z\" class=\"f\"/><path d=\"M-60 -20h30M-60 -8h18M30 6h34\" class=\"l thin\"/></g></svg>";
+ART["d10"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"0\" cy=\"0\" r=\"52\" class=\"p\"/><path d=\"M-52 0a52 52 0 0 1 104 0z\" class=\"f\"/><path d=\"M0 0v-34M0 0l22 14\" class=\"l\"/><path d=\"M-46 20h92M-36 36h72\" class=\"l thin\"/></g></svg>";
 /* Datum då varje småkärna lades till. Fylls av tools/stamp_added.py. */
 ADDED["a1"]="2026-10-11";
 ADDED["a2"]="2026-10-11";
@@ -3461,6 +3502,8 @@ ADDED["d5"]="2026-10-16";
 ADDED["d6"]="2026-10-16";
 ADDED["d7"]="2026-10-17";
 ADDED["d8"]="2026-10-17";
+ADDED["d9"]="2026-10-18";
+ADDED["d10"]="2026-10-18";
 
   var MON = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"];
   function newsDate(s) {
@@ -4467,6 +4510,65 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       "Vid långvarig insomni är KBT-I förstahandsval. Sömnmedel och melatonin är sällan lösningen.",
       "Snarkning med andningsuppehåll och kraftig dagtrötthet ska utredas av vården.",
       "Var försiktig med spektakulära påståenden om sömn och hjärnan, och med att jaga siffror från sömnmätare."
+    ] }
+  ];
+  BIG.push({
+    id: "B14", cat: "kropp", ev: "mattligt", type: "Kunskapsöversikt",
+    title: "Stress: vad som händer i kroppen, när den hjälper och när den skadar, och vad som hjälper",
+    body: "Stress är kroppens beredskap inför en påfrestning: adrenalin höjer pulsen inom sekunder och kortisol ställer om kroppen under minuter till timmar. Kortvarig stress är normal och kan till och med hjälpa. Det som har samband med sämre hälsa är långvarig stress utan återhämtning, särskilt när kraven är höga och möjligheten att påverka är låg. Forskningen är stark på mekanismerna och sambanden, svagare på hur stor del som är orsak och på hur mycket enskilda metoder hjälper.",
+    core: "Skilj på stress som går över och stress som aldrig tar slut. Skydda sömn, rörelse och relationer, sök det du kan påverka i vardagen, och sök hjälp om symtomen varar.",
+    src: "Cannon, 1932 · The Wisdom of the Body; Selye, 1936 · Nature; McEwen & Stellar, 1993 · Archives of Internal Medicine; Cohen m.fl., 1991 · New England Journal of Medicine; Karasek, 1979 · Administrative Science Quarterly; Marmot m.fl., 1991 · The Lancet (Whitehall II); Kivimäki m.fl., 2012 · The Lancet; Goyal m.fl., 2014 · JAMA Internal Medicine; Crum m.fl., 2013 · Journal of Personality and Social Psychology; Holt-Lunstad m.fl., 2010 · PLoS Medicine"
+  });
+  BIGDEEP.B14 = [
+    "# Vad frågan handlar om",
+    "Ordet stress används om nästan allt: om ett tal inför kollegorna, om månader av för hög arbetsbörda, om att ha småbarn, om ekonomisk oro och om känslan av att aldrig hinna ikapp. I vardagen är stress något dåligt vi vill bli av med. I biologin är den ett normalt och nödvändigt system som gör att vi kan reagera på hot och utmaningar. Frågan är därför inte om vi ska ha stress, utan när den hjälper, när den skadar och vad vi faktiskt kan göra åt det.",
+    "Den här artikeln går igenom hur stresssystemet fungerar, vad forskningen säger om sambandet mellan långvarig stress och hälsa, vilka råd som har stöd och var kunskapen är osäker eller omstridd. Den är en allmän översikt och ersätter inte vård. Den som har långvariga symtom som sömnproblem, nedstämdhet, oro eller svårt att koncentrera sig bör kontakta vårdcentralen.",
+    "# Bakgrund: från 'fight or flight' till allostas",
+    "Den moderna stressforskningen börjar i början av 1900-talet. Den amerikanske fysiologen Walter Cannon beskrev hur kroppen vid hot snabbt ställer om för kamp eller flykt, och att kroppen annars strävar efter att hålla sin inre balans, något han kallade homeostas. Några årtionden senare, på 1930-talet, beskrev den ungersk-kanadensiske forskaren Hans Selye att djur som utsattes för olika typer av påfrestningar visade ett liknande mönster av kroppsliga förändringar. Han populariserade ordet stress för detta och skapade bilden av en kropp som först larmar, sedan anpassar sig och till sist kan slitas ut.",
+    "Selyes modell har kritiserats för att vara för förenklad, bland annat eftersom olika typer av påfrestning ger olika reaktioner och eftersom det spelar roll hur vi tolkar situationen. Men grundtanken lever kvar i modernare begrepp. På 1980- och 90-talen föreslog forskare, bland andra Peter Sterling och Joseph Eyer samt Bruce McEwen, begreppet allostas: kroppen upprätthåller stabilitet genom att förändras, och det kostar. Den samlade kostnaden av att ofta behöva anpassa sig, utan tillräcklig vila, kallas allostatisk belastning.",
+    "# Hur stresssystemet fungerar",
+    "När hjärnan bedömer något som ett hot eller en stor utmaning aktiveras två system. Det första är det sympatiska nervsystemet. Det får binjuremärgen att frisätta adrenalin och noradrenalin, och inom sekunder ökar puls och blodtryck, andningen blir snabbare och blodflödet styrs om till musklerna. Det är därför hjärtat bultar innan ett viktigt samtal.",
+    "Det andra systemet är den så kallade HPA-axeln (hypotalamus, hypofys, binjurebark). Hypotalamus frisätter ett signalämne som får hypofysen att släppa ifrån sig ett hormon, och det i sin tur får binjurebarken att frisätta kortisol. Kortisol verkar långsammare, över minuter till timmar. Det höjer blodsockret så att det finns bränsle, påverkar immunsystemet och hjälper kroppen att hantera påfrestningen. Kortisol är inte i sig 'stresshormonet' som många tror: det följer en dygnsrytm med högst nivåer på morgonen och lägst på natten, och det behövs för att vi ska fungera normalt. När hotet är över fungerar en negativ återkoppling där kortisol dämpar systemet och nivåerna går tillbaka.",
+    "Hjärnan är både upphov till och mål för stressreaktionen. Amygdala är inblandad i att upptäcka hot, hippocampus och frontalloben hjälper till att bedöma situationen och dämpa svaret. Djurstudier och vissa studier på människor tyder på att långvarig och kraftig stress kan påverka dessa områden och göra det svårare att tänka klart. Hur stora och hur bestående effekterna är hos människor i vardagen är däremot mindre klart.",
+    { box: "Akut och kronisk stress är olika saker", text: "Akut stress, som en tentamen eller en kris, aktiverar systemet och lägger sedan av. Det är i sig inte farligt för friska personer. Det som forskningen kopplar till sämre hälsa är kronisk stress: perioder av månader eller år där man ständigt är påslagen och inte får tillräcklig återhämtning." },
+    "# Stress kan vara bra, i lagom dos",
+    "Redan 1908 beskrev psykologerna Robert Yerkes och John Dodson att prestationen hos möss ökade med stigande 'arousal' upp till en punkt och sedan sjönk. Den omvända U-formade kurvan har sedan blivit ett vanligt sätt att förklara stress: lagom spänning ger bäst resultat, för lite ger slöhet och för mycket ger förlamning. Den är en användbar bild men en svag vetenskaplig lag. Det ursprungliga experimentet var enkelt, och den allmänna kurvan har inte kunnat visas för alla typer av uppgifter och människor.",
+    "En modernare tanke är att kroppen reagerar olika beroende på om vi upplever en situation som en utmaning, där vi tror att vi har resurser att klara den, eller som ett hot, där kraven verkar större än vår förmåga. Vissa laboratoriestudier tyder på att utmaningsläget ger en effektivare blodcirkulation och bättre prestation än hotläget, men resultaten är inte lika stabila för alla uppgifter, och mycket av forskningen bygger på små grupper.",
+    "# Långvarig stress och hälsa: vad som är känt",
+    "Sambanden mellan långvarig stress och sjukdom har studerats ur flera håll. Här är några av de tydligaste.",
+    "Arbetsstress. Sociologen Robert Karasek beskrev 1979 en modell där hög arbetsbelastning kombinerad med låg kontroll över arbetet ger störst risk för ohälsa. Senare har stora sammanvägda studier, bland annat en sammanställning från 2012 av Mika Kivimäki och kollegor i tidskriften The Lancet, funnit att personer med den typen av 'job strain' har en något högre risk för hjärt-kärlsjukdom, även när man tar hänsyn till kända riskfaktorer som rökning och blodtryck. Sambandet är måttligt, inte dramatiskt, och det går inte att helt utesluta att andra faktorer spelar in.",
+    "Position och kontroll. Whitehall-studierna av brittiska tjänstemän, ledda av Michael Marmot, visade att risken för hjärt-kärlsjukdom och död var högre för dem på lägre nivåer i hierarkin, även bland personer som alla hade fast arbete och tillgång till vård. En del av förklaringen verkar vara arbetsvillkor som låg kontroll och bristande stöd, och inte enbart rökning och kost. Studierna visar att hälsan påverkas av hur vi har det i vardagen, men de kan inte ensamma ange hur stor del som beror på just stress.",
+    "Infektioner. I en välkänd studie från 1991 av Sheldon Cohen och kollegor fick frivilliga ett förkylningsvirus i näsan. De som uppgav mer psykologisk stress hade större sannolikhet att bli sjuka än de som uppgav mindre. Studien har följts av flera liknande, men den bygger på självskattad stress och på en särskild försökssituation.",
+    "Sömn, kost och beteenden. En viktig del av sambandet går sannolikt via beteenden: den som är stressad sover ofta sämre, rör sig mindre, dricker mer alkohol eller koffein och äter annorlunda. Det kan göra det svårt att veta vad som är stressens egen effekt och vad som är följder av hur den påverkar vardagen.",
+    "Psykisk ohälsa. Långvarig stress ökar risken för ångest, nedstämdhet och utmattning. I Sverige finns sedan 2005 diagnosen utmattningssyndrom, som beskriver ett tillstånd efter lång tids stress med uttalad trötthet, sömn- och koncentrationsproblem och nedsatt stresstolerans. Begreppet 'utbrändhet' (burnout) används internationellt men är inte en egen diagnos i alla länder, och det diskuteras hur skarp gränsen mot depression egentligen är.",
+    "# Hur man mäter stress, och varför det är svårt",
+    "Stress mäts på flera sätt, och de stämmer inte alltid överens. Frågeformulär som Perceived Stress Scale, som Cohen och kollegor utvecklade på 1980-talet, mäter hur mycket man själv upplever att livet är oförutsägbart och överväldigande. Kortisol kan mätas i saliv, blod eller hår, men nivåerna varierar kraftigt över dygnet och mellan personer, så en enstaka mätning säger lite. För laboratorieförsök använder forskare ofta Trier Social Stress Test, där deltagare håller ett tal och räknar huvudräkning inför en panel, och som pålitligt ger en mätbar reaktion hos många. Alla reagerar dock inte lika, och det går inte att läsa av en enskild persons 'stressnivå' med ett enkelt prov.",
+    "# Vad som hjälper",
+    "Kunskapsläget om vad som hjälper är blandat. Några råd har ganska god grund, andra är mer osäkra.",
+    { list: [
+      "Rörelse. Regelbunden fysisk aktivitet har stöd för att minska ångest och nedstämdhet och kan dämpa kroppens reaktion på påfrestning. Du behöver inte träna hårt; vanlig motion räknas.",
+      "Sömn. Dålig sömn både följer av och förstärker stress. Regelbundna tider, morgonljus och en lugn kväll är bra grundstenar, och vid långvariga sömnproblem är kognitiv beteendeterapi förstahandsval.",
+      "Sociala relationer. Flera studier, bland annat en sammanställning av Julianne Holt-Lunstad och kollegor 2010, kopplar goda sociala relationer till längre liv. Stöd från andra tycks fungera som en buffert mot stress, men sambanden är observationella.",
+      "Kontroll och förutsägbarhet. Att få vara med och påverka sitt arbete, sin planering och sina prioriteringar är en av de bäst belagda skyddsfaktorerna i arbetslivet. Det är ofta mer en fråga om organisation än om individen.",
+      "Psykologiska metoder. Kognitiv beteendeterapi och program i stresshantering har visat nytta, framför allt vid ångest, oro och nedstämdhet. Mindfulness har i en sammanställning av Goyal och kollegor 2014 visat små till måttliga effekter på oro, nedstämdhet och smärta, men inte starkare än andra aktiva metoder.",
+      "Andning och avslappning. Långsam, lugn andning kan sänka den upplevda spänningen för stunden. Bevisen för långsiktiga effekter är svagare, men metoden är ofarlig och kostar inget."
+    ] },
+    "Gemensamt för de bäst belagda metoderna är att de ger återhämtning och struktur, och att många av dem är vardagliga. Det finns ingen tablett eller trick som tar bort stress; för den som mår dåligt kan professionell behandling behövas, och det är viktigt att skilja stress från tillstånd som depression och ångestsyndrom, som behöver egen vård.",
+    "# Det som är osäkert eller omstritt",
+    "Mycket i stressforskningen är fortfarande öppet. Här är några punkter där vi bör vara försiktiga.",
+    "Orsak eller samband? Det mesta av kunskapen om stress och sjukdom bygger på observationer. Den som har det jobbigt har ofta också sämre ekonomi, sämre sömn och annan påverkan, och sjukdom kan i sin tur ge stress. Randomiserade försök på långvarig stress går av etiska skäl inte att göra.",
+    "Mindset. Alia Crum och kollegor beskrev 2013 att personer som såg stress som något som kan hjälpa dem hade bättre hälsa och prestation än dem som såg den som skadlig. Idén har fått stor uppmärksamhet, men många av studierna är små, och effekten av att ändra någons uppfattning om stress har inte visats lika tydligt. Det är rimligt att tro att inställningen spelar roll, men inte att den kan ta bort effekten av ett hårt arbetsliv.",
+    "Individ eller arbetsplats? Många program riktar sig mot individen, med råd om andning, meditation och tidshantering. Kritiker menar att de ofta flyttar ansvaret från arbetsplatsen, där belastningen uppstår, till den anställde. Vi vet att kontroll och rimliga krav spelar roll, men vilka åtgärder på organisationsnivå som fungerar bäst är fortfarande under studie.",
+    "Populära påståenden. Uttryck som 'adrenalintrötthet', 'kortisolmage' eller att man kan 'avgifta' stress med ett visst kosttillskott saknar eller har svagt stöd. Detsamma gäller många tester som utlovar att mäta din stress med ett enda prov.",
+    "# Lärdomar att ta med sig",
+    { list: [
+      "Stress är ett normalt system som hjälper oss att möta utmaningar. Problemet är sällan en enskild stressig dag, utan stress som aldrig får vila.",
+      "Långvarig stress hänger samman med högre risk för hjärt-kärlsjukdom, infektioner, sömnproblem och psykisk ohälsa, men sambanden är måttliga och inte alla är orsaker.",
+      "Höga krav i kombination med låg kontroll är en av de bäst belagda riskerna i arbetslivet. Försök få inflytande över det du kan.",
+      "Skydda grunderna: sömn, rörelse och relationer. De är tråkiga men har bäst stöd.",
+      "Psykologiska metoder som KBT hjälper vid oro och nedstämdhet. Mindfulness och andningsövningar kan hjälpa, men ska inte förväntas lösa hårda arbetsvillkor.",
+      "Var skeptisk mot snabba lösningar, kosttillskott och tester som utlovar att mäta eller avgifta stress.",
+      "Sök vård om du under flera veckor har sömnproblem, ihållande trötthet, minnes- och koncentrationssvårigheter, oro eller nedstämdhet."
     ] }
   ];
 
