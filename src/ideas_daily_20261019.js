@@ -1,0 +1,12 @@
+  IDEAS.push(
+    { id: "d11", cat: "ai", ev: "svagt", type: "Produktnyhet", news: "2026-10-15",
+      title: "Nytt: Meta släpper vikterna till en stor AI-modell, men de starkaste modellerna hålls stängda",
+      body: "Enligt Metas eget inlägg på PyTorch-bloggen (15 oktober 2026) har företaget släppt vikterna till Muse Spark Open, en modell med 816 miljarder parametrar varav 42 miljarder är aktiva, ett kontextfönster på en miljon token och stöd för bild, ljud och dokument. Meta kallar den 'den mest kapabla amerikanska öppna viktmodellen hittills'. TechCrunch skriver samma dag att modellen kräver mycket minne för att köras lokalt och att Meta inte anger några konkreta testsiffror i det underlag tidningen läst. Enligt nyhetssajten Briefs behåller Meta sina mest kapabla modeller stängda. Påståendet om att modellen är bäst är än så länge Metas eget.",
+      core: "Läs Metas eget inlägg och vänta på oberoende tester innan du tar 'bäst bland öppna modeller' för givet. Skilj på öppna vikter och öppen källkod.",
+      src: "Meta, blogginlägg på PyTorch-bloggen 2026-10-15 · https://pytorch.org/blog/muse-spark-open/; TechCrunch, Lucas Ropek, 2026-10-15 · https://techcrunch.com/2026/10/15/meta-launches-an-open-weight-model-that-runs-on-macs/; Briefs, 2026-10-15 · https://www.briefs.co/news/meta-shares-muse-spark-open-weights-keeps-top-tier-ai-under/" },
+    { id: "d12", cat: "fokus", ev: "mattligt", type: "Experiment",
+      title: "En konkret plan kan lugna tankar på ouppgjorda uppgifter",
+      body: "Psykologerna E. J. Masicampo och Roy Baumeister rapporterade 2011 att ouppfyllda mål kan fortsätta pocka på uppmärksamhet, men att det räcker med att göra en konkret plan för när och hur man ska göra uppgiften för att tankarna ska släppa. I deras experiment presterade de som planerat bättre på en senare uppgift och hade färre påträngande tankar på det olösta. Senare studier, bland annat av Scullin och kollegor 2018, har pekat åt samma håll för att skriva ner vad man ska göra, men effekterna är måttliga och studierna är små. Det stämmer med vardagen: ett oavslutat ärende tar plats i huvudet tills det har en tid och en plats.",
+      core: "Skriv ner nästa steg och när du ska göra det för det som ligger och gnager. Det frigör ofta uppmärksamhet även om uppgiften inte är klar.",
+      src: "Masicampo & Baumeister, 2011 · Journal of Personality and Social Psychology; Scullin m.fl., 2018 · Journal of Experimental Psychology: General" }
+  );
