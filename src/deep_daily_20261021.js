@@ -1,0 +1,29 @@
+  Object.assign(DEEP, {
+    d15: [
+      "# Bakgrund",
+      "En AI-modell består av en stor mängd tal, så kallade vikter, som styr hur den räknar fram sina svar. När ett företag släpper vikterna kan andra ladda ner modellen och köra den själva, men det betyder inte automatiskt att träningsdata eller all kod också är öppna. 'Sparse mixture-of-experts' betyder att modellen har många delnätverk men bara använder en del av dem för varje del av en text, vilket förklarar att Beam har 501 miljarder parametrar men bara 23 miljarder aktiva åt gången. Reflection AI är ett företag som grundats av tidigare forskare från Google DeepMind och som har Nvidia bland sina investerare.",
+      "# Vad forskningen visar",
+      "Det här är en nyhet, inte en etablerad forskningsstudie. Enligt Reflections eget blogginlägg från den 16 oktober 2026 är Beam bolagets första modell med öppna vikter, och vikterna finns på Hugging Face under Apache 2.0. De släpps i flera numeriska format (BF16, FP8 och NVFP4) tillsammans med en hjälpmodell för snabbare textgenerering. Bolaget uppger också att ett modellkort med slutliga testresultat och en säkerhetsrapport finns, samt att verktyget Mirror CLI är öppen källkod. Enligt inlägget är träningsdata inte beskrivet på den sidan och en del receptmaterial ska komma 'inom de närmaste dagarna'.",
+      "Redan den 7 oktober skrev VKTR om förhandsbeskedet. Där återgavs Reflections egna jämförelsesiffror mot andra öppna modeller, och bolaget uppgav att Beam närmar sig vissa större modeller på kod- och agentuppgifter men inte når den som ligger främst. Tidningen påpekade att siffrorna var bolagets egna och inte oberoende kontrollerade. Den nämnde också att den oberoende testorganisationen Artificial Analysis, som fått tidig tillgång, bedömde att modellen i första tester verkade vara ovanligt effektiv i hur många token den använder.",
+      "# Det som är osäkert",
+      "Nästan allt om modellens kvalitet är osäkert. Jämförelsesiffrorna kommer från Reflection självt, som har ett kommersiellt intresse av att modellen framstår som stark. Hur de olika testerna är uppställda, vilka inställningar som använts och om resultaten går att upprepa kan bara oberoende grupper visa. Påståendet att Beam kräver tre till fyra gånger mindre beräkning än en jämförbar modell är en uppskattning från bolaget, och hur den räknats är en detalj som kan ändra bilden.",
+      "Det är inte heller klart hur 'öppen' modellen i praktiken är. Apache 2.0 är en bred licens, men vikter utan träningsdata gör det svårt att granska vad modellen lärt sig. Och en modell med över 500 miljarder parametrar kan bara köras av dem som har kraftfull utrustning, så öppna vikter betyder inte att alla kan använda den lokalt.",
+      "Kring bolaget har det dessutom förekommit uppgifter i media om affärsförhandlingar, bland annat att Nvidia ska ha diskuterat att fördjupa sin investering eller köpa bolaget. Det är rapporterat i andra hand och obekräftat av bolagen, och vi har inte byggt något på det. Det visar ändå att nyheter om ett företag kan blandas med dess egen marknadsföring.",
+      "# Så kan du använda det",
+      "Läs bolagets inlägg och modellkort själv i stället för sammanfattningar. Skilj på vad som är släppt (vikterna, licensen) och vad som bara påstås (hur bra modellen är). Vänta på tester från oberoende organisationer och på att andra forskare försökt upprepa resultaten innan du drar slutsatser om kvaliteten. Fråga dig vem som tjänar på att nyheten får uppmärksamhet.",
+      "# Prova i två veckor",
+      "Välj en teknisk nyhet i veckan och skriv tre rader: vad som är bekräftat av en primärkälla, vad som är bolagets egna påståenden och vad som skulle behöva visas av någon annan. Kolla efter två veckor om de oberoende testerna kommit och om bilden ändrats."
+    ],
+    d16: [
+      "# Bakgrund",
+      "Många tror att en vana kräver obruten följd och att ett enda hopp över dagen sätter allt ur spel. Det är en populär idé i appar som räknar 'streaks', där en bruten kedja nollställer allt. Frågan är om det stämmer för hur hjärnan faktiskt bygger upp vanor, och hur lång tid det tar.",
+      "# Vad forskningen visar",
+      "Lally och kollegor vid University College London lät 2009 nittiosex frivilliga välja en enkel handling kopplad till en daglig situation, till exempel att äta en frukt till lunch eller springa en kvart före middagen. I tolv veckor rapporterade deltagarna varje dag om de gjort handlingen och hur automatisk den kändes. För de flesta steg känslan av automatik snabbt först och planade sedan ut. Tiden det tog att nå ungefär hälften av den slutliga automatiken varierade kraftigt mellan personer och handlingar, med ett mellanvärde på drygt två månader, men spannet var mycket stort. Att missa ett enstaka tillfälle påverkade inte kurvens utveckling märkbart.",
+      "# Det som är osäkert",
+      "Studien var liten och bestod av frivilliga som själva rapporterade, vilket kan ge ett skevt resultat. Handlingarna var enkla, och det är oklart om samma mönster gäller för krävande vanor som hård träning eller att sluta med något. Studien säger också lite om vad som händer när man missar ofta. Resultatet säger heller inget om att vanor är lätta att bygga, bara att ett enstaka avbrott inte verkar vara det avgörande.",
+      "# Så kan du använda det",
+      "Se ett missat tillfälle som en liten störning, inte som ett misslyckande. Bestäm i förväg vad du gör nästa gång, och gör det lätt att komma tillbaka, till exempel genom att knyta vanan till en fast situation. En användbar regel är att aldrig missa två gånger i rad. Var skeptisk till system som straffar dig hårt för ett enda hopp.",
+      "# Prova i två veckor",
+      "Välj en liten vana och koppla den till något du redan gör varje dag. Notera varje dag om du gjorde den. När du missar, skriv en rad om vad som kom emellan och gör den som vanligt nästa tillfälle. Se efter två veckor om en miss förändrade något."
+    ]
+  });
