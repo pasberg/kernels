@@ -938,7 +938,8 @@ select.field { flex: 0 1 12rem; }
     var e = EV[i.ev];
     var pips = [1, 2, 3].map(function (n) { return '<i class="' + (n <= e.pips ? "on" : "") + '"></i>'; }).join("");
     var ph = !i.big && PHOTO[i.id];
-    var art = !i.big && ART[i.id] ? '<div class="art" aria-hidden="true">' + ART[i.id] + (ph ? '<img src="' + ph.url + '" alt="" loading="lazy" referrerpolicy="no-referrer" onload="this.parentNode.insertAdjacentHTML(\'beforeend\',\'<span class=credit>\'+this.getAttribute(\'data-c\')+\'</span>\')" data-c="' + esc(ph.credit) + '" onerror="this.remove()">' : "") + "</div>" : "";
+    var artSvg = ART[i.id] || (i.big ? ART["cat-" + i.cat] : "");
+    var art = artSvg ? '<div class="art" aria-hidden="true">' + artSvg + (ph ? '<img src="' + ph.url + '" alt="" loading="lazy" referrerpolicy="no-referrer" onload="this.parentNode.insertAdjacentHTML(\'beforeend\',\'<span class=credit>\'+this.getAttribute(\'data-c\')+\'</span>\')" data-c="' + esc(ph.credit) + '" onerror="this.remove()">' : "") + "</div>" : "";
     return '<article class="card cat-' + i.cat + (featured ? " featured" : "") + (read[i.id] ? " is-read" : "") + (i.big ? " big" : "") + '">' + art +
       '<div class="card-top"><span class="cat">' + (featured ? (i.big ? "Utvald stor kärna · " : "Dagens kärna · ") : "") + esc(catName(i.cat)) + (i.book ? '<span class="bookpill">Bok</span>' : "") + (i.news ? '<span class="newspill">Nytt</span>' : "") + "</span>" +
       '<div class="card-actions">' +

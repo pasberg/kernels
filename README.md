@@ -65,13 +65,13 @@ Varje kort kan betygsättas med fem ansikten (☹️ 🙁 🙂 😃 🤩) under 
 
 När ett namn är satt visas under titeln en hälsning (God morgon/Hej/God kväll) med namnet och hur många kärnor man läst.
 
-## Bilder på småkärnorna
+## Bilder på korten
 
-Varje småkärna har en banner överst med en egen SVG-illustration (`src/art_0.js`, `ART[id]`). Illustrationerna följer kategorins färger och fungerar i ljust/mörkt läge. Foton stöds via `PHOTO` i `karnor.html` (`{url, credit}`); bilden läggs över illustrationen och försvinner av sig själv om den inte kan laddas. Hittills finns ett verifierat foto (Marie Curie, public domain).
+Varje småkärna och stor kärna har en banner överst med en egen SVG-illustration (`src/art_*.js`, `ART[id]`; stora kärnor i `src/art_big_0.js`). En stor kärna utan egen post får kategorins reservbild (`ART["cat-<kategori>"]`). Illustrationerna följer kategorins färger och fungerar i ljust/mörkt läge. Foton stöds via `PHOTO` i `karnor.html` (`{url, credit}`); bilden läggs över illustrationen och försvinner av sig själv om den inte kan laddas. Hittills finns ett verifierat foto (Marie Curie, public domain).
 
 ## Tillagd-datum
 
-Varje småkärna visar "Tillagd <datum>" längst ner. Datumen ligger i `src/added_0.js`. När du lagt till nya kort kör du `python3 tools/stamp_added.py` före commit, så får nya kort dagens datum (befintliga rörs inte), och sedan `python3 build.py`.
+Varje småkärna visar "Tillagd <datum>" längst ner. Datumen ligger i `src/added_0.js`. När du lagt till nya kort kör du `python3 tools/stamp_added.py` före commit, så får nya kort, både småkärnor och stora kärnor, dagens datum (befintliga rörs inte), och sedan `python3 build.py`.
 
 ## Nytt-kort
 
