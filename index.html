@@ -1064,6 +1064,18 @@ IDEAS.push(
     src: "Roediger & Karpicke, 2006 · Psychological Science; Karpicke, Butler & Roediger, 2009 · Memory; Dunlosky m.fl., 2013 · Psychological Science in the Public Interest" }
 );
   IDEAS.push(
+    { id: "d19", cat: "ai", ev: "svagt", type: "Produktnyhet", news: "2026-10-13",
+      title: "Nytt: Googles Gemini 4 Argon blir allmänt tillgänglig, men prestandasiffrorna är bolagets egna",
+      body: "Enligt Googles blogginlägg den 13 oktober 2026 är AI-modellen Gemini 4 Argon nu globalt tillgänglig via betalnivån i Gemini API och AI Studio, och för prenumeranter på Google AI Pro och Ultra i Gemini-appen. Google uppger ett introduktionspris på 2 dollar per miljon indatatoken och 10 dollar per miljon utdatatoken fram till 30 november. Modellen presenterades redan den 30 september för ett begränsat antal utvalda cyberförsvarare. Enligt Digital Trends (16 oktober) bygger de redovisade resultaten på Googles egna uppgifter, och artikeln innehåller inga oberoende tester. Det som är bekräftat är alltså utrullningen, medan påståendena om hur bra modellen är återstår att pröva.",
+      core: "Läs bolagets inlägg och modelldokumentationen själv, och skilj på vad som släppts och vad som bara påstås. Vänta på oberoende tester innan du tar 'bäst i klassen' som given.",
+      src: "Google, blogginlägg 2026-10-13 · https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/; Digital Trends (via Yahoo Tech), Sudhanshu Kumar Mangalam, 2026-10-16 · https://tech.yahoo.com/ai/gemini/articles/gemini-4-argon-finally-available-181205904.html" },
+    { id: "d20", cat: "relationer", ev: "mattligt", type: "Metaanalys",
+      title: "Starka sociala band hänger ihop med längre liv",
+      body: "Julianne Holt-Lunstad och kollegor sammanställde 2010 resultaten från 148 studier med sammanlagt drygt 300 000 deltagare som följts i genomsnitt ungefär sju och ett halvt år. Människor med starkare sociala relationer hade i genomsnitt omkring 50 procent större chans att vara i livet vid uppföljningen än dem med svagare. Sambandet fanns oavsett kön, ålder och startande hälsa, och författarna jämförde storleken med välkända riskfaktorer som rökning. Studierna var i huvudsak observationella, så de visar ett samband och inte med säkerhet orsaken. Människor med svag hälsa kan också ha svårare att upprätthålla relationer. Men resultatet har återkommit i senare sammanställningar och gör sociala band till en rimlig del av hälsan, inte bara en trevlig extra.",
+      core: "Se kontakten med andra som något du underhåller, som sömn och motion. Ett regelbundet samtal eller möte med en person du bryr dig om är en liten investering med god täckning i forskningen.",
+      src: "Holt-Lunstad, Smith & Layton, 2010 · PLoS Medicine" }
+  );
+  IDEAS.push(
     { id: "e1", cat: "finans", ev: "starkt", type: "Centralbanksmål",
       title: "Inflation: varför dina pengar tappar värde långsamt",
       body: "Inflation betyder att priserna i genomsnitt stiger, så att samma summa köper mindre över tid. Riksbanken har ett mål om att inflationen, mätt som KPIF, ska vara två procent per år. Ett litet, stabilt prisökningstempo ska göra det lättare att planera, medan hög och svängig inflation gör det svårt att veta vad pengar är värda.",
@@ -3378,6 +3390,36 @@ Object.assign(DEEP, {
     "Ta ett ämne du läser och dela upp tiden: en tredjedel läsning, två tredjedelar att försöka återge utan stöd. Skriv ner efter varje pass vad du missade, och testa dig på det några dagar senare. Jämför med hur det gick förra gången du bara läste om."
   ]
 });
+  Object.assign(DEEP, {
+    d19: [
+      "# Bakgrund",
+      "Stora AI-bolag släpper ofta nya modeller i etapper. Först får ett litet antal utvalda tillgång, därefter betalande utvecklare och prenumeranter, och sist en bredare publik. Gemini 4 Argon är en sådan modell från Google DeepMind. Den presenterades enligt Google den 30 september 2026 för ett begränsat antal betrodda cyberförsvarare inom ett program som kallas Fairwind. Det som är nytt i dag är att modellen blir bred tillgänglig. Priset räknas per token, alltså små textbitar som modellen läser och skriver, och 'introduktionspris' betyder att priset är tillfälligt lägre.",
+      "# Vad forskningen visar",
+      "Det här är en produktnyhet och inte en vetenskaplig studie. Enligt Googles blogginlägg från den 13 oktober 2026 är Gemini 4 Argon 'globalt tillgänglig' via betalnivån i Gemini API, i AI Studio och i Googles plattform för utvecklare. Prenumeranter på Google AI Ultra får den i verktyget Antigravity, och prenumeranter på Pro och Ultra får den i Gemini-appen och i AI-läget i sökningen. Google anger ett introduktionspris på 2 dollar per miljon indatatoken och 10 dollar per miljon utdatatoken till och med den 30 november 2026, därefter 4 respektive 20 dollar. Google skriver också att åtkomst utan skyddsspärrar för cyberområdet finns kvar för utvalda försvarare, och att antalet partner utökas.",
+      "Digital Trends skrev den 16 oktober om samma utrullning och återger i stort samma bild: betalt API, Gemini-appen för Pro och Ultra, och ingen tillgång för användare av den kostnadsfria nivån. Artikeln uppger att den bredare lanseringen kom ungefär två veckor efter den första.",
+      "# Det som är osäkert",
+      "Nästan allt om modellens kvalitet är osäkert. Googles inlägg redovisar resultat i flera tester och säger bland annat att modellen ligger först på ett index för finans-, kod-, juridik- och skatteuppgifter. Enligt Digital Trends är övriga siffror också bolagets egna. Googles eget inlägg påpekar dessutom att flera exempel är interna mått, intern användning eller resultat från tidiga partner, utan öppet redovisad metod. En del siffror från utomstående kommer från privata utvärderingar, och inlägget anger att de utomståendes åsikter inte är Googles.",
+      "Vi vet inte hur modellen presterar i vardagen, hur testerna är uppställda, om resultaten går att upprepa eller hur den står sig mot konkurrenternas modeller i oberoende jämförelser. Google har ett kommersiellt intresse av att modellen framstår som stark, och samma sak gäller de företag som själva sälger konkurrerande modeller. Säkerhetspåståendena, till exempel att modellen vägrar skadliga förfrågningar och att försöken att luras minskat, kommer också från bolaget och kan inte bedömas utan oberoende granskning. Priset efter 30 november gäller enligt en fotnot den publika modellen, och villkoren kan ändras.",
+      "# Så kan du använda det",
+      "Läs Googles inlägg och modelldokumentationen i stället för andrahandsreferat, och skilj på vad som är släppt (tillgång, pris) och vad som bara påstås (hur bra modellen är). Vänta på tester från oberoende organisationer och från användare som prövat modellen på sina egna uppgifter innan du drar slutsatser. Fråga dig vem som tjänar på att nyheten får uppmärksamhet.",
+      "# Prova i två veckor",
+      "Välj en teknisk nyhet i veckan och skriv tre rader: vad som är bekräftat av en primärkälla, vad som är bolagets egna påståenden och vad som skulle behöva visas av någon annan. Titta efter två veckor om oberoende tester kommit och om bilden ändrats. Om du själv har tillgång till en AI-modell kan du pröva samma egna uppgift på den och på en annan och jämföra utan att titta på bolagens siffror."
+    ],
+    d20: [
+      "# Bakgrund",
+      "Att människor är sociala djur är en gammal tanke, men frågan om sociala relationer påverkar hur länge vi lever har undersökts systematiskt först under de senaste decennierna. Svårigheten är att relationer är svåra att mäta. Vissa studier räknar antal vänner och familjemedlemmar, andra frågar om upplevt stöd, och somliga mäter om man bor ensam eller är gift. Julianne Holt-Lunstad vid Brigham Young University och hennes kollegor ville samla dessa studier i en enda sammanställning.",
+      "# Vad forskningen visar",
+      "Sammanställningen från 2010 omfattade 148 studier med sammanlagt drygt 300 000 deltagare, som följts i genomsnitt ungefär sju och ett halvt år. Författarna fann att människor med starkare sociala relationer hade i genomsnitt omkring 50 procent större sannolikhet att överleva under uppföljningen. Sambandet gällde för olika åldrar, för båda könen och för olika orsaker till död. Det var starkast när relationerna mättes på ett sammansatt sätt, alltså som både stöd och inbindning i ett nätverk, och svagare när man bara frågade om civilstånd eller om man bor ensam. Författarna jämförde effektens storlek med välkända riskfaktorer som rökning och riskbruk av alkohol.",
+      "En senare sammanställning av samma forskargrupp från 2015 kom till liknande slutsatser för social isolering, ensamhet och att leva ensam, även om storleken varierade mellan studierna.",
+      "# Det som är osäkert",
+      "De flesta studier var observationsstudier. Man ser alltså att människor med många och goda relationer lever längre, men inte med säkerhet att relationerna är orsaken. Omvänd orsakskedja är möjlig: den som blir allvarligt sjuk eller nedstämd drar sig ofta undan och förlorar kontakter, och då ser det ut som att brist på relationer ger sjukdom. Forskarna försökte ta hänsyn till sådant, bland annat genom att räkna på hälsa vid studiens början, men det går aldrig att utesluta allt.",
+      "Jämförelsen med rökning har också kritiserats för att vara en förenkling, eftersom måtten på relationer varierar mycket och storleken på sambandet beror på hur man mäter. Det är dessutom oklart vilka mekanismer som verkar. Kandidater är bättre hjälp vid sjukdom, uppmuntran till hälsosamma vanor och lägre stress, men det är inte klarlagt hur mycket var och en betyder. Studierna säger heller inget om vilka insatser, till exempel organiserade grupper, som faktiskt minskar risken för den enskilde.",
+      "# Så kan du använda det",
+      "Se kontakten med andra som något som behöver underhållas på samma sätt som sömn och motion, och inte som något som löser sig av sig självt. Kvalitet verkar betyda mer än kvantitet: det räcker med ett fåtal personer som du kan vända dig till. Om du märker att du dragit dig undan, kan det vara bra att veta att det både kan vara en följd av att du mår dåligt och en orsak till det.",
+      "# Prova i två veckor",
+      "Planera in ett fast, litet möte i veckan med någon du bryr dig om, till exempel en promenad, ett telefonsamtal eller en middag, och ta kontakt med en person du inte hört av på länge. Anteckna efteråt hur du kände dig, utan att dra stora slutsatser av två veckor."
+    ]
+  });
 
   var BIG = [], BIGDEEP = {}, FIGS = {}, ART = {}, ADDED = {}, PHOTO = {
     p3: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c1920.jpg?width=800", credit: "Henri Manuel, Marie Curie, ca 1920 (public domain, Wikimedia Commons)" }
@@ -3569,6 +3611,9 @@ ART["d16"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" 
 /* Bannerillustrationer (SVG) för småkärnor 2026-10-22. */
 ART["d17"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"-34\" cy=\"-10\" r=\"20\" class=\"p\"/><circle cx=\"34\" cy=\"-10\" r=\"20\" class=\"p\"/><path d=\"M-16 -16h32M-16 -10h32M-16 -4h32\" class=\"l thin\"/><path d=\"M0 52v-34\" class=\"l\"/><path d=\"M0 40c-24 0 -30 -16 -30 -26c22 0 30 12 30 26z\" class=\"f\"/><path d=\"M0 34c20 0 26 -14 26 -22c-18 0 -26 10 -26 22z\" class=\"f\"/></g></svg>";
 ART["d18"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><path d=\"M-60 -34h54v68h-54zM6 -34h54v68h-54z\" class=\"p\"/><path d=\"M-48 -18h30M-48 -6h30M-48 6h22\" class=\"l thin\"/><path d=\"M18 -4l10 10 18 -22\" class=\"f\"/><path d=\"M0 -34v68\" class=\"l thin\"/></g></svg>";
+/* Bannerillustrationer (SVG) för småkärnor 2026-10-23. */
+ART["d19"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><rect x=\"-34\" y=\"-34\" width=\"68\" height=\"68\" rx=\"10\" class=\"p\"/><rect x=\"-14\" y=\"-14\" width=\"28\" height=\"28\" rx=\"5\" class=\"f\"/><path d=\"M-18 -34v-16M0 -34v-16M18 -34v-16M-18 34v16M0 34v16M18 34v16M-34 -18h-16M-34 0h-16M-34 18h-16M34 -18h16M34 0h16M34 18h16\" class=\"l\"/></g></svg>";
+ART["d20"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"-50\" cy=\"-20\" r=\"16\" class=\"p\"/><path d=\"M-78 30a28 28 0 0 1 56 0z\" class=\"p\"/><circle cx=\"50\" cy=\"-20\" r=\"16\" class=\"p\"/><path d=\"M22 30a28 28 0 0 1 56 0z\" class=\"p\"/><path d=\"M-26 -4h52\" class=\"l thin\"/><circle cx=\"0\" cy=\"-4\" r=\"6\" class=\"f\"/></g></svg>";
 /* Datum då varje småkärna lades till. Fylls av tools/stamp_added.py. */
 ADDED["B1"]="2026-10-11";
 ADDED["B2"]="2026-10-11";
@@ -3732,6 +3777,9 @@ ADDED["d16"]="2026-10-21";
 ADDED["B18"]="2026-10-22";
 ADDED["d17"]="2026-10-22";
 ADDED["d18"]="2026-10-22";
+ADDED["B19"]="2026-10-23";
+ADDED["d19"]="2026-10-23";
+ADDED["d20"]="2026-10-23";
 
   var MON = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"];
   function newsDate(s) {
@@ -5037,6 +5085,61 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       "Ungefär hälften eller fler får märkbar nytta i många studier, men inte alla, och återfall är vanliga vid depression.",
       "Ny behandling är inte automatiskt bättre: tredje vågens terapier har stöd men visar sällan tydlig överlägsenhet.",
       "Vid egna besvär är en bedömning inom vården bättre än att försöka lista ut själv vilken metod som passar."
+    ] }
+  ];
+/* Stor kärna 2026-10-23: Vanor */
+  BIG.push({
+    id: "B19", cat: "vanor", ev: "mattligt", type: "Översikt",
+    title: "Vanor: hur de bildas, varför de sitter kvar och vad som faktiskt hjälper när du vill ändra dem",
+    body: "En stor del av det vi gör varje dag gör vi utan att fatta ett nytt beslut. Forskningen om vanor visar hur sådana mönster byggs upp av upprepning i samma situation, varför de är så sega att ändra och vilka knep som har stöd. Men siffrorna om hur lång tid det tar är betydligt osäkrare än populärversionerna låter påskina.",
+    core: "Vanor styrs mer av situationen än av viljestyrka. Den som vill ändra ett mönster har bäst nytta av att göra handlingen enkel, knyta den till en fast situation, och ändra miljön runt det man vill sluta med.",
+    src: "Wood, Quinn & Kashy, 2002 · Journal of Personality and Social Psychology; Lally m.fl., 2009 · European Journal of Social Psychology; Gollwitzer & Sheeran, 2006 · Advances in Experimental Social Psychology; Wood, Tam & Witt, 2005 · Journal of Personality and Social Psychology; Dai, Milkman & Riis, 2014 · Management Science; Wood & Rünger, 2016 · Annual Review of Psychology"
+  });
+  BIGDEEP.B19 = [
+    "# Vad är en vana?",
+    "I vardagsspråk är en vana något man ofta gör. Inom psykologin är begreppet snävare: en vana är ett beteende som utlöses nästan automatiskt av en situation, eftersom man gjort samma sak i samma sammanhang många gånger förut. Du tänder lampan när du går in i rummet, tar fram telefonen när du väntar på bussen eller sträcker dig efter kaffet när du kommer till jobbet, utan att först väga för och emot.",
+    "Det som skiljer en vana från ett vanligt val är att kopplingen mellan situation och handling har blivit så stark att tanken på målet inte längre behövs för att handlingen ska komma igång. Därför kan man ha vanor som strider mot ens egna vilja. Den som bestämt sig för att sluta kan ändå märka att handen går mot cigaretten eller godisskålen innan hjärnan hunnit kommentera saken.",
+    "Den här texten är en allmän översikt över vad forskningen säger om hur vanor bildas och förändras, och var kunskapen är svagare än populärböckerna ger sken av. Den är inte ett behandlingsråd. Den som har ett beteende som känns utom kontroll, till exempel ett beroende, bör söka stöd inom vården.",
+    "# Hur mycket av vardagen är vanor?",
+    "Ett ofta nämnt resultat kommer från en dagboksstudie av Wendy Wood och kollegor, publicerad 2002. Deltagarna, studenter, fick vid slumpmässiga tillfällen under dagen anteckna vad de just höll på med, var de var och vem de var med, och om de tänkte på handlingen medan de gjorde den. Forskarna räknade en handling som vanemässig om den utfördes nästan dagligen i samma miljö. Cirka en tredjedel till nästan hälften av handlingarna föll in under det. Siffran ska läsas med försiktighet. Studien gällde studenter, den byggde på självrapporter, och andelen beror på hur strikt man definierar en vana. Men huvudpoängen är väl belagd i flera studier: en stor del av det vi gör styrs av upprepade mönster snarare än av nya beslut.",
+    "Det är inte konstigt. Ett system som kunde göra rutinhandlingar utan att belasta uppmärksamheten är praktiskt, eftersom det frigör kapacitet för sådant som är nytt. Forskning på djur och människor pekar på att strukturer djupt i hjärnan som kallas basala ganglierna spelar en roll när beteenden går från målstyrda till inövade, även om bilden är mer komplicerad än att det finns ett enda 'vanecentrum'.",
+    "# Hur bildas en vana?",
+    "Den grundläggande mekanismen är enkel: upprepning i en stabil situation. När samma handling följs av något som känns belönande, eller åtminstone inte straffas, lär sig hjärnan att situationen och handlingen hör ihop. Med tiden behövs inte längre ett medvetet beslut. Det är det som populärböcker brukar beskriva som signal, rutin och belöning, en modell som bland annat Charles Duhigg gjorde känd i boken The Power of Habit (2012). Modellen är en förenkling av forskning om inlärning, men den fångar att situationen, handlingen och följden hänger ihop.",
+    "Hur lång tid det tar är en av de mest citerade och mest missförstådda frågorna. Den vanligaste källan är en studie av Phillippa Lally och kollegor vid University College London, publicerad 2009. Nittiosex frivilliga valde en ny, enkel handling, som att dricka ett glas vatten till lunch eller gå en promenad efter middagen, och rapporterade i tolv veckor varje dag hur automatisk handlingen kändes. Tiden det tog att nå ungefär hälften av den slutliga automatiken hade ett mellanvärde på drygt två månader, vanligen refererat som 66 dagar. Men spridningen var mycket stor, från under tre veckor till långt över sju månader för dem där man kunde uppskatta det, och enklare handlingar blev automatiska snabbare än mer krävande.",
+    { box: "Myten om 21 dagar", text: "Påståendet att en vana tar 21 dagar att bygga bygger inte på forskning om vanor. Det brukar härledas ur en plastikkirurgs iakttagelse om hur lång tid patienter behövde för att vänja sig vid sitt nya utseende, och har sedan vandrat vidare i populärkulturen. Studierna om vanebildning pekar på stora skillnader mellan människor och handlingar, och på att tiden ofta är längre än tre veckor." },
+    "Lally-studien är liten, bygger på självrapporterad automatik och gällde enkla handlingar valda av deltagarna själva. Den säger inte hur lång tid det tar att bygga en vana som att träna regelbundet eller sluta röka. Siffran 66 är ett mellanvärde i en mycket spridd fördelning och ska inte läsas som en regel.",
+    "Studien hade också ett resultat som är värt att uppmärksamma: att missa ett enstaka tillfälle påverkade inte utvecklingen märkbart. Det går på tvärs mot den populära idén om att en bruten 'streak' betyder att allt är förstört.",
+    "# Varför det är så svårt att ändra en vana",
+    "Om vanor styrs av situationen följer att de kan finnas kvar länge efter att man ändrat sig. Forskare skiljer ofta mellan vad vi vill och vad vi gör av gammal vana. Ett bra exempel är en studie av Wood, Tam och Witt från 2005, som följde studenter som bytte universitet. De som fick nya miljöer, där signalerna från den gamla miljön saknades, ändrade sina vanor i större utsträckning än de som började på ett nytt ställe med liknande omgivningar. Hos dem med oförändrad miljö fortsatte vanor som att läsa tidningen, se på tv eller träna ungefär som förut, oavsett vad de sa att de tänkte göra. När miljön förändrades fick avsikter större betydelse för vad de faktiskt gjorde.",
+    "Det är en viktig poäng: viljestyrka är ett svagt verktyg mot en vana som utlöses av en tydlig situation. Det är ofta effektivare att ändra situationen. Det förklarar varför människor ofta lyckas ändra mönster i samband med flytt, nytt jobb eller en längre resa, och varför gamla mönster ibland återvänder när man är tillbaka i den gamla miljön.",
+    "Ett närliggande fynd kommer från forskning om så kallade nystartstillfällen. Hengchen Dai, Katherine Milkman och Jason Riis visade 2014 att människor tycks vara mer benägna att starta mål-relaterade beteenden i anslutning till tidsmässiga brytpunkter, till exempel en ny vecka, en ny månad, ett nytt år eller en födelsedag. I deras data steg till exempel besöken på ett universitets gym efter sådana tillfällen. Förklaringen som föreslås är att brytpunkterna gör att man ser sitt gamla jag som ett avslutat kapitel. Men det är en observation av när folk börjar, inte ett bevis för att starten på en måndag leder till bestående förändring.",
+    "# Vad hjälper?",
+    "Forskningen ger inget trollmedel, men några metoder har ordentligt stöd.",
+    { list: [
+      "Gör det enkelt: ju mindre ansträngning handlingen kräver, desto lättare blir den automatisk. Lally-studien tyder på att enkla handlingar blir automatiska snabbare.",
+      "Knyt handlingen till en fast situation: att bestämma när och var du gör något ger en tydlig signal. Det är i grunden samma sak som 'vad-om-planer' i forskningen.",
+      "Ändra miljön: ta bort signalerna till det du vill sluta med, och lägg fram signaler till det du vill börja med.",
+      "Räkna med missar: ett enstaka tillfälle som uteblir verkar inte förstöra utvecklingen, men om det blir en ny rutin att hoppa över är det en annan sak.",
+      "Använd brytpunkter: flytt, nytt jobb eller ny arbetsrutin ger tillfälle att bygga om mönster, eftersom de gamla signalerna ändras."
+    ] },
+    "Den metod med bäst vetenskapligt stöd är kanske så kallade genomförandeplaner, som Peter Gollwitzer studerat. De har formen 'om situation X inträffar, gör jag Y'. En omfattande sammanställning av Gollwitzer och Paschal Sheeran från 2006, med 94 studier, visade en medelstor till stor effekt på måluppfyllelse jämfört med att bara ha ett mål. Studierna gäller många olika mål, från hälsobeteenden till prov, och effekten varierar. Metoden fungerar bäst när målet verkligen är viktigt för personen, och den ersätter inte motivation.",
+    { box: "Ett exempel på en genomförandeplan", text: "Mål: röra mig mer. Plan: 'När jag kommit hem på vardagar och tagit av mig jackan, byter jag om och går en tio minuters runda.' Planen anger en tydlig situation och en liten, konkret handling. Det är en illustration av principen och inget recept som passar alla." },
+    "# Vad vi inte vet",
+    "Mycket av det som sägs om vanor i populärlitteraturen går längre än forskningen. Böcker som Atomic Habits (James Clear, 2018) och Tiny Habits (BJ Fogg, 2019) är lättlästa och har hjälpt många att komma igång, men de bygger på en blandning av forskning, erfarenhet och berättelser. Det är inte detsamma som att varje enskild teknik är prövad i kontrollerade studier.",
+    "Flera frågor är dessutom öppna. Hur man bäst mäter att en vana är automatisk är omdiskuterat, eftersom de flesta studier använder självrapporter. Det är oklart hur väl fynd från små, enkla handlingar gäller svårare förändringar som att sluta röka, äta annorlunda eller träna regelbundet över år. Och forskarna är inte överens om hur stor del av beteendeförändring som kan förklaras med vanor, jämfört med mål, känslor och sociala faktorer. Många studier har dessutom fått deltagare som är studenter eller frivilliga i rika länder, vilket gör att det inte är säkert att resultaten gäller alla.",
+    "En annan nyans är att ordet 'vana' används på två sätt. I vardagen kan det betyda varje rutin man har. I forskningen betyder det ett beteende som utlöses automatiskt av en situation. En person som tränar varje morgon kan göra det av ren målmedvetenhet och inte av vana, och det är inte alltid enkelt att skilja på dem utifrån.",
+    "# Att tänka på när du vill ändra något",
+    "Det är lätt att göra vanor till ett moraliskt projekt, där ett misslyckande blir ett tecken på bristande karaktär. Forskningen pekar åt motsatt håll: den som misslyckas har ofta mött en situation som är starkare än avsikten. Då är frågan snarare vad i situationen som kan ändras.",
+    "Det är också bra att vara försiktig med stora förändringar på en gång. Små steg som du faktiskt gör är bättre än stora planer som överges. Och när beteendet gäller något som påverkar hälsan allvarligt, som alkohol, tobak eller ätande, finns det professionell hjälp som bygger på mer än egna tekniker.",
+    { box: "Om att söka hjälp", text: "Texten är en allmän beskrivning av forskning och ersätter inte bedömning av vården. Den som upplever att ett beteende har tagit över, eller som mår dåligt av försök att ändra sig, kan vända sig till vårdcentral eller annan vård." },
+    "# Lärdomar att ta med sig",
+    { list: [
+      "Vanor är beteenden som utlöses nästan automatiskt av en situation efter upprepning, och en stor del av vardagen styrs av dem.",
+      "Hur lång tid det tar varierar kraftigt. Siffran 66 dagar är ett mellanvärde i en liten studie av enkla handlingar, och '21 dagar' saknar stöd i vaneforskningen.",
+      "Ett enstaka missat tillfälle verkar inte förstöra utvecklingen av en vana, men fortsättningen spelar roll.",
+      "Situationen styr ofta mer än avsikten, och därför är det effektivt att ändra miljön och passa på vid brytpunkter som flytt eller nytt jobb.",
+      "Genomförandeplaner av typen 'om X, då Y' är bland de bäst belagda metoderna, men de fungerar bäst för mål som är viktiga för personen.",
+      "Populära böcker om vanor går ofta längre än forskningen. Det mesta är rimliga tumregler, inte bevisade recept."
     ] }
   ];
 
