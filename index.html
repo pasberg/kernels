@@ -1076,6 +1076,18 @@ IDEAS.push(
       src: "Holt-Lunstad, Smith & Layton, 2010 · PLoS Medicine" }
   );
   IDEAS.push(
+    { id: "d21", cat: "historia", ev: "mattligt", type: "Historisk händelse",
+      title: "Den stora stanken 1858: när lukten från Themsen tvingade fram Londons kloaker",
+      body: "Sommaren 1858 var varm och Themsen, där Londons avlopp i stor utsträckning rann ut, luktade så illa att det störde arbetet i det brittiska parlamentet, som låg precis vid floden. Händelsen kallas den stora stanken. Parlamentet beslutade snabbt om pengar till ett nytt avloppssystem, som ingenjören Joseph Bazalgette ritade och som byggdes under 1860-talet och in på 1870-talet. Avloppsvattnet leddes i stället till utlopp längre ner längs floden. Då trodde man att sjukdomar spreds med dålig lukt, en idé som i dag är övergiven. Men eftersom systemet minskade förorenat dricksvatten bidrog det sannolikt ändå till att Londons koleraepidemier avtog. Hur stor del av förbättringen som kom just från kloakerna är svårare att säga, eftersom även vattenreningen utvecklades under samma tid.",
+      core: "Ibland får en obehaglig men synlig olägenhet politiker att agera, och en åtgärd byggd på fel teori kan ändå göra rätt nytta. Fråga därför både 'fungerar det?' och 'varför fungerar det?'.",
+      src: "Halliday, S., 1999 · The Great Stink of London (bok); Hamlin, C., 1990 · A Science of Impurity; Bazalgette och Metropolitan Board of Works, historiska översikter" },
+    { id: "d22", cat: "kropp", ev: "starkt", type: "Forskningsöversikt",
+      title: "Träning som utmanar balansen minskar fallolyckor hos äldre",
+      body: "Fall är en av de vanligaste orsakerna till skador hos äldre, och höftfrakturer får ofta allvarliga följder. Cochrane-organisationens översikt av randomiserade studier (Sherrington och kollegor, 2019) fann att träning för hemmaboende äldre minskar antalet fall med ungefär en fjärdedel jämfört med ingen träning. Mest effekt hade program som innehåller balansövningar, som att stå på ett ben, gå i en linje eller förflytta tyngden, ofta tillsammans med styrka för benen. Det räcker inte med enbart promenader för att få samma effekt på fallen. Effekten gäller för övningar som görs regelbundet och blir svårare allt eftersom, och den försvinner när man slutar. Studierna har olika upplägg och deltagare, så siffran är ett ungefärligt genomsnitt och inte ett löfte för den enskilde.",
+      core: "Lägg till några minuter balansövningar flera gånger i veckan, till exempel stå på ett ben vid diskbänken, och gör dem gradvis svårare. Har du risk för fall eller sjukdomar, fråga en sjukgymnast om ett lämpligt upplägg.",
+      src: "Sherrington m.fl., 2019 · Cochrane Database of Systematic Reviews (Exercise for preventing falls in older people living in the community)" }
+  );
+  IDEAS.push(
     { id: "e1", cat: "finans", ev: "starkt", type: "Centralbanksmål",
       title: "Inflation: varför dina pengar tappar värde långsamt",
       body: "Inflation betyder att priserna i genomsnitt stiger, så att samma summa köper mindre över tid. Riksbanken har ett mål om att inflationen, mätt som KPIF, ska vara två procent per år. Ett litet, stabilt prisökningstempo ska göra det lättare att planera, medan hög och svängig inflation gör det svårt att veta vad pengar är värda.",
@@ -3420,6 +3432,33 @@ Object.assign(DEEP, {
       "Planera in ett fast, litet möte i veckan med någon du bryr dig om, till exempel en promenad, ett telefonsamtal eller en middag, och ta kontakt med en person du inte hört av på länge. Anteckna efteråt hur du kände dig, utan att dra stora slutsatser av två veckor."
     ]
   });
+  Object.assign(DEEP, {
+    d21: [
+      "# Bakgrund",
+      "I mitten av 1800-talet var London världens största stad, med miljontals invånare och ett avloppssystem som inte hängt med. Latriner och avlopp tömdes ofta i gamla vattendrag som i sin tur rann ut i Themsen, samtidigt som floden också användes som källa till dricksvatten för delar av staden. Stadens koleraepidemier, bland annat 1848–49 och 1853–54, hade redan visat att något var fel. Under den största delen av perioden dominerade idén att sjukdomar spreds med 'miasma', illaluktande luft från ruttnande material, och inte med smittämnen i vatten.",
+      "# Vad forskningen visar",
+      "Sommaren 1858 var ovanligt varm, och flodvattnet luktade så starkt att parlamentsbyggnaden vid Themsen blev svår att arbeta i. Historiker brukar återge att man hängde upp kalkdränkta tyger för fönstren för att dämpa stanken. Parlamentet antog därefter snabbt en lag som gav Metropolitan Board of Works möjlighet att låna pengar för att bygga ut avloppen. Ingenjören Joseph Bazalgette ledde arbetet. Idén var att fånga upp avloppen som tidigare rann rakt ut i floden och leda dem i stora tunnlar åt öster, långt nedströms staden, för att släppa ut dem där tidvattnet förde bort dem. Byggandet pågick under 1860-talet och in på 1870-talet, och delar av systemet används fortfarande.",
+      "Samtidigt hade läkaren John Snow på 1850-talet lagt fram belägg för att kolera spreds via förorenat vatten, och långsamt vann den idén mark. Efter att avloppssystemet tagits i bruk blev stora koleraepidemier ovanligare i London. Den sista större koleraepidemin 1866 drabbade framför allt ett område i öster där ett vattenbolag, enligt samtida undersökningar, hade levererat ofiltrerat vatten från en förorenad källa.",
+      "# Det som är osäkert",
+      "Det är lätt att göra berättelsen för snygg. Att stanken i sig 'orsakade' reformen är en förenkling, eftersom behovet hade diskuterats i åratal och planer fanns redan före 1858. Det är också oklart hur mycket av nedgången i kolera som beror på kloakerna jämfört med bättre vattenfiltrering, nya vattenledningar, bättre bostäder och en växande förståelse för hygien. Dessa förändringar skedde samtidigt, och det finns inget enkelt sätt att skilja deras bidrag åt. Uppgifter om exakta längder, kostnader och dödstal skiljer sig mellan källor, så vi undviker dem här.",
+      "# Så kan du använda det",
+      "Historien visar två saker. För det första kan en synlig, obehaglig olägenhet driva fram beslut som tidigare dragits i långbänk, så om du vill få något gjort kan det hjälpa att göra problemet konkret. För det andra kan en åtgärd fungera av andra skäl än de som motiverade den. Det är skäl att vara nyfiken på mekanismen och inte bara på resultatet, så att du vet vad du ska göra mer av.",
+      "# Prova i två veckor",
+      "Välj ett problem hemma eller på jobbet som alla har lärt sig leva med, till exempel en rörig gemensam yta. Gör det synligt: ta ett foto, räkna hur ofta det stör eller beskriv det för de andra. Se sedan om något händer. Skriv ner vad du tror är orsaken till att det ordnas, och jämför efter två veckor om förklaringen håller."
+    ],
+    d22: [
+      "# Bakgrund",
+      "Med åldern minskar muskelstyrka, balans och reaktionsförmåga hos många, och risken att ramla ökar. Ett fall kan leda till brott, till exempel i höften, och till rädsla för att röra sig, vilket i sin tur kan göra en svagare. Därför har fallprevention blivit ett eget forskningsfält där man prövar bland annat träning, syn- och läkemedelsgenomgångar och hemanpassningar.",
+      "# Vad forskningen visar",
+      "Cochrane-översikten från 2019 samlade ett stort antal randomiserade studier av träning för äldre som bor hemma. Genomsnittet pekade på att träning minskade antalet fall med ungefär en fjärdedel. Program som mest bestod av balansövningar och funktionella övningar, alltså sådant som liknar vardagsrörelser som att resa sig, gå och vända, gav tydlig effekt. Kombinationer av balans- och styrkeövningar var också vanliga i de program som fungerade. Tai chi visade i översikten en möjlig effekt, men med större osäkerhet. Ett känt exempel på ett strukturerat program är Otago-programmet, som kombinerar styrke- och balansövningar som man gör hemma med stöd av en instruktör.",
+      "# Det som är osäkert",
+      "Siffran är ett genomsnitt över studier som skiljer sig åt i deltagare, träningsmängd och uppföljning. Det är svårt att säga exakt hur mycket träning som behövs, och vilka övningar som gör mest nytta. Studierna visar också effekt på antalet fall mer än på antalet höftfrakturer, där underlaget är magrare. Resultaten gäller i första hand äldre som bor hemma, och för personer på vårdboenden eller med demens ser bilden mer blandad ut. Dessutom kan deltagare i studier vara mer motiverade än andra, så effekten i verkligheten kan bli lägre.",
+      "# Så kan du använda det",
+      "Det viktigaste är att övningarna utmanar balansen på ett säkert sätt. Stå nära en stadig yta att hålla i, och gör dem svårare steg för steg, till exempel genom att minska stödet eller blunda en kort stund. Kombinera med styrkeövningar för benen, som att resa sig från stol. Har du ont, yrsel eller en sjukdom, eller har ramlat nyligen, är det bäst att prata med en sjukgymnast eller läkare först. För en anhörig kan det vara ett stöd att göra övningarna tillsammans.",
+      "# Prova i två veckor",
+      "Gör tre gånger i veckan en kort omgång på ungefär tio minuter: stå på ett ben i tjugo sekunder per sida, gå i en rak linje med fot framför fot, och res dig från en stol tio gånger. Håll i en bänk. Notera i en anteckning hur det känns och om du blir stadigare. Om något gör ont, avbryt och fråga en professionell."
+    ]
+  });
 
   var BIG = [], BIGDEEP = {}, FIGS = {}, ART = {}, ADDED = {}, PHOTO = {
     p3: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c1920.jpg?width=800", credit: "Henri Manuel, Marie Curie, ca 1920 (public domain, Wikimedia Commons)" }
@@ -3614,6 +3653,9 @@ ART["d18"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" 
 /* Bannerillustrationer (SVG) för småkärnor 2026-10-23. */
 ART["d19"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><rect x=\"-34\" y=\"-34\" width=\"68\" height=\"68\" rx=\"10\" class=\"p\"/><rect x=\"-14\" y=\"-14\" width=\"28\" height=\"28\" rx=\"5\" class=\"f\"/><path d=\"M-18 -34v-16M0 -34v-16M18 -34v-16M-18 34v16M0 34v16M18 34v16M-34 -18h-16M-34 0h-16M-34 18h-16M34 -18h16M34 0h16M34 18h16\" class=\"l\"/></g></svg>";
 ART["d20"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"-50\" cy=\"-20\" r=\"16\" class=\"p\"/><path d=\"M-78 30a28 28 0 0 1 56 0z\" class=\"p\"/><circle cx=\"50\" cy=\"-20\" r=\"16\" class=\"p\"/><path d=\"M22 30a28 28 0 0 1 56 0z\" class=\"p\"/><path d=\"M-26 -4h52\" class=\"l thin\"/><circle cx=\"0\" cy=\"-4\" r=\"6\" class=\"f\"/></g></svg>";
+/* Bannerillustrationer (SVG) för småkärnor 2026-10-24. */
+ART["d21"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><path d=\"M-70 -10h140v30h-140z\" class=\"p\"/><ellipse cx=\"-70\" cy=\"5\" rx=\"8\" ry=\"15\" class=\"f\"/><ellipse cx=\"70\" cy=\"5\" rx=\"8\" ry=\"15\" class=\"f\"/><path d=\"M-60 40q10 -8 20 0t20 0t20 0t20 0t20 0t20 0\" class=\"l thin\"/><path d=\"M-40 -22q8 -10 0 -18M0 -22q8 -10 0 -18M40 -22q8 -10 0 -18\" class=\"l thin\"/></g></svg>";
+ART["d22"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"0\" cy=\"-44\" r=\"12\" class=\"p\"/><path d=\"M0 -30v36M-30 -20l30 8l30 -8M0 6l-10 40M0 6l22 -14l8 18\" class=\"l\"/><path d=\"M-40 50h80\" class=\"f\"/></g></svg>";
 /* Datum då varje småkärna lades till. Fylls av tools/stamp_added.py. */
 ADDED["B1"]="2026-10-11";
 ADDED["B2"]="2026-10-11";
@@ -3780,6 +3822,9 @@ ADDED["d18"]="2026-10-22";
 ADDED["B19"]="2026-10-23";
 ADDED["d19"]="2026-10-23";
 ADDED["d20"]="2026-10-23";
+ADDED["B20"]="2026-10-24";
+ADDED["d21"]="2026-10-24";
+ADDED["d22"]="2026-10-24";
 
   var MON = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"];
   function newsDate(s) {
@@ -5140,6 +5185,64 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       "Situationen styr ofta mer än avsikten, och därför är det effektivt att ändra miljön och passa på vid brytpunkter som flytt eller nytt jobb.",
       "Genomförandeplaner av typen 'om X, då Y' är bland de bäst belagda metoderna, men de fungerar bäst för mål som är viktiga för personen.",
       "Populära böcker om vanor går ofta längre än forskningen. Det mesta är rimliga tumregler, inte bevisade recept."
+    ] }
+  ];
+/* Stor kärna 2026-10-24: Marie Curie */
+  BIG.push({
+    id: "B20", cat: "forebilder", ev: "starkt", type: "Biografi",
+    title: "Marie Curie: forskaren som upptäckte radioaktivitetens natur, vann två Nobelpris och betalade ett pris för det",
+    body: "Marie Curie växte upp i ett ockuperat Polen utan rätt att studera vid universitet, och blev den första som fick två Nobelpris, i fysik 1903 och i kemi 1911. Hon gav radioaktiviteten dess namn, upptäckte polonium och radium och byggde upp ett institut som lade grunden för modern strålbehandling. Hennes liv visar både vad envishet och noggrannhet kan åstadkomma och vad som händer när faror ännu inte är kända.",
+    core: "Curies framgång byggde på ett stort antal tråkiga, noggranna mätningar, en villighet att ta en avvikelse på allvar och en vana att dela med sig av resultaten. Men hennes historia är också en påminnelse om att banbrytande arbete kan ha dolda kostnader, och om att motstånd mot kvinnor och utlänningar var en verklig del av hennes liv.",
+    src: "Quinn, S., 1995 · Marie Curie: A Life; Pasachoff, N., 1996 · Marie Curie and the Science of Radioactivity; Curie, È., 1937 · Madame Curie; Nobelprize.org, biografier över Marie Curie; Cassidy, D., m.fl., översikter i historia och fysik"
+  });
+  BIGDEEP.B20 = [
+    "# Vem var hon?",
+    "Marie Curie föddes som Maria Skłodowska i Warszawa 1867, vid en tid då Polen var delat mellan stormakter och Warszawa låg under det ryska kejsardömet. Hon blev en av de mest betydelsefulla forskarna i historien. Hon var den första kvinnan som fick ett Nobelpris, den första som fick två, och än i dag den enda som fått Nobelpris inom två olika naturvetenskaper: fysik 1903 och kemi 1911. Hon var också den första kvinnliga professorn vid Sorbonne i Paris.",
+    "Den här texten följer hennes väg från ett hem i Warszawa till laboratoriet i Paris, förklarar vad hon faktiskt upptäckte, och beskriver hur hon bemöttes av omvärlden. Den tar också upp det som är osäkert eller omtvistat. Tyngdpunkten ligger på sådant som är väl belagt i biografier och Nobelstiftelsens material, men detaljer i äldre berättelser, särskilt anekdoter, varierar mellan källor.",
+    "# Uppväxt och vägen till Paris",
+    "Maria var yngst av fem barn. Hennes far var lärare i matematik och fysik, och hennes mor ledde en flickpension. Familjen hade fått det svårt efter att fadern förlorat sin tjänst under det ryska förtrycket av polsk kultur och språk. Modern dog i tuberkulos när Maria var tio, och en av hennes systrar hade dött i tyfus ett par år tidigare. Redan som barn blev hon känd för sitt goda minne och sin stora läslust, och hon avslutade skolan som bäst i sin klass.",
+    "Kvinnor fick inte studera vid universitetet i Warszawa. Maria och hennes syster Bronisława deltog i stället i den underjordiska undervisning som brukar kallas det flygande universitetet, där lärare och elever träffades i hemlighet. Systrarna gjorde en överenskommelse: Maria skulle arbeta som guvernant och bekosta Bronisławas läkarstudier i Paris, och sedan skulle Bronisława hjälpa henne i sin tur. Under flera år arbetade Maria på en gård på landsbygden och läste vid sidan om, samtidigt som hon lärde bondbarn att läsa och skriva, vilket i sig var otillåtet.",
+    "Hösten 1891 kom hon till Paris och började på Sorbonne, nu under det franska namnet Marie. Hon levde sparsamt, ofta i ett litet vindsrum, och blev enligt flera biografer ibland svag av för lite mat. Hon tog en examen i fysik 1893 som bästa student, och ett år senare en i matematik. I början av 1894 träffade hon fysikern Pierre Curie, som arbetade vid Paris stads skola för industriell fysik och kemi. De gifte sig 1895 och fick dottern Irène 1897 och dottern Ève 1904.",
+    { box: "Studenttiden i siffror", text: "Hon var 23 år när hon kom till Paris. Mellan skolgången i Warszawa och Sorbonne hade hon alltså arbetat i flera år för att kunna studera. Det är en påminnelse om att många lysande forskare haft en lång och oviss väg fram till sina första universitetsstudier." },
+    "# Radioaktiviteten: ett fynd som ledde vidare",
+    "År 1896 upptäckte den franske fysikern Henri Becquerel att uranföreningar sänder ut en osynlig strålning som kan svärta fotografiska plåtar, även utan solljus. Fenomenet fick först lite uppmärksamhet. Marie Curie valde det som ämne för sin doktorsavhandling, delvis för att ämnet var nytt och olöst.",
+    "Hon använde en känslig mätmetod. Strålningen från uran gör luften elektriskt ledande, och med ett instrument kallat elektrometer, tillsammans med en kristall som Pierre och hans bror Jacques tidigare utvecklat, kunde hon mäta hur stark strålningen var. Hon gjorde en lång serie mätningar på olika ämnen och mineral. Två slutsatser blev viktiga. Den första var att strålningen från uran var proportionell mot mängden uran i provet, oavsett vilka andra ämnen det var kemiskt bundet till. Det antydde att strålningen var en egenskap hos atomerna själva och inte ett resultat av en kemisk reaktion. Den andra var att även grundämnet torium sände ut strålning. Hon gav fenomenet namnet radioaktivitet, och det är ett av de begrepp som lever kvar.",
+    "Det som gjorde henne närmast uppmärksam på något nytt var en avvikelse. Vissa mineral, till exempel uranmineralet pechblände, visade sig vara mer radioaktiva än deras urainnehåll kunde förklara. Man kunde ha avfärdat det som ett mätfel. Curie drog slutsatsen att mineralet måste innehålla ett eller flera okända ämnen som var starkare radioaktiva än uran. Det var en djärv gissning som bara kunde prövas genom ett omfattande kemiskt arbete.",
+    "# Polonium och radium",
+    "Pierre lade ner sitt eget arbete för att hjälpa till. Tillsammans, och med hjälp av kemisten Gustave Bémont, separerade de pechblände steg för steg och mätte strålningen i varje del. Sommaren 1898 meddelade de att de funnit ett nytt ämne, som de kallade polonium efter Maries hemland. I slutet av året tillkännagav de ännu ett, radium, som var mycket mer radioaktivt än uran.",
+    "Men att det fanns nya ämnen var ännu bara en indikation, eftersom ingen hade sett dem i ren form. Kemister krävde att man kunde isolera ämnet och bestämma dess atomvikt. Det arbetet tog flera år. Paret fick tillgång till ett gammalt, dåligt isolerat skjul i närheten av skolan där de arbetade, och de bearbetade tonvis med rester från uranutvinning. Marie stod själv för mycket av det fysiska arbetet med att lösa upp, fälla ut och kristallisera. År 1902 hade hon renat fram ungefär ett tiondels gram radiumklorid och kunde ange radiums atomvikt. Det lade fast att radium var ett nytt grundämne.",
+    "Arbetet var skicklig kemi men också en bedrift av uthållighet. Paret valde, enligt berättelser som ofta återges, att inte ta patent på metoden, eftersom de såg det som forskning som borde tillhöra alla. Hur medvetet och hur ensidigt det beslutet var diskuteras, men det är väl belagt att de delade med sig av sina metoder öppet och att andra laboratorier snabbt kunde följa efter.",
+    "# Nobelpriserna",
+    "År 1903 delades Nobelpriset i fysik mellan Becquerel och paret Curie för upptäckterna av och forskningen om radioaktivitet. Enligt flera redogörelser hade en nominering från början bara nämnt Becquerel och Pierre, och Pierre ska ha fått veta detta och uppmärksammat kommittén på hennes insats, och hon blev därmed medlaureat. Hur exakt den processen gick till finns det olika uppgifter om, men att hennes roll först förbisågs är en vanlig del av berättelsen.",
+    "År 1906 dog Pierre Curie när han klev ut framför en hästdragen vagn på en regnig gata i Paris. Marie var förtvivlad men fortsatte arbeta. Hon övertog Pierres lärostol vid Sorbonne och blev därmed den första kvinnliga professorn där. År 1910 lyckades hon tillsammans med André Debierne framställa metalliskt radium. Året därpå, 1911, fick hon Nobelpriset i kemi, ensam, för upptäckten av polonium och radium, för isoleringen av radium och för studiet av dess natur.",
+    "# Skandalen och motståndet",
+    "Samma år som hon fick sitt andra pris utsattes hon för en hård mediekampanj. Delar av den franska pressen fick tag i att hon hade haft ett förhållande med den gifte fysikern Paul Langevin. Tidningarna angrep henne hårt, och en del av tonen byggde på att hon var utlänning och kvinna. Samma höst hade Franska vetenskapsakademin med mycket knapp marginal valt någon annan än henne till medlem, vilket enligt biografer hade samband med både kön och nationalitet, även om det är svårt att veta hur stor del varje faktor hade.",
+    "Enligt flera biografier uppmanade en medlem av Nobelkommittén henne att inte komma till Stockholm för att ta emot priset, eftersom ryktena skulle skada ceremonin. Hon reste ändå och höll sitt tal. Hon blev sjuk efteråt och drog sig undan en tid. Episoden visar hur snabbt ett offentligt rykte kunde göra en av tidens främsta forskare till måltavla, och hur annorlunda måttstockarna ibland var för män och kvinnor. Langevin utsattes också för angrepp, men han behöll sitt rykte lättare.",
+    "# Första världskriget och röntgenbilarna",
+    "När kriget bröt ut 1914 satsade Marie Curie på att göra röntgenstrålning tillgänglig för sårade soldater. Hon såg att röntgenbilder gjorde det möjligt att hitta kulor och granatsplitter utan att operera i blindo. Hon skaffade utrustning och byggde ombord på bilar mobila röntgenenheter, som kom att kallas de små Curierna, och utbildade kvinnor att sköta dem. Dottern Irène, som då var runt 17 år, deltog. Uppskattningar av hur många anläggningar och fordon som kom till användning varierar, men det rörde sig om hundratals fasta installationer och ett tjugotal bilar, och många sårade fick hjälp.",
+    "# Institutet och arvet",
+    "Efter kriget ledde Curie Radiuminstitutet i Paris, som hade byggts före kriget och blev ett centrum för både fysik, kemi och medicinsk forskning. Radium hade tidigt visat sig kunna angripa cancerceller, och strålbehandling med radium, som i Frankrike kom att kallas curieterapi, blev ett viktigt behandlingsområde. Institutet utbildade forskare från många länder och blev en miljö där många kvinnor kunde göra karriär. Där arbetade bland andra hennes dotter Irène, som 1935 tillsammans med maken Frédéric Joliot fick Nobelpriset i kemi för framställningen av nya radioaktiva ämnen.",
+    "Radium var dyrt, och 1921 reste Curie till USA, där en insamling bland amerikanska kvinnor hade skaffat ett gram radium till hennes laboratorium. Under resan var hon hyllad men tyckte inte om uppmärksamheten.",
+    "# Ett pris för arbetet",
+    "Marie Curie dog den 4 juli 1934 av en sjukdom i benmärgen, aplastisk anemi, som enligt de flesta bedömare sannolikt hängde ihop med många års exponering för strålning. Det går inte att slå fast med säkerhet att just strålningen orsakade hennes sjukdom, eftersom hon också hade arbetat med röntgenapparater, men kopplingen anses vara trolig. Hon och Pierre hade i början burit radiumprover i fickorna och förvarat dem i skrivbordslådor, och de hade noterat brännskador på fingrarna, men det dröjde länge innan riskerna förstods fullt ut.",
+    "Hennes anteckningsböcker och en del av hennes personliga föremål är fortfarande radioaktiva och förvaras i blyfodrade lådor i Paris, och den som vill läsa dem måste enligt uppgift skriva under ett ansvarsfriskrivande. Det beror på att radium-226, som hon arbetade med, har en halveringstid på ungefär 1 600 år.",
+    { box: "Radiumeran", text: "Under 1900-talets första decennier såldes radium i allt från hudkräm till tandkräm och dryckesvatten, på ett sätt som i dag verkar obegripligt. I USA drabbades unga kvinnor som målade lysande urtavlor med radiumfärg och spetsade penslarna med munnen av allvarliga skador, och deras fall ledde till bättre arbetarskydd. Det visar att riskerna lärdes in först genom skadorna, och att entusiasmen för det nya ofta kom före kunskapen om farorna." },
+    "# Det som är omstritt eller osäkert",
+    { list: [
+      "Pierres och Maries respektive roller. Pierre var redan etablerad och Marie var den som drev frågan om radioaktivitet. De flesta biografer menar att Maries bidrag var avgörande för upptäckten, men eftersom paret arbetade tätt ihop är det svårt att dela upp insatserna exakt.",
+      "Patentbeslutet. Berättelsen om att de medvetet avstod från patent är välkänd, men hur beslutet fattades och hur ideologiskt det var varierar i källorna.",
+      "Dödsorsaken. Aplastisk anemi är ett känt resultat av hög strålexponering, men i ett enskilt fall går det inte att bevisa orsaken.",
+      "Anekdoter. Detaljer som hur hon bar prover, vad hon åt som student eller exakta citat återges ofta olika. De bör behandlas med försiktighet.",
+      "Mediebilden. Hennes roll som symbol för kvinnor i vetenskapen är väl förtjänad, men hon har också blivit en myt. Mer nyanserade biografier visar en krävande, ibland ensam person som var skicklig både som forskare och organisatör."
+    ] },
+    "# Lärdomar att ta med sig",
+    { list: [
+      "Ta en avvikelse på allvar. Att pechblände strålade mer än det borde var början på två nya grundämnen. Små fel i mätningar är ibland bara fel, men ibland är de vägen till något nytt.",
+      "Mät noggrant och upprepa. Hennes genombrott byggde på långa serier av tråkiga, kontrollerade mätningar innan hon drog slutsatser.",
+      "Utmana förutsättningar som verkar låsta. Hon studerade när det var förbjudet att göra det i hemlandet och hittade vägar runt hindret, men det krävde också stöd från systern och andra.",
+      "Dela med dig. Att hon och Pierre öppet redovisade metoderna gjorde att forskningen kunde gå snabbare.",
+      "Skilj på hjälp och skada. Radium blev en viktig behandling men också en risk. Nya tekniker bör prövas med försiktighet innan man vet vad de gör över tid.",
+      "Var försiktig med hjältebilder. Hennes verkliga historia är rikare än myterna, och att se både styrkan och kostnaden gör henne mer användbar som förebild."
     ] }
   ];
 
