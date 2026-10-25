@@ -1,0 +1,27 @@
+  Object.assign(DEEP, {
+    d23: [
+      "# Bakgrund",
+      "Många tycker att musik hjälper dem att koncentrera sig, och andra tycker att den stör. Forskare har studerat frågan i decennier med en enkel uppställning: deltagare läser en text eller löser en uppgift i tystnad eller med ljud i bakgrunden, och sedan jämförs resultaten. Ljudet kan vara tal, musik med sång, musik utan sång eller jämnt brus.",
+      "# Vad forskningen visar",
+      "Vasilev, Kirkby och Angele (2018) sammanställde studier om ljudstörning vid läsning med en bayesiansk metaanalys. Mönstret var ganska konsekvent: bakgrundstal och sång med begripliga ord försämrade läsningen något, medan jämnt brus och musik utan sång hade små eller inga tydliga effekter. Den vanligaste förklaringen är att ord som vi hör tas upp av samma språkliga system som läsningen använder, så att de två konkurrerar om utrymmet. Ljud utan språkligt innehåll konkurrerar mindre.",
+      "# Det som är osäkert",
+      "Effekterna är måttliga och varierar mellan studier, personer och uppgifter. Vi läser olika bra i olika miljöer, och den som är van vid musik kan påverkas mindre. De flesta studier mäter läsförståelse på korta texter i ett laboratorium, vilket inte säger allt om ett långt arbetspass. Det är också oklart hur mycket musik som höjer humöret eller motivationen kan väga upp en liten försämring av förståelsen. Resultaten säger inget om uppgifter som inte bygger på språk, som enkel rutinmässig träning eller städning.",
+      "# Så kan du använda det",
+      "Behöver du läsa eller skriva något svårt kan du välja tystnad, jämnt brus eller musik utan sång. Spara musik med text till uppgifter som inte kräver språk. Om du märker att du läser samma rad flera gånger är det en signal om att ljudet stör. Hörlurar som tar bort omgivningsljud kan hjälpa i öppna kontor, men de är inte nödvändiga för alla.",
+      "# Prova i två veckor",
+      "Under två veckor läser eller skriver du dina svåra arbetspass i tre olika miljöer: tystnad, musik utan sång och musik med sång. Efter varje pass skattar du hur väl du minns och förstod det du läst, från 1 till 5, och hur lång tid det tog. Titta på anteckningarna efter två veckor och behåll det som fungerade för dig. Det är en liten egen jämförelse, inte ett experiment i forskningens mening."
+    ],
+    d24: [
+      "# Bakgrund",
+      "Organisationer som hanterar känslig information väljer ofta vilka digitala tjänster de anställda får använda. Med AI-chattar tillkommer en särskild fråga: texten som skrivs in skickas till en leverantör, och det spelar roll vilket avtal som finns och var uppgifterna hamnar. Regeringskansliet är den organisation som stöder statsministern och regeringen. Här handlar nyheten om vilka AI-verktyg som får användas på personalens tjänstedatorer.",
+      "# Vad forskningen visar",
+      "Det här är en nyhet, inte en studie. Enligt Computer Sweden den 23 oktober 2026, som hänvisar till Ekot, har Regeringskansliet spärrat ChatGPT och Claude på personalens tjänstedatorer. Tidningen skriver att digitaliseringsdirektören Mikael Wettercrantz på intranätet har kommenterat beslutet och skrivit att användning av AI-tjänster utan avtal kan få konsekvenser för informationssäkerheten. Microsofts Copilot beskrivs som ett godkänt alternativ, och kansliet ska ha höjt säkerheten kring det. Användningen av Deepseek ska redan tidigare ha varit begränsad. Enligt tidningen ska liknande spärrar finnas hos Skatteverket och Statens institutionsstyrelse, och Kronofogden kan bli aktuell.",
+      "Decrypt rapporterade den 24 oktober att spärren börjar gälla måndagen den 26 oktober. Enligt Decrypt kan vissa anställda fortfarande nå verktygen genom en intern AI-plattform som Regeringskansliet byggt. Decrypt skriver också att pressavdelningen inte har sagt hur många det gäller eller vilka villkor som finns.",
+      "# Det som är osäkert",
+      "Båda uppgifterna går i huvudsak tillbaka på Ekots rapportering, så de är inte helt oberoende av varandra. Vi har inte läst själva intranätsinlägget eller något formellt beslut, utan bara hur medierna återger dem. Det är oklart hur många anställda som omfattas, hur undantagen fungerar och om Claude finns tillgängligt inom Regeringskansliets Copilot-miljö. Decrypt skriver att det inte bekräftats. Uppgiften om startdatum kommer från en av källorna och kan ändras. Nyheten säger heller ingenting om att något av verktygen i sig är mer eller mindre säkert än andra, utan handlar om avtal och kontroll. Både leverantörer och konkurrenter har intresse av hur en sådan nyhet framställs, vilket är ett skäl att läsa originalkällorna.",
+      "# Så kan du använda det",
+      "Använd nyheten som en påminnelse om att fråga hur dina egna uppgifter hanteras, inte som ett omdöme om något verktyg. Läs Ekots och Regeringskansliets egna uppgifter om du vill veta mer. Kolla vad din arbetsplats eller skola tillåter innan du klistrar in något internt i en AI-chatt. Skilj mellan vad en organisation har bestämt och vad som är bevisat om tjänsterna.",
+      "# Prova i två veckor",
+      "Under två veckor följer du hur nyheten utvecklas genom att läsa primärkällorna när de finns: Ekots reportage och eventuella uttalanden från Regeringskansliet. Anteckna vad som bekräftas, vad som ändras och vad som fortfarande är obekräftat. Fråga dig själv vilka uppgifter du själv klistrar in i AI-tjänster, och läs avtalsvillkoren för en av dem. Dra inga slutsatser tills flera sammanhang har klarnat."
+    ]
+  });
