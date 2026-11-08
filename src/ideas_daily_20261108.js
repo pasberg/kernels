@@ -1,0 +1,12 @@
+  IDEAS.push(
+    { id: "d51", cat: "larande", ev: "mattligt", type: "Experimentell studie",
+      title: "Minnespalatset: ett antikt knep som fortfarande fungerar",
+      body: "Minnespalatset, eller loci-metoden, är en teknik som beskrivs redan i romerska skrifter. Du föreställer dig en plats du känner väl, till exempel din bostad, och lägger det du vill minnas som tydliga bilder på bestämda ställen längs en rutt. Vid repetitionen går du i tanken samma rutt och hämtar bilderna. Forskaren Martin Dresler och kollegor lät personer utan särskild minnesträning öva tekniken under ungefär sex veckor. Enligt studien blev de tydligt bättre på att minnas ordlistor än en jämförelsegrupp, och förbättringen fanns delvis kvar flera månader senare. Tekniken passar bäst för listor och ordningsföljder, mindre för att förstå ett stoff.",
+      core: "Att koppla det du vill minnas till en välkänd plats och en livlig bild kan förbättra minnet av listor märkbart, även för vem som helst efter några veckors övning. Den ersätter inte förståelse, men är ett användbart verktyg när något faktiskt måste sitta i rätt ordning.",
+      src: "Dresler, M. m.fl., 2017 · Neuron (Mnemonic training reshapes brain networks to support superior memory)" },
+    { id: "d52", cat: "relationer", ev: "mattligt", type: "Experimentella studier",
+      title: "Vi underskattar hur mycket andra uppskattar att vi hör av oss",
+      body: "Psykologen Peggy Liu och kollegor lät människor skicka ett oväntat meddelande eller ett litet kort till någon de inte hört av på ett tag, och frågade sedan både avsändare och mottagare hur det kändes. Mottagarna uppskattade enligt studierna kontakten mer än avsändarna hade trott i förväg. Bland annat spelade överraskningen roll: ju mer oväntat, desto gladare blev mottagaren. Avsändare oroade sig ofta för att det skulle kännas konstigt eller påträngande, och den oron stod för en del av underskattningen. Resultaten kommer från experiment där deltagarna uppmanades att höra av sig, så de visar inte hur det går i alla relationer eller när kontakten är oönskad.",
+      core: "Det kan vara värt att höra av sig till någon du tänkt på, även efter lång tid. Oron för att det ska vara konstigt är ofta större än det mottagaren faktiskt känner, men det gäller främst relationer där kontakten är välkommen.",
+      src: "Liu, P.J., Rim, S., Min, L. & Min, K.E., 2023 · Journal of Personality and Social Psychology (The surprise of reaching out: Appreciated more than we think)" }
+  );
