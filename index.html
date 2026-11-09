@@ -1267,6 +1267,19 @@ IDEAS.push(
       core: "Det kan vara värt att höra av sig till någon du tänkt på, även efter lång tid. Oron för att det ska vara konstigt är ofta större än det mottagaren faktiskt känner, men det gäller främst relationer där kontakten är välkommen.",
       src: "Liu, P.J., Rim, S., Min, L. & Min, K.E., 2023 · Journal of Personality and Social Psychology (The surprise of reaching out: Appreciated more than we think)" }
   );
+/* Småkärnor 2026-11-09 */
+  IDEAS.push(
+    { id: "d53", cat: "ai", ev: "svagt", type: "Förtryck (ej granskad)", news: "2026-10-26",
+      title: "Nytt: Co-Design Bench pekar på att den bästa kodagenten fullföljde 26,4 procent av uppgifter från riktiga användare",
+      body: "Enligt nyhetssammanställaren AI Weekly, som återger ett förtryck på arXiv (nummer 2610.35138, enligt AI Weekly postat den 26 oktober 2026), har forskare tagit fram Co-Design Bench: 273 uppgifter som valts ut ur 37 463 unika förfrågningar från 26 314 riktiga kodsessioner. Varje uppgift bedöms mot dolda godkännandekriterier skrivna av experter, sammanlagt 2 331. Tio agentmodeller testades. Den starkaste klarade i genomsnitt 69,9 procent av kriterierna per uppgift, men bara 26,4 procent av uppgifterna fullt ut, alltså med alla kriterier uppfyllda samtidigt. AI Weekly återger också att resultaten var sämre när en ändring i ett kodförråd bestod av tre eller fyra olika slags ändringar än av en eller två. Förtrycket är inte granskat av andra forskare, och vi har inte läst det.",
+      core: "Läs det här som ett första, ogranskat resultat. Skillnaden mellan 69,9 och 26,4 procent visar hur mycket sättet att räkna betyder: delpoäng ger ett vänligare intryck än kravet att allt ska stämma. Kolla gärna förtrycket själv och vänta på att andra pröva testet.",
+      src: "AI Weekly, notis 2026-11-01 · https://aiweekly.co/alerts/co-design-bench-top-coding-agent-completes-just-264-of-real-user-tasks; AI Weekly, redaktörsblogg · https://aiweekly.co/editors-blog/found-first-top-coding-agent-passes-69-9-of-criteria-but-completes-only-26-4-of (båda från samma utgivare, så inte oberoende); förtrycket enligt dem: https://arxiv.org/abs/2610.35138 (har vi inte läst)" },
+    { id: "d54", cat: "finans", ev: "mattligt", type: "Forskningsöversikt",
+      title: "Hemmaplansbias: vi äger oftast mycket mer av det som ligger nära oss än spridningen motiverar",
+      body: "Investerare i många länder har en stor del av sina aktier i bolag från det egna landet, långt större än landets andel av världens börsvärde. Det kallas hemmaplansbias (home bias). Kenneth French och James Poterba beskrev det för internationella aktiemarknader i en artikel från 1991. Joshua Coval och Tobias Moskowitz visade 1999 att även amerikanska fondförvaltare tenderar att äga bolag som ligger geografiskt nära dem. Förklaringarna som diskuteras är bland annat att det känns tryggare att äga det man känner till, skillnader i kostnader och skatter, samt att man tror sig veta mer om närliggande bolag. Hur stor del som är rationell och hur stor del som är bias är omtvistat. Det här är allmän kunskap om beteende, inte råd om vad man ska köpa.",
+      core: "Det som ligger nära och känns bekant får ofta oproportionerligt stor plats i portföljer. Att veta om det hjälper dig att fråga dig varför en placering finns där, om det är för att den är bra eller för att den är välbekant. Detta är inte finansiell rådgivning.",
+      src: "French, K.R. & Poterba, J.M., 1991 · American Economic Review, Papers & Proceedings (Investor diversification and international equity markets); Coval, J.D. & Moskowitz, T.J., 1999 · The Journal of Finance (Home bias at home: local equity preference in domestic portfolios)" }
+  );
   IDEAS.push(
     { id: "e1", cat: "finans", ev: "starkt", type: "Centralbanksmål",
       title: "Inflation: varför dina pengar tappar värde långsamt",
@@ -4062,6 +4075,33 @@ Object.assign(DEEP, {
       "Skicka tre korta meddelanden under två veckor till personer du tänkt på men inte hört av dig till på länge. Skriv ner i förväg hur du tror att de kommer att reagera, och jämför sedan med vad som faktiskt hände."
     ]
   });
+/* Längre texter för småkärnor 2026-11-09 */
+  Object.assign(DEEP, {
+    d53: [
+      "# Bakgrund",
+      "Många tester av kodagenter, alltså AI-system som ändrar program på egen hand, bygger på små, tydliga uppgifter. Det är svårt att veta hur resultaten överförs till det arbete utvecklare faktiskt ber om. Den här nyheten gäller ett förtryck, Co-Design Bench, som nyhetssammanställaren AI Weekly beskriver i en notis den 1 november 2026 och i en redaktörsblogg. Enligt AI Weekly postades förtrycket på arXiv den 26 oktober 2026 under nummer 2610.35138. Vi har läst de två AI Weekly-sidorna men inte förtrycket självt, och de två sidorna kommer från samma utgivare, så de är inte oberoende av varandra.",
+      "# Vad forskningen visar",
+      "Det här är en nyhet och ett resultat som ännu inte prövats av andra. Enligt AI Weekly har testet två spår: redigeringar av avgränsade delar, där uppgiften kan innehålla bild, ljud, video eller dokument, och ändringar som berör ett helt kodförråd. Totalt 273 uppgifter har valts ut ur 37 463 unika förfrågningar från 26 314 riktiga kodsessioner. Agenten får inte se de dolda godkännandekriterierna, som experter skrivit, sammanlagt 2 331. Tio agentmodeller testades, men AI Weekly nämner inga namn. För den starkaste var genomsnittet 69,9 procent av kriterierna per uppgift, medan 26,4 procent av uppgifterna klarades helt, det vill säga med alla kriterier uppfyllda tillsammans. AI Weekly återger även att resultaten var lägre för ändringar i kodförråd som bestod av tre eller fyra slags ändringar än för ett eller två.",
+      "# Det som är osäkert",
+      "Mycket är obekräftat. Förtrycket har inte genomgått granskning av andra forskare, och vi har inte läst det, så vi vet inte hur uppgifterna valdes ut, hur kriterierna skrevs eller hur testet kördes. AI Weekly nämner inga modellnamn och ingen lista över begränsningar, och de uppgifter vi har kommer från en sekundärkälla. Vi vet inte vilka som står bakom testet eller om de har intressen kopplade till resultatet. Siffrorna kan komma att ändras om förtrycket uppdateras, och andra kan få andra resultat med samma uppgifter. Dessutom beror 26,4 procent på hur strängt man definierar en klarad uppgift: räknar man bara de kriterier som uppfylls blir bilden mer positiv, och det är just den skillnaden nyheten handlar om. Att uppgifterna kommer från riktiga sessioner betyder inte att de är representativa för allt programmeringsarbete. Tills andra har prövat testet bör det läsas som ett första resultat och inte som en slutsats om vad kodagenter kan.",
+      "# Så kan du använda det",
+      "Använd nyheten som en påminnelse om att ett testresultat beror på hur man räknar, inte som ett mått på hur bra en viss modell är. När du ser ett högt procenttal för en AI-modell är det klokt att fråga vad som räknas som lyckat, om det är delpoäng eller allt-eller-inget, och vem som har mätt. Gå helst till primärkällan: öppna förtrycket och läs metoddelen innan du drar slutsatser, och vänta gärna på att andra grupper har återskapat resultatet.",
+      "# Prova i två veckor",
+      "Nästa gång du ser en rubrik om att en AI klarar eller inte klarar en viss andel av något, skriv ner tre saker: vem som har gjort testet, hur en lyckad uppgift definieras och om det finns en länk till originalet. Försök att hitta originalet och läsa ett avsnitt av det. Gör det med två nyheter under två veckor och notera hur ofta uppgifterna går att kontrollera."
+    ],
+    d54: [
+      "# Bakgrund",
+      "Om målet med sparande i aktier är att sprida risken borde man äga en bit av många länders bolag, ungefär i proportion till deras storlek. I praktiken äger investerare i många länder en mycket större andel i det egna landet. Fenomenet kallas hemmaplansbias (home bias) och beskrevs för aktiemarknader av Kenneth French och James Poterba i en artikel från 1991. Sveriges andel av världens börsvärde är bara någon enstaka procent, så en portfölj som mest består av svenska bolag ligger långt från en världsfördelning.",
+      "# Vad forskningen visar",
+      "French och Poterba jämförde hur mycket investerare i olika länder hade i sina inhemska aktier med vad landets andel av världsmarknaden skulle motivera, och fann att den inhemska andelen var mycket högre. Joshua Coval och Tobias Moskowitz visade 1999 i The Journal of Finance att också inom ett land, i deras fall USA, lutar fondförvaltare mot bolag som ligger geografiskt nära dem. Författarna tolkade det som att närhet ger informationsfördelar, men andra har pekat på att det också kan bero på att det bekanta känns tryggare. Sammantaget är det ett av de mest dokumenterade avvikande mönstren i hur människor placerar.",
+      "# Det som är osäkert",
+      "Forskare är inte överens om hur mycket av hemmaplansbias som är en tankevurpa och hur mycket som har rationella förklaringar. Skatter, transaktionskostnader, valutarisk, regler som begränsar utländskt ägande och det faktum att ens löner och utgifter är i hemvalutan kan alla motivera en viss tyngd mot hemlandet. Utvecklingen över tid har också förändrats när fonder och internationell handel blivit lättare tillgängliga, och vi har inte gått igenom den nyare forskningen här. Det betyder att det inte finns en given rätt andel, och inget i det här är råd om vad någon bör äga.",
+      "# Så kan du använda det",
+      "Använd kunskapen som en fråga till dig själv, inte som en regel: finns en placering i min portfölj för att jag har skäl att tro på den, eller för att den känns välbekant? Att svara ärligt kan göra besluten mer medvetna. Beslut om sparande hör hemma i en plan som passar din situation, och för personlig rådgivning kan du vända dig till en oberoende och behörig rådgivare.",
+      "# Prova i två veckor",
+      "Titta på dina egna fonder eller innehav och skriv ner hur stor andel som ligger i Sverige och hur stor andel i resten av världen. Jämför med hur de flesta globala fonder fördelar sig och fundera på vad som skulle ligga bakom en skillnad. Du behöver inte ändra något, bara notera vad du ser och varför. Gör om övningen efter två veckor och se om svaret ändrats."
+    ]
+  });
 
   var BIG = [], BIGDEEP = {}, FIGS = {}, ART = {}, ADDED = {}, PHOTO = {
     p3: { url: "https://commons.wikimedia.org/wiki/Special:FilePath/Marie_Curie_c1920.jpg?width=800", credit: "Henri Manuel, Marie Curie, ca 1920 (public domain, Wikimedia Commons)" }
@@ -4304,6 +4344,9 @@ ART["d50"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" 
 /* Bannerillustrationer (SVG) för småkärnor 2026-11-08. */
 ART["d51"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><path d=\"M-52 -4l52 -34l52 34\" class=\"l\"/><rect x=\"-40\" y=\"-4\" width=\"80\" height=\"46\" class=\"f\"/><rect x=\"-40\" y=\"-4\" width=\"80\" height=\"46\" class=\"l\"/><path d=\"M-12 42v-20h24v20\" class=\"l thin\"/><circle cx=\"-26\" cy=\"12\" r=\"5\" class=\"p\"/><circle cx=\"26\" cy=\"12\" r=\"5\" class=\"p\"/><circle cx=\"0\" cy=\"-18\" r=\"5\" class=\"p\"/></g></svg>";
 ART["d52"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"-42\" cy=\"10\" r=\"16\" class=\"f\"/><circle cx=\"-42\" cy=\"10\" r=\"16\" class=\"l\"/><circle cx=\"42\" cy=\"10\" r=\"16\" class=\"f\"/><circle cx=\"42\" cy=\"10\" r=\"16\" class=\"l\"/><path d=\"M-22 4q22 -34 44 0\" class=\"l thin\"/><path d=\"M16 -6l6 8l-10 2\" class=\"l thin\"/><path d=\"M0 -20c-6 -8 -16 0 -8 8l8 8l8 -8c8 -8 -2 -16 -8 -8z\" class=\"p\"/></g></svg>";
+/* Bannerillustrationer (SVG) för småkärnor 2026-11-09. */
+ART["d53"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><rect x=\"-60\" y=\"-44\" width=\"120\" height=\"88\" rx=\"8\" class=\"f\"/><rect x=\"-60\" y=\"-44\" width=\"120\" height=\"88\" rx=\"8\" class=\"l\"/><path d=\"M-40 -22l8 8 14 -14\" class=\"l thin\"/><path d=\"M-8 -20h40\" class=\"l thin\"/><path d=\"M-40 2l8 8 14 -14\" class=\"l thin\"/><path d=\"M-8 4h40\" class=\"l thin\"/><circle cx=\"-28\" cy=\"26\" r=\"8\" class=\"p\"/><path d=\"M-8 28h30\" class=\"l thin\"/></g></svg>";
+ART["d54"]="<svg viewBox=\"0 0 400 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"90\" cy=\"35\" r=\"42\" class=\"w\"/><circle cx=\"320\" cy=\"125\" r=\"46\" class=\"w\"/><circle cx=\"230\" cy=\"10\" r=\"24\" class=\"w\"/><g transform=\"translate(200 76) scale(.92)\"><circle cx=\"30\" cy=\"0\" r=\"40\" class=\"f\"/><circle cx=\"30\" cy=\"0\" r=\"40\" class=\"l thin\"/><path d=\"M-10 0h80M30 -40c-24 26 -24 54 0 80M30 -40c24 26 24 54 0 80\" class=\"l thin\"/><path d=\"M-90 8l32 -34l32 34z\" class=\"p\"/><rect x=\"-82\" y=\"8\" width=\"48\" height=\"32\" class=\"f\"/><rect x=\"-82\" y=\"8\" width=\"48\" height=\"32\" class=\"l thin\"/></g></svg>";
 /* Datum då varje småkärna lades till. Fylls av tools/stamp_added.py. */
 ADDED["B1"]="2026-10-11";
 ADDED["B2"]="2026-10-11";
@@ -4518,6 +4561,9 @@ ADDED["d50"]="2026-11-07";
 ADDED["B35"]="2026-11-08";
 ADDED["d51"]="2026-11-08";
 ADDED["d52"]="2026-11-08";
+ADDED["B36"]="2026-11-09";
+ADDED["d53"]="2026-11-09";
+ADDED["d54"]="2026-11-09";
 
   var MON = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"];
   function newsDate(s) {
@@ -6840,6 +6886,68 @@ FIGS.hinton_net = `<svg viewBox="0 0 480 240" role="img" aria-label="Ett litet n
       "Ett urval från en enda stad kan inte representera alla. Det är därför senare studier tagit med fler grupper.",
       "Kunskap byggs ofta långsamt: många decenniers uthållig datainsamling ligger bakom råd som vi i dag tar för givna.",
       "Känn dina värden, diskutera dem med vården och påverka det du kan. Siffrorna är underlag för ett samtal, inte ett svar."
+    ] }
+  ];
+
+/* Stor kärna 2026-11-09: Fångarnas dilemma, Axelrod och Ostrom */
+  BIG.push({
+    id: "B36", cat: "beteende", ev: "mattligt", type: "Översikt",
+    title: "Samarbete och allmänningar: fångarnas dilemma, Axelrods turneringar och Elinor Ostroms svar på allmänningens tragedi",
+    body: "Varför samarbetar människor, trots att det ofta lönar sig att fuska? Här går vi igenom fångarnas dilemma, Robert Axelrods datorturneringar där den enkla strategin ‘lika för lika’ vann, kritiken och förfiningarna som kom efteråt, Garrett Hardins ‘allmänningens tragedi’ och Elinor Ostroms forskning om hur lokala grupper faktiskt förvaltat gemensamma resurser. Vi tar också upp vad som är osäkert och vad man kan ta med sig till vardagen.",
+    core: "Samarbete är inte självklart men heller inte omöjligt. Det växer fram när parterna ses igen, kan känna igen varandra, belönar samarbete och straffar fusk på ett måttfullt sätt. Spelteorins modeller är förenklingar, och verkligheten har fler faktorer än de fångat.",
+    src: "Axelrod, R. & Hamilton, W.D., 1981 · Science (The evolution of cooperation); Axelrod, R., 1984 · The Evolution of Cooperation (bok); Hardin, G., 1968 · Science (The tragedy of the commons); Ostrom, E., 1990 · Governing the Commons (bok); Nowak, M. & Sigmund, K., 1993 · Nature (A strategy of win-stay, lose-shift that outperforms tit-for-tat in the Prisoner's Dilemma game); Press, W.H. & Dyson, F.J., 2012 · PNAS (Iterated Prisoner's Dilemma contains strategies that dominate any evolutionary opponent)"
+  });
+  BIGDEEP.B36 = [
+    "# Vad frågan handlar om",
+    "Människor hjälper varandra, delar resurser och håller löften, även när de skulle tjäna på att fuska. Samtidigt ser vi gemensamma fiskevatten som töms, klimatavtal som urholkas och grannar som skräpar ner i trappuppgångar. Spelteori är den gren av matematik och ekonomi som studerar sådana situationer: flera parter vars utfall beror på vad de andra gör. Ett litet antal modeller har fått särskild betydelse för hur vi tänker om samarbete, och i den här artikeln går vi igenom tre av dem och de forskare som är knutna till dem.",
+    "Det är lätt att bli förförd av enkla modeller, och därför ägnar vi lika mycket plats åt vad de inte visar som åt vad de visar. Spelteorin ger oss ett språk för att beskriva incitament. Den säger inte hur människor alltid beter sig, och den ersätter inte forskning som tittar på verkliga grupper.",
+    "# Fångarnas dilemma",
+    "Det som kallas fångarnas dilemma formulerades i början av 1950-talet. Matematikerna Merrill Flood och Melvin Dresher vid forskningsinstitutet RAND i USA prövade spelet 1950, och Albert Tucker gav det sedan berättelsen med två misstänkta som förhörs var för sig. Berättelsen är en förklädnad för en strukturell situation, inte ett påstående om brottsutredningar.",
+    "Spelet går ut på att två parter samtidigt väljer mellan att samarbeta och att svika. Om båda samarbetar får de ett bra utfall. Om båda sviker får de ett dåligt. Om en svikar och den andra samarbetar får den som sviker det allra bästa utfallet och den andra det allra sämsta. Oavsett vad den andre gör är det alltså bättre för en själv att svika, men när båda tänker så hamnar de i ett utfall som är sämre för båda än om de hade samarbetat.",
+    { box: "Varför det kallas ett dilemma", text: "För varje spelare är svek det bästa svaret på vad den andre än väljer. Ändå blir resultatet av att båda sviker sämre för båda än resultatet av att båda samarbetar. Individuell rationalitet och gemensamt bästa drar åt olika håll." },
+    "Spelet engångsvis har en bedrövlig men entydig lösning inom teorin: svek. Men verkliga relationer upprepas. Grannar, kollegor och handelspartner möts igen, och då ändras situationen. Det är här forskningen tar fart.",
+    "# Axelrods turneringar",
+    "Statsvetaren Robert Axelrod vid University of Michigan undrade vad som är en bra strategi när spelet upprepas om och om igen. Omkring 1980 bjöd han in forskare att skicka in datorprogram som skulle spela upprepade omgångar av fångarnas dilemma mot varandra. I den första turneringen deltog drygt ett dussin program, och i den andra, som utlystes efter att resultaten publicerats, deltog betydligt fler, över sextio program från ett stort antal länder.",
+    "Vinnaren i båda turneringarna var det minsta av alla program, skrivet av spelteoretikern Anatol Rapoport: tit for tat, på svenska ungefär ‘lika för lika’. Strategin börjar med att samarbeta och gör sedan i varje omgång det som motparten gjorde i omgången innan. Den är alltså vänlig från början, svarar direkt på svek, förlåter direkt när motparten samarbetar igen, och är lätt att förstå.",
+    "Axelrod tolkade resultatet genom några egenskaper hos de strategier som gick bra. De var vänliga i den meningen att de aldrig var först med att svika. De gav igen när de blev sviken, så att svek inte lönade sig. De var förlåtande och återgick till samarbete när motparten gjorde det. Och de var tydliga nog för att motparten skulle kunna lära sig hur de fungerade. Han beskrev resultaten i en artikel tillsammans med biologen William D. Hamilton 1981 och i boken The Evolution of Cooperation 1984.",
+    { box: "Viktigt att komma ihåg", text: "Tit for tat vann turneringarna, men det betyder inte att den vinner mot alla. I en enskild match får den som mest lika många poäng som motparten, aldrig fler. Den gick bra för att den fick höga poäng i samarbete med andra som också samarbetade, summerat över många matcher." },
+    "Axelrod och Hamilton kopplade också resultaten till biologi: samarbete kan utvecklas mellan individer som inte är släkt, så länge de möts om och om igen och kan känna igen varandra. Det har varit en inspirationskälla för evolutionsforskare och för forskare som studerar samarbete mellan människor.",
+    "# Kritik och förfiningar",
+    "Resultaten har prövats flitigt, och bilden har blivit mer nyanserad. En första invändning gäller brus. I verkliga situationer görs misstag eller missförstånd, och då kan två spelare som kör tit for tat fastna i en lång serie av vedergällningar. Senare studier visade att strategier som är lite mer förlåtande, som ibland samarbetar trots ett svek, kan klara sig bättre när det förekommer fel. Martin Nowak och Karl Sigmund visade 1993 i tidskriften Nature en strategi som brukar kallas win-stay, lose-shift eller Pavlov, och som under vissa förhållanden presterade bättre än tit for tat.",
+    "En andra invändning gäller vilka motståndare som finns. Resultatet i turneringarna beror på vilka program som deltog. I en annan miljö kan andra strategier lyckas. Den tredje invändningen gäller en matematisk upptäckt 2012: William Press och Freeman Dyson beskrev i PNAS en klass av strategier, kallade zero-determinant, som kan ge en spelare en egen fördel mot en motpart som anpassar sig. Hur viktiga sådana strategier är i praktiken, och bland människor, har diskuterats.",
+    "Sammantaget håller slutsatsen att ömsesidighet, igenkänning och upprepade möten främjar samarbete, men det finns ingen enskild strategi som är bäst överallt.",
+    "# Allmänningens tragedi",
+    "Ekologen Garrett Hardin publicerade 1968 i Science artikeln The Tragedy of the Commons. Hans bild var en gemensam betesmark där varje herde vinner på att släppa ut ytterligare ett djur, medan kostnaden för överbetning delas av alla. Resultatet blir att marken förstörs. Hardin drog slutsatsen att gemensamma resurser nästan oundvikligen utarmas om inte ägandet delas upp eller staten styr.",
+    "Modellen liknar fångarnas dilemma med många deltagare, och den har använts för att förklara överfiske, förorenad luft och utsläpp. Den har också kritiserats för att vara historiskt vilseledande. Hardin beskrev en situation där ingen kan tala med varandra eller sätta regler, och sådana allmänningar är sällsynta.",
+    "# Elinor Ostrom: när grupper klarar det själva",
+    "Statsvetaren Elinor Ostrom vid Indiana University studerade i stället hur grupper faktiskt förvaltat gemensamma resurser, som fiskevatten, betesmarker, skogar och bevattningssystem, på olika håll i världen. I boken Governing the Commons 1990 visade hon att många lokalsamhällen under lång tid skött sådana resurser med egna regler utan att vare sig privatisera eller lämna över till staten. Hon fick 2009 Sveriges Riksbanks pris i ekonomisk vetenskap till Alfred Nobels minne, som delades med Oliver Williamson. Hon var den första kvinnan som fick det.",
+    "Utifrån sina fallstudier beskrev Ostrom ett antal designprinciper som återkom i de grupper som lyckades. De handlade bland annat om tydliga gränser för vem som får använda resursen och vad som gäller, regler som är anpassade till lokala förhållanden, att de som berörs kan vara med och ändra reglerna, att någon övervakar användningen och att övervakarna står till svars inför gruppen, att sanktioner är graderade snarare än hårda från start, att det finns billiga sätt att lösa konflikter och att yttre myndigheter erkänner gruppens rätt att organisera sig.",
+    { list: [
+      "Tydliga gränser: det är känt vem som får använda resursen och hur.",
+      "Regler som passar lokala förhållanden och som de berörda kan påverka.",
+      "Övervakning av användningen av personer som är ansvariga inför gruppen.",
+      "Graderade sanktioner: ett första fel får en mild reaktion, upprepade fel en hårdare.",
+      "Enkla sätt att lösa konflikter och erkännande från omgivande myndigheter."
+    ] },
+    "Ostroms arbete visar att valet inte behöver stå mellan marknad och stat. Samtidigt var hennes material fallstudier, och ingen garanterar att principerna fungerar överallt.",
+    "# Hur det ser ut hos människor",
+    "Fångarnas dilemma och liknande spel har också testats på människor i laboratorier, ofta med små insatser och deltagare som är studenter. Gemensamt för många sådana studier är att en del deltagare samarbetar även när det inte lönar sig, och att samarbetet tenderar att öka när deltagarna kan prata med varandra och när de möts flera gånger. Detaljerna varierar mycket mellan studier, och vi nämner därför inga exakta andelar. Att deltagarna ofta är från ett fåtal länder och i en konstgjord situation begränsar vad man kan dra för slutsatser om resten av världen.",
+    "Det betyder inte att modellerna är värdelösa. De visar vilka mekanismer som kan driva samarbete: upprepning, rykte, igenkänning och sanktioner. Hur stor del av samarbetet i verkliga samhällen som bygger på dem, och hur stor del som bygger på normer, omtanke och institutioner, är en fråga som forskare fortfarande diskuterar.",
+    "# Vad är osäkert?",
+    "Först och främst är spelen förenklingar. I Axelrods turneringar fanns inga känslor, rykten, ojämn makt eller kommunikation, och i laboratorieexperiment med människor beror samarbetsnivån på hur experimentet är upplagt, vilka deltagarna är och vad som står på spel. Resultat från ett land eller en kultur kan inte utan vidare överföras till ett annat.",
+    "Därtill är det svårt att dra gränsen mellan vad som är samarbete på grund av egenintresse och vad som beror på normer, moral eller omtanke. Modellerna förklarar att samarbete kan vara lönsamt, men inte allt som får människor att samarbeta. Ostroms fallstudier kan dessutom vara påverkade av att det är de lyckade fallen som är lättast att hitta och studera, och där finns ett urvalsproblem.",
+    "Slutligen är det omstritt hur väl lärdomarna går att tillämpa på globala problem med enormt många parter, som klimatet. Där saknas ofta de villkor som Ostrom pekade ut, som tydliga gränser och övervakning, och de små gruppernas lösningar går inte automatiskt att skala upp.",
+    "# Så kan du känna igen mönstren",
+    "Mönstren syns i vardagen. I en bostadsrättsförening finns en gemensam tvättstuga, i ett arbetslag delas en gemensam kalender och på nätet delas gemensamma kunskapsbanker. När någon tjänar på att ta mer än den ger kan resursen tunnas ut, men när parterna ses ofta, känner varandra och har enkla regler går det oftare bra.",
+    { box: "Ett test för en gemensam resurs", text: "Fråga: Vet alla vem som får använda den och hur? Kan någon se hur den används? Finns det en mild första reaktion på att någon missköter sig? Kan de som berörs ändra reglerna? Ju fler ja, desto större chans att samarbetet håller, enligt Ostroms mönster." },
+    "# Lärdomar att ta med sig",
+    { list: [
+      "Det är rationellt att svika i ett engångsmöte, men upprepade möten ändrar spelet. Mer samarbete följer när man ses igen.",
+      "Strategier som är vänliga, svarar på svek, förlåter och är lätta att förstå klarade sig bäst i Axelrods turneringar, men de är inte bäst överallt.",
+      "Misstag och missförstånd är vanliga. En måttlig portion förlåtelse hjälper samarbetet att överleva fel.",
+      "Allmänningens tragedi är ingen naturlag. Ostrom visade att grupper med tydliga regler, insyn och graderade sanktioner ofta klarat sig själva.",
+      "Spelmodeller är förenklingar. Använd dem för att ställa frågor om incitament, inte för att förutsäga vad människor alltid gör.",
+      "Bygg samarbete genom att göra det enkelt att känna igen varandra, se vad som sker och reagera mjukt på första felet."
     ] }
   ];
 
